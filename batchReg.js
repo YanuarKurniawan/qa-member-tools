@@ -183,4 +183,4 @@ async function batchRegisterUsersFromCSV(filePath) {
 }
 
 // Run batch registration from CSV
-batchRegisterUsersFromCSV('auto.csv');
+batchRegisterUsersFromCSV('register.csv');

@@ -133,4 +133,4 @@ async function batchResetPassword(filePath) {
     })
 }
 
-batchResetPassword('correct.csv');
+batchResetPassword('setPassword.csv');

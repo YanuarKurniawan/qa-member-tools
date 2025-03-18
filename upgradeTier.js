@@ -72,4 +72,4 @@ async function sendUpgradeRequest(tierUpgradeSpecifications) {
     }
 }
 
-upgradeTierFromCSV('data2.csv');
+upgradeTierFromCSV('register.csv');

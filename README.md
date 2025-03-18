@@ -28,3 +28,8 @@ requirement: axios
 
 to run just hit: node delete-email/deleteEmail.js
 it will show a dialog to input user's email. then the rest is pretty much self explanatory.
+
+---
+Copy-role-priv
+
+to run it just hit: node copy-role-priv/copy.js <source@email.com> <target@email.com>

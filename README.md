@@ -17,3 +17,14 @@ Some notes before running this:
 - make sure the csv is correct
 - make sure the unmUserId(s) is deleted first and back them up somewhere
 - after success running the script, paste back the unmUserId(s) to DB manually
+
+
+---
+delete-email
+---
+
+it contains tools to delete email from UNM and from member services
+requirement: axios
+
+to run just hit: node delete-email/deleteEmail.js
+it will show a dialog to input user's email. then the rest is pretty much self explanatory.

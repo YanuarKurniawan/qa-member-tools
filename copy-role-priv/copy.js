@@ -47,8 +47,16 @@ async function assignRolesToTargetAccount(targetAccountId, roleIds) {
   const payload = JSON.stringify({
     accountId: targetAccountId,
     isBulk: true,
-    roleIds: roleIds.split(",")
+    roleIds: roleIds
   });
+
+  const curl = [
+    `curl -X POST "${url}"`,
+    ...Object.entries(headers).map(([key, value]) => `-H "${key}: ${value}"`),
+    `-d '${payload}'`
+  ].join(" \\\n");
+
+  console.log("assignRoles curl:\n", curl);
 
   try {
     const response = await fetch(url, { method: "POST", headers, body: payload });
@@ -65,8 +73,16 @@ async function assignPrivilegesToTargetAccount(targetAccountId, privIds) {
   const payload = JSON.stringify({
     accountId: targetAccountId,
     isBulk: true,
-    privIds: privIds.split(",")
+    privIds: privIds
   });
+
+  const curl = [
+    `curl -X POST "${url}"`,
+    ...Object.entries(headers).map(([key, value]) => `-H "${key}: ${value}"`),
+    `-d '${payload}'`
+  ].join(" \\\n");
+
+  console.log("assignPrivs curl:\n", curl);
 
   try {
     const response = await fetch(url, { method: "POST", headers, body: payload });

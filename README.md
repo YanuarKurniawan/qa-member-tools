@@ -1,6 +1,7 @@
 # qa-member-tools
 requirement:
 - nodeJs
+- Axios
 
 how to run:
 - clone the repo

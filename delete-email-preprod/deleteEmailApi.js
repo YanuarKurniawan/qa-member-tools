@@ -12,6 +12,15 @@ const headers = {
 
 async function deleteEmailApi(accountId) {
     const url = `https://member-core-v2-be-svc.preprod-platform-cluster.tiket.com/tix-member-core/v2/backfill/set-null-email?accountId=${accountId}`;
+
+    const curlCmd = [
+        `curl -X POST "${url}"`,
+        ...Object.entries(headers).map(([key, value]) => `-H "${key}: ${value}"`)
+    ].join(" \\\n  ");
+
+    console.log("\ncurl command:\n");
+    console.log(curlCmd + "\n");
+
     try {
         console.log('Calling API to delete email from Tiket');
         const response = await axios.post(url, null, { headers });

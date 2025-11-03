@@ -8,7 +8,11 @@ jira*.txt
 
 # Ignore environment file
 .env
+test.env
 
 # Ignore update logs
 update-log-*.csv
 jira-update-log-*.txt
+
+#ignore zip
+*.zip

@@ -4,7 +4,7 @@ const { stringify } = require('csv-stringify/sync');
 
 async function generateOtp(recipient) {
     console.log(`Generating OTP for recipient: ${recipient}`);
-    const url = 'https://sandbox.eph.bliblitiket.tools/gks-unm-go-be/api/v1/otp/generate';
+    const url = 'https://service.bliblitiket.tools/gks-unm-go-be/api/v1/otp/generate';
     
     const headers = {
         'Accept': 'application/json',
@@ -40,14 +40,14 @@ async function generateOtp(recipient) {
 
 async function verifyOtp(otpId, otpCode) {
     console.log(`Verifying OTP with otpId: ${otpId} and otpCode: ${otpCode}`);
-    const url = 'https://sandbox.eph.bliblitiket.tools/gks-unm-go-be/api/v1/otp/verify';
+    const url = 'https://service.bliblitiket.tools/gks-unm-go-be/api/v1/otp/verify';
     
     const headers = {
         'Accept': 'application/json',
         'Accept-Language': 'id',
         'X-Channel-Id': 'WEB',
         'X-Request-Id': 'automation-yanuar-register',
-        'X-Client-Id': 'TIKET',
+        'X-Client-Id': '9dc79e3916a042abc86c2aa525bff009',
         'Content-Type': 'application/json'
     };
     
@@ -74,7 +74,7 @@ async function verifyOtp(otpId, otpCode) {
 
 async function submitRegistration(passCode, email, name, password, phoneCountryCode, phoneNationalNumber, refUrl) {
     console.log(`Submitting registration for ${email}`);
-    const url = 'https://sandbox.eph.bliblitiket.tools/gks-unm-go-be/api/v1/registration/submit';
+    const url = 'https://service.bliblitiket.tools/gks-unm-go-be/api/v1/registration/submit';
     
     const headers = {
         'Accept': 'application/json',
@@ -113,7 +113,7 @@ async function fetchAccountId(email) {
     await new Promise(resolve => setTimeout(resolve, 2000));
 
     console.log(`Fetching account ID for email: ${email}`);
-    const url = `https://member-core-v2-be-svc.preprod-platform-cluster.tiket.com/tix-member-core/v2/account/account-id?by=EMAIL&memberType=B2C&value=${encodeURIComponent(email)}`;
+    const url = `https://member-core-v2-be-svc.test-platform-cluster.tiket.com/tix-member-core/v2/account/account-id?by=EMAIL&memberType=B2C&value=${encodeURIComponent(email)}`;
     
     const headers = {
         'Accept': '*/*',
@@ -168,7 +168,7 @@ async function batchRegisterUsersFromCSV(filePath) {
                         'Testing123',
                         user.phoneCode,
                         user.phoneNumber,
-                        'https://sandbox.tiket.com/'
+                        'https://gatotkaca.tiket.com/'
                     );
 
                     const accountId = await fetchAccountId(user.Email);
@@ -183,4 +183,4 @@ async function batchRegisterUsersFromCSV(filePath) {
 }
 
 // Run batch registration from CSV
-batchRegisterUsersFromCSV('reghehe.csv');
+batchRegisterUsersFromCSV('regisnw2.csv');

@@ -33,6 +33,10 @@ async function getUserData(email) {
             }
         });
 
+        if(response.status != 200 || response.data.code != 'SUCCESS') {
+            console.log(`got error calling the API:\n ${response.data.code}.\n exiting process.`)
+            process.exit();
+        }
         if(response.data.data === null) {
             console.log(`${email} is not found on our database. Exiting process!`)
             process.exit();

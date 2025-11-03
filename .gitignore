@@ -1,0 +1,14 @@
+# Ignore all CSV files
+*.csv
+
+# Ignore all log files
+*.log
+jira*.txt
+*-log-*.txt
+
+# Ignore environment file
+.env
+
+# Ignore update logs
+update-log-*.csv
+jira-update-log-*.txt

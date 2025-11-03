@@ -1,108 +1,108 @@
-const fs = require("fs");const fs = require("fs");const fs = require("fs");
 
-const path = require("path");
 
-const csv = require("csv-parser");const path = require("path");const path = require("path");
 
-const fetch = require("node-fetch");
 
-const csv = require("csv-parser");const csv = require("csv-parser");
+
+
+
+
+
 
 // === CLI Arguments ===
 
-const args = process.argv.slice(2);const fetch = require("node-fetch");const fetch = require("node-fetch");
-
-const csvFile = args[0];
-
-const isDryRun = args.includes("--dry-run");
 
 
 
-// === Validation ===// === CLI Arguments ===// === CLI Arguments ===
+
+
+
+
+
+// === Validation ===// === CLI Arguments ===
 
 if (!csvFile) {
 
-  console.error("❌ Usage: node updateJira.js <file.csv> [--dry-run]");const args = process.argv.slice(2);const args = process.argv.slice(2);
+
 
   process.exit(1);
 
-}const csvFile = args[0];const csvFile = args[0];
 
 
 
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') });const isDryRun = args.includes("--dry-run");const isDryRun = args.includes("--dry-run");
+
+
 
 
 
 // === Jira Configuration ===
 
-const JIRA_BASE_URL = process.env.JIRA_BASE_URL;
 
-const JIRA_EMAIL = process.env.JIRA_EMAIL;// === Validation ===// === Validation ===
 
-const JIRA_API_TOKEN = process.env.JIRA_API_TOKEN;
 
-if (!csvFile) {if (!csvFile) {
+
+
+
+if (!csvFile) {
 
 if (!JIRA_BASE_URL || !JIRA_EMAIL || !JIRA_API_TOKEN) {
 
-  console.error('Please set JIRA_BASE_URL, JIRA_EMAIL, and JIRA_API_TOKEN in .env file');  console.error("❌ Usage: node updateJira.js <file.csv> [--dry-run]");  console.error("❌ Usage: node updateJira.js <file.csv> [--dry-run]");
+
 
   process.exit(1);
 
-}  process.exit(1);  process.exit(1);
+}  process.exit(1);
 
 
 
-// === Logging Setup ===}}
-
-const logFileName = `jira-update-log-${Date.now()}.txt`;
-
-const logStream = fs.createWriteStream(logFileName, { flags: "a" });
 
 
 
-function log(message) {require('dotenv').config({ path: path.resolve(__dirname, '../.env') });require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
 
-  const timestamp = new Date().toISOString();
 
-  const fullMessage = `[${timestamp}] ${message}`;
+
+
+
+
+
+
+
+
 
   console.log(fullMessage);
 
-  logStream.write(fullMessage + "\n");// === Jira Configuration ===// === Jira Configuration ===
+  logStream.write(fullMessage + "\n");// === Jira Configuration ===
 
 }
 
-const JIRA_BASE_URL = process.env.JIRA_BASE_URL;const JIRA_BASE_URL = process.env.JIRA_BASE_URL;
+
 
 // === Jira Update ===
 
-async function updateIssue(issueKey, payload) {const JIRA_EMAIL = process.env.JIRA_EMAIL;const JIRA_EMAIL = process.env.JIRA_EMAIL;
-
-  const url = `${JIRA_BASE_URL}/rest/api/3/issue/${issueKey}`;
-
-  const body = JSON.stringify({ fields: payload });const JIRA_API_TOKEN = process.env.JIRA_API_TOKEN;const JIRA_API_TOKEN = process.env.JIRA_API_TOKEN;
 
 
 
-  const response = await fetch(url, {
+
+
+
+
+
+
 
     method: "PUT",
 
-    headers: {if (!JIRA_BASE_URL || !JIRA_EMAIL || !JIRA_API_TOKEN) {if (!JIRA_BASE_URL || !JIRA_EMAIL || !JIRA_API_TOKEN) {
+    headers: {if (!JIRA_BASE_URL || !JIRA_EMAIL || !JIRA_API_TOKEN) {
 
       Authorization: "Basic " + Buffer.from(`${JIRA_EMAIL}:${JIRA_API_TOKEN}`).toString("base64"),
 
-      "Content-Type": "application/json",    console.error('Please set JIRA_BASE_URL, JIRA_EMAIL, and JIRA_API_TOKEN in .env file');    console.error('Please set JIRA_BASE_URL, JIRA_EMAIL, and JIRA_API_TOKEN in .env file');
+      "Content-Type": "application/json",  console.error('Please set JIRA_BASE_URL, JIRA_EMAIL, and JIRA_API_TOKEN in .env file');  console.error("❌ Usage: node updateJira.js <file.csv> [--dry-run]");  console.error("❌ Usage: node updateJira.js <file.csv> [--dry-run]");
 
       Accept: "application/json"
 
-    },    process.exit(1);    process.exit(1);
+    },  process.exit(1);
 
     body
 
-  });}}
+  });}  process.exit(1);  process.exit(1);
 
 
 
@@ -110,35 +110,154 @@ async function updateIssue(issueKey, payload) {const JIRA_EMAIL = process.env.JI
 
 }
 
-// === Logging Setup ===// === Logging Setup ===
+// === Logging Setup ===}}
 
 // === Process CSV and do the thing===
 
-fs.createReadStream(csvFile)const logFileName = `jira-update-log-${Date.now()}.txt`;const logFileName = `jira-update-log-${Date.now()}.txt`;
+
 
   .pipe(csv())
 
-  .on("data", async (row) => {const logStream = fs.createWriteStream(logFileName, { flags: "a" });const logStream = fs.createWriteStream(logFileName, { flags: "a" });
+
 
     await new Promise((resolve) => setTimeout(resolve, 500));
 
-    const issueKey = row.issueKey?.trim();
 
-    const parentId = row.parent?.trim();
+
+
+
+function log(message) {require('dotenv').config({ path: path.resolve(__dirname, '../.env') });require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
+
+    if (!issueKey || !parentId) {
+
+
+
+      return;
+
+
+
+
+
+
+
+      parent: { key: parentId }
+
+    };  logStream.write(fullMessage + "\n");// === Jira Configuration ===// === Jira Configuration ===
+
+
+
+    log(`${isDryRun ? "[DRY RUN]" : "[UPDATE]"} ${issueKey} → ${JSON.stringify(payload)}`);}
+
+
+
+
+
+      try {
+
+        let res;// === Jira Update ===
+
+        let attempts = 0;
+
+
+
+
+
+
+
+          res = await updateIssue(issueKey, payload);
+
+
+
+          if (res.status === 429) {
+
+            attempts++;
+
+
+
+
+
+            log(`⏳ Rate limit hit for ${issueKey}. Retrying in ${waitTime / 1000}s (Attempt ${attempts}/${maxAttempts})`);
+
+            await new Promise((resolve) => setTimeout(resolve, waitTime));    method: "PUT",
+
+          } else {
+
+            break;    headers: {if (!JIRA_BASE_URL || !JIRA_EMAIL || !JIRA_API_TOKEN) {if (!JIRA_BASE_URL || !JIRA_EMAIL || !JIRA_API_TOKEN) {
+
+          }
+
+        }      Authorization: "Basic " + Buffer.from(`${JIRA_EMAIL}:${JIRA_API_TOKEN}`).toString("base64"),
+
+
+
+        if (res.ok) {      "Content-Type": "application/json",    console.error('Please set JIRA_BASE_URL, JIRA_EMAIL, and JIRA_API_TOKEN in .env file');    console.error('Please set JIRA_BASE_URL, JIRA_EMAIL, and JIRA_API_TOKEN in .env file');
+
+          log(`✅ ${issueKey} updated successfully`);
+
+        } else {      Accept: "application/json"
+
+          let errorText;
+
+          try {    },    process.exit(1);    process.exit(1);
+
+            errorText = await res.text();
+
+            try {    body
+
+
+
+              errorText = JSON.stringify(json);  });}}
+
+            } catch (e) {}
+
+          } catch (e) {
+
+            errorText = `Unable to read error response: ${e.message}`;
+
+          }  return response;
+
+          log(`❌ Failed to update ${issueKey}: HTTP ${res.status} — ${errorText}`);
+
+        }}
+
+      } catch (e) {
+
+        log(`❌ Network error for ${issueKey}: ${e.message}`);// === Logging Setup ===// === Logging Setup ===
+
+      }
+
+    }// === Process CSV and do the thing===
+
+  })
+
+
+
+    log("✅ CSV processing complete.");
+
+    logStream.end();  .pipe(csv())
+
+  });
+
+
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+
+
+
 
 function log(message) {function log(message) {
 
     if (!issueKey || !parentId) {
 
-      log(`⚠️ Skipping row — missing IssueKey or parent`);  const timestamp = new Date().toISOString();  const timestamp = new Date().toISOString();
+
 
       return;
 
-    }  const fullMessage = `[${timestamp}] ${message}`;  const fullMessage = `[${timestamp}] ${message}`;
 
 
 
-    const payload = {  console.log(fullMessage);  console.log(fullMessage);
+
+
 
       parent: { key: parentId }
 
@@ -158,23 +277,23 @@ function log(message) {function log(message) {
 
         let attempts = 0;
 
-        const maxAttempts = 3;async function updateIssue(issueKey, payload) {async function updateIssue(issueKey, payload) {
 
 
 
-        while (attempts < maxAttempts) {  const url = `${JIRA_BASE_URL}/rest/api/3/issue/${issueKey}`;  const url = `${JIRA_BASE_URL}/rest/api/3/issue/${issueKey}`;
+
+
 
           res = await updateIssue(issueKey, payload);
 
-  const body = JSON.stringify({ fields: payload });  const body = JSON.stringify({ fields: payload });
+
 
           if (res.status === 429) {
 
             attempts++;
 
-            const retryAfter = res.headers.get("retry-after");
 
-            const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : 5000;  const response = await fetch(url, {  const response = await fetch(url, {
+
+
 
             log(`⏳ Rate limit hit for ${issueKey}. Retrying in ${waitTime / 1000}s (Attempt ${attempts}/${maxAttempts})`);
 
@@ -204,7 +323,7 @@ function log(message) {function log(message) {
 
             try {      Accept: "application/json",      Accept: "application/json",
 
-              const json = JSON.parse(errorText);
+
 
               errorText = JSON.stringify(json);    },    },
 
@@ -245,11 +364,11 @@ fs.createReadStream(csvFile)fs.createReadStream(csvFile)
 
     await new Promise((resolve) => setTimeout(resolve, 500));    await new Promise((resolve) => setTimeout(resolve, 500));
 
-    const issueKey = row.issueKey?.trim();    const issueKey = row.issueKey?.trim();
 
-    const parentId = row.parent?.trim();    const parentId = row.parent?.trim();
 
-    // const labelsRaw = row.labels?.trim();
+
+
+
 
     if (!issueKey || !parentId) {
 
@@ -261,9 +380,9 @@ fs.createReadStream(csvFile)fs.createReadStream(csvFile)
 
     }
 
-    const payload = {
 
-      parent: { key: parentId },    const payload = {
+
+
 
     };      parent: { key: parentId },
 
@@ -273,7 +392,7 @@ fs.createReadStream(csvFile)fs.createReadStream(csvFile)
 
       `${isDryRun ? "[DRY RUN]" : "[UPDATE]"} ${issueKey} → ${JSON.stringify(    // let payload = {};
 
-        payload    // const labels = labelsRaw
+
 
       )}`    //   .split(",")
 
@@ -289,7 +408,7 @@ fs.createReadStream(csvFile)fs.createReadStream(csvFile)
 
         let attempts = 0;    // if (labelsRaw) {
 
-        const maxAttempts = 3;    //   const labels = labelsRaw
+
 
     //     .split(",")
 
@@ -303,9 +422,9 @@ fs.createReadStream(csvFile)fs.createReadStream(csvFile)
 
             attempts++;    //   }
 
-            const retryAfter = res.headers.get("retry-after");    // }
 
-            const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : 5000;
+
+
 
             log(    log(
 
@@ -327,7 +446,7 @@ fs.createReadStream(csvFile)fs.createReadStream(csvFile)
 
         }        let attempts = 0;
 
-        const maxAttempts = 3;
+
 
         if (res.ok) {
 
@@ -341,9 +460,9 @@ fs.createReadStream(csvFile)fs.createReadStream(csvFile)
 
             errorText = await res.text();            attempts++;
 
-            try {            const retryAfter = res.headers.get("retry-after");
 
-              const json = JSON.parse(errorText);            const waitTime = retryAfter ? parseInt(retryAfter) * 1000 : 5000;
+
+
 
               errorText = JSON.stringify(json);            log(
 
@@ -380,7 +499,7 @@ fs.createReadStream(csvFile)fs.createReadStream(csvFile)
     logStream.end();            errorText = await res.text();
 
   });            try {
-              const json = JSON.parse(errorText);
+
               errorText = JSON.stringify(json);
             } catch (e) {}
           } catch (e) {

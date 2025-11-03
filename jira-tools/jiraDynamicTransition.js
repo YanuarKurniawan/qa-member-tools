@@ -1,638 +1,163 @@
+require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
+const fs = require('fs');
+const csv = require('csv-parser');
+const fetch = require('node-fetch');
+const path = require('path');
 
+// --- CONFIGURATION ---
+const JIRA_BASE_URL = process.env.JIRA_BASE_URL;
+const JIRA_EMAIL = process.env.JIRA_EMAIL;
+const JIRA_API_TOKEN = process.env.JIRA_API_TOKEN;
+const MAX_RETRIES = 3;
+const LOG_FILE = `jira-transition-log-${Date.now()}.txt`;
 
+// --- CLI FLAGS ---
+const [, , csvPath, ...flags] = process.argv;
+const isDryRun = flags.includes('--dry-run');
 
-
-
-
-
-
-
-
-require('dotenv').config({ path: path.resolve(__dirname, '../.env') });require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
-
-
-
-// --- CONFIGURATION ---// --- CONFIGURATION ---
-
-
-
-
-
-
-
-
-
+// Validate configuration
 if (!JIRA_BASE_URL || !JIRA_EMAIL || !JIRA_API_TOKEN) {
-
   console.error('Please set JIRA_BASE_URL, JIRA_EMAIL, and JIRA_API_TOKEN in .env file');
-
   process.exit(1);
-
-}if (!JIRA_BASE_URL || !JIRA_EMAIL || !JIRA_API_TOKEN) {// --- CONFIGURATION ---
-
-
-
-
-
-
-
-
-
-
-
-// --- CLI FLAGS ---}
-
-
-
-
-
-
-
-
-
-// --- AUTH HEADER ---
-
-
-
-  'Authorization': 'Basic ' + Buffer.from(`${JIRA_EMAIL}:${JIRA_API_TOKEN}`).toString('base64'),
-
-
-
-  'Content-Type': 'application/json'
-
-
-
-
-
-// --- UTILITY FUNCTIONS ---// --- CLI FLAGS ---
-
-function logToFile(message) {
-
-
-
-  fs.appendFileSync(LOG_FILE, `[${timestamp}] ${message}\n`);
-
-
-
-
-
-
-
-
-
-    method: 'GET',
-
-    headers
-
-  });// --- AUTH HEADER ---    console.error('Please set JIRA_BASE_URL, JIRA_EMAIL, and JIRA_API_TOKEN in .env file');    process.exit(1);
-
-
-
-
-
 }
 
-  'Authorization': 'Basic ' + Buffer.from(`${JIRA_EMAIL}:${JIRA_API_TOKEN}`).toString('base64'),    process.exit(1);}
+// --- AUTH HEADER ---
+const headers = {
+  'Authorization': 'Basic ' + Buffer.from(`${JIRA_EMAIL}:${JIRA_API_TOKEN}`).toString('base64'),
+  'Accept': 'application/json',
+  'Content-Type': 'application/json'
+};
+
+// --- UTILITY FUNCTIONS ---
+function logToFile(message) {
+  const timestamp = new Date().toISOString();
+  fs.appendFileSync(LOG_FILE, `[${timestamp}] ${message}\n`);
+}
+
+async function getIssueStatus(issueKey) {
+  const res = await fetch(`${JIRA_BASE_URL}/rest/api/2/issue/${issueKey}?fields=status`, {
+    method: 'GET',
+    headers
+  });
+  const data = await res.json();
+  return data.fields?.status?.name;
+}
 
 async function getAvailableTransitions(issueKey) {
-
-
-
+  const res = await fetch(`${JIRA_BASE_URL}/rest/api/2/issue/${issueKey}/transitions`, {
     method: 'GET',
-
-
-
+    headers
   });
-
-
-
+  const data = await res.json();
   return data.transitions || [];
+}
 
-
-
-
-
-async function performTransition(issueKey, transitionId, targetStatus, retries = 0) {// --- UTILITY FUNCTIONS ---
-
+async function performTransition(issueKey, transitionId, targetStatus, retries = 0) {
   if (isDryRun) {
-
-
-
+    const msg = `[DRY RUN] Would transition ${issueKey} using transition ID ${transitionId}`;
     console.log(msg);
-
-
-
+    logToFile(msg);
     return;
+  }
 
-
-
-
-
-  try {}
-
-
-
-      method: 'POST',// --- CLI FLAGS ---
-
+  try {
+    const res = await fetch(`${JIRA_BASE_URL}/rest/api/2/issue/${issueKey}/transitions`, {
+      method: 'POST',
       headers,
-
-      body: JSON.stringify({ transition: { id: transitionId } })async function getIssueStatus(issueKey) {
-
+      body: JSON.stringify({ transition: { id: transitionId } })
     });
-
-
 
     if (!res.ok) throw new Error(`Status ${res.status}`);
 
-    method: 'GET',
-
-
-
-
-
+    const msg = `Transitioned ${issueKey} using transition ID ${transitionId}`;
+    console.log(msg);
     logToFile(msg);
-
-  } catch (err) {  });
-
+  } catch (err) {
     if (retries < MAX_RETRIES) {
-
-
-
+      const msg = `Failed to transition ${issueKey}, retrying... (${err.message})`;
       console.warn(msg);
-
-      logToFile(msg);  return data.fields?.status?.name;
-
+      logToFile(msg);
+      await new Promise(resolve => setTimeout(resolve, 1000 * (retries + 1)));
       await performTransition(issueKey, transitionId, targetStatus, retries + 1);
-
-
-
-
-
+    } else {
+      const msg = `Failed to transition ${issueKey} after ${MAX_RETRIES} attempts: ${err.message}`;
       console.error(msg);
-
       logToFile(msg);
-
-    }async function getAvailableTransitions(issueKey) {// --- AUTH HEADER ---
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    logToFile(msg);
-
-    return;  return data.transitions || [];  'Authorization': 'Basic ' + Buffer.from(`${JIRA_EMAIL}:${JIRA_API_TOKEN}`).toString('base64'),  'Accept': 'application/json',
-
-  }
-
-}
-
-  if (currentIndex > targetIndex) {
-
-
-
-    console.log(msg);
-
-    logToFile(msg);async function performTransition(issueKey, transitionId, targetStatus, retries = 0) {
-
-    return;
-
-  }  if (isDryRun) {  'Content-Type': 'application/json'};
-
-
-
-
-
-
-
-
-
-
-
-    logToFile(msg);
-
-    if (!transition) {
-
-
-
-      console.error(msg);
-
-      logToFile(msg);  }
-
-      return;
-
-    }// --- UTILITY FUNCTIONS ---function logToFile(message) {
-
-
-
-    await performTransition(issueKey, transition.id, nextStatus);  try {
-
-  }
-
-
-
-
-
-function processCSV(filePath) {      method: 'POST',
-
-
-
-
-
-  fs.createReadStream(filePath)
-
-    .pipe(csv())      body: JSON.stringify({ transition: { id: transitionId } })
-
-    .on('data', data => results.push(data))
-
-    .on('end', async () => {    });  fs.appendFileSync(LOG_FILE, `[${timestamp}] ${message}\n`);}
-
-
-
-
-
-
-
-        if (!currentStatus) {    if (!res.ok) throw new Error(`Status ${res.status}`);}
-
-
-
-          console.error(msg);
-
-          logToFile(msg);
-
-
-
-        }
-
-    console.log(msg);
-
-        if (currentStatus === targetTransitionName) {
-
-
-
-          console.log(msg);
-
-          logToFile(msg);  } catch (err) {
-
-          continue;
-
-
-
-
-
-
-
-      }
-
-      console.warn(msg);    method: 'GET',    headers
-
-      console.log(`\n📄 Done. Full log written to: ${LOG_FILE}`);
-
-    });      logToFile(msg);
-
-}
-
-      await performTransition(issueKey, transitionId, targetStatus, retries + 1);    headers  });
-
-// --- MAIN ---
-
-if (!csvPath) {    } else {
-
-  console.error('Usage: node jiraSmartTransition.js <csv-file-path> [--dry-run]');
-
-
-
-}
-
-      console.error(msg);
-
-processCSV(csvPath);
-
-
     }
-
-  }  return data.fields?.status?.name;}
-
-}
-
+  }
 }
 
 async function smartTransition(issueKey, currentStatus, targetStatus) {
-
-
-
-
-
-
+  const WORKFLOW_STATES = ['To Do', 'In Progress', 'In Review', 'Done'];
+  const currentIndex = WORKFLOW_STATES.indexOf(currentStatus);
+  const targetIndex = WORKFLOW_STATES.indexOf(targetStatus);
 
   if (currentIndex === -1 || targetIndex === -1) {
-
-
-
+    const msg = `Invalid status transition ${currentStatus} → ${targetStatus}`;
     console.error(msg);
-
-    logToFile(msg);    method: 'GET',    headers
-
-    return;
-
-  }    headers  });
-
-
-
-
-
-
-
-
-
     logToFile(msg);
-
-    return;  return data.transitions || [];}
-
-  }
-
-}
-
-  for (let i = currentIndex + 1; i <= targetIndex; i++) {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      logToFile(msg);
-
-      return;    console.log(msg);    logToFile(msg);
-
-    }
-
-    logToFile(msg);    return;
-
-    await performTransition(issueKey, transition.id, nextStatus);
-
-  }    return;  }
-
-}
-
-  }
-
-function processCSV(filePath) {
-
-
-
-
-
-
-
-    .pipe(csv())
-
-
-
-    .on('end', async () => {
-
-
-
-
-
-      headers,      body: JSON.stringify({ transition: { id: transitionId } })
-
-        if (!currentStatus) {
-
-
-
-          console.error(msg);
-
-          logToFile(msg);    });
-
-          continue;
-
-        }    if (!res.ok) throw new Error(`Status ${res.status}`);
-
-
-
-        if (currentStatus === targetTransitionName) {    if (!res.ok) throw new Error(`Status ${res.status}`);
-
-
-
-
-
-          logToFile(msg);
-
-
-
-        }
-
-    console.log(msg);    logToFile(msg);
-
-        await smartTransition(issueKey, currentStatus, targetTransitionName);
-
-      }    logToFile(msg);  } catch (err) {
-
-
-
-      console.log(`\n📄 Done. Full log written to: ${LOG_FILE}`);  } catch (err) {    if (retries < MAX_RETRIES) {
-
-    });
-
-
-
-
-
-
-
-if (!csvPath) {
-
-  console.error('Usage: node jiraSmartTransition.js <csv-file-path> [--dry-run]');      console.warn(msg);      logToFile(msg);
-
-  process.exit(1);
-
-}      logToFile(msg);      await performTransition(issueKey, transitionId, targetStatus, retries + 1);
-
-
-
-processCSV(csvPath);      await performTransition(issueKey, transitionId, targetStatus, retries + 1);    } else {
-
-
-
-
-
-      console.error(msg);      logToFile(msg);
-
-      logToFile(msg);    }
-
-    }  }
-
-  }}
-
-}
-
-async function smartTransition(issueKey, currentStatus, targetStatus) {
-
-
-
-
-
-
-
-  if (currentIndex === -1 || targetIndex === -1) {
-
-
-
-
-
-    console.error(msg);    logToFile(msg);
-
-    logToFile(msg);    return;
-
-    return;  }
-
+    return;
   }
 
   if (currentIndex > targetIndex) {
-
-
-
-
-
-    console.log(msg);    logToFile(msg);
-
-    logToFile(msg);    return;
-
-    return;  }
-
+    const msg = `Cannot move backwards in workflow: ${currentStatus} → ${targetStatus}`;
+    console.log(msg);
+    logToFile(msg);
+    return;
   }
 
   for (let i = currentIndex + 1; i <= targetIndex; i++) {
-
-
-
-
-
-
-
-
+    const nextStatus = WORKFLOW_STATES[i];
+    const transitions = await getAvailableTransitions(issueKey);
+    const transition = transitions.find(t => t.to.name === nextStatus);
 
     if (!transition) {
-
-
-
-
-
-      console.error(msg);      logToFile(msg);
-
-      logToFile(msg);      return;
-
-      return;    }
-
+      const msg = `No transition found for ${issueKey} to status ${nextStatus}`;
+      console.error(msg);
+      logToFile(msg);
+      return;
     }
 
     await performTransition(issueKey, transition.id, nextStatus);
-
-    await performTransition(issueKey, transition.id, nextStatus);  }
-
-  }}
-
+  }
 }
 
 function processCSV(filePath) {
-
-
-
-
+  const results = [];
 
   fs.createReadStream(filePath)
-
-  fs.createReadStream(filePath)    .pipe(csv())
-
-    .pipe(csv())    .on('data', data => results.push(data))
-
-    .on('data', data => results.push(data))    .on('end', async () => {
-
-
-
-
-
-
+    .pipe(csv())
+    .on('data', data => results.push(data))
+    .on('end', async () => {
+      for (const row of results) {
+        const { issueKey, targetTransitionName } = row;
+        const currentStatus = await getIssueStatus(issueKey);
 
         if (!currentStatus) {
-
-
-
-
-
-          console.error(msg);          logToFile(msg);
-
-          logToFile(msg);          continue;
-
-          continue;        }
-
+          const msg = `Could not get current status for ${issueKey}`;
+          console.error(msg);
+          logToFile(msg);
+          continue;
         }
 
         if (currentStatus === targetTransitionName) {
-
-
-
-
-
-          console.log(msg);          logToFile(msg);
-
-          logToFile(msg);          continue;
-
-          continue;        }
-
+          const msg = `${issueKey} already in target status ${targetTransitionName}`;
+          console.log(msg);
+          logToFile(msg);
+          continue;
         }
 
         await smartTransition(issueKey, currentStatus, targetTransitionName);
-
-        await smartTransition(issueKey, currentStatus, targetTransitionName);      }
-
       }
 
       console.log(`\n📄 Done. Full log written to: ${LOG_FILE}`);
-
-      console.log(`\n📄 Done. Full log written to: ${LOG_FILE}`);    });
-
-    });}
-
+    });
 }
 
 // --- MAIN ---
-
-// --- MAIN ---if (!csvPath) {
-
-if (!csvPath) {  console.error('Usage: node jiraSmartTransition.js <csv-file-path> [--dry-run]');
-
-  console.error('Usage: node jiraSmartTransition.js <csv-file-path> [--dry-run]');  process.exit(1);
-
-  process.exit(1);}
-
+if (!csvPath) {
+  console.error('Usage: node jiraSmartTransition.js <csv-file-path> [--dry-run]');
+  process.exit(1);
 }
-
-processCSV(csvPath);
 
 processCSV(csvPath);

@@ -1,0 +1,48 @@
+{
+  "name": "qa-member-tools",
+  "version": "1.0.0",
+  "description": "QA automation tools for member services, user management, and testing",
+  "main": "src/index.js",
+  "scripts": {
+    "batch-register": "node src/tools/user-management/batch-register.js",
+    "batch-register-gk": "node src/tools/user-management/batch-register-gk.js",
+    "upgrade-tier": "node src/tools/user-management/upgrade-tier.js",
+    "set-password": "node src/tools/user-management/set-password.js",
+    "snw-claim": "node src/tools/user-management/snw-claim.js",
+    "copy-role": "node src/tools/user-auth/copy-role-privilege/copy.js",
+    "copy-role-preprod": "node src/tools/user-auth/copy-role-privilege-preprod/copy.js",
+    "delete-email": "node src/tools/user-auth/delete-email/deleteEmail.js",
+    "delete-email-preprod": "node src/tools/user-auth/delete-email-preprod/deleteEmail.js",
+    "jira:create-report": "node src/tools/jira/createReport.js",
+    "jira:update-parent": "node src/tools/jira/updateParent.js",
+    "jira:dynamic-transition": "node src/tools/jira/jiraDynamicTransition.js",
+    "jira:get-testrail-link": "node src/tools/jira/getTestRailLink.js",
+    "testrail:add-section": "node src/tools/testing/testrail/addSection.js",
+    "testrail:get-section-id": "node src/tools/testing/testrail/getSectionId.js",
+    "testrail:update-case": "node src/tools/testing/testrail/updateCase.js",
+    "testrail:update-section": "node src/tools/testing/testrail/updateSection.js",
+    "k6:run": "sh src/tools/performance/k6/run.sh",
+    "k6:test": "node src/tools/performance/k6/test.js",
+    "lighthouse:run": "node src/tools/performance/lighthouse/run.js",
+    "db:update-account-id": "node src/tools/database/update-account-id.js",
+    "db:bulk-update-account-id": "node src/tools/database/bulk-update-account-id.js"
+  },
+  "keywords": [
+    "qa",
+    "automation",
+    "testing",
+    "jira",
+    "member-services",
+    "testrail",
+    "k6",
+    "performance-testing"
+  ],
+  "author": "QA Team",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^17.0.0",
+    "mysql2": "^3.20.0"
+  }
+}

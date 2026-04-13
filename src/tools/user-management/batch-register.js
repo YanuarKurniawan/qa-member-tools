@@ -213,4 +213,6 @@ async function batchRegisterUsersFromCSV(filePath) {
 }
 
 // Run batch registration from CSV
-batchRegisterUsersFromCSV("xz.csv");
+batchRegisterUsersFromCSV(
+  "/Users/yanuarkurniawan/qa-member-tools/qa-member-tools/src/tools/user-management/cobrand.csv",
+);

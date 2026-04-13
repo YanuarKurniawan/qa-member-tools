@@ -183,4 +183,6 @@ async function batchRegisterUsersFromCSV(filePath) {
 }
 
 // Run batch registration from CSV
-batchRegisterUsersFromCSV('regisnw2.csv');
+batchRegisterUsersFromCSV(
+  "/Users/yanuarkurniawan/qa-member-tools/qa-member-tools/src/tools/user-management/loyalty.csv",
+);

@@ -1,18 +1,41 @@
-# Ignore all CSV files
-*.csv
-
-# Ignore all log files
-*.log
-jira*.txt
-*-log-*.txt
-
-# Ignore environment file
+# Environment files
 .env
+.env.local
+.env.*.local
 test.env
 
-# Ignore update logs
+# Log files
+*.log
+report.log
+jira*.txt
+*-log-*.txt
 update-log-*.csv
 jira-update-log-*.txt
 
-#ignore zip
+# Data files
+*.csv
+*.xlsx
+*.xls
+
+# Archives
 *.zip
+*.tar.gz
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node modules
+node_modules/
+package-lock.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS temp files
+.DS_Store
+*.tmp

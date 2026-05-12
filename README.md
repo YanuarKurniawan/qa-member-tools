@@ -1,187 +1,190 @@
 # QA Member Tools
 
-A comprehensive suite of automation tools for user management, testing, and QA operations.
+A suite of automation tools for member services, user management, Jira/TestRail, and QA operations. Features both a **Web UI** and **CLI** interface, powered by a shared service layer.
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Requirements
-- Node.js v14+
-- npm v6+
+- Node.js v18+
+- npm v8+
 
-### Setup (5 minutes)
+### Setup
 ```bash
 # 1. Install dependencies
 npm install
+cd client && npm install && cd ..
 
 # 2. Configure environment
 cp .env.example .env
 # Edit .env with your API credentials
 
-# 3. Verify setup
-npm run --list
+# 3. Run the Web UI + API server
+npm run dev
+
+# 4. Open http://localhost:5173 in your browser
 ```
 
-See [Setup Guide](./docs/SETUP.md) for detailed instructions.
-
-## 📦 What's Included
-
-### User Management
-- **Batch Register** - Register users in bulk from CSV
-- **Set Password** - Reset passwords in preprod
-- **Upgrade Tier** - Bulk tier upgrades for users
-- **SNW Claim** - Special New User claim management
-
-### User Authentication
-- **Copy Role Privilege** - Replicate user roles/permissions
-- **Delete Email** - Remove user email from systems
-
-### Jira Integration
-- **Get TestRail Link** - Extract TestRail URLs from Jira descriptions
-- **Create Report** - Generate reports from Jira issues
-- **Update Parent** - Update parent issue relationships
-- **Dynamic Transition** - Transition issues through workflows
-
-### Testing Tools
-- **TestRail Integration** - Manage test cases and sections
-- **Google Sheets** - Sheet data operations
-
-### Performance Testing
-- **K6 Load Testing** - Run load tests and performance evaluations
-- **Lighthouse** - Run audits for performance, accessibility, SEO
-
-## 📋 Common Commands
-
-```bash
-# User Management
-npm run batch-register
-npm run set-password
-npm run upgrade-tier
-
-# Jira Tools
-npm run jira:get-testrail-link input.csv
-
-# Jira Workflow
-npm run jira:create-report
-npm run jira:update-parent
-
-# Authentication
-npm run copy-role-privilege <source@email> <target@email>
-npm run delete-email
-
-# Performance
-npm run lighthouse:run
-npm run k6:run
-```
-
-## 📁 Project Structure
+## Architecture
 
 ```
 qa-member-tools/
 ├── src/
-│   ├── tools/
-│   │   ├── user-management/    # User registration & account tools
-│   │   ├── user-auth/          # Authentication & authorization
-│   │   ├── jira/               # Jira API integrations
-│   │   ├── testing/            # TestRail, Sheets
-│   │   └── performance/        # K6, Lighthouse
-│   └── lib/                    # Shared utilities
-├── docs/
-│   ├── README.md              # Full documentation
-│   ├── SETUP.md               # Setup instructions
-│   ├── TOOLS.md               # Tool-specific docs
-│   └── CONTRIBUTING.md        # Contributing guidelines
-├── .env.example               # Configuration template
-└── package.json               # Dependencies & scripts
+│   ├── services/          # Business logic (single source of truth)
+│   │   ├── user-management/
+│   │   ├── user-auth/
+│   │   ├── jira/
+│   │   ├── testing/
+│   │   └── database/
+│   ├── lib/               # Shared utilities
+│   │   ├── config.js      # Centralized env config
+│   │   ├── httpClient.js  # Unified HTTP client (axios)
+│   │   ├── csvParser.js   # CSV parsing
+│   │   ├── logger.js      # Log collector
+│   │   ├── sleep.js       # Async delay
+│   │   └── db.js          # MySQL connection pool
+│   └── registry.js        # Tool registry (drives API + CLI + UI)
+├── server/                # Express API
+│   ├── index.js
+│   ├── middleware/
+│   └── routes/tools.js    # Single generic route handler
+├── cli/                   # CLI interface
+│   └── index.js
+├── client/                # React + Tailwind UI
+│   └── src/
+└── docs/
 ```
 
-## 🔧 Configuration
+**Key design principle:** All business logic lives in `src/services/`. The server routes, CLI, and UI are thin wrappers. Adding a new tool requires only 2 changes: one service file + one registry entry.
 
-Rename `.env.example` to `.env` and fill in your credentials:
+## Web UI
 
-```env
-# Jira
-JIRA_BASE_URL=https://your-jira.atlassian.net
-JIRA_EMAIL=your-email@company.com
-JIRA_API_TOKEN=your-personal-token
+The Web UI provides a dashboard with all tools organized by category. Each tool has a form interface with CSV upload support, live log output, and downloadable results.
 
-# UNM & Member Services
-UNM_BASE_URL=https://unm-api.company.com
-UNM_API_KEY=your-key
-MEMBER_SERVICE_BASE_URL=https://member-api.company.com
-MEMBER_SERVICE_API_KEY=your-key
-
-# TestRail
-TESTRAIL_BASE_URL=https://your-testrail.testrail.com
-TESTRAIL_API_KEY=your-key
-```
-
-## 📚 Documentation
-
-- **[Setup Guide](./docs/SETUP.md)** - Installation and configuration
-- **[Tools Reference](./docs/TOOLS.md)** - Detailed tool documentation
-- **[Contributing](./docs/CONTRIBUTING.md)** - Contributing guidelines
-- **[Full README](./docs/README.md)** - Complete project documentation
-
-## 💡 Examples
-
-### Extract TestRail Links from Jira
 ```bash
-npm run jira:get-testrail-link issues.csv output.csv
+npm run dev          # Start dev server (API + Vite)
+npm run build        # Build for production
+npm start            # Start production server
 ```
 
-### Bulk Register Users
+## CLI
+
+All tools are also available via the unified CLI:
+
 ```bash
-npm run batch-register
-# Ensure register.csv is in correct format first
+# Show all available tools
+npm run cli -- --help
+
+# Run a tool with CSV input
+npm run cli -- batch-register users.csv
+
+# Run a tool with options
+npm run cli -- inject-profile accountId=12345 count=10 env=test
+
+# Run a tool with CSV + options
+npm run cli -- get-account-id emails.csv env=test memberType=B2C
 ```
 
-### Copy User Privileges
-```bash
-npm run copy-role-privilege admin@company.com newuser@company.com
+## Available Tools
+
+### User Management
+| Tool | Description | Input |
+|------|-------------|-------|
+| `batch-register` | Register users (Sandbox) | CSV: Name, Email, phoneCode, phoneNumber, Level |
+| `batch-register-gk` | Register users (GK) | CSV: Name, Email, phoneCode, phoneNumber, Level |
+| `set-password` | Batch reset passwords | CSV: accountId, phoneCode, phoneNumber, password |
+| `upgrade-tier` | Upgrade user tiers | CSV: accountId, Level |
+| `inject-profile` | Inject passenger profiles | Form: accountId, count, env |
+
+### User Auth
+| Tool | Description | Input |
+|------|-------------|-------|
+| `copy-role` | Copy roles & privileges between accounts | Form: sourceEmail, targetEmail, env |
+| `delete-email` | Remove email from account (preview + confirm) | Form: email, env |
+| `get-account-id` | Fetch account IDs from emails | CSV: email + Form: env, memberType |
+
+### Jira & TestRail
+| Tool | Description | Input |
+|------|-------------|-------|
+| `get-testrail-link` | Extract TestRail links from Jira | CSV: issueKey |
+| `update-parent` | Update Jira parent issues | CSV: issueKey, parentId + dryRun |
+| `dynamic-transition` | Move issues through workflow | CSV: issueKey, targetTransitionName + dryRun |
+| `create-report` | TestRail execution report | Form: projectId, dates |
+
+### Testing
+| Tool | Description | Input |
+|------|-------------|-------|
+| `testrail-add-section` | Add sections to TestRail | CSV: foldername, endpoint + projectId, parentId, suiteId |
+| `testrail-get-section-id` | Get section IDs by parent | Form: projectId, suiteId, parentId |
+| `testrail-update-case` | Update case preconditions | CSV: ID, Precond, Results |
+| `testrail-update-section` | Update section names | CSV: id, name |
+| `curl-call` | Execute curl commands from CSV | CSV: Steps |
+
+### Database
+| Tool | Description | Input |
+|------|-------------|-------|
+| `update-account-id` | Update single account ID | Form: oldAccountId, newAccountId, dryRun |
+| `bulk-update-account-id` | Bulk update from CSV | CSV: accountId, newAccountId + dryRun |
+
+## Configuration
+
+Copy `.env.example` to `.env` and configure:
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `PORT` | No | API server port (default: 3456) |
+| `API_KEY` | No | Enable API key auth |
+| `JIRA_BASE_URL` | For Jira tools | Jira instance URL |
+| `JIRA_EMAIL` | For Jira tools | Jira email |
+| `JIRA_API_TOKEN` | For Jira tools | Jira API token |
+| `TESTRAIL_BASE_URL` | For TestRail tools | TestRail URL |
+| `TESTRAIL_USER` | For TestRail tools | TestRail username |
+| `TESTRAIL_API_KEY` | For TestRail tools | TestRail API key |
+| `UNM_*` | For UNM tools | UNM auth headers (test/preprod) |
+| `DB_*` | For DB tools | MySQL connection settings |
+
+## Adding a New Tool
+
+1. Create a service file in `src/services/<category>/yourTool.js`:
+
+```javascript
+module.exports = async function yourTool({ rows, options, onLog }) {
+  onLog.info('Starting...');
+  const results = [];
+  // your logic here
+  onLog.success('Done');
+  return { results };
+};
 ```
 
-## ⚠️ Important Notes
+2. Add an entry to `src/registry.js`:
+
+```javascript
+{
+  id: 'your-tool',
+  name: 'Your Tool',
+  category: 'testing',
+  description: 'What it does',
+  service: 'testing/yourTool',
+  input: { type: 'csv', csvInfo: '...', csvExample: '...' },
+  output: { hasLogs: true, hasResults: true },
+}
+```
+
+That's it. The API route, CLI command, and UI form are auto-generated from the registry.
+
+## Important Notes
 
 1. **Always backup data** before running bulk operations
 2. **Test with small datasets** first
 3. **Never commit `.env`** to version control
-4. **Verify CSV files** before processing
+4. **Use dry run** when available to preview changes
 5. **Check logs** for errors and warnings
 
-## 🐛 Troubleshooting
-
-### Setup Issues
-See [Troubleshooting Section](./docs/SETUP.md#common-issues)
-
-### Tool-Specific Issues
-See [Tools Documentation](./docs/TOOLS.md#troubleshooting)
-
-### API Problems
-- Verify `.env` variables are correct
-- Check API tokens haven't expired
-- Ensure proper user permissions
-
-## 🤝 Contributing
-
-We welcome contributions! Please:
-
-1. Read [Contributing Guidelines](./docs/CONTRIBUTING.md)
-2. Follow code standards
-3. Add documentation
-4. Create pull request with clear description
-
-## 📞 Support
-
-- **Issues**: Check troubleshooting guides
-- **Questions**: Contact QA team lead
-- **New Tools**: See contributing guidelines
-
-## 📝 License
+## License
 
 MIT
 
 ---
 
-**Last Updated**: February 2026  
-**Version**: 1.0.0  
+**Version**: 2.0.0
 **Maintained by**: QA Team

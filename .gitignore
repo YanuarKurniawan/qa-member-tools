@@ -1,41 +1,42 @@
-# Environment files
+# ─── Environment ───────────────────────────────
 .env
 .env.local
 .env.*.local
 test.env
 
-# Log files
-*.log
-report.log
-jira*.txt
-*-log-*.txt
-update-log-*.csv
-jira-update-log-*.txt
+# ─── Dependencies ─────────────────────────────
+node_modules/
 
-# Data files
+# ─── Build output ─────────────────────────────
+server/public/
+
+# ─── Runtime / uploads ────────────────────────
+server/uploads/
+
+# ─── Logs ─────────────────────────────────────
+*.log
+
+# ─── Data files (user input / output) ─────────
 *.csv
 *.xlsx
 *.xls
 
-# Archives
+# ─── Archives ─────────────────────────────────
 *.zip
 *.tar.gz
 
-# OS files
+# ─── OS files ─────────────────────────────────
 .DS_Store
 Thumbs.db
 
-# Node modules
-node_modules/
-package-lock.json
-
-# IDE
+# ─── IDE / Editor ─────────────────────────────
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-
-# OS temp files
-.DS_Store
 *.tmp
+
+# ─── Cursor IDE (keep .cursor/skills/ tracked) ─
+.cursor/*
+!.cursor/skills/

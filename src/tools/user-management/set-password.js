@@ -15,7 +15,8 @@ async function generateOtpResetPassword(accountId, recipient) {
         'X-Account-Id': accountId,
         'X-Service-Id': 'gateway',
         'X-Store-Id': 'TIKET',
-        'X-username': recipient
+        'X-username': recipient,
+        'true-client-ip': '35.187.248.234'
     }
 
     const body = JSON.stringify({ recipient });

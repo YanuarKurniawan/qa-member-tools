@@ -16,6 +16,7 @@ async function generateOtp(recipient) {
     "X-Client-Id": "9dc79e3916a042abc86c2aa525bff009",
     "X-Lang": "id",
     "Content-Type": "application/json",
+    "true-client-ip": "34.126.188.150",
   };
 
   const body = JSON.stringify({
@@ -52,6 +53,7 @@ async function verifyOtp(otpId, otpCode) {
     "X-Request-Id": "automation-yanuar-register",
     "X-Client-Id": "TIKET",
     "Content-Type": "application/json",
+    "true-client-ip": "34.126.188.150",
   };
 
   const body = JSON.stringify({

@@ -338,4 +338,57 @@ module.exports = [
     },
     output: { hasLogs: true, hasResults: true },
   },
+
+  // ─── Automation ───────────────────────────────────────────────
+  {
+    id: 'json-to-schema',
+    name: 'JSON to JSON Schema',
+    category: 'automation',
+    description: 'Generate a JSON Schema (Draft-07) from any JSON response',
+    service: 'automation/jsonToSchema',
+    input: {
+      type: 'form',
+      fields: [
+        {
+          name: 'jsonInput',
+          label: 'JSON Input',
+          type: 'textarea',
+          placeholder: '{\n  "id": 1,\n  "name": "John Doe",\n  "email": "john@example.com",\n  "active": true\n}',
+          required: true,
+          rows: 14,
+        },
+      ],
+    },
+    output: { hasLogs: true, hasResults: false },
+  },
+  {
+    id: 'json-schema-validator',
+    name: 'JSON Schema Validator',
+    category: 'automation',
+    description: 'Validate JSON data against a JSON Schema (supports Draft-07, 2019-09, 2020-12)',
+    service: 'automation/validateJsonSchema',
+    input: {
+      type: 'form',
+      layout: 'validator',
+      fields: [
+        {
+          name: 'schemaInput',
+          label: 'JSON Schema',
+          type: 'textarea',
+          placeholder: '{\n  "$schema": "http://json-schema.org/draft-07/schema#",\n  "type": "object",\n  "properties": {\n    "name": { "type": "string" },\n    "age": { "type": "integer" }\n  },\n  "required": ["name", "age"]\n}',
+          required: true,
+          rows: 14,
+        },
+        {
+          name: 'jsonInput',
+          label: 'JSON to Validate',
+          type: 'textarea',
+          placeholder: '{\n  "name": "John Doe",\n  "age": 30\n}',
+          required: true,
+          rows: 14,
+        },
+      ],
+    },
+    output: { hasLogs: true, hasResults: false },
+  },
 ];

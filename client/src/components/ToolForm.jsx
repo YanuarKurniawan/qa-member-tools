@@ -1,8 +1,124 @@
 import { useState } from 'react';
-import { Play, Loader2, CheckCircle2, XCircle, AlertTriangle } from 'lucide-react';
+import { Play, Loader2, CheckCircle2, XCircle, AlertTriangle, Copy, Check } from 'lucide-react';
 import CsvUpload from './CsvUpload';
 import LogViewer from './LogViewer';
 import ResultsTable from './ResultsTable';
+import ValidatorLayout from './ValidatorLayout';
+
+function AnnotatedJsonView({ annotatedJson }) {
+  const { lines, errors, unmappedErrors } = annotatedJson;
+  const errorCount =
+    Object.values(errors).reduce((sum, arr) => sum + arr.length, 0) +
+    unmappedErrors.length;
+  const isValid = errorCount === 0;
+
+  return (
+    <div className="mt-4 overflow-hidden rounded-lg border border-slate-700 bg-slate-900">
+      <div className="flex items-center justify-between border-b border-slate-700 px-4 py-2">
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          Validation Result
+        </span>
+        {isValid ? (
+          <span className="flex items-center gap-1.5 text-xs font-medium text-green-400">
+            <CheckCircle2 size={14} /> Valid
+          </span>
+        ) : (
+          <span className="text-xs font-medium text-red-400">
+            {errorCount} error{errorCount !== 1 ? 's' : ''}
+          </span>
+        )}
+      </div>
+      <div className="max-h-[32rem] overflow-auto font-mono text-xs leading-relaxed">
+        {lines.map((line, i) => {
+          const lineErrs = errors[String(i)];
+          return (
+            <div key={i}>
+              <div
+                className={`flex ${lineErrs ? 'bg-red-950/40' : 'hover:bg-slate-800/30'}`}
+              >
+                <span className="w-10 shrink-0 select-none border-r border-slate-800 py-px pr-3 text-right text-slate-600">
+                  {i + 1}
+                </span>
+                <pre
+                  className={`flex-1 whitespace-pre px-3 py-px ${lineErrs ? 'text-red-300' : 'text-slate-300'}`}
+                >
+                  {line}
+                </pre>
+              </div>
+              {lineErrs &&
+                lineErrs.map((msg, j) => (
+                  <div
+                    key={j}
+                    className="flex border-l-2 border-red-500 bg-red-950/20 pl-10"
+                  >
+                    <span className="px-3 py-px text-xs text-red-400">
+                      ↳ {msg}
+                    </span>
+                  </div>
+                ))}
+            </div>
+          );
+        })}
+      </div>
+      {unmappedErrors.length > 0 && (
+        <div className="space-y-1.5 border-t border-slate-700 px-4 py-2.5">
+          <span className="text-xs font-medium text-slate-400">
+            General errors:
+          </span>
+          {unmappedErrors.map((msg, i) => (
+            <div
+              key={i}
+              className="flex items-start gap-2 text-xs text-red-400"
+            >
+              <XCircle size={12} className="mt-0.5 shrink-0" />
+              <span>{msg}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function SchemaOutput({ schema }) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(schema);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="mt-4 overflow-hidden rounded-lg border border-slate-700 bg-slate-900">
+      <div className="flex items-center justify-between border-b border-slate-700 px-4 py-2">
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+          Generated Schema
+        </span>
+        <button
+          type="button"
+          onClick={handleCopy}
+          className="flex items-center gap-1.5 rounded-md border border-slate-600 bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:bg-slate-700"
+        >
+          {copied ? (
+            <>
+              <Check size={14} className="text-green-400" />
+              Copied!
+            </>
+          ) : (
+            <>
+              <Copy size={14} />
+              Copy
+            </>
+          )}
+        </button>
+      </div>
+      <pre className="max-h-[32rem] overflow-auto p-4 font-mono text-xs leading-relaxed text-emerald-300">
+        {schema}
+      </pre>
+    </div>
+  );
+}
 
 export default function ToolForm({ tool }) {
   const [formData, setFormData] = useState({});
@@ -13,6 +129,10 @@ export default function ToolForm({ tool }) {
   const [previewData, setPreviewData] = useState(null);
 
   const inputDef = tool.input || {};
+
+  if (inputDef.layout === 'validator') {
+    return <ValidatorLayout tool={tool} />;
+  }
   const outputDef = tool.output || {};
   const toolType = inputDef.type || 'form';
   const allFields = [...(inputDef.fields || []), ...(inputDef.extraFields || [])];
@@ -126,9 +246,36 @@ export default function ToolForm({ tool }) {
           {allFields.map((field) => (
             <div
               key={field.name}
-              className={field.type === 'checkbox' ? 'sm:col-span-2' : ''}
+              className={
+                field.type === 'checkbox'
+                  ? 'sm:col-span-2'
+                  : field.type === 'textarea' && inputDef.layout !== 'side-by-side'
+                    ? 'sm:col-span-2'
+                    : ''
+              }
             >
-              {field.type === 'checkbox' ? (
+              {field.type === 'textarea' ? (
+                <>
+                  <label className="mb-1.5 block text-sm font-medium text-gray-700">
+                    {field.label}
+                  </label>
+                  <textarea
+                    placeholder={field.placeholder}
+                    value={formData[field.name] || ''}
+                    onChange={(e) =>
+                      handleFieldChange(field.name, e.target.value)
+                    }
+                    required={field.required}
+                    rows={field.rows || 10}
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2.5 font-mono text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  />
+                  {field.description && (
+                    <p className="mt-1 text-xs text-gray-400">
+                      {field.description}
+                    </p>
+                  )}
+                </>
+              ) : field.type === 'checkbox' ? (
                 <label className="flex items-center gap-2.5">
                   <input
                     type="checkbox"
@@ -261,6 +408,11 @@ export default function ToolForm({ tool }) {
               `Completed successfully. ${result.results?.length || 0} items processed.`}
           </p>
         </div>
+      )}
+
+      {result?.schema && <SchemaOutput schema={result.schema} />}
+      {result?.annotatedJson && (
+        <AnnotatedJsonView annotatedJson={result.annotatedJson} />
       )}
 
       {result?.logs && <LogViewer logs={result.logs} />}

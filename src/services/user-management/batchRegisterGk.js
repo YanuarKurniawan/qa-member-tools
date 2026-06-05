@@ -1,4 +1,5 @@
 const sleep = require('../../lib/sleep');
+const toCurl = require('../../lib/curl');
 
 const ENV_CONFIG = {
   gk: {
@@ -10,8 +11,22 @@ const ENV_CONFIG = {
   },
 };
 
-async function generateOtp(recipient, config) {
-  const res = await fetch(config.otpUrl, {
+async function loggedFetch(label, url, options, onLog) {
+  onLog.debug({ message: label, url });
+  try {
+    const res = await fetch(url, options);
+    const data = await res.json();
+    onLog.debug({ type: `${label.replace(/\s+/g, '_').toUpperCase()}_RESPONSE`, data });
+    return { res, data };
+  } catch (err) {
+    onLog.error(`${label} request failed: ${err.message}\nCurl:\n${toCurl(url, options)}`);
+    throw err;
+  }
+}
+
+async function generateOtp(recipient, config, onLog) {
+  const url = config.otpUrl;
+  const options = {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -21,6 +36,7 @@ async function generateOtp(recipient, config) {
       'X-Client-Id': '9dc79e3916a042abc86c2aa525bff009',
       'X-Lang': 'id',
       'Content-Type': 'application/json',
+      'true-client-ip': '34.126.188.150',
     },
     body: JSON.stringify({
       action: 'REGISTER_OTP',
@@ -28,13 +44,18 @@ async function generateOtp(recipient, config) {
       recaptchaToken: '',
       recipient,
     }),
-  });
-  const data = await res.json();
+  };
+
+  const { data } = await loggedFetch(`Generating OTP for ${recipient}`, url, options, onLog);
+  if (!data?.data?.otpId) {
+    onLog.error(`OTP generation failed. Curl:\n${toCurl(url, options)}`);
+  }
   return data?.data?.otpId || null;
 }
 
-async function verifyOtp(otpId, otpCode, config) {
-  const res = await fetch(config.verifyUrl, {
+async function verifyOtp(otpId, otpCode, config, onLog) {
+  const url = config.verifyUrl;
+  const options = {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -43,15 +64,21 @@ async function verifyOtp(otpId, otpCode, config) {
       'X-Request-Id': 'automation-register',
       'X-Client-Id': 'TIKET',
       'Content-Type': 'application/json',
+      'true-client-ip': '34.126.188.150',
     },
     body: JSON.stringify({ action: 'REGISTER_OTP', otpCode, otpId }),
-  });
-  const data = await res.json();
+  };
+
+  const { data } = await loggedFetch(`Verifying OTP ${otpId}`, url, options, onLog);
+  if (!data?.data?.passCode) {
+    onLog.error(`OTP verification failed. Curl:\n${toCurl(url, options)}`);
+  }
   return data?.data?.passCode || null;
 }
 
-async function submitRegistration(passCode, email, name, password, phoneCountryCode, phoneNationalNumber, config) {
-  const res = await fetch(config.registerUrl, {
+async function submitRegistration(passCode, email, name, password, phoneCountryCode, phoneNationalNumber, config, onLog) {
+  const url = config.registerUrl;
+  const options = {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -64,14 +91,20 @@ async function submitRegistration(passCode, email, name, password, phoneCountryC
       refUrl: config.refUrl,
       type: 'FORM',
     }),
-  });
-  return res.json();
+  };
+
+  const { res, data } = await loggedFetch(`Submitting registration for ${email}`, url, options, onLog);
+  if (res.status >= 400 || data?.status === 'ERROR') {
+    onLog.error(`Registration failed. Curl:\n${toCurl(url, options)}`);
+    return null;
+  }
+  return data;
 }
 
-async function fetchAccountId(email, config) {
+async function fetchAccountId(email, config, onLog) {
   await sleep(2000);
   const url = `${config.accountIdUrl}?by=EMAIL&memberType=B2C&value=${encodeURIComponent(email)}`;
-  const res = await fetch(url, {
+  const options = {
     headers: {
       Accept: '*/*',
       'Accept-Language': 'id',
@@ -81,8 +114,12 @@ async function fetchAccountId(email, config) {
       'X-Store-Id': 'TIKETCOM',
       'X-Username': 'GUEST',
     },
-  });
-  const data = await res.json();
+  };
+
+  const { data } = await loggedFetch(`Fetching Account ID for ${email}`, url, options, onLog);
+  if (!data?.data?.accountId) {
+    onLog.error(`Fetching Account ID failed. Curl:\n${toCurl(url, options)}`);
+  }
   return data?.data?.accountId || null;
 }
 
@@ -95,7 +132,7 @@ module.exports = async function batchRegisterGk({ rows, options, onLog }) {
     try {
       onLog.info(`Processing: ${user.Email}`);
       const recipient = `+${user.phoneCode}${user.phoneNumber}`;
-      const otpId = await generateOtp(recipient, config);
+      const otpId = await generateOtp(recipient, config, onLog);
       if (!otpId) {
         onLog.warn(`OTP generation failed for ${user.Email}`);
         results.push({ ...user, status: 'OTP_FAILED' });
@@ -103,7 +140,7 @@ module.exports = async function batchRegisterGk({ rows, options, onLog }) {
       }
       onLog.success(`OTP generated for ${user.Email}`);
 
-      const passCode = await verifyOtp(otpId, '123456', config);
+      const passCode = await verifyOtp(otpId, '123456', config, onLog);
       if (!passCode) {
         onLog.warn(`OTP verification failed for ${user.Email}`);
         results.push({ ...user, status: 'VERIFY_FAILED' });
@@ -111,10 +148,15 @@ module.exports = async function batchRegisterGk({ rows, options, onLog }) {
       }
       onLog.success(`OTP verified for ${user.Email}`);
 
-      await submitRegistration(passCode, user.Email, user.Name, 'Testing123', user.phoneCode, user.phoneNumber, config);
+      const regResult = await submitRegistration(passCode, user.Email, user.Name, 'Testing123', user.phoneCode, user.phoneNumber, config, onLog);
+      if (!regResult) {
+        onLog.warn(`Registration failed for ${user.Email}`);
+        results.push({ ...user, status: 'REGISTRATION_FAILED' });
+        continue;
+      }
       onLog.success(`Registration submitted for ${user.Email}`);
 
-      const accountId = await fetchAccountId(user.Email, config);
+      const accountId = await fetchAccountId(user.Email, config, onLog);
       onLog.success(`Account ID for ${user.Email}: ${accountId}`);
 
       results.push({ ...user, accountId, status: 'SUCCESS' });

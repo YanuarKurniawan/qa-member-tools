@@ -4,6 +4,7 @@ import {
   TicketCheck,
   FlaskConical,
   Database,
+  Cog,
 } from 'lucide-react';
 
 export const CATEGORY_META = {
@@ -31,5 +32,10 @@ export const CATEGORY_META = {
     label: 'Database',
     icon: Database,
     description: 'Account ID maintenance in member database',
+  },
+  automation: {
+    label: 'Automation',
+    icon: Cog,
+    description: 'Utility tools for day-to-day QA automation tasks',
   },
 };

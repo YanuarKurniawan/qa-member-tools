@@ -40,11 +40,13 @@ async function main() {
     extraArgs.map((a) => a.split('=')).filter((p) => p.length === 2)
   );
 
+  const formatMsg = (msg) => (typeof msg === 'object' ? JSON.stringify(msg) : msg);
   const onLog = {
-    info: (msg) => console.log(`[INFO]    ${msg}`),
-    success: (msg) => console.log(`[SUCCESS] ${msg}`),
-    error: (msg) => console.error(`[ERROR]   ${msg}`),
-    warn: (msg) => console.warn(`[WARN]    ${msg}`),
+    info: (msg) => console.log(`[INFO]    ${formatMsg(msg)}`),
+    success: (msg) => console.log(`[SUCCESS] ${formatMsg(msg)}`),
+    error: (msg) => console.error(`[ERROR]   ${formatMsg(msg)}`),
+    warn: (msg) => console.warn(`[WARN]    ${formatMsg(msg)}`),
+    debug: (msg) => console.log(`[DEBUG]   ${formatMsg(msg)}`),
   };
 
   const fn = typeof serviceFn === 'function' ? serviceFn : serviceFn.preview;

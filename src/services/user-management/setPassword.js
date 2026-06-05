@@ -22,6 +22,7 @@ module.exports = async function setPassword({ rows, options, onLog }) {
             'X-Service-Id': 'gateway',
             'X-Store-Id': 'TIKET',
             'X-username': '+' + phoneNumber,
+            'true-client-ip': '35.187.248.234',
           },
           body: JSON.stringify({ recipient: '+' + phoneNumber }),
         }

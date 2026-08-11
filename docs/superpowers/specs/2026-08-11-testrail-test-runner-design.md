@@ -35,7 +35,9 @@ Confirmed against `https://tiket.testrail.com` (project 184, run 17748) while wr
 
 **Run shape**: run 17748 belongs to plan 17742 (suite 12196, project 184, `refs: PLAT-57190`), which confirms runs inside plans must work, not just standalone runs.
 
-**Open question, to be resolved during implementation**: whether TestRail snapshots a test's title at run creation, so that renaming a case does not change the title shown in an existing run. Comparing all 176 test titles against their current case titles found zero mismatches, which is inconclusive (nobody has renamed a case in that suite since the run was created). Implementation must verify this by renaming one throwaway case in a sandbox project and re-reading `get_tests` for a pre-existing run. See "Rename semantics" below for how each outcome is handled.
+**Case rename propagation** (measured on run 17748 / case 2371645 / test 25955418): before renaming, `get_tests` returned title `Verify the auto bid threshold respects the configured countdown duration tier`. After `update_case` appended ` [propagation probe]`, re-reading `get_tests` returned the **new** title immediately. The probe was reverted and confirmed the original title. **Conclusion: a case rename does propagate into existing runs** on this instance (`tiket.testrail.com`). For the tool's design this means that after an upload and the next Sync, `caseTitle` and `remote.title` agree, so the per-row "title diverged from run" note (`titleDivergedFromRun` — the small Info icon and the drawer's amber note) will not appear in normal use. That divergence handling is retained deliberately as a safety net for instances or configurations that behave differently; it is not load-bearing on this instance.
+
+**Required result fields** (discovered while verifying uploads): this instance marks `custom_reusable` required instance-wide. `add_results_for_cases` returns `HTTP 400 "Field :custom_reusable is a required field."` when it is absent, which blocked every status and comment upload. `get_result_fields` reports it as a dropdown (`type_id` 6) with `is_required: true` and `default_value: "2"`, whose options are `1, Yes` and `2, No`. A second field, `quality_rating`, is also marked required but has no default and is **not** enforced by the API. The fix lives in `requiredResultDefaults` (`src/lib/testRunnerLogic.js`) and `uploadRun` (`src/lib/testRunner.js`): before pushing results, the tool reads `get_result_fields` and sends each required field's own configured default — the same value TestRail's web UI pre-selects. Required fields with no usable default are omitted rather than guessed. On this instance every uploaded result is therefore stamped with **`custom_reusable = No`** (default `"2"`) unless an admin changes the field's default.
 
 ## Architecture
 
@@ -192,8 +194,10 @@ Sync never destroys drafts, and there is deliberately no "discard everything" bu
 A single `add_results_for_cases/<runId>` call carrying every row where `draft.statusId` differs from `remote.statusId` **or** `draft.comment` is non-empty:
 
 ```json
-{ "results": [{ "case_id": 2371651, "status_id": 1, "comment": "verified on iOS 17" }] }
+{ "results": [{ "case_id": 2371651, "status_id": 1, "comment": "verified on iOS 17", "custom_reusable": 2 }] }
 ```
+
+Each result entry is merged with the instance's required result-field defaults (see "Verified facts" — on `tiket.testrail.com` that currently means `custom_reusable: 2` / No). Defaults come from `get_result_fields` at upload time, not hard-coded guesses.
 
 - Rows whose draft status is Untested (3) are **excluded**, because the API cannot set a test back to Untested. Each exclusion produces a log line so the skip is never silent.
 - Comment-only rows (comment set, status unchanged) **are** included. TestRail accepts a result with a comment and no `status_id`, which is exactly what "I noted something but didn't finish" means.
@@ -213,12 +217,9 @@ Upload finishes with an automatic Sync so the screen reflects TestRail's actual 
 
 ### Rename semantics
 
-Implementation must first verify whether TestRail reflects a case rename in an existing run (see "Verified facts" above). Handling for both outcomes:
+Verified on this instance: renames **do** propagate into existing runs (see "Verified facts"). After a successful title upload and the automatic post-upload Sync, `remote.title` and `caseTitle` agree and `titleDivergedFromRun` stays false — the Info icon and drawer amber note do not appear in normal use.
 
-- **If renames do propagate**: `remote.title` and `caseTitle` agree after the next Sync and nothing is shown.
-- **If TestRail snapshots titles at run creation**: the case is genuinely updated and future runs pick it up, but this run's `get_tests` keeps returning the old title. Because display precedence is `draft.title ?? caseTitle ?? remote.title`, the row still shows your title; the divergence between `caseTitle` and `remote.title` is what triggers a quiet per-row note explaining that TestRail's own run view keeps the original.
-
-Either way the behavior is correct, so the verification determines only whether that note ever appears — it does not block implementation.
+The divergence UI remains for instances that snapshot titles at run creation instead: the case is updated and future runs pick it up, but `get_tests` for an older run might keep returning the old title. Display precedence (`draft.title ?? caseTitle ?? remote.title`) still shows your title; the note explains that TestRail's own run view may keep the original. That path is a safety net, not the common case here.
 
 ## Interface
 

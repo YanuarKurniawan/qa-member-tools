@@ -58,7 +58,7 @@ qa-member-tools/
 
 ## Web UI
 
-The Web UI provides a dashboard with all tools organized by category. Each tool has a form interface with CSV upload support, live log output, and downloadable results.
+The Web UI provides a dashboard with all tools organized by category. Each tool has a form interface with CSV upload support, live log output, and downloadable results. See also the [Test Runner](docs/TOOLS.md#test-runner) page for keyboard-driven TestRail run execution.
 
 ```bash
 npm run dev          # Start dev server (API + Vite)

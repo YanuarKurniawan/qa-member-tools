@@ -299,6 +299,41 @@ Tools for Google Sheets operations and data management.
 
 ---
 
+## Test Runner
+
+Web UI page for executing a TestRail run from one keyboard-driven table — draft statuses and comments locally, then push to TestRail when ready.
+
+**Route:** `/test-runner` (enter a run ID or paste a TestRail run URL). `/test-runner/:runId` opens a specific run directly; the run ID is in the URL so a run is shareable and survives reload.
+
+**Credentials:** requires `TESTRAIL_USER` and `TESTRAIL_API_KEY` in `.env` (same as other TestRail tools).
+
+**Sync:** pulls the run's tests from TestRail and refreshes the **Latest TestRail** column while preserving local drafts. If TestRail changed a field you also edited, the row is flagged as a conflict with **Keep mine** / **Take theirs** per field.
+
+**Upload:** pushes only changed rows — status and comment drafts go to `add_results_for_cases` in bulk; name and priority edits go to `update_case`. **Name and priority edits change the shared case**, so they affect every run using that case. Statuses and comments affect **this run only**.
+
+**Untested skip:** rows drafted back to Untested cannot be uploaded (TestRail cannot set a test back to Untested); they are reported as skipped in the upload summary.
+
+**Completed / archived runs:** TestRail rejects new results on completed or archived runs, so status and comment upload is blocked (banner shown, Upload disabled for results). Name and priority case edits are still allowed.
+
+**Draft storage:** drafts are stored server-side per run at `server/data/testRuns/<runId>.json`, so they survive reload and are visible from any browser. Delete that file to discard drafts for a run.
+
+**Required result fields:** every uploaded result carries the instance's required result-field defaults (on `tiket.testrail.com`, currently **`reusable = No`** unless an admin changes the field default in TestRail).
+
+**Keyboard shortcuts:**
+
+| Keys | Action |
+|------|--------|
+| `j` / `k` (or ↓ / ↑) | Move focused row |
+| `p` / `f` / `b` / `r` | Set Passed / Failed / Blocked / Retest on focused row |
+| `Enter` | Open case detail drawer |
+| `/` | Focus search |
+| `?` | Show shortcut overlay |
+| `Escape` | Close drawer or overlay |
+
+Shortcuts are suppressed while a text input has focus.
+
+---
+
 ## Performance Testing Tools
 
 ### K6 Load Testing

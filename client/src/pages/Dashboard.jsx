@@ -2,40 +2,15 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Wrench } from 'lucide-react';
 
 export default function Dashboard({ categories = [] }) {
-  const totalTools = categories.reduce(
-    (sum, cat) => sum + cat.tools.length,
-    0
-  );
-
   return (
     <div>
-      <div className="mb-8">
+      <div className="mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
         <p className="mt-1 text-sm text-gray-500">
-          QA automation tools for member services, user management, and testing
+          QA automation tools for member services, user management, and testing.
+          Press <kbd className="rounded border border-gray-200 bg-gray-100 px-1 py-0.5 text-[11px] font-medium text-gray-500">⌘K</kbd> to search.
         </p>
       </div>
-
-      <div className="mb-8 grid gap-4 sm:grid-cols-3">
-        <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-          <p className="text-sm font-medium text-gray-500">Total Tools</p>
-          <p className="mt-1 text-3xl font-bold text-gray-900">{totalTools}</p>
-        </div>
-        <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-          <p className="text-sm font-medium text-gray-500">Categories</p>
-          <p className="mt-1 text-3xl font-bold text-gray-900">
-            {categories.length}
-          </p>
-        </div>
-        <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
-          <p className="text-sm font-medium text-gray-500">Environment</p>
-          <p className="mt-1 text-lg font-bold text-amber-600">
-            Preprod / Test / Sandbox
-          </p>
-        </div>
-      </div>
-
-      <h2 className="mb-4 text-lg font-semibold text-gray-800">Tool Categories</h2>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {categories.map((cat) => {
@@ -44,7 +19,7 @@ export default function Dashboard({ categories = [] }) {
             <Link
               key={cat.id}
               to={`/${cat.id}`}
-              className="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:border-blue-200 hover:shadow-md"
+              className="group rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all hover:border-blue-200 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
               <div className="mb-3 flex items-center justify-between">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-100">

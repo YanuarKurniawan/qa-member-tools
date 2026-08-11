@@ -3,7 +3,9 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import ToolPage from './pages/ToolPage';
+import AutomationWeb from './pages/AutomationWeb';
 import TestRunner from './pages/TestRunner';
+import CommandPalette from './components/CommandPalette';
 import { CATEGORY_META } from './categoryMeta';
 
 export default function App() {
@@ -49,20 +51,24 @@ export default function App() {
   }
 
   return (
-    <Routes>
-      <Route element={<Layout categories={toolCategories} />}>
-        <Route path="/" element={<Dashboard categories={toolCategories} />} />
-        <Route path="/test-runner" element={<TestRunner />} />
-        <Route path="/test-runner/:runId" element={<TestRunner />} />
-        {toolCategories.map((cat) => (
-          <Route
-            key={cat.id}
-            path={`/${cat.id}`}
-            element={<ToolPage category={cat} />}
-          />
-        ))}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Route>
-    </Routes>
+    <>
+      <CommandPalette categories={toolCategories} />
+      <Routes>
+        <Route element={<Layout categories={toolCategories} />}>
+          <Route path="/" element={<Dashboard categories={toolCategories} />} />
+          <Route path="/automation-web" element={<AutomationWeb />} />
+          <Route path="/test-runner" element={<TestRunner />} />
+          <Route path="/test-runner/:runId" element={<TestRunner />} />
+          {toolCategories.map((cat) => (
+            <Route
+              key={cat.id}
+              path={`/${cat.id}`}
+              element={<ToolPage category={cat} />}
+            />
+          ))}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    </>
   );
 }

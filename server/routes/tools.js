@@ -18,6 +18,75 @@ router.get('/', (req, res) => {
   res.json(tools);
 });
 
+// SSE streaming endpoint for tools that support it
+router.post('/:toolId/stream', upload.single('file'), async (req, res) => {
+  const tool = registry.find((t) => t.id === req.params.toolId);
+  if (!tool) return res.status(404).json({ error: 'Tool not found' });
+  if (!tool.streamable) return res.status(400).json({ error: 'Tool does not support streaming' });
+
+  res.writeHead(200, {
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    Connection: 'keep-alive',
+    'X-Accel-Buffering': 'no',
+  });
+
+  const abortController = new AbortController();
+  const { signal } = abortController;
+
+  req.on('close', () => {
+    abortController.abort();
+  });
+
+  const send = (event, data) => {
+    if (res.writableEnded) return;
+    res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+  };
+
+  const streamLogger = {
+    info: (msg) => send('log', { type: 'info', message: typeof msg === 'object' ? JSON.stringify(msg) : String(msg) }),
+    success: (msg) => send('log', { type: 'success', message: typeof msg === 'object' ? JSON.stringify(msg) : String(msg) }),
+    error: (msg) => send('log', { type: 'error', message: typeof msg === 'object' ? JSON.stringify(msg) : String(msg) }),
+    warn: (msg) => send('log', { type: 'warn', message: typeof msg === 'object' ? JSON.stringify(msg) : String(msg) }),
+    debug: (msg) => send('log', { type: 'debug', message: typeof msg === 'object' ? JSON.stringify(msg) : String(msg) }),
+  };
+
+  try {
+    const serviceFn = loadService(tool);
+    let rows = [];
+    if (req.file) {
+      rows = await parseCsvFile(req.file.path);
+    }
+
+    const options = { ...req.body };
+
+    send('progress', { current: 0, total: rows.length, phase: 'starting' });
+
+    const originalInfo = streamLogger.info;
+    let currentRow = 0;
+    streamLogger.info = (msg) => {
+      const str = typeof msg === 'object' ? JSON.stringify(msg) : String(msg);
+      const match = str.match(/\[(\d+)\/(\d+)\]/);
+      if (match) {
+        currentRow = parseInt(match[1], 10);
+        send('progress', { current: currentRow, total: rows.length, phase: 'processing' });
+      }
+      originalInfo(msg);
+    };
+
+    const result = await serviceFn({ rows, options, onLog: streamLogger, signal });
+
+    send('progress', { current: rows.length, total: rows.length, phase: signal.aborted ? 'stopped' : 'done' });
+    send('result', { results: result.results || [] });
+    send('done', { stopped: signal.aborted });
+  } catch (err) {
+    send('error', { message: err.message });
+  } finally {
+    cleanupFile(req.file?.path);
+    res.end();
+  }
+});
+
 router.post('/:toolId', upload.single('file'), async (req, res) => {
   const tool = registry.find((t) => t.id === req.params.toolId);
   if (!tool) return res.status(404).json({ error: 'Tool not found' });

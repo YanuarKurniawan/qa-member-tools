@@ -1,0 +1,381 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - img [ref=e7]
+      - generic [ref=e9]:
+        - heading "QA Tools" [level=1] [ref=e10]
+        - paragraph [ref=e11]: Member Services
+    - navigation [ref=e12]:
+      - link "Dashboard" [ref=e13] [cursor=pointer]:
+        - /url: /
+        - img [ref=e14]
+        - text: Dashboard
+      - paragraph [ref=e20]: Dashboards
+      - link "Automation WEB" [ref=e21] [cursor=pointer]:
+        - /url: /automation-web
+        - img [ref=e22]
+        - text: Automation WEB
+      - link "Test Runner" [ref=e27] [cursor=pointer]:
+        - /url: /test-runner
+        - img [ref=e28]
+        - text: Test Runner
+      - paragraph [ref=e33]: Tools
+      - link "User Management" [ref=e34] [cursor=pointer]:
+        - /url: /user-management
+        - img [ref=e35]
+        - text: User Management
+      - link "User Auth" [ref=e40] [cursor=pointer]:
+        - /url: /user-auth
+        - img [ref=e41]
+        - text: User Auth
+      - link "Jira & TestRail" [ref=e43] [cursor=pointer]:
+        - /url: /jira
+        - img [ref=e44]
+        - text: Jira & TestRail
+      - link "Testing" [ref=e47] [cursor=pointer]:
+        - /url: /testing
+        - img [ref=e48]
+        - text: Testing
+      - link "Database" [ref=e50] [cursor=pointer]:
+        - /url: /database
+        - img [ref=e51]
+        - text: Database
+      - link "Automation" [ref=e55] [cursor=pointer]:
+        - /url: /automation
+        - img [ref=e56]
+        - text: Automation
+    - generic [ref=e68]:
+      - paragraph [ref=e69]: v2.0.0
+      - generic [ref=e70]: ⌘K
+  - main [ref=e71]:
+    - generic [ref=e73]:
+      - heading "Test Runner" [level=1] [ref=e74]
+      - paragraph [ref=e75]: Execute a TestRail run without leaving one screen.
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - generic [ref=e81]:
+              - link "[General] Berburu Tiket Murah Improvement for Anniversary Campaign" [ref=e82] [cursor=pointer]:
+                - /url: https://tiket.testrail.com/index.php?/runs/view/17748
+                - text: "[General] Berburu Tiket Murah Improvement for Anniversary Campaign"
+                - img [ref=e83]
+              - paragraph [ref=e87]: Run 17748 · Project 184 · Plan 17742
+            - generic [ref=e88]:
+              - generic [ref=e89]:
+                - generic [ref=e90]: 59 Passed
+                - generic [ref=e91]: 117 Untested
+              - generic [ref=e92]:
+                - generic [ref=e93]:
+                  - button "Sync" [ref=e94] [cursor=pointer]:
+                    - img [ref=e95]
+                    - text: Sync
+                  - generic [ref=e100]: Synced 13m ago
+                - button "Upload 2 changes" [ref=e101] [cursor=pointer]:
+                  - img [ref=e102]
+                  - text: Upload 2 changes
+          - paragraph
+        - generic [ref=e105]:
+          - generic [ref=e106]:
+            - img
+            - searchbox "Search test name" [ref=e107]: banner
+            - button "Clear search" [ref=e4540] [cursor=pointer]:
+              - img [ref=e4541]
+          - button "Passed" [ref=e108] [cursor=pointer]
+          - button "Blocked" [ref=e109] [cursor=pointer]
+          - button "Untested" [ref=e110] [cursor=pointer]
+          - button "Retest" [ref=e111] [cursor=pointer]
+          - button "Failed" [ref=e112] [cursor=pointer]
+          - button "Obsolete" [ref=e113] [cursor=pointer]
+          - button "Low" [ref=e114] [cursor=pointer]
+          - button "Medium" [ref=e115] [cursor=pointer]
+          - button "High" [ref=e116] [cursor=pointer]
+          - button "Critical" [ref=e117] [cursor=pointer]
+          - button "Only changed (2)" [active] [ref=e118] [cursor=pointer]
+          - button "Only conflicts (0)" [ref=e119] [cursor=pointer]
+          - generic [ref=e120]: 10 of 176 tests
+        - table [ref=e123]:
+          - rowgroup [ref=e124]:
+            - row "Test ID Test Name Priority Status Latest TestRail Comments" [ref=e125]:
+              - columnheader "Test ID" [ref=e126]:
+                - button "Test ID" [ref=e127] [cursor=pointer]
+              - columnheader "Test Name" [ref=e128]:
+                - button "Test Name" [ref=e129] [cursor=pointer]
+              - columnheader "Priority" [ref=e130]:
+                - button "Priority" [ref=e131] [cursor=pointer]
+              - columnheader "Status" [ref=e132]:
+                - button "Status" [ref=e133] [cursor=pointer]
+              - columnheader "Latest TestRail" [ref=e134]:
+                - button "Latest TestRail" [ref=e135] [cursor=pointer]
+              - columnheader "Comments" [ref=e136]
+          - rowgroup [ref=e137]:
+            - 'row "C2371651 Verify BTM hero banner shows new Anniversary assets Medium P B R F More statuses Unsaved: Failed Untested" [ref=e138] [cursor=pointer]':
+              - cell "C2371651" [ref=e139]:
+                - link "C2371651" [ref=e140]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371651
+              - cell "Verify BTM hero banner shows new Anniversary assets" [ref=e141]:
+                - generic [ref=e142]:
+                  - text: Verify BTM hero
+                  - mark [ref=e4544]: banner
+                  - text: shows new Anniversary assets
+              - cell "Medium" [ref=e143]:
+                - combobox [ref=e145]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - 'cell "P B R F More statuses Unsaved: Failed" [ref=e146]':
+                - generic [ref=e147]:
+                  - button "P" [ref=e148]
+                  - button "B" [ref=e149]
+                  - button "R" [ref=e150]
+                  - button "F" [pressed] [ref=e151]
+                  - button "More statuses" [ref=e153]:
+                    - img [ref=e154]
+                  - 'generic "Unsaved: Failed" [ref=e158]'
+              - cell "Untested" [ref=e159]:
+                - generic [ref=e160]: Untested
+              - cell [ref=e161]:
+                - textbox [ref=e163]
+            - row "C2371726 Verify banner dimensions, behavior, and CTA are unchanged after refresh High P B R F More statuses Untested" [ref=e4554] [cursor=pointer]:
+              - cell "C2371726" [ref=e4555]:
+                - link "C2371726" [ref=e4556]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371726
+              - cell "Verify banner dimensions, behavior, and CTA are unchanged after refresh" [ref=e4557]:
+                - generic [ref=e4558]:
+                  - text: Verify
+                  - mark [ref=e4559]: banner
+                  - text: dimensions, behavior, and CTA are unchanged after refresh
+              - cell "High" [ref=e4560]:
+                - combobox [ref=e4562]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e4563]:
+                - generic [ref=e4564]:
+                  - button "P" [ref=e4565]
+                  - button "B" [ref=e4566]
+                  - button "R" [ref=e4567]
+                  - button "F" [ref=e4568]
+                  - button "More statuses" [ref=e4570]:
+                    - img [ref=e4571]
+              - cell "Untested" [ref=e4575]:
+                - generic [ref=e4576]: Untested
+              - cell [ref=e4577]:
+                - textbox [ref=e4579]
+            - row "C2371755 Verify onboarding banner is shown to first-time BTM users High P B R F More statuses Untested" [ref=e4580] [cursor=pointer]:
+              - cell "C2371755" [ref=e4581]:
+                - link "C2371755" [ref=e4582]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371755
+              - cell "Verify onboarding banner is shown to first-time BTM users" [ref=e4583]:
+                - generic [ref=e4584]:
+                  - text: Verify onboarding
+                  - mark [ref=e4585]: banner
+                  - text: is shown to first-time BTM users
+              - cell "High" [ref=e4586]:
+                - combobox [ref=e4588]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e4589]:
+                - generic [ref=e4590]:
+                  - button "P" [ref=e4591]
+                  - button "B" [ref=e4592]
+                  - button "R" [ref=e4593]
+                  - button "F" [ref=e4594]
+                  - button "More statuses" [ref=e4596]:
+                    - img [ref=e4597]
+              - cell "Untested" [ref=e4601]:
+                - generic [ref=e4602]: Untested
+              - cell [ref=e4603]:
+                - textbox [ref=e4605]
+            - row "C2371756 Verify onboarding banner is not shown to returning users Medium P B R F More statuses Untested" [ref=e4606] [cursor=pointer]:
+              - cell "C2371756" [ref=e4607]:
+                - link "C2371756" [ref=e4608]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371756
+              - cell "Verify onboarding banner is not shown to returning users" [ref=e4609]:
+                - generic [ref=e4610]:
+                  - text: Verify onboarding
+                  - mark [ref=e4611]: banner
+                  - text: is not shown to returning users
+              - cell "Medium" [ref=e4612]:
+                - combobox [ref=e4614]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e4615]:
+                - generic [ref=e4616]:
+                  - button "P" [ref=e4617]
+                  - button "B" [ref=e4618]
+                  - button "R" [ref=e4619]
+                  - button "F" [ref=e4620]
+                  - button "More statuses" [ref=e4622]:
+                    - img [ref=e4623]
+              - cell "Untested" [ref=e4627]:
+                - generic [ref=e4628]: Untested
+              - cell [ref=e4629]:
+                - textbox [ref=e4631]
+            - row "C2371758 Verify onboarding banner redirects to the configured Info Page URL Medium P B R F More statuses Untested" [ref=e4632] [cursor=pointer]:
+              - cell "C2371758" [ref=e4633]:
+                - link "C2371758" [ref=e4634]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371758
+              - cell "Verify onboarding banner redirects to the configured Info Page URL" [ref=e4635]:
+                - generic [ref=e4636]:
+                  - text: Verify onboarding
+                  - mark [ref=e4637]: banner
+                  - text: redirects to the configured Info Page URL
+              - cell "Medium" [ref=e4638]:
+                - combobox [ref=e4640]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e4641]:
+                - generic [ref=e4642]:
+                  - button "P" [ref=e4643]
+                  - button "B" [ref=e4644]
+                  - button "R" [ref=e4645]
+                  - button "F" [ref=e4646]
+                  - button "More statuses" [ref=e4648]:
+                    - img [ref=e4649]
+              - cell "Untested" [ref=e4653]:
+                - generic [ref=e4654]: Untested
+              - cell [ref=e4655]:
+                - textbox [ref=e4657]
+            - row "C2371558 Verify BTM hero banner shows new Anniversary assets Medium P B R F More statuses Passed" [ref=e4658] [cursor=pointer]:
+              - cell "C2371558" [ref=e4659]:
+                - link "C2371558" [ref=e4660]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371558
+              - cell "Verify BTM hero banner shows new Anniversary assets" [ref=e4661]:
+                - generic [ref=e4662]:
+                  - text: Verify BTM hero
+                  - mark [ref=e4663]: banner
+                  - text: shows new Anniversary assets
+              - cell "Medium" [ref=e4664]:
+                - combobox [ref=e4666]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e4667]:
+                - generic [ref=e4668]:
+                  - button "P" [pressed] [ref=e4669]
+                  - button "B" [ref=e4670]
+                  - button "R" [ref=e4671]
+                  - button "F" [ref=e4672]
+                  - button "More statuses" [ref=e4674]:
+                    - img [ref=e4675]
+              - cell "Passed" [ref=e4679]:
+                - generic [ref=e4680]: Passed
+              - cell [ref=e4681]:
+                - textbox [ref=e4683]
+            - row "C2371561 Verify banner dimensions, behavior, and CTA are unchanged after refresh High P B R F More statuses Passed" [ref=e4684] [cursor=pointer]:
+              - cell "C2371561" [ref=e4685]:
+                - link "C2371561" [ref=e4686]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371561
+              - cell "Verify banner dimensions, behavior, and CTA are unchanged after refresh" [ref=e4687]:
+                - generic [ref=e4688]:
+                  - text: Verify
+                  - mark [ref=e4689]: banner
+                  - text: dimensions, behavior, and CTA are unchanged after refresh
+              - cell "High" [ref=e4690]:
+                - combobox [ref=e4692]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e4693]:
+                - generic [ref=e4694]:
+                  - button "P" [pressed] [ref=e4695]
+                  - button "B" [ref=e4696]
+                  - button "R" [ref=e4697]
+                  - button "F" [ref=e4698]
+                  - button "More statuses" [ref=e4700]:
+                    - img [ref=e4701]
+              - cell "Passed" [ref=e4705]:
+                - generic [ref=e4706]: Passed
+              - cell [ref=e4707]:
+                - textbox [ref=e4709]
+            - row "C2371590 Verify onboarding banner is shown to first-time BTM users High P B R F More statuses Passed" [ref=e4710] [cursor=pointer]:
+              - cell "C2371590" [ref=e4711]:
+                - link "C2371590" [ref=e4712]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371590
+              - cell "Verify onboarding banner is shown to first-time BTM users" [ref=e4713]:
+                - generic [ref=e4714]:
+                  - text: Verify onboarding
+                  - mark [ref=e4715]: banner
+                  - text: is shown to first-time BTM users
+              - cell "High" [ref=e4716]:
+                - combobox [ref=e4718]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e4719]:
+                - generic [ref=e4720]:
+                  - button "P" [pressed] [ref=e4721]
+                  - button "B" [ref=e4722]
+                  - button "R" [ref=e4723]
+                  - button "F" [ref=e4724]
+                  - button "More statuses" [ref=e4726]:
+                    - img [ref=e4727]
+              - cell "Passed" [ref=e4731]:
+                - generic [ref=e4732]: Passed
+              - cell [ref=e4733]:
+                - textbox [ref=e4735]
+            - row "C2371591 Verify onboarding banner is not shown to returning users Medium P B R F More statuses Passed" [ref=e4736] [cursor=pointer]:
+              - cell "C2371591" [ref=e4737]:
+                - link "C2371591" [ref=e4738]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371591
+              - cell "Verify onboarding banner is not shown to returning users" [ref=e4739]:
+                - generic [ref=e4740]:
+                  - text: Verify onboarding
+                  - mark [ref=e4741]: banner
+                  - text: is not shown to returning users
+              - cell "Medium" [ref=e4742]:
+                - combobox [ref=e4744]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e4745]:
+                - generic [ref=e4746]:
+                  - button "P" [pressed] [ref=e4747]
+                  - button "B" [ref=e4748]
+                  - button "R" [ref=e4749]
+                  - button "F" [ref=e4750]
+                  - button "More statuses" [ref=e4752]:
+                    - img [ref=e4753]
+              - cell "Passed" [ref=e4757]:
+                - generic [ref=e4758]: Passed
+              - cell [ref=e4759]:
+                - textbox [ref=e4761]
+            - row "C2371593 Verify onboarding banner redirects to the configured Info Page URL Medium P B R F More statuses Passed" [ref=e4762] [cursor=pointer]:
+              - cell "C2371593" [ref=e4763]:
+                - link "C2371593" [ref=e4764]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371593
+              - cell "Verify onboarding banner redirects to the configured Info Page URL" [ref=e4765]:
+                - generic [ref=e4766]:
+                  - text: Verify onboarding
+                  - mark [ref=e4767]: banner
+                  - text: redirects to the configured Info Page URL
+              - cell "Medium" [ref=e4768]:
+                - combobox [ref=e4770]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e4771]:
+                - generic [ref=e4772]:
+                  - button "P" [pressed] [ref=e4773]
+                  - button "B" [ref=e4774]
+                  - button "R" [ref=e4775]
+                  - button "F" [ref=e4776]
+                  - button "More statuses" [ref=e4778]:
+                    - img [ref=e4779]
+              - cell "Passed" [ref=e4783]:
+                - generic [ref=e4784]: Passed
+              - cell [ref=e4785]:
+                - textbox [ref=e4787]

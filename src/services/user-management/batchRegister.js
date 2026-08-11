@@ -2,12 +2,21 @@ const sleep = require('../../lib/sleep');
 const toCurl = require('../../lib/curl');
 
 const ENV_CONFIG = {
-  sandbox: {
+  preprod: {
     otpUrl: 'https://sandbox.eph.bliblitiket.tools/gks-unm-go-be/api/v1/otp/generate',
     verifyUrl: 'https://sandbox.eph.bliblitiket.tools/gks-unm-go-be/api/v1/otp/verify',
     registerUrl: 'https://sandbox.eph.bliblitiket.tools/gks-unm-go-be/api/v1/registration/submit',
     accountIdUrl: 'https://member-core-v2-be-svc.preprod-platform-cluster.tiket.com/tix-member-core/v2/account/account-id',
     refUrl: 'https://sandbox.tiket.com/',
+    trueClientIp: '34.124.173.71',
+  },
+  gk: {
+    otpUrl: 'https://service.bliblitiket.tools/gks-unm-go-be/api/v1/otp/generate',
+    verifyUrl: 'https://service.bliblitiket.tools/gks-unm-go-be/api/v1/otp/verify',
+    registerUrl: 'https://service.bliblitiket.tools/gks-unm-go-be/api/v1/registration/submit',
+    accountIdUrl: 'http://member-core-v2.eiffel-ns.svc.tiket/tix-member-core/v2/account/account-id',
+    refUrl: 'https://gatotkaca.tiket.com/',
+    trueClientIp: '34.87.5.234',
   },
 };
 
@@ -36,7 +45,7 @@ async function generateOtp(recipient, config, onLog) {
       'X-Client-Id': '9dc79e3916a042abc86c2aa525bff009',
       'X-Lang': 'id',
       'Content-Type': 'application/json',
-      'true-client-ip': '34.126.188.150',
+      'True-Client-Ip': config.trueClientIp,
     },
     body: JSON.stringify({
       action: 'REGISTER_OTP',
@@ -64,7 +73,7 @@ async function verifyOtp(otpId, otpCode, config, onLog) {
       'X-Request-Id': 'automation-register',
       'X-Client-Id': 'TIKET',
       'Content-Type': 'application/json',
-      'true-client-ip': '34.126.188.150',
+      'True-Client-Ip': config.trueClientIp,
     },
     body: JSON.stringify({ action: 'REGISTER_OTP', otpCode, otpId }),
   };
@@ -84,6 +93,7 @@ async function submitRegistration(passCode, email, name, password, phoneCountryC
       Accept: 'application/json',
       'Content-Type': 'application/json',
       'X-Client-Id': '9dc79e3916a042abc86c2aa525bff009',
+      'True-Client-Ip': config.trueClientIp,
     },
     body: JSON.stringify({
       email, name, passCode, password,
@@ -123,14 +133,27 @@ async function fetchAccountId(email, config, onLog) {
   return data?.data?.accountId || null;
 }
 
-module.exports = async function batchRegister({ rows, options, onLog }) {
-  const config = ENV_CONFIG.sandbox;
+module.exports = async function batchRegister({ rows, options, onLog, signal }) {
+  const env = options.env || 'preprod';
+  const config = ENV_CONFIG[env];
+  if (!config) {
+    onLog.error(`Unknown environment: ${env}`);
+    return { results: [] };
+  }
+
+  onLog.info(`Environment: ${env === 'gk' ? 'GK (Gatotkaca)' : 'Preprod (Sandbox)'}`);
   onLog.info(`Loaded ${rows.length} users from CSV`);
   const results = [];
 
-  for (const user of rows) {
+  for (let i = 0; i < rows.length; i++) {
+    if (signal?.aborted) {
+      onLog.warn(`Process stopped by user at row ${i + 1}/${rows.length}`);
+      break;
+    }
+
+    const user = rows[i];
     try {
-      onLog.info(`Processing: ${user.Email}`);
+      onLog.info(`[${i + 1}/${rows.length}] Processing: ${user.Email}`);
       const recipient = `+${user.phoneCode}${user.phoneNumber}`;
       const otpId = await generateOtp(recipient, config, onLog);
       if (!otpId) {
@@ -140,6 +163,12 @@ module.exports = async function batchRegister({ rows, options, onLog }) {
       }
       onLog.success(`OTP generated for ${user.Email}`);
 
+      if (signal?.aborted) {
+        onLog.warn(`Process stopped by user at row ${i + 1}/${rows.length}`);
+        results.push({ ...user, status: 'STOPPED' });
+        break;
+      }
+
       const passCode = await verifyOtp(otpId, '123456', config, onLog);
       if (!passCode) {
         onLog.warn(`OTP verification failed for ${user.Email}`);
@@ -147,6 +176,12 @@ module.exports = async function batchRegister({ rows, options, onLog }) {
         continue;
       }
       onLog.success(`OTP verified for ${user.Email}`);
+
+      if (signal?.aborted) {
+        onLog.warn(`Process stopped by user at row ${i + 1}/${rows.length}`);
+        results.push({ ...user, status: 'STOPPED' });
+        break;
+      }
 
       const regResult = await submitRegistration(passCode, user.Email, user.Name, 'Testing123', user.phoneCode, user.phoneNumber, config, onLog);
       if (!regResult) {
@@ -166,6 +201,8 @@ module.exports = async function batchRegister({ rows, options, onLog }) {
     }
   }
 
-  onLog.success(`Batch registration complete. ${results.filter(r => r.status === 'SUCCESS').length}/${rows.length} succeeded`);
+  const succeeded = results.filter(r => r.status === 'SUCCESS').length;
+  const stopped = signal?.aborted;
+  onLog.success(`Batch registration ${stopped ? 'stopped' : 'complete'}. ${succeeded}/${rows.length} succeeded`);
   return { results };
 };

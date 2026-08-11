@@ -1,0 +1,2202 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - img [ref=e7]
+      - generic [ref=e9]:
+        - heading "QA Tools" [level=1] [ref=e10]
+        - paragraph [ref=e11]: Member Services
+    - navigation [ref=e12]:
+      - link "Dashboard" [ref=e13] [cursor=pointer]:
+        - /url: /
+        - img [ref=e14]
+        - text: Dashboard
+      - paragraph [ref=e20]: Dashboards
+      - link "Automation WEB" [ref=e21] [cursor=pointer]:
+        - /url: /automation-web
+        - img [ref=e22]
+        - text: Automation WEB
+      - link "Test Runner" [ref=e27] [cursor=pointer]:
+        - /url: /test-runner
+        - img [ref=e28]
+        - text: Test Runner
+      - paragraph [ref=e33]: Tools
+      - link "User Management" [ref=e34] [cursor=pointer]:
+        - /url: /user-management
+        - img [ref=e35]
+        - text: User Management
+      - link "User Auth" [ref=e40] [cursor=pointer]:
+        - /url: /user-auth
+        - img [ref=e41]
+        - text: User Auth
+      - link "Jira & TestRail" [ref=e43] [cursor=pointer]:
+        - /url: /jira
+        - img [ref=e44]
+        - text: Jira & TestRail
+      - link "Testing" [ref=e47] [cursor=pointer]:
+        - /url: /testing
+        - img [ref=e48]
+        - text: Testing
+      - link "Database" [ref=e50] [cursor=pointer]:
+        - /url: /database
+        - img [ref=e51]
+        - text: Database
+      - link "Automation" [ref=e55] [cursor=pointer]:
+        - /url: /automation
+        - img [ref=e56]
+        - text: Automation
+    - generic [ref=e68]:
+      - paragraph [ref=e69]: v2.0.0
+      - generic [ref=e70]: ⌘K
+  - main [ref=e71]:
+    - generic [ref=e73]:
+      - heading "Test Runner" [level=1] [ref=e74]
+      - paragraph [ref=e75]: Execute a TestRail run without leaving one screen.
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - link "[General] Berburu Tiket Murah Improvement for Anniversary Campaign" [ref=e79] [cursor=pointer]:
+              - /url: https://tiket.testrail.com/index.php?/runs/view/17748
+              - text: "[General] Berburu Tiket Murah Improvement for Anniversary Campaign"
+              - img [ref=e80]
+            - paragraph [ref=e84]: Run 17748 · Project 184 · Plan 17742
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - generic [ref=e87]: 59 Passed
+              - generic [ref=e88]: 117 Untested
+            - generic [ref=e89]:
+              - generic [ref=e90]:
+                - button "Sync" [ref=e91] [cursor=pointer]:
+                  - img [ref=e92]
+                  - text: Sync
+                - generic [ref=e97]: Synced 17m ago
+              - button "Upload" [disabled] [ref=e98]:
+                - img [ref=e99]
+                - text: Upload
+        - generic [ref=e102]: Loading…
+        - table [ref=e106]:
+          - rowgroup [ref=e107]:
+            - row "Test ID Test Name Priority Status Latest TestRail Comments" [ref=e108]:
+              - columnheader "Test ID" [ref=e109]:
+                - button "Test ID" [ref=e110] [cursor=pointer]
+              - columnheader "Test Name" [ref=e111]:
+                - button "Test Name" [ref=e112] [cursor=pointer]
+              - columnheader "Priority" [ref=e113]:
+                - button "Priority" [ref=e114] [cursor=pointer]
+              - columnheader "Status" [ref=e115]:
+                - button "Status" [ref=e116] [cursor=pointer]
+              - columnheader "Latest TestRail" [ref=e117]:
+                - button "Latest TestRail" [ref=e118] [cursor=pointer]
+              - columnheader "Comments" [ref=e119]
+          - rowgroup [ref=e120]:
+            - row "C2371651 Verify BTM hero banner shows new Anniversary assets Medium Untested Untested —" [ref=e121] [cursor=pointer]:
+              - cell "C2371651" [ref=e122]:
+                - link "C2371651" [ref=e123]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371651
+              - cell "Verify BTM hero banner shows new Anniversary assets" [ref=e124]:
+                - generic [ref=e125]: Verify BTM hero banner shows new Anniversary assets
+              - cell "Medium" [ref=e126]
+              - cell "Untested" [ref=e127]:
+                - generic [ref=e128]: Untested
+              - cell "Untested" [ref=e129]:
+                - generic [ref=e130]: Untested
+              - cell "—" [ref=e131]
+            - row "C2371724 Verify gameplay visuals use Anniversary theme Medium Untested Untested —" [ref=e132] [cursor=pointer]:
+              - cell "C2371724" [ref=e133]:
+                - link "C2371724" [ref=e134]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371724
+              - cell "Verify gameplay visuals use Anniversary theme" [ref=e135]:
+                - generic [ref=e136]: Verify gameplay visuals use Anniversary theme
+              - cell "Medium" [ref=e137]
+              - cell "Untested" [ref=e138]:
+                - generic [ref=e139]: Untested
+              - cell "Untested" [ref=e140]:
+                - generic [ref=e141]: Untested
+              - cell "—" [ref=e142]
+            - row "C2371725 Verify Anniversary Lottie animations are applied Medium Untested Untested —" [ref=e143] [cursor=pointer]:
+              - cell "C2371725" [ref=e144]:
+                - link "C2371725" [ref=e145]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371725
+              - cell "Verify Anniversary Lottie animations are applied" [ref=e146]:
+                - generic [ref=e147]: Verify Anniversary Lottie animations are applied
+              - cell "Medium" [ref=e148]
+              - cell "Untested" [ref=e149]:
+                - generic [ref=e150]: Untested
+              - cell "Untested" [ref=e151]:
+                - generic [ref=e152]: Untested
+              - cell "—" [ref=e153]
+            - row "C2371726 Verify banner dimensions, behavior, and CTA are unchanged after refresh High Untested Untested —" [ref=e154] [cursor=pointer]:
+              - cell "C2371726" [ref=e155]:
+                - link "C2371726" [ref=e156]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371726
+              - cell "Verify banner dimensions, behavior, and CTA are unchanged after refresh" [ref=e157]:
+                - generic [ref=e158]: Verify banner dimensions, behavior, and CTA are unchanged after refresh
+              - cell "High" [ref=e159]
+              - cell "Untested" [ref=e160]:
+                - generic [ref=e161]: Untested
+              - cell "Untested" [ref=e162]:
+                - generic [ref=e163]: Untested
+              - cell "—" [ref=e164]
+            - row "C2371727 Verify animation triggers and timing are unchanged after refresh Medium Untested Untested —" [ref=e165] [cursor=pointer]:
+              - cell "C2371727" [ref=e166]:
+                - link "C2371727" [ref=e167]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371727
+              - cell "Verify animation triggers and timing are unchanged after refresh" [ref=e168]:
+                - generic [ref=e169]: Verify animation triggers and timing are unchanged after refresh
+              - cell "Medium" [ref=e170]
+              - cell "Untested" [ref=e171]:
+                - generic [ref=e172]: Untested
+              - cell "Untested" [ref=e173]:
+                - generic [ref=e174]: Untested
+              - cell "—" [ref=e175]
+            - row "C2371728 Verify core gameplay mechanics and sounds are unchanged after branding refresh High Untested Untested —" [ref=e176] [cursor=pointer]:
+              - cell "C2371728" [ref=e177]:
+                - link "C2371728" [ref=e178]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371728
+              - cell "Verify core gameplay mechanics and sounds are unchanged after branding refresh" [ref=e179]:
+                - generic [ref=e180]: Verify core gameplay mechanics and sounds are unchanged after branding refresh
+              - cell "High" [ref=e181]
+              - cell "Untested" [ref=e182]:
+                - generic [ref=e183]: Untested
+              - cell "Untested" [ref=e184]:
+                - generic [ref=e185]: Untested
+              - cell "—" [ref=e186]
+            - row "C2371729 Verify old crochet visual style is fully removed Medium Untested Untested —" [ref=e187] [cursor=pointer]:
+              - cell "C2371729" [ref=e188]:
+                - link "C2371729" [ref=e189]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371729
+              - cell "Verify old crochet visual style is fully removed" [ref=e190]:
+                - generic [ref=e191]: Verify old crochet visual style is fully removed
+              - cell "Medium" [ref=e192]
+              - cell "Untested" [ref=e193]:
+                - generic [ref=e194]: Untested
+              - cell "Untested" [ref=e195]:
+                - generic [ref=e196]: Untested
+              - cell "—" [ref=e197]
+            - row "C2371730 Verify Active Products displays as a 2-column vertical grid Critical Untested Untested —" [ref=e198] [cursor=pointer]:
+              - cell "C2371730" [ref=e199]:
+                - link "C2371730" [ref=e200]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371730
+              - cell "Verify Active Products displays as a 2-column vertical grid" [ref=e201]:
+                - generic [ref=e202]: Verify Active Products displays as a 2-column vertical grid
+              - cell "Critical" [ref=e203]
+              - cell "Untested" [ref=e204]:
+                - generic [ref=e205]: Untested
+              - cell "Untested" [ref=e206]:
+                - generic [ref=e207]: Untested
+              - cell "—" [ref=e208]
+            - row "C2371731 Verify horizontal carousels are replaced by the grid Medium Untested Untested —" [ref=e209] [cursor=pointer]:
+              - cell "C2371731" [ref=e210]:
+                - link "C2371731" [ref=e211]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371731
+              - cell "Verify horizontal carousels are replaced by the grid" [ref=e212]:
+                - generic [ref=e213]: Verify horizontal carousels are replaced by the grid
+              - cell "Medium" [ref=e214]
+              - cell "Untested" [ref=e215]:
+                - generic [ref=e216]: Untested
+              - cell "Untested" [ref=e217]:
+                - generic [ref=e218]: Untested
+              - cell "—" [ref=e219]
+            - row "C2371732 Verify Treasures You're After section is removed Medium Untested Untested —" [ref=e220] [cursor=pointer]:
+              - cell "C2371732" [ref=e221]:
+                - link "C2371732" [ref=e222]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371732
+              - cell "Verify Treasures You're After section is removed" [ref=e223]:
+                - generic [ref=e224]: Verify Treasures You're After section is removed
+              - cell "Medium" [ref=e225]
+              - cell "Untested" [ref=e226]:
+                - generic [ref=e227]: Untested
+              - cell "Untested" [ref=e228]:
+                - generic [ref=e229]: Untested
+              - cell "—" [ref=e230]
+            - row "C2371733 Verify vertical/category titles are preserved where configured Medium Untested Untested —" [ref=e231] [cursor=pointer]:
+              - cell "C2371733" [ref=e232]:
+                - link "C2371733" [ref=e233]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371733
+              - cell "Verify vertical/category titles are preserved where configured" [ref=e234]:
+                - generic [ref=e235]: Verify vertical/category titles are preserved where configured
+              - cell "Medium" [ref=e236]
+              - cell "Untested" [ref=e237]:
+                - generic [ref=e238]: Untested
+              - cell "Untested" [ref=e239]:
+                - generic [ref=e240]: Untested
+              - cell "—" [ref=e241]
+            - row "C2371734 Verify product subtext supports up to 2 lines Medium Untested Untested —" [ref=e242] [cursor=pointer]:
+              - cell "C2371734" [ref=e243]:
+                - link "C2371734" [ref=e244]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371734
+              - cell "Verify product subtext supports up to 2 lines" [ref=e245]:
+                - generic [ref=e246]: Verify product subtext supports up to 2 lines
+              - cell "Medium" [ref=e247]
+              - cell "Untested" [ref=e248]:
+                - generic [ref=e249]: Untested
+              - cell "Untested" [ref=e250]:
+                - generic [ref=e251]: Untested
+              - cell "—" [ref=e252]
+            - row "C2371735 Verify product subtext exceeding 2 lines is handled Medium Untested Untested —" [ref=e253] [cursor=pointer]:
+              - cell "C2371735" [ref=e254]:
+                - link "C2371735" [ref=e255]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371735
+              - cell "Verify product subtext exceeding 2 lines is handled" [ref=e256]:
+                - generic [ref=e257]: Verify product subtext exceeding 2 lines is handled
+              - cell "Medium" [ref=e258]
+              - cell "Untested" [ref=e259]:
+                - generic [ref=e260]: Untested
+              - cell "Untested" [ref=e261]:
+                - generic [ref=e262]: Untested
+              - cell "—" [ref=e263]
+            - row "C2371736 Verify products are ordered by start-active date, newest first Medium Untested Untested —" [ref=e264] [cursor=pointer]:
+              - cell "C2371736" [ref=e265]:
+                - link "C2371736" [ref=e266]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371736
+              - cell "Verify products are ordered by start-active date, newest first" [ref=e267]:
+                - generic [ref=e268]: Verify products are ordered by start-active date, newest first
+              - cell "Medium" [ref=e269]
+              - cell "Untested" [ref=e270]:
+                - generic [ref=e271]: Untested
+              - cell "Untested" [ref=e272]:
+                - generic [ref=e273]: Untested
+              - cell "—" [ref=e274]
+            - row "C2371737 Verify inventory purchase opens as a tabbed bottom sheet Critical Untested Untested —" [ref=e275] [cursor=pointer]:
+              - cell "C2371737" [ref=e276]:
+                - link "C2371737" [ref=e277]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371737
+              - cell "Verify inventory purchase opens as a tabbed bottom sheet" [ref=e278]:
+                - generic [ref=e279]: Verify inventory purchase opens as a tabbed bottom sheet
+              - cell "Critical" [ref=e280]
+              - cell "Untested" [ref=e281]:
+                - generic [ref=e282]: Untested
+              - cell "Untested" [ref=e283]:
+                - generic [ref=e284]: Untested
+              - cell "—" [ref=e285]
+            - row "C2371738 Verify Trade Points tab exchanges points at the current 500-points-per-token rate (regression from GRA-724 / GRA-2843) Critical Untested Untested —" [ref=e286] [cursor=pointer]:
+              - cell "C2371738" [ref=e287]:
+                - link "C2371738" [ref=e288]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371738
+              - cell "Verify Trade Points tab exchanges points at the current 500-points-per-token rate (regression from GRA-724 / GRA-2843)" [ref=e289]:
+                - generic [ref=e290]: Verify Trade Points tab exchanges points at the current 500-points-per-token rate (regression from GRA-724 / GRA-2843)
+              - cell "Critical" [ref=e291]
+              - cell "Untested" [ref=e292]:
+                - generic [ref=e293]: Untested
+              - cell "Untested" [ref=e294]:
+                - generic [ref=e295]: Untested
+              - cell "—" [ref=e296]
+            - row "C2371739 Verify Buy Voucher tab renders using the Image with Chips (3:4) module Critical Untested Untested —" [ref=e297] [cursor=pointer]:
+              - cell "C2371739" [ref=e298]:
+                - link "C2371739" [ref=e299]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371739
+              - cell "Verify Buy Voucher tab renders using the Image with Chips (3:4) module" [ref=e300]:
+                - generic [ref=e301]: Verify Buy Voucher tab renders using the Image with Chips (3:4) module
+              - cell "Critical" [ref=e302]
+              - cell "Untested" [ref=e303]:
+                - generic [ref=e304]: Untested
+              - cell "Untested" [ref=e305]:
+                - generic [ref=e306]: Untested
+              - cell "—" [ref=e307]
+            - row "C2371740 Verify Buy Voucher content is fully configurable Medium Untested Untested —" [ref=e308] [cursor=pointer]:
+              - cell "C2371740" [ref=e309]:
+                - link "C2371740" [ref=e310]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371740
+              - cell "Verify Buy Voucher content is fully configurable" [ref=e311]:
+                - generic [ref=e312]: Verify Buy Voucher content is fully configurable
+              - cell "Medium" [ref=e313]
+              - cell "Untested" [ref=e314]:
+                - generic [ref=e315]: Untested
+              - cell "Untested" [ref=e316]:
+                - generic [ref=e317]: Untested
+              - cell "—" [ref=e318]
+            - row "C2371741 Verify Buy Voucher content is not hardcoded Medium Untested Untested —" [ref=e319] [cursor=pointer]:
+              - cell "C2371741" [ref=e320]:
+                - link "C2371741" [ref=e321]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371741
+              - cell "Verify Buy Voucher content is not hardcoded" [ref=e322]:
+                - generic [ref=e323]: Verify Buy Voucher content is not hardcoded
+              - cell "Medium" [ref=e324]
+              - cell "Untested" [ref=e325]:
+                - generic [ref=e326]: Untested
+              - cell "Untested" [ref=e327]:
+                - generic [ref=e328]: Untested
+              - cell "—" [ref=e329]
+            - row "C2371742 Verify Cheapest promotional badge renders when configured Medium Untested Untested —" [ref=e330] [cursor=pointer]:
+              - cell "C2371742" [ref=e331]:
+                - link "C2371742" [ref=e332]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371742
+              - cell "Verify Cheapest promotional badge renders when configured" [ref=e333]:
+                - generic [ref=e334]: Verify Cheapest promotional badge renders when configured
+              - cell "Medium" [ref=e335]
+              - cell "Untested" [ref=e336]:
+                - generic [ref=e337]: Untested
+              - cell "Untested" [ref=e338]:
+                - generic [ref=e339]: Untested
+              - cell "—" [ref=e340]
+            - row "C2371743 Verify Best Value promotional badge renders when configured Medium Untested Untested —" [ref=e341] [cursor=pointer]:
+              - cell "C2371743" [ref=e342]:
+                - link "C2371743" [ref=e343]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371743
+              - cell "Verify Best Value promotional badge renders when configured" [ref=e344]:
+                - generic [ref=e345]: Verify Best Value promotional badge renders when configured
+              - cell "Medium" [ref=e346]
+              - cell "Untested" [ref=e347]:
+                - generic [ref=e348]: Untested
+              - cell "Untested" [ref=e349]:
+                - generic [ref=e350]: Untested
+              - cell "—" [ref=e351]
+            - row "C2371744 Verify More Affordable promotional badge renders when configured Medium Untested Untested —" [ref=e352] [cursor=pointer]:
+              - cell "C2371744" [ref=e353]:
+                - link "C2371744" [ref=e354]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371744
+              - cell "Verify More Affordable promotional badge renders when configured" [ref=e355]:
+                - generic [ref=e356]: Verify More Affordable promotional badge renders when configured
+              - cell "Medium" [ref=e357]
+              - cell "Untested" [ref=e358]:
+                - generic [ref=e359]: Untested
+              - cell "Untested" [ref=e360]:
+                - generic [ref=e361]: Untested
+              - cell "—" [ref=e362]
+            - row "C2371745 Verify voucher badge is absent when not configured Medium Untested Untested —" [ref=e363] [cursor=pointer]:
+              - cell "C2371745" [ref=e364]:
+                - link "C2371745" [ref=e365]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371745
+              - cell "Verify voucher badge is absent when not configured" [ref=e366]:
+                - generic [ref=e367]: Verify voucher badge is absent when not configured
+              - cell "Medium" [ref=e368]
+              - cell "Untested" [ref=e369]:
+                - generic [ref=e370]: Untested
+              - cell "Untested" [ref=e371]:
+                - generic [ref=e372]: Untested
+              - cell "—" [ref=e373]
+            - row "C2371746 Verify default tab is Trade Points when points are below 2,000 Medium Untested Untested —" [ref=e374] [cursor=pointer]:
+              - cell "C2371746" [ref=e375]:
+                - link "C2371746" [ref=e376]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371746
+              - cell "Verify default tab is Trade Points when points are below 2,000" [ref=e377]:
+                - generic [ref=e378]: Verify default tab is Trade Points when points are below 2,000
+              - cell "Medium" [ref=e379]
+              - cell "Untested" [ref=e380]:
+                - generic [ref=e381]: Untested
+              - cell "Untested" [ref=e382]:
+                - generic [ref=e383]: Untested
+              - cell "—" [ref=e384]
+            - row "C2371747 Verify default tab is Buy Voucher when points are 2,000 or above Medium Untested Untested —" [ref=e385] [cursor=pointer]:
+              - cell "C2371747" [ref=e386]:
+                - link "C2371747" [ref=e387]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371747
+              - cell "Verify default tab is Buy Voucher when points are 2,000 or above" [ref=e388]:
+                - generic [ref=e389]: Verify default tab is Buy Voucher when points are 2,000 or above
+              - cell "Medium" [ref=e390]
+              - cell "Untested" [ref=e391]:
+                - generic [ref=e392]: Untested
+              - cell "Untested" [ref=e393]:
+                - generic [ref=e394]: Untested
+              - cell "—" [ref=e395]
+            - row "C2371748 Verify default tab at the exact 2,000-point boundary Medium Untested Untested —" [ref=e396] [cursor=pointer]:
+              - cell "C2371748" [ref=e397]:
+                - link "C2371748" [ref=e398]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371748
+              - cell "Verify default tab at the exact 2,000-point boundary" [ref=e399]:
+                - generic [ref=e400]: Verify default tab at the exact 2,000-point boundary
+              - cell "Medium" [ref=e401]
+              - cell "Untested" [ref=e402]:
+                - generic [ref=e403]: Untested
+              - cell "Untested" [ref=e404]:
+                - generic [ref=e405]: Untested
+              - cell "—" [ref=e406]
+            - row "C2371749 Verify Buy Voucher CTA deep link navigation Critical Untested Untested —" [ref=e407] [cursor=pointer]:
+              - cell "C2371749" [ref=e408]:
+                - link "C2371749" [ref=e409]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371749
+              - cell "Verify Buy Voucher CTA deep link navigation" [ref=e410]:
+                - generic [ref=e411]: Verify Buy Voucher CTA deep link navigation
+              - cell "Critical" [ref=e412]
+              - cell "Untested" [ref=e413]:
+                - generic [ref=e414]: Untested
+              - cell "Untested" [ref=e415]:
+                - generic [ref=e416]: Untested
+              - cell "—" [ref=e417]
+            - row "C2371750 Verify inventory bottom sheet can be dismissed without side effects Medium Untested Untested —" [ref=e418] [cursor=pointer]:
+              - cell "C2371750" [ref=e419]:
+                - link "C2371750" [ref=e420]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371750
+              - cell "Verify inventory bottom sheet can be dismissed without side effects" [ref=e421]:
+                - generic [ref=e422]: Verify inventory bottom sheet can be dismissed without side effects
+              - cell "Medium" [ref=e423]
+              - cell "Untested" [ref=e424]:
+                - generic [ref=e425]: Untested
+              - cell "Untested" [ref=e426]:
+                - generic [ref=e427]: Untested
+              - cell "—" [ref=e428]
+            - row "C2371751 Verify Gameplay token CTA copy is Get More Tokens in English Medium Untested Untested —" [ref=e429] [cursor=pointer]:
+              - cell "C2371751" [ref=e430]:
+                - link "C2371751" [ref=e431]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371751
+              - cell "Verify Gameplay token CTA copy is Get More Tokens in English" [ref=e432]:
+                - generic [ref=e433]: Verify Gameplay token CTA copy is Get More Tokens in English
+              - cell "Medium" [ref=e434]
+              - cell "Untested" [ref=e435]:
+                - generic [ref=e436]: Untested
+              - cell "Untested" [ref=e437]:
+                - generic [ref=e438]: Untested
+              - cell "—" [ref=e439]
+            - row "C2371752 Verify Gameplay token CTA copy is Tambah Token in Indonesian Medium Untested Untested —" [ref=e440] [cursor=pointer]:
+              - cell "C2371752" [ref=e441]:
+                - link "C2371752" [ref=e442]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371752
+              - cell "Verify Gameplay token CTA copy is Tambah Token in Indonesian" [ref=e443]:
+                - generic [ref=e444]: Verify Gameplay token CTA copy is Tambah Token in Indonesian
+              - cell "Medium" [ref=e445]
+              - cell "Untested" [ref=e446]:
+                - generic [ref=e447]: Untested
+              - cell "Untested" [ref=e448]:
+                - generic [ref=e449]: Untested
+              - cell "—" [ref=e450]
+            - row "C2371753 Verify token purchase CTA keeps the same position Medium Untested Untested —" [ref=e451] [cursor=pointer]:
+              - cell "C2371753" [ref=e452]:
+                - link "C2371753" [ref=e453]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371753
+              - cell "Verify token purchase CTA keeps the same position" [ref=e454]:
+                - generic [ref=e455]: Verify token purchase CTA keeps the same position
+              - cell "Medium" [ref=e456]
+              - cell "Untested" [ref=e457]:
+                - generic [ref=e458]: Untested
+              - cell "Untested" [ref=e459]:
+                - generic [ref=e460]: Untested
+              - cell "—" [ref=e461]
+            - row "C2371754 Verify tapping token purchase CTA opens the token-purchase section High Untested Untested —" [ref=e462] [cursor=pointer]:
+              - cell "C2371754" [ref=e463]:
+                - link "C2371754" [ref=e464]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371754
+              - cell "Verify tapping token purchase CTA opens the token-purchase section" [ref=e465]:
+                - generic [ref=e466]: Verify tapping token purchase CTA opens the token-purchase section
+              - cell "High" [ref=e467]
+              - cell "Untested" [ref=e468]:
+                - generic [ref=e469]: Untested
+              - cell "Untested" [ref=e470]:
+                - generic [ref=e471]: Untested
+              - cell "—" [ref=e472]
+            - row "C2371755 Verify onboarding banner is shown to first-time BTM users High Untested Untested —" [ref=e473] [cursor=pointer]:
+              - cell "C2371755" [ref=e474]:
+                - link "C2371755" [ref=e475]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371755
+              - cell "Verify onboarding banner is shown to first-time BTM users" [ref=e476]:
+                - generic [ref=e477]: Verify onboarding banner is shown to first-time BTM users
+              - cell "High" [ref=e478]
+              - cell "Untested" [ref=e479]:
+                - generic [ref=e480]: Untested
+              - cell "Untested" [ref=e481]:
+                - generic [ref=e482]: Untested
+              - cell "—" [ref=e483]
+            - row "C2371756 Verify onboarding banner is not shown to returning users Medium Untested Untested —" [ref=e484] [cursor=pointer]:
+              - cell "C2371756" [ref=e485]:
+                - link "C2371756" [ref=e486]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371756
+              - cell "Verify onboarding banner is not shown to returning users" [ref=e487]:
+                - generic [ref=e488]: Verify onboarding banner is not shown to returning users
+              - cell "Medium" [ref=e489]
+              - cell "Untested" [ref=e490]:
+                - generic [ref=e491]: Untested
+              - cell "Untested" [ref=e492]:
+                - generic [ref=e493]: Untested
+              - cell "—" [ref=e494]
+            - row "C2371757 Verify onboarding does not auto-appear after completion or dismissal Medium Untested Untested —" [ref=e495] [cursor=pointer]:
+              - cell "C2371757" [ref=e496]:
+                - link "C2371757" [ref=e497]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371757
+              - cell "Verify onboarding does not auto-appear after completion or dismissal" [ref=e498]:
+                - generic [ref=e499]: Verify onboarding does not auto-appear after completion or dismissal
+              - cell "Medium" [ref=e500]
+              - cell "Untested" [ref=e501]:
+                - generic [ref=e502]: Untested
+              - cell "Untested" [ref=e503]:
+                - generic [ref=e504]: Untested
+              - cell "—" [ref=e505]
+            - row "C2371758 Verify onboarding banner redirects to the configured Info Page URL Medium Untested Untested —" [ref=e506] [cursor=pointer]:
+              - cell "C2371758" [ref=e507]:
+                - link "C2371758" [ref=e508]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371758
+              - cell "Verify onboarding banner redirects to the configured Info Page URL" [ref=e509]:
+                - generic [ref=e510]: Verify onboarding banner redirects to the configured Info Page URL
+              - cell "Medium" [ref=e511]
+              - cell "Untested" [ref=e512]:
+                - generic [ref=e513]: Untested
+              - cell "Untested" [ref=e514]:
+                - generic [ref=e515]: Untested
+              - cell "—" [ref=e516]
+            - row "C2371759 Verify Info Page URL is configurable Medium Untested Untested —" [ref=e517] [cursor=pointer]:
+              - cell "C2371759" [ref=e518]:
+                - link "C2371759" [ref=e519]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371759
+              - cell "Verify Info Page URL is configurable" [ref=e520]:
+                - generic [ref=e521]: Verify Info Page URL is configurable
+              - cell "Medium" [ref=e522]
+              - cell "Untested" [ref=e523]:
+                - generic [ref=e524]: Untested
+              - cell "Untested" [ref=e525]:
+                - generic [ref=e526]: Untested
+              - cell "—" [ref=e527]
+            - row "C2371760 Verify shareable onboarding/Info Page redirect link works Medium Untested Untested —" [ref=e528] [cursor=pointer]:
+              - cell "C2371760" [ref=e529]:
+                - link "C2371760" [ref=e530]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371760
+              - cell "Verify shareable onboarding/Info Page redirect link works" [ref=e531]:
+                - generic [ref=e532]: Verify shareable onboarding/Info Page redirect link works
+              - cell "Medium" [ref=e533]
+              - cell "Untested" [ref=e534]:
+                - generic [ref=e535]: Untested
+              - cell "Untested" [ref=e536]:
+                - generic [ref=e537]: Untested
+              - cell "—" [ref=e538]
+            - row "C2371761 Verify onboarding content explains BTM gameplay basics Medium Untested Untested —" [ref=e539] [cursor=pointer]:
+              - cell "C2371761" [ref=e540]:
+                - link "C2371761" [ref=e541]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371761
+              - cell "Verify onboarding content explains BTM gameplay basics" [ref=e542]:
+                - generic [ref=e543]: Verify onboarding content explains BTM gameplay basics
+              - cell "Medium" [ref=e544]
+              - cell "Untested" [ref=e545]:
+                - generic [ref=e546]: Untested
+              - cell "Untested" [ref=e547]:
+                - generic [ref=e548]: Untested
+              - cell "—" [ref=e549]
+            - row "C2371762 Verify first-time-user Gameplay section introduces the Prize Holder mechanic Medium Untested Untested —" [ref=e550] [cursor=pointer]:
+              - cell "C2371762" [ref=e551]:
+                - link "C2371762" [ref=e552]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371762
+              - cell "Verify first-time-user Gameplay section introduces the Prize Holder mechanic" [ref=e553]:
+                - generic [ref=e554]: Verify first-time-user Gameplay section introduces the Prize Holder mechanic
+              - cell "Medium" [ref=e555]
+              - cell "Untested" [ref=e556]:
+                - generic [ref=e557]: Untested
+              - cell "Untested" [ref=e558]:
+                - generic [ref=e559]: Untested
+              - cell "—" [ref=e560]
+            - row "C2371763 Verify Prize Holder shows the current prize holder High Untested Untested —" [ref=e561] [cursor=pointer]:
+              - cell "C2371763" [ref=e562]:
+                - link "C2371763" [ref=e563]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371763
+              - cell "Verify Prize Holder shows the current prize holder" [ref=e564]:
+                - generic [ref=e565]: Verify Prize Holder shows the current prize holder
+              - cell "High" [ref=e566]
+              - cell "Untested" [ref=e567]:
+                - generic [ref=e568]: Untested
+              - cell "Untested" [ref=e569]:
+                - generic [ref=e570]: Untested
+              - cell "—" [ref=e571]
+            - row "C2371764 Verify updated Steal Prize interaction Critical Untested Untested —" [ref=e572] [cursor=pointer]:
+              - cell "C2371764" [ref=e573]:
+                - link "C2371764" [ref=e574]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371764
+              - cell "Verify updated Steal Prize interaction" [ref=e575]:
+                - generic [ref=e576]: Verify updated Steal Prize interaction
+              - cell "Critical" [ref=e577]
+              - cell "Untested" [ref=e578]:
+                - generic [ref=e579]: Untested
+              - cell "Untested" [ref=e580]:
+                - generic [ref=e581]: Untested
+              - cell "—" [ref=e582]
+            - row "C2371765 Verify new wide fade transition animation plays Medium Untested Untested —" [ref=e583] [cursor=pointer]:
+              - cell "C2371765" [ref=e584]:
+                - link "C2371765" [ref=e585]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371765
+              - cell "Verify new wide fade transition animation plays" [ref=e586]:
+                - generic [ref=e587]: Verify new wide fade transition animation plays
+              - cell "Medium" [ref=e588]
+              - cell "Untested" [ref=e589]:
+                - generic [ref=e590]: Untested
+              - cell "Untested" [ref=e591]:
+                - generic [ref=e592]: Untested
+              - cell "—" [ref=e593]
+            - row "C2371766 Verify existing gameplay sounds are unchanged after the refresh (regression from GRA-3099 / GRA-2863) Medium Untested Untested —" [ref=e594] [cursor=pointer]:
+              - cell "C2371766" [ref=e595]:
+                - link "C2371766" [ref=e596]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371766
+              - cell "Verify existing gameplay sounds are unchanged after the refresh (regression from GRA-3099 / GRA-2863)" [ref=e597]:
+                - generic [ref=e598]: Verify existing gameplay sounds are unchanged after the refresh (regression from GRA-3099 / GRA-2863)
+              - cell "Medium" [ref=e599]
+              - cell "Untested" [ref=e600]:
+                - generic [ref=e601]: Untested
+              - cell "Untested" [ref=e602]:
+                - generic [ref=e603]: Untested
+              - cell "—" [ref=e604]
+            - row "C2371767 Verify new gameplay Lottie assets load correctly Medium Untested Untested —" [ref=e605] [cursor=pointer]:
+              - cell "C2371767" [ref=e606]:
+                - link "C2371767" [ref=e607]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371767
+              - cell "Verify new gameplay Lottie assets load correctly" [ref=e608]:
+                - generic [ref=e609]: Verify new gameplay Lottie assets load correctly
+              - cell "Medium" [ref=e610]
+              - cell "Untested" [ref=e611]:
+                - generic [ref=e612]: Untested
+              - cell "Untested" [ref=e613]:
+                - generic [ref=e614]: Untested
+              - cell "—" [ref=e615]
+            - row "C2371768 Verify Image with Chips (3:4) module is reused across BTM surfaces Medium Untested Untested —" [ref=e616] [cursor=pointer]:
+              - cell "C2371768" [ref=e617]:
+                - link "C2371768" [ref=e618]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371768
+              - cell "Verify Image with Chips (3:4) module is reused across BTM surfaces" [ref=e619]:
+                - generic [ref=e620]: Verify Image with Chips (3:4) module is reused across BTM surfaces
+              - cell "Medium" [ref=e621]
+              - cell "Untested" [ref=e622]:
+                - generic [ref=e623]: Untested
+              - cell "Untested" [ref=e624]:
+                - generic [ref=e625]: Untested
+              - cell "—" [ref=e626]
+            - row "C2371769 Verify token injection by whitelisted Product ID Critical Untested Untested —" [ref=e627] [cursor=pointer]:
+              - cell "C2371769" [ref=e628]:
+                - link "C2371769" [ref=e629]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371769
+              - cell "Verify token injection by whitelisted Product ID" [ref=e630]:
+                - generic [ref=e631]: Verify token injection by whitelisted Product ID
+              - cell "Critical" [ref=e632]
+              - cell "Untested" [ref=e633]:
+                - generic [ref=e634]: Untested
+              - cell "Untested" [ref=e635]:
+                - generic [ref=e636]: Untested
+              - cell "—" [ref=e637]
+            - row "C2371770 Verify Product-ID config takes precedence over vertical config Critical Untested Untested —" [ref=e638] [cursor=pointer]:
+              - cell "C2371770" [ref=e639]:
+                - link "C2371770" [ref=e640]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371770
+              - cell "Verify Product-ID config takes precedence over vertical config" [ref=e641]:
+                - generic [ref=e642]: Verify Product-ID config takes precedence over vertical config
+              - cell "Critical" [ref=e643]
+              - cell "Untested" [ref=e644]:
+                - generic [ref=e645]: Untested
+              - cell "Untested" [ref=e646]:
+                - generic [ref=e647]: Untested
+              - cell "—" [ref=e648]
+            - row "C2371771 Verify fallback to vertical config when Product ID has no config High Untested Untested —" [ref=e649] [cursor=pointer]:
+              - cell "C2371771" [ref=e650]:
+                - link "C2371771" [ref=e651]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371771
+              - cell "Verify fallback to vertical config when Product ID has no config" [ref=e652]:
+                - generic [ref=e653]: Verify fallback to vertical config when Product ID has no config
+              - cell "High" [ref=e654]
+              - cell "Untested" [ref=e655]:
+                - generic [ref=e656]: Untested
+              - cell "Untested" [ref=e657]:
+                - generic [ref=e658]: Untested
+              - cell "—" [ref=e659]
+            - row "C2371772 Verify IDR 9,900 package injects 13 tokens Medium Untested Untested —" [ref=e660] [cursor=pointer]:
+              - cell "C2371772" [ref=e661]:
+                - link "C2371772" [ref=e662]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371772
+              - cell "Verify IDR 9,900 package injects 13 tokens" [ref=e663]:
+                - generic [ref=e664]: Verify IDR 9,900 package injects 13 tokens
+              - cell "Medium" [ref=e665]
+              - cell "Untested" [ref=e666]:
+                - generic [ref=e667]: Untested
+              - cell "Untested" [ref=e668]:
+                - generic [ref=e669]: Untested
+              - cell "—" [ref=e670]
+            - row "C2371773 Verify IDR 19,900 package injects 30 tokens Medium Untested Untested —" [ref=e671] [cursor=pointer]:
+              - cell "C2371773" [ref=e672]:
+                - link "C2371773" [ref=e673]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371773
+              - cell "Verify IDR 19,900 package injects 30 tokens" [ref=e674]:
+                - generic [ref=e675]: Verify IDR 19,900 package injects 30 tokens
+              - cell "Medium" [ref=e676]
+              - cell "Untested" [ref=e677]:
+                - generic [ref=e678]: Untested
+              - cell "Untested" [ref=e679]:
+                - generic [ref=e680]: Untested
+              - cell "—" [ref=e681]
+            - row "C2371774 Verify IDR 49,900 package injects 70 tokens Medium Untested Untested —" [ref=e682] [cursor=pointer]:
+              - cell "C2371774" [ref=e683]:
+                - link "C2371774" [ref=e684]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371774
+              - cell "Verify IDR 49,900 package injects 70 tokens" [ref=e685]:
+                - generic [ref=e686]: Verify IDR 49,900 package injects 70 tokens
+              - cell "Medium" [ref=e687]
+              - cell "Untested" [ref=e688]:
+                - generic [ref=e689]: Untested
+              - cell "Untested" [ref=e690]:
+                - generic [ref=e691]: Untested
+              - cell "—" [ref=e692]
+            - row "C2371775 Verify existing vertical-only injection still works unchanged Critical Untested Untested —" [ref=e693] [cursor=pointer]:
+              - cell "C2371775" [ref=e694]:
+                - link "C2371775" [ref=e695]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371775
+              - cell "Verify existing vertical-only injection still works unchanged" [ref=e696]:
+                - generic [ref=e697]: Verify existing vertical-only injection still works unchanged
+              - cell "Critical" [ref=e698]
+              - cell "Untested" [ref=e699]:
+                - generic [ref=e700]: Untested
+              - cell "Untested" [ref=e701]:
+                - generic [ref=e702]: Untested
+              - cell "—" [ref=e703]
+            - row "C2371776 Verify countdown resets after a successful auto bid Medium Untested Untested —" [ref=e704] [cursor=pointer]:
+              - cell "C2371776" [ref=e705]:
+                - link "C2371776" [ref=e706]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371776
+              - cell "Verify countdown resets after a successful auto bid" [ref=e707]:
+                - generic [ref=e708]: Verify countdown resets after a successful auto bid
+              - cell "Medium" [ref=e709]
+              - cell "Untested" [ref=e710]:
+                - generic [ref=e711]: Untested
+              - cell "Untested" [ref=e712]:
+                - generic [ref=e713]: Untested
+              - cell "—" [ref=e714]
+            - row "C2371777 Verify FE trackers fire for the new BTM components High Untested Untested —" [ref=e715] [cursor=pointer]:
+              - cell "C2371777" [ref=e716]:
+                - link "C2371777" [ref=e717]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371777
+              - cell "Verify FE trackers fire for the new BTM components" [ref=e718]:
+                - generic [ref=e719]: Verify FE trackers fire for the new BTM components
+              - cell "High" [ref=e720]
+              - cell "Untested" [ref=e721]:
+                - generic [ref=e722]: Untested
+              - cell "Untested" [ref=e723]:
+                - generic [ref=e724]: Untested
+              - cell "—" [ref=e725]
+            - row "C2371778 Verify end-to-end first-time user journey from onboarding to winning Critical Untested Untested —" [ref=e726] [cursor=pointer]:
+              - cell "C2371778" [ref=e727]:
+                - link "C2371778" [ref=e728]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371778
+              - cell "Verify end-to-end first-time user journey from onboarding to winning" [ref=e729]:
+                - generic [ref=e730]: Verify end-to-end first-time user journey from onboarding to winning
+              - cell "Critical" [ref=e731]
+              - cell "Untested" [ref=e732]:
+                - generic [ref=e733]: Untested
+              - cell "Untested" [ref=e734]:
+                - generic [ref=e735]: Untested
+              - cell "—" [ref=e736]
+            - row "C2371779 Verify end-to-end buy voucher, token injection, and gameplay Critical Untested Untested —" [ref=e737] [cursor=pointer]:
+              - cell "C2371779" [ref=e738]:
+                - link "C2371779" [ref=e739]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371779
+              - cell "Verify end-to-end buy voucher, token injection, and gameplay" [ref=e740]:
+                - generic [ref=e741]: Verify end-to-end buy voucher, token injection, and gameplay
+              - cell "Critical" [ref=e742]
+              - cell "Untested" [ref=e743]:
+                - generic [ref=e744]: Untested
+              - cell "Untested" [ref=e745]:
+                - generic [ref=e746]: Untested
+              - cell "—" [ref=e747]
+            - row "C2371780 Verify end-to-end trade points to snatch a product (regression from GRA-724) High Untested Untested —" [ref=e748] [cursor=pointer]:
+              - cell "C2371780" [ref=e749]:
+                - link "C2371780" [ref=e750]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371780
+              - cell "Verify end-to-end trade points to snatch a product (regression from GRA-724)" [ref=e751]:
+                - generic [ref=e752]: Verify end-to-end trade points to snatch a product (regression from GRA-724)
+              - cell "High" [ref=e753]
+              - cell "Untested" [ref=e754]:
+                - generic [ref=e755]: Untested
+              - cell "Untested" [ref=e756]:
+                - generic [ref=e757]: Untested
+              - cell "—" [ref=e758]
+            - row "C2371781 Verify Steal/Bid CTA is disabled while the current user is the Prize Holder High Untested Untested —" [ref=e759] [cursor=pointer]:
+              - cell "C2371781" [ref=e760]:
+                - link "C2371781" [ref=e761]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371781
+              - cell "Verify Steal/Bid CTA is disabled while the current user is the Prize Holder" [ref=e762]:
+                - generic [ref=e763]: Verify Steal/Bid CTA is disabled while the current user is the Prize Holder
+              - cell "High" [ref=e764]
+              - cell "Untested" [ref=e765]:
+                - generic [ref=e766]: Untested
+              - cell "Untested" [ref=e767]:
+                - generic [ref=e768]: Untested
+              - cell "—" [ref=e769]
+            - row "C2371782 Verify no token is deducted when the Prize Holder attempts to bid again Critical Untested Untested —" [ref=e770] [cursor=pointer]:
+              - cell "C2371782" [ref=e771]:
+                - link "C2371782" [ref=e772]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371782
+              - cell "Verify no token is deducted when the Prize Holder attempts to bid again" [ref=e773]:
+                - generic [ref=e774]: Verify no token is deducted when the Prize Holder attempts to bid again
+              - cell "Critical" [ref=e775]
+              - cell "Untested" [ref=e776]:
+                - generic [ref=e777]: Untested
+              - cell "Untested" [ref=e778]:
+                - generic [ref=e779]: Untested
+              - cell "—" [ref=e780]
+            - row "C2371783 Verify snackbar copy when the Prize Holder attempts to bid again Medium Untested Untested —" [ref=e781] [cursor=pointer]:
+              - cell "C2371783" [ref=e782]:
+                - link "C2371783" [ref=e783]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371783
+              - cell "Verify snackbar copy when the Prize Holder attempts to bid again" [ref=e784]:
+                - generic [ref=e785]: Verify snackbar copy when the Prize Holder attempts to bid again
+              - cell "Medium" [ref=e786]
+              - cell "Untested" [ref=e787]:
+                - generic [ref=e788]: Untested
+              - cell "Untested" [ref=e789]:
+                - generic [ref=e790]: Untested
+              - cell "—" [ref=e791]
+            - row "C2371784 Verify Cara Menang entry point below the treasure chest survives the Anniversary refresh Medium Untested Untested —" [ref=e792] [cursor=pointer]:
+              - cell "C2371784" [ref=e793]:
+                - link "C2371784" [ref=e794]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371784
+              - cell "Verify Cara Menang entry point below the treasure chest survives the Anniversary refresh" [ref=e795]:
+                - generic [ref=e796]: Verify Cara Menang entry point below the treasure chest survives the Anniversary refresh
+              - cell "Medium" [ref=e797]
+              - cell "Untested" [ref=e798]:
+                - generic [ref=e799]: Untested
+              - cell "Untested" [ref=e800]:
+                - generic [ref=e801]: Untested
+              - cell "—" [ref=e802]
+            - row "C2371785 Verify ownership countdown copy when the current user holds the treasure Medium Untested Untested —" [ref=e803] [cursor=pointer]:
+              - cell "C2371785" [ref=e804]:
+                - link "C2371785" [ref=e805]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371785
+              - cell "Verify ownership countdown copy when the current user holds the treasure" [ref=e806]:
+                - generic [ref=e807]: Verify ownership countdown copy when the current user holds the treasure
+              - cell "Medium" [ref=e808]
+              - cell "Untested" [ref=e809]:
+                - generic [ref=e810]: Untested
+              - cell "Untested" [ref=e811]:
+                - generic [ref=e812]: Untested
+              - cell "—" [ref=e813]
+            - row "C2371786 Verify ownership countdown copy when another user holds the treasure Medium Untested Untested —" [ref=e814] [cursor=pointer]:
+              - cell "C2371786" [ref=e815]:
+                - link "C2371786" [ref=e816]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371786
+              - cell "Verify ownership countdown copy when another user holds the treasure" [ref=e817]:
+                - generic [ref=e818]: Verify ownership countdown copy when another user holds the treasure
+              - cell "Medium" [ref=e819]
+              - cell "Untested" [ref=e820]:
+                - generic [ref=e821]: Untested
+              - cell "Untested" [ref=e822]:
+                - generic [ref=e823]: Untested
+              - cell "—" [ref=e824]
+            - row "C2371787 Verify Prize Holder name follows the baseline identity masking rules Critical Untested Untested —" [ref=e825] [cursor=pointer]:
+              - cell "C2371787" [ref=e826]:
+                - link "C2371787" [ref=e827]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371787
+              - cell "Verify Prize Holder name follows the baseline identity masking rules" [ref=e828]:
+                - generic [ref=e829]: Verify Prize Holder name follows the baseline identity masking rules
+              - cell "Critical" [ref=e830]
+              - cell "Untested" [ref=e831]:
+                - generic [ref=e832]: Untested
+              - cell "Untested" [ref=e833]:
+                - generic [ref=e834]: Untested
+              - cell "—" [ref=e835]
+            - row "C2371788 Verify blacklisted user can enter the redesigned mini PDP without interruption Medium Untested Untested —" [ref=e836] [cursor=pointer]:
+              - cell "C2371788" [ref=e837]:
+                - link "C2371788" [ref=e838]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371788
+              - cell "Verify blacklisted user can enter the redesigned mini PDP without interruption" [ref=e839]:
+                - generic [ref=e840]: Verify blacklisted user can enter the redesigned mini PDP without interruption
+              - cell "Medium" [ref=e841]
+              - cell "Untested" [ref=e842]:
+                - generic [ref=e843]: Untested
+              - cell "Untested" [ref=e844]:
+                - generic [ref=e845]: Untested
+              - cell "—" [ref=e846]
+            - row "C2371789 Verify blacklisted user sees a greyed-out CTA and the campaign snackbar on the redesigned gameplay page High Untested Untested —" [ref=e847] [cursor=pointer]:
+              - cell "C2371789" [ref=e848]:
+                - link "C2371789" [ref=e849]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371789
+              - cell "Verify blacklisted user sees a greyed-out CTA and the campaign snackbar on the redesigned gameplay page" [ref=e850]:
+                - generic [ref=e851]: Verify blacklisted user sees a greyed-out CTA and the campaign snackbar on the redesigned gameplay page
+              - cell "High" [ref=e852]
+              - cell "Untested" [ref=e853]:
+                - generic [ref=e854]: Untested
+              - cell "Untested" [ref=e855]:
+                - generic [ref=e856]: Untested
+              - cell "—" [ref=e857]
+            - row "C2371790 Verify transaction-token popup reports tokens injected by a Buy Voucher GV pack purchase Medium Untested Untested —" [ref=e858] [cursor=pointer]:
+              - cell "C2371790" [ref=e859]:
+                - link "C2371790" [ref=e860]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371790
+              - cell "Verify transaction-token popup reports tokens injected by a Buy Voucher GV pack purchase" [ref=e861]:
+                - generic [ref=e862]: Verify transaction-token popup reports tokens injected by a Buy Voucher GV pack purchase
+              - cell "Medium" [ref=e863]
+              - cell "Untested" [ref=e864]:
+                - generic [ref=e865]: Untested
+              - cell "Untested" [ref=e866]:
+                - generic [ref=e867]: Untested
+              - cell "—" [ref=e868]
+            - row "C2371791 Verify token popup copy for the GV-purchase plus daily token combination Medium Untested Untested —" [ref=e869] [cursor=pointer]:
+              - cell "C2371791" [ref=e870]:
+                - link "C2371791" [ref=e871]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371791
+              - cell "Verify token popup copy for the GV-purchase plus daily token combination" [ref=e872]:
+                - generic [ref=e873]: Verify token popup copy for the GV-purchase plus daily token combination
+              - cell "Medium" [ref=e874]
+              - cell "Untested" [ref=e875]:
+                - generic [ref=e876]: Untested
+              - cell "Untested" [ref=e877]:
+                - generic [ref=e878]: Untested
+              - cell "—" [ref=e879]
+            - row "C2371792 Verify token popup copy for the GV-purchase plus daily plus share combination Medium Untested Untested —" [ref=e880] [cursor=pointer]:
+              - cell "C2371792" [ref=e881]:
+                - link "C2371792" [ref=e882]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371792
+              - cell "Verify token popup copy for the GV-purchase plus daily plus share combination" [ref=e883]:
+                - generic [ref=e884]: Verify token popup copy for the GV-purchase plus daily plus share combination
+              - cell "Medium" [ref=e885]
+              - cell "Untested" [ref=e886]:
+                - generic [ref=e887]: Untested
+              - cell "Untested" [ref=e888]:
+                - generic [ref=e889]: Untested
+              - cell "—" [ref=e890]
+            - row "C2371793 Verify token popup reports only not-yet-seen tokens after a second GV purchase Medium Untested Untested —" [ref=e891] [cursor=pointer]:
+              - cell "C2371793" [ref=e892]:
+                - link "C2371793" [ref=e893]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371793
+              - cell "Verify token popup reports only not-yet-seen tokens after a second GV purchase" [ref=e894]:
+                - generic [ref=e895]: Verify token popup reports only not-yet-seen tokens after a second GV purchase
+              - cell "Medium" [ref=e896]
+              - cell "Untested" [ref=e897]:
+                - generic [ref=e898]: Untested
+              - cell "Untested" [ref=e899]:
+                - generic [ref=e900]: Untested
+              - cell "—" [ref=e901]
+            - row "C2371794 Verify daily tokens are spent before GV-injected tokens Critical Untested Untested —" [ref=e902] [cursor=pointer]:
+              - cell "C2371794" [ref=e903]:
+                - link "C2371794" [ref=e904]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371794
+              - cell "Verify daily tokens are spent before GV-injected tokens" [ref=e905]:
+                - generic [ref=e906]: Verify daily tokens are spent before GV-injected tokens
+              - cell "Critical" [ref=e907]
+              - cell "Untested" [ref=e908]:
+                - generic [ref=e909]: Untested
+              - cell "Untested" [ref=e910]:
+                - generic [ref=e911]: Untested
+              - cell "—" [ref=e912]
+            - row "C2371795 Verify GV-injected tokens survive the nightly daily-token expiry Critical Untested Untested —" [ref=e913] [cursor=pointer]:
+              - cell "C2371795" [ref=e914]:
+                - link "C2371795" [ref=e915]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371795
+              - cell "Verify GV-injected tokens survive the nightly daily-token expiry" [ref=e916]:
+                - generic [ref=e917]: Verify GV-injected tokens survive the nightly daily-token expiry
+              - cell "Critical" [ref=e918]
+              - cell "Untested" [ref=e919]:
+                - generic [ref=e920]: Untested
+              - cell "Untested" [ref=e921]:
+                - generic [ref=e922]: Untested
+              - cell "—" [ref=e923]
+            - row "C2371796 Verify the default-tab 2,000-point threshold is consistent with the 500-points-per-token rate Medium Untested Untested —" [ref=e924] [cursor=pointer]:
+              - cell "C2371796" [ref=e925]:
+                - link "C2371796" [ref=e926]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371796
+              - cell "Verify the default-tab 2,000-point threshold is consistent with the 500-points-per-token rate" [ref=e927]:
+                - generic [ref=e928]: Verify the default-tab 2,000-point threshold is consistent with the 500-points-per-token rate
+              - cell "Medium" [ref=e929]
+              - cell "Untested" [ref=e930]:
+                - generic [ref=e931]: Untested
+              - cell "Untested" [ref=e932]:
+                - generic [ref=e933]: Untested
+              - cell "—" [ref=e934]
+            - row "C2371797 Verify a re-shared Info Page link does not accumulate duplicate params Medium Untested Untested —" [ref=e935] [cursor=pointer]:
+              - cell "C2371797" [ref=e936]:
+                - link "C2371797" [ref=e937]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371797
+              - cell "Verify a re-shared Info Page link does not accumulate duplicate params" [ref=e938]:
+                - generic [ref=e939]: Verify a re-shared Info Page link does not accumulate duplicate params
+              - cell "Medium" [ref=e940]
+              - cell "Untested" [ref=e941]:
+                - generic [ref=e942]: Untested
+              - cell "Untested" [ref=e943]:
+                - generic [ref=e944]: Untested
+              - cell "—" [ref=e945]
+            - row "C2371798 Verify daily free token allocation still differs between app and web on the new layout High Untested Untested —" [ref=e946] [cursor=pointer]:
+              - cell "C2371798" [ref=e947]:
+                - link "C2371798" [ref=e948]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371798
+              - cell "Verify daily free token allocation still differs between app and web on the new layout" [ref=e949]:
+                - generic [ref=e950]: Verify daily free token allocation still differs between app and web on the new layout
+              - cell "High" [ref=e951]
+              - cell "Untested" [ref=e952]:
+                - generic [ref=e953]: Untested
+              - cell "Untested" [ref=e954]:
+                - generic [ref=e955]: Untested
+              - cell "—" [ref=e956]
+            - row "C2371799 Verify the sound and BGM enable/disable CTA still works after the Anniversary asset refresh Medium Untested Untested —" [ref=e957] [cursor=pointer]:
+              - cell "C2371799" [ref=e958]:
+                - link "C2371799" [ref=e959]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371799
+              - cell "Verify the sound and BGM enable/disable CTA still works after the Anniversary asset refresh" [ref=e960]:
+                - generic [ref=e961]: Verify the sound and BGM enable/disable CTA still works after the Anniversary asset refresh
+              - cell "Medium" [ref=e962]
+              - cell "Untested" [ref=e963]:
+                - generic [ref=e964]: Untested
+              - cell "Untested" [ref=e965]:
+                - generic [ref=e966]: Untested
+              - cell "—" [ref=e967]
+            - row "C2371800 Verify audio autoplay behaviour per platform after the refresh Medium Untested Untested —" [ref=e968] [cursor=pointer]:
+              - cell "C2371800" [ref=e969]:
+                - link "C2371800" [ref=e970]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371800
+              - cell "Verify audio autoplay behaviour per platform after the refresh" [ref=e971]:
+                - generic [ref=e972]: Verify audio autoplay behaviour per platform after the refresh
+              - cell "Medium" [ref=e973]
+              - cell "Untested" [ref=e974]:
+                - generic [ref=e975]: Untested
+              - cell "Untested" [ref=e976]:
+                - generic [ref=e977]: Untested
+              - cell "—" [ref=e978]
+            - row "C2371801 Verify auto bid does not bypass the last-bidder re-bid restriction High Untested Untested —" [ref=e979] [cursor=pointer]:
+              - cell "C2371801" [ref=e980]:
+                - link "C2371801" [ref=e981]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371801
+              - cell "Verify auto bid does not bypass the last-bidder re-bid restriction" [ref=e982]:
+                - generic [ref=e983]: Verify auto bid does not bypass the last-bidder re-bid restriction
+              - cell "High" [ref=e984]
+              - cell "Untested" [ref=e985]:
+                - generic [ref=e986]: Untested
+              - cell "Untested" [ref=e987]:
+                - generic [ref=e988]: Untested
+              - cell "—" [ref=e989]
+            - row "C2371802 Verify max bid limit per user per product including the -1 unlimited sentinel Medium Untested Untested —" [ref=e990] [cursor=pointer]:
+              - cell "C2371802" [ref=e991]:
+                - link "C2371802" [ref=e992]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371802
+              - cell "Verify max bid limit per user per product including the -1 unlimited sentinel" [ref=e993]:
+                - generic [ref=e994]: Verify max bid limit per user per product including the -1 unlimited sentinel
+              - cell "Medium" [ref=e995]
+              - cell "Untested" [ref=e996]:
+                - generic [ref=e997]: Untested
+              - cell "Untested" [ref=e998]:
+                - generic [ref=e999]: Untested
+              - cell "—" [ref=e1000]
+            - row "C2371803 Verify live viewer count and unique bidder count still render after the grid redesign Medium Untested Untested —" [ref=e1001] [cursor=pointer]:
+              - cell "C2371803" [ref=e1002]:
+                - link "C2371803" [ref=e1003]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371803
+              - cell "Verify live viewer count and unique bidder count still render after the grid redesign" [ref=e1004]:
+                - generic [ref=e1005]: Verify live viewer count and unique bidder count still render after the grid redesign
+              - cell "Medium" [ref=e1006]
+              - cell "Untested" [ref=e1007]:
+                - generic [ref=e1008]: Untested
+              - cell "Untested" [ref=e1009]:
+                - generic [ref=e1010]: Untested
+              - cell "—" [ref=e1011]
+            - row "C2371804 Verify the winner purchase window is stated as 6 hours across all surfaces High Untested Untested —" [ref=e1012] [cursor=pointer]:
+              - cell "C2371804" [ref=e1013]:
+                - link "C2371804" [ref=e1014]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371804
+              - cell "Verify the winner purchase window is stated as 6 hours across all surfaces" [ref=e1015]:
+                - generic [ref=e1016]: Verify the winner purchase window is stated as 6 hours across all surfaces
+              - cell "High" [ref=e1017]
+              - cell "Untested" [ref=e1018]:
+                - generic [ref=e1019]: Untested
+              - cell "Untested" [ref=e1020]:
+                - generic [ref=e1021]: Untested
+              - cell "—" [ref=e1022]
+            - row "C2371805 Verify BTM mini page state after minimising and reopening the iOS app Medium Untested Untested —" [ref=e1023] [cursor=pointer]:
+              - cell "C2371805" [ref=e1024]:
+                - link "C2371805" [ref=e1025]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371805
+              - cell "Verify BTM mini page state after minimising and reopening the iOS app" [ref=e1026]:
+                - generic [ref=e1027]: Verify BTM mini page state after minimising and reopening the iOS app
+              - cell "Medium" [ref=e1028]
+              - cell "Untested" [ref=e1029]:
+                - generic [ref=e1030]: Untested
+              - cell "Untested" [ref=e1031]:
+                - generic [ref=e1032]: Untested
+              - cell "—" [ref=e1033]
+            - row "C2371558 Verify BTM hero banner shows new Anniversary assets Medium Passed Passed —" [ref=e1034] [cursor=pointer]:
+              - cell "C2371558" [ref=e1035]:
+                - link "C2371558" [ref=e1036]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371558
+              - cell "Verify BTM hero banner shows new Anniversary assets" [ref=e1037]:
+                - generic [ref=e1038]: Verify BTM hero banner shows new Anniversary assets
+              - cell "Medium" [ref=e1039]
+              - cell "Passed" [ref=e1040]:
+                - generic [ref=e1041]: Passed
+              - cell "Passed" [ref=e1042]:
+                - generic [ref=e1043]: Passed
+              - cell "—" [ref=e1044]
+            - row "C2371559 Verify gameplay visuals use Anniversary theme Medium Passed Passed —" [ref=e1045] [cursor=pointer]:
+              - cell "C2371559" [ref=e1046]:
+                - link "C2371559" [ref=e1047]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371559
+              - cell "Verify gameplay visuals use Anniversary theme" [ref=e1048]:
+                - generic [ref=e1049]: Verify gameplay visuals use Anniversary theme
+              - cell "Medium" [ref=e1050]
+              - cell "Passed" [ref=e1051]:
+                - generic [ref=e1052]: Passed
+              - cell "Passed" [ref=e1053]:
+                - generic [ref=e1054]: Passed
+              - cell "—" [ref=e1055]
+            - row "C2371560 Verify Anniversary Lottie animations are applied Medium Passed Passed —" [ref=e1056] [cursor=pointer]:
+              - cell "C2371560" [ref=e1057]:
+                - link "C2371560" [ref=e1058]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371560
+              - cell "Verify Anniversary Lottie animations are applied" [ref=e1059]:
+                - generic [ref=e1060]: Verify Anniversary Lottie animations are applied
+              - cell "Medium" [ref=e1061]
+              - cell "Passed" [ref=e1062]:
+                - generic [ref=e1063]: Passed
+              - cell "Passed" [ref=e1064]:
+                - generic [ref=e1065]: Passed
+              - cell "—" [ref=e1066]
+            - row "C2371561 Verify banner dimensions, behavior, and CTA are unchanged after refresh High Passed Passed —" [ref=e1067] [cursor=pointer]:
+              - cell "C2371561" [ref=e1068]:
+                - link "C2371561" [ref=e1069]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371561
+              - cell "Verify banner dimensions, behavior, and CTA are unchanged after refresh" [ref=e1070]:
+                - generic [ref=e1071]: Verify banner dimensions, behavior, and CTA are unchanged after refresh
+              - cell "High" [ref=e1072]
+              - cell "Passed" [ref=e1073]:
+                - generic [ref=e1074]: Passed
+              - cell "Passed" [ref=e1075]:
+                - generic [ref=e1076]: Passed
+              - cell "—" [ref=e1077]
+            - row "C2371562 Verify animation triggers and timing are unchanged after refresh Medium Passed Passed —" [ref=e1078] [cursor=pointer]:
+              - cell "C2371562" [ref=e1079]:
+                - link "C2371562" [ref=e1080]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371562
+              - cell "Verify animation triggers and timing are unchanged after refresh" [ref=e1081]:
+                - generic [ref=e1082]: Verify animation triggers and timing are unchanged after refresh
+              - cell "Medium" [ref=e1083]
+              - cell "Passed" [ref=e1084]:
+                - generic [ref=e1085]: Passed
+              - cell "Passed" [ref=e1086]:
+                - generic [ref=e1087]: Passed
+              - cell "—" [ref=e1088]
+            - row "C2371563 Verify core gameplay mechanics and sounds are unchanged after branding refresh High Passed Passed —" [ref=e1089] [cursor=pointer]:
+              - cell "C2371563" [ref=e1090]:
+                - link "C2371563" [ref=e1091]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371563
+              - cell "Verify core gameplay mechanics and sounds are unchanged after branding refresh" [ref=e1092]:
+                - generic [ref=e1093]: Verify core gameplay mechanics and sounds are unchanged after branding refresh
+              - cell "High" [ref=e1094]
+              - cell "Passed" [ref=e1095]:
+                - generic [ref=e1096]: Passed
+              - cell "Passed" [ref=e1097]:
+                - generic [ref=e1098]: Passed
+              - cell "—" [ref=e1099]
+            - row "C2371564 Verify old crochet visual style is fully removed Medium Passed Passed —" [ref=e1100] [cursor=pointer]:
+              - cell "C2371564" [ref=e1101]:
+                - link "C2371564" [ref=e1102]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371564
+              - cell "Verify old crochet visual style is fully removed" [ref=e1103]:
+                - generic [ref=e1104]: Verify old crochet visual style is fully removed
+              - cell "Medium" [ref=e1105]
+              - cell "Passed" [ref=e1106]:
+                - generic [ref=e1107]: Passed
+              - cell "Passed" [ref=e1108]:
+                - generic [ref=e1109]: Passed
+              - cell "—" [ref=e1110]
+            - row "C2371565 Verify Active Products displays as a 2-column vertical grid Critical Passed Passed —" [ref=e1111] [cursor=pointer]:
+              - cell "C2371565" [ref=e1112]:
+                - link "C2371565" [ref=e1113]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371565
+              - cell "Verify Active Products displays as a 2-column vertical grid" [ref=e1114]:
+                - generic [ref=e1115]: Verify Active Products displays as a 2-column vertical grid
+              - cell "Critical" [ref=e1116]
+              - cell "Passed" [ref=e1117]:
+                - generic [ref=e1118]: Passed
+              - cell "Passed" [ref=e1119]:
+                - generic [ref=e1120]: Passed
+              - cell "—" [ref=e1121]
+            - row "C2371566 Verify horizontal carousels are replaced by the grid Medium Passed Passed —" [ref=e1122] [cursor=pointer]:
+              - cell "C2371566" [ref=e1123]:
+                - link "C2371566" [ref=e1124]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371566
+              - cell "Verify horizontal carousels are replaced by the grid" [ref=e1125]:
+                - generic [ref=e1126]: Verify horizontal carousels are replaced by the grid
+              - cell "Medium" [ref=e1127]
+              - cell "Passed" [ref=e1128]:
+                - generic [ref=e1129]: Passed
+              - cell "Passed" [ref=e1130]:
+                - generic [ref=e1131]: Passed
+              - cell "—" [ref=e1132]
+            - row "C2371567 Verify Treasures You're After section is removed Medium Passed Passed —" [ref=e1133] [cursor=pointer]:
+              - cell "C2371567" [ref=e1134]:
+                - link "C2371567" [ref=e1135]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371567
+              - cell "Verify Treasures You're After section is removed" [ref=e1136]:
+                - generic [ref=e1137]: Verify Treasures You're After section is removed
+              - cell "Medium" [ref=e1138]
+              - cell "Passed" [ref=e1139]:
+                - generic [ref=e1140]: Passed
+              - cell "Passed" [ref=e1141]:
+                - generic [ref=e1142]: Passed
+              - cell "—" [ref=e1143]
+            - row "C2371568 Verify vertical/category titles are preserved where configured Medium Passed Passed —" [ref=e1144] [cursor=pointer]:
+              - cell "C2371568" [ref=e1145]:
+                - link "C2371568" [ref=e1146]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371568
+              - cell "Verify vertical/category titles are preserved where configured" [ref=e1147]:
+                - generic [ref=e1148]: Verify vertical/category titles are preserved where configured
+              - cell "Medium" [ref=e1149]
+              - cell "Passed" [ref=e1150]:
+                - generic [ref=e1151]: Passed
+              - cell "Passed" [ref=e1152]:
+                - generic [ref=e1153]: Passed
+              - cell "—" [ref=e1154]
+            - row "C2371569 Verify product subtext supports up to 2 lines Medium Untested Untested —" [ref=e1155] [cursor=pointer]:
+              - cell "C2371569" [ref=e1156]:
+                - link "C2371569" [ref=e1157]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371569
+              - cell "Verify product subtext supports up to 2 lines" [ref=e1158]:
+                - generic [ref=e1159]: Verify product subtext supports up to 2 lines
+              - cell "Medium" [ref=e1160]
+              - cell "Untested" [ref=e1161]:
+                - generic [ref=e1162]: Untested
+              - cell "Untested" [ref=e1163]:
+                - generic [ref=e1164]: Untested
+              - cell "—" [ref=e1165]
+            - row "C2371570 Verify product subtext exceeding 2 lines is handled Medium Untested Untested —" [ref=e1166] [cursor=pointer]:
+              - cell "C2371570" [ref=e1167]:
+                - link "C2371570" [ref=e1168]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371570
+              - cell "Verify product subtext exceeding 2 lines is handled" [ref=e1169]:
+                - generic [ref=e1170]: Verify product subtext exceeding 2 lines is handled
+              - cell "Medium" [ref=e1171]
+              - cell "Untested" [ref=e1172]:
+                - generic [ref=e1173]: Untested
+              - cell "Untested" [ref=e1174]:
+                - generic [ref=e1175]: Untested
+              - cell "—" [ref=e1176]
+            - row "C2371571 Verify products are ordered by start-active date, newest first Medium Untested Untested —" [ref=e1177] [cursor=pointer]:
+              - cell "C2371571" [ref=e1178]:
+                - link "C2371571" [ref=e1179]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371571
+              - cell "Verify products are ordered by start-active date, newest first" [ref=e1180]:
+                - generic [ref=e1181]: Verify products are ordered by start-active date, newest first
+              - cell "Medium" [ref=e1182]
+              - cell "Untested" [ref=e1183]:
+                - generic [ref=e1184]: Untested
+              - cell "Untested" [ref=e1185]:
+                - generic [ref=e1186]: Untested
+              - cell "—" [ref=e1187]
+            - row "C2371572 Verify inventory purchase opens as a tabbed bottom sheet Critical Passed Passed —" [ref=e1188] [cursor=pointer]:
+              - cell "C2371572" [ref=e1189]:
+                - link "C2371572" [ref=e1190]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371572
+              - cell "Verify inventory purchase opens as a tabbed bottom sheet" [ref=e1191]:
+                - generic [ref=e1192]: Verify inventory purchase opens as a tabbed bottom sheet
+              - cell "Critical" [ref=e1193]
+              - cell "Passed" [ref=e1194]:
+                - generic [ref=e1195]: Passed
+              - cell "Passed" [ref=e1196]:
+                - generic [ref=e1197]: Passed
+              - cell "—" [ref=e1198]
+            - row "C2371573 Verify Trade Points tab exchanges points at the current 500-points-per-token rate (regression from GRA-724 / GRA-2843) Critical Passed Passed —" [ref=e1199] [cursor=pointer]:
+              - cell "C2371573" [ref=e1200]:
+                - link "C2371573" [ref=e1201]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371573
+              - cell "Verify Trade Points tab exchanges points at the current 500-points-per-token rate (regression from GRA-724 / GRA-2843)" [ref=e1202]:
+                - generic [ref=e1203]: Verify Trade Points tab exchanges points at the current 500-points-per-token rate (regression from GRA-724 / GRA-2843)
+              - cell "Critical" [ref=e1204]
+              - cell "Passed" [ref=e1205]:
+                - generic [ref=e1206]: Passed
+              - cell "Passed" [ref=e1207]:
+                - generic [ref=e1208]: Passed
+              - cell "—" [ref=e1209]
+            - row "C2371574 Verify Buy Voucher tab renders using the Image with Chips (3:4) module Critical Passed Passed —" [ref=e1210] [cursor=pointer]:
+              - cell "C2371574" [ref=e1211]:
+                - link "C2371574" [ref=e1212]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371574
+              - cell "Verify Buy Voucher tab renders using the Image with Chips (3:4) module" [ref=e1213]:
+                - generic [ref=e1214]: Verify Buy Voucher tab renders using the Image with Chips (3:4) module
+              - cell "Critical" [ref=e1215]
+              - cell "Passed" [ref=e1216]:
+                - generic [ref=e1217]: Passed
+              - cell "Passed" [ref=e1218]:
+                - generic [ref=e1219]: Passed
+              - cell "—" [ref=e1220]
+            - row "C2371575 Verify Buy Voucher content is fully configurable Medium Passed Passed —" [ref=e1221] [cursor=pointer]:
+              - cell "C2371575" [ref=e1222]:
+                - link "C2371575" [ref=e1223]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371575
+              - cell "Verify Buy Voucher content is fully configurable" [ref=e1224]:
+                - generic [ref=e1225]: Verify Buy Voucher content is fully configurable
+              - cell "Medium" [ref=e1226]
+              - cell "Passed" [ref=e1227]:
+                - generic [ref=e1228]: Passed
+              - cell "Passed" [ref=e1229]:
+                - generic [ref=e1230]: Passed
+              - cell "—" [ref=e1231]
+            - row "C2371576 Verify Buy Voucher content is not hardcoded Medium Passed Passed —" [ref=e1232] [cursor=pointer]:
+              - cell "C2371576" [ref=e1233]:
+                - link "C2371576" [ref=e1234]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371576
+              - cell "Verify Buy Voucher content is not hardcoded" [ref=e1235]:
+                - generic [ref=e1236]: Verify Buy Voucher content is not hardcoded
+              - cell "Medium" [ref=e1237]
+              - cell "Passed" [ref=e1238]:
+                - generic [ref=e1239]: Passed
+              - cell "Passed" [ref=e1240]:
+                - generic [ref=e1241]: Passed
+              - cell "—" [ref=e1242]
+            - row "C2371577 Verify Cheapest promotional badge renders when configured Medium Passed Passed —" [ref=e1243] [cursor=pointer]:
+              - cell "C2371577" [ref=e1244]:
+                - link "C2371577" [ref=e1245]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371577
+              - cell "Verify Cheapest promotional badge renders when configured" [ref=e1246]:
+                - generic [ref=e1247]: Verify Cheapest promotional badge renders when configured
+              - cell "Medium" [ref=e1248]
+              - cell "Passed" [ref=e1249]:
+                - generic [ref=e1250]: Passed
+              - cell "Passed" [ref=e1251]:
+                - generic [ref=e1252]: Passed
+              - cell "—" [ref=e1253]
+            - row "C2371578 Verify Best Value promotional badge renders when configured Medium Passed Passed —" [ref=e1254] [cursor=pointer]:
+              - cell "C2371578" [ref=e1255]:
+                - link "C2371578" [ref=e1256]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371578
+              - cell "Verify Best Value promotional badge renders when configured" [ref=e1257]:
+                - generic [ref=e1258]: Verify Best Value promotional badge renders when configured
+              - cell "Medium" [ref=e1259]
+              - cell "Passed" [ref=e1260]:
+                - generic [ref=e1261]: Passed
+              - cell "Passed" [ref=e1262]:
+                - generic [ref=e1263]: Passed
+              - cell "—" [ref=e1264]
+            - row "C2371579 Verify More Affordable promotional badge renders when configured Medium Passed Passed —" [ref=e1265] [cursor=pointer]:
+              - cell "C2371579" [ref=e1266]:
+                - link "C2371579" [ref=e1267]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371579
+              - cell "Verify More Affordable promotional badge renders when configured" [ref=e1268]:
+                - generic [ref=e1269]: Verify More Affordable promotional badge renders when configured
+              - cell "Medium" [ref=e1270]
+              - cell "Passed" [ref=e1271]:
+                - generic [ref=e1272]: Passed
+              - cell "Passed" [ref=e1273]:
+                - generic [ref=e1274]: Passed
+              - cell "—" [ref=e1275]
+            - row "C2371580 Verify voucher badge is absent when not configured Medium Passed Passed —" [ref=e1276] [cursor=pointer]:
+              - cell "C2371580" [ref=e1277]:
+                - link "C2371580" [ref=e1278]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371580
+              - cell "Verify voucher badge is absent when not configured" [ref=e1279]:
+                - generic [ref=e1280]: Verify voucher badge is absent when not configured
+              - cell "Medium" [ref=e1281]
+              - cell "Passed" [ref=e1282]:
+                - generic [ref=e1283]: Passed
+              - cell "Passed" [ref=e1284]:
+                - generic [ref=e1285]: Passed
+              - cell "—" [ref=e1286]
+            - row "C2371581 Verify default tab is Trade Points when points are below 2,000 Medium Passed Passed —" [ref=e1287] [cursor=pointer]:
+              - cell "C2371581" [ref=e1288]:
+                - link "C2371581" [ref=e1289]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371581
+              - cell "Verify default tab is Trade Points when points are below 2,000" [ref=e1290]:
+                - generic [ref=e1291]: Verify default tab is Trade Points when points are below 2,000
+              - cell "Medium" [ref=e1292]
+              - cell "Passed" [ref=e1293]:
+                - generic [ref=e1294]: Passed
+              - cell "Passed" [ref=e1295]:
+                - generic [ref=e1296]: Passed
+              - cell "—" [ref=e1297]
+            - row "C2371582 Verify default tab is Buy Voucher when points are 2,000 or above Medium Passed Passed —" [ref=e1298] [cursor=pointer]:
+              - cell "C2371582" [ref=e1299]:
+                - link "C2371582" [ref=e1300]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371582
+              - cell "Verify default tab is Buy Voucher when points are 2,000 or above" [ref=e1301]:
+                - generic [ref=e1302]: Verify default tab is Buy Voucher when points are 2,000 or above
+              - cell "Medium" [ref=e1303]
+              - cell "Passed" [ref=e1304]:
+                - generic [ref=e1305]: Passed
+              - cell "Passed" [ref=e1306]:
+                - generic [ref=e1307]: Passed
+              - cell "—" [ref=e1308]
+            - row "C2371583 Verify default tab at the exact 2,000-point boundary Medium Passed Passed —" [ref=e1309] [cursor=pointer]:
+              - cell "C2371583" [ref=e1310]:
+                - link "C2371583" [ref=e1311]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371583
+              - cell "Verify default tab at the exact 2,000-point boundary" [ref=e1312]:
+                - generic [ref=e1313]: Verify default tab at the exact 2,000-point boundary
+              - cell "Medium" [ref=e1314]
+              - cell "Passed" [ref=e1315]:
+                - generic [ref=e1316]: Passed
+              - cell "Passed" [ref=e1317]:
+                - generic [ref=e1318]: Passed
+              - cell "—" [ref=e1319]
+            - row "C2371584 Verify Buy Voucher CTA deep link navigation Critical Passed Passed —" [ref=e1320] [cursor=pointer]:
+              - cell "C2371584" [ref=e1321]:
+                - link "C2371584" [ref=e1322]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371584
+              - cell "Verify Buy Voucher CTA deep link navigation" [ref=e1323]:
+                - generic [ref=e1324]: Verify Buy Voucher CTA deep link navigation
+              - cell "Critical" [ref=e1325]
+              - cell "Passed" [ref=e1326]:
+                - generic [ref=e1327]: Passed
+              - cell "Passed" [ref=e1328]:
+                - generic [ref=e1329]: Passed
+              - cell "—" [ref=e1330]
+            - row "C2371585 Verify inventory bottom sheet can be dismissed without side effects Medium Passed Passed —" [ref=e1331] [cursor=pointer]:
+              - cell "C2371585" [ref=e1332]:
+                - link "C2371585" [ref=e1333]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371585
+              - cell "Verify inventory bottom sheet can be dismissed without side effects" [ref=e1334]:
+                - generic [ref=e1335]: Verify inventory bottom sheet can be dismissed without side effects
+              - cell "Medium" [ref=e1336]
+              - cell "Passed" [ref=e1337]:
+                - generic [ref=e1338]: Passed
+              - cell "Passed" [ref=e1339]:
+                - generic [ref=e1340]: Passed
+              - cell "—" [ref=e1341]
+            - row "C2371586 Verify Gameplay token CTA copy is Get More Tokens in English Medium Passed Passed —" [ref=e1342] [cursor=pointer]:
+              - cell "C2371586" [ref=e1343]:
+                - link "C2371586" [ref=e1344]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371586
+              - cell "Verify Gameplay token CTA copy is Get More Tokens in English" [ref=e1345]:
+                - generic [ref=e1346]: Verify Gameplay token CTA copy is Get More Tokens in English
+              - cell "Medium" [ref=e1347]
+              - cell "Passed" [ref=e1348]:
+                - generic [ref=e1349]: Passed
+              - cell "Passed" [ref=e1350]:
+                - generic [ref=e1351]: Passed
+              - cell "—" [ref=e1352]
+            - row "C2371587 Verify Gameplay token CTA copy is Tambah Token in Indonesian Medium Passed Passed —" [ref=e1353] [cursor=pointer]:
+              - cell "C2371587" [ref=e1354]:
+                - link "C2371587" [ref=e1355]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371587
+              - cell "Verify Gameplay token CTA copy is Tambah Token in Indonesian" [ref=e1356]:
+                - generic [ref=e1357]: Verify Gameplay token CTA copy is Tambah Token in Indonesian
+              - cell "Medium" [ref=e1358]
+              - cell "Passed" [ref=e1359]:
+                - generic [ref=e1360]: Passed
+              - cell "Passed" [ref=e1361]:
+                - generic [ref=e1362]: Passed
+              - cell "—" [ref=e1363]
+            - row "C2371588 Verify token purchase CTA keeps the same position Medium Passed Passed —" [ref=e1364] [cursor=pointer]:
+              - cell "C2371588" [ref=e1365]:
+                - link "C2371588" [ref=e1366]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371588
+              - cell "Verify token purchase CTA keeps the same position" [ref=e1367]:
+                - generic [ref=e1368]: Verify token purchase CTA keeps the same position
+              - cell "Medium" [ref=e1369]
+              - cell "Passed" [ref=e1370]:
+                - generic [ref=e1371]: Passed
+              - cell "Passed" [ref=e1372]:
+                - generic [ref=e1373]: Passed
+              - cell "—" [ref=e1374]
+            - row "C2371589 Verify tapping token purchase CTA opens the token-purchase section High Passed Passed —" [ref=e1375] [cursor=pointer]:
+              - cell "C2371589" [ref=e1376]:
+                - link "C2371589" [ref=e1377]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371589
+              - cell "Verify tapping token purchase CTA opens the token-purchase section" [ref=e1378]:
+                - generic [ref=e1379]: Verify tapping token purchase CTA opens the token-purchase section
+              - cell "High" [ref=e1380]
+              - cell "Passed" [ref=e1381]:
+                - generic [ref=e1382]: Passed
+              - cell "Passed" [ref=e1383]:
+                - generic [ref=e1384]: Passed
+              - cell "—" [ref=e1385]
+            - row "C2371590 Verify onboarding banner is shown to first-time BTM users High Passed Passed —" [ref=e1386] [cursor=pointer]:
+              - cell "C2371590" [ref=e1387]:
+                - link "C2371590" [ref=e1388]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371590
+              - cell "Verify onboarding banner is shown to first-time BTM users" [ref=e1389]:
+                - generic [ref=e1390]: Verify onboarding banner is shown to first-time BTM users
+              - cell "High" [ref=e1391]
+              - cell "Passed" [ref=e1392]:
+                - generic [ref=e1393]: Passed
+              - cell "Passed" [ref=e1394]:
+                - generic [ref=e1395]: Passed
+              - cell "—" [ref=e1396]
+            - row "C2371591 Verify onboarding banner is not shown to returning users Medium Passed Passed —" [ref=e1397] [cursor=pointer]:
+              - cell "C2371591" [ref=e1398]:
+                - link "C2371591" [ref=e1399]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371591
+              - cell "Verify onboarding banner is not shown to returning users" [ref=e1400]:
+                - generic [ref=e1401]: Verify onboarding banner is not shown to returning users
+              - cell "Medium" [ref=e1402]
+              - cell "Passed" [ref=e1403]:
+                - generic [ref=e1404]: Passed
+              - cell "Passed" [ref=e1405]:
+                - generic [ref=e1406]: Passed
+              - cell "—" [ref=e1407]
+            - row "C2371592 Verify onboarding does not auto-appear after completion or dismissal Medium Passed Passed —" [ref=e1408] [cursor=pointer]:
+              - cell "C2371592" [ref=e1409]:
+                - link "C2371592" [ref=e1410]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371592
+              - cell "Verify onboarding does not auto-appear after completion or dismissal" [ref=e1411]:
+                - generic [ref=e1412]: Verify onboarding does not auto-appear after completion or dismissal
+              - cell "Medium" [ref=e1413]
+              - cell "Passed" [ref=e1414]:
+                - generic [ref=e1415]: Passed
+              - cell "Passed" [ref=e1416]:
+                - generic [ref=e1417]: Passed
+              - cell "—" [ref=e1418]
+            - row "C2371593 Verify onboarding banner redirects to the configured Info Page URL Medium Passed Passed —" [ref=e1419] [cursor=pointer]:
+              - cell "C2371593" [ref=e1420]:
+                - link "C2371593" [ref=e1421]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371593
+              - cell "Verify onboarding banner redirects to the configured Info Page URL" [ref=e1422]:
+                - generic [ref=e1423]: Verify onboarding banner redirects to the configured Info Page URL
+              - cell "Medium" [ref=e1424]
+              - cell "Passed" [ref=e1425]:
+                - generic [ref=e1426]: Passed
+              - cell "Passed" [ref=e1427]:
+                - generic [ref=e1428]: Passed
+              - cell "—" [ref=e1429]
+            - row "C2371594 Verify Info Page URL is configurable Medium Passed Passed —" [ref=e1430] [cursor=pointer]:
+              - cell "C2371594" [ref=e1431]:
+                - link "C2371594" [ref=e1432]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371594
+              - cell "Verify Info Page URL is configurable" [ref=e1433]:
+                - generic [ref=e1434]: Verify Info Page URL is configurable
+              - cell "Medium" [ref=e1435]
+              - cell "Passed" [ref=e1436]:
+                - generic [ref=e1437]: Passed
+              - cell "Passed" [ref=e1438]:
+                - generic [ref=e1439]: Passed
+              - cell "—" [ref=e1440]
+            - row "C2371595 Verify shareable onboarding/Info Page redirect link works Medium Passed Passed —" [ref=e1441] [cursor=pointer]:
+              - cell "C2371595" [ref=e1442]:
+                - link "C2371595" [ref=e1443]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371595
+              - cell "Verify shareable onboarding/Info Page redirect link works" [ref=e1444]:
+                - generic [ref=e1445]: Verify shareable onboarding/Info Page redirect link works
+              - cell "Medium" [ref=e1446]
+              - cell "Passed" [ref=e1447]:
+                - generic [ref=e1448]: Passed
+              - cell "Passed" [ref=e1449]:
+                - generic [ref=e1450]: Passed
+              - cell "—" [ref=e1451]
+            - row "C2371596 Verify onboarding content explains BTM gameplay basics Medium Passed Passed —" [ref=e1452] [cursor=pointer]:
+              - cell "C2371596" [ref=e1453]:
+                - link "C2371596" [ref=e1454]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371596
+              - cell "Verify onboarding content explains BTM gameplay basics" [ref=e1455]:
+                - generic [ref=e1456]: Verify onboarding content explains BTM gameplay basics
+              - cell "Medium" [ref=e1457]
+              - cell "Passed" [ref=e1458]:
+                - generic [ref=e1459]: Passed
+              - cell "Passed" [ref=e1460]:
+                - generic [ref=e1461]: Passed
+              - cell "—" [ref=e1462]
+            - row "C2371597 Verify first-time-user Gameplay section introduces the Prize Holder mechanic Medium Passed Passed —" [ref=e1463] [cursor=pointer]:
+              - cell "C2371597" [ref=e1464]:
+                - link "C2371597" [ref=e1465]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371597
+              - cell "Verify first-time-user Gameplay section introduces the Prize Holder mechanic" [ref=e1466]:
+                - generic [ref=e1467]: Verify first-time-user Gameplay section introduces the Prize Holder mechanic
+              - cell "Medium" [ref=e1468]
+              - cell "Passed" [ref=e1469]:
+                - generic [ref=e1470]: Passed
+              - cell "Passed" [ref=e1471]:
+                - generic [ref=e1472]: Passed
+              - cell "—" [ref=e1473]
+            - row "C2371598 Verify Prize Holder shows the current prize holder High Passed Passed —" [ref=e1474] [cursor=pointer]:
+              - cell "C2371598" [ref=e1475]:
+                - link "C2371598" [ref=e1476]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371598
+              - cell "Verify Prize Holder shows the current prize holder" [ref=e1477]:
+                - generic [ref=e1478]: Verify Prize Holder shows the current prize holder
+              - cell "High" [ref=e1479]
+              - cell "Passed" [ref=e1480]:
+                - generic [ref=e1481]: Passed
+              - cell "Passed" [ref=e1482]:
+                - generic [ref=e1483]: Passed
+              - cell "—" [ref=e1484]
+            - row "C2371599 Verify updated Steal Prize interaction Critical Passed Passed —" [ref=e1485] [cursor=pointer]:
+              - cell "C2371599" [ref=e1486]:
+                - link "C2371599" [ref=e1487]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371599
+              - cell "Verify updated Steal Prize interaction" [ref=e1488]:
+                - generic [ref=e1489]: Verify updated Steal Prize interaction
+              - cell "Critical" [ref=e1490]
+              - cell "Passed" [ref=e1491]:
+                - generic [ref=e1492]: Passed
+              - cell "Passed" [ref=e1493]:
+                - generic [ref=e1494]: Passed
+              - cell "—" [ref=e1495]
+            - row "C2371600 Verify new wide fade transition animation plays Medium Passed Passed —" [ref=e1496] [cursor=pointer]:
+              - cell "C2371600" [ref=e1497]:
+                - link "C2371600" [ref=e1498]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371600
+              - cell "Verify new wide fade transition animation plays" [ref=e1499]:
+                - generic [ref=e1500]: Verify new wide fade transition animation plays
+              - cell "Medium" [ref=e1501]
+              - cell "Passed" [ref=e1502]:
+                - generic [ref=e1503]: Passed
+              - cell "Passed" [ref=e1504]:
+                - generic [ref=e1505]: Passed
+              - cell "—" [ref=e1506]
+            - row "C2371601 Verify existing gameplay sounds are unchanged after the refresh (regression from GRA-3099 / GRA-2863) Medium Passed Passed —" [ref=e1507] [cursor=pointer]:
+              - cell "C2371601" [ref=e1508]:
+                - link "C2371601" [ref=e1509]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371601
+              - cell "Verify existing gameplay sounds are unchanged after the refresh (regression from GRA-3099 / GRA-2863)" [ref=e1510]:
+                - generic [ref=e1511]: Verify existing gameplay sounds are unchanged after the refresh (regression from GRA-3099 / GRA-2863)
+              - cell "Medium" [ref=e1512]
+              - cell "Passed" [ref=e1513]:
+                - generic [ref=e1514]: Passed
+              - cell "Passed" [ref=e1515]:
+                - generic [ref=e1516]: Passed
+              - cell "—" [ref=e1517]
+            - row "C2371602 Verify new gameplay Lottie assets load correctly Medium Passed Passed —" [ref=e1518] [cursor=pointer]:
+              - cell "C2371602" [ref=e1519]:
+                - link "C2371602" [ref=e1520]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371602
+              - cell "Verify new gameplay Lottie assets load correctly" [ref=e1521]:
+                - generic [ref=e1522]: Verify new gameplay Lottie assets load correctly
+              - cell "Medium" [ref=e1523]
+              - cell "Passed" [ref=e1524]:
+                - generic [ref=e1525]: Passed
+              - cell "Passed" [ref=e1526]:
+                - generic [ref=e1527]: Passed
+              - cell "—" [ref=e1528]
+            - row "C2371603 Verify Image with Chips (3:4) module is reused across BTM surfaces Medium Passed Passed —" [ref=e1529] [cursor=pointer]:
+              - cell "C2371603" [ref=e1530]:
+                - link "C2371603" [ref=e1531]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371603
+              - cell "Verify Image with Chips (3:4) module is reused across BTM surfaces" [ref=e1532]:
+                - generic [ref=e1533]: Verify Image with Chips (3:4) module is reused across BTM surfaces
+              - cell "Medium" [ref=e1534]
+              - cell "Passed" [ref=e1535]:
+                - generic [ref=e1536]: Passed
+              - cell "Passed" [ref=e1537]:
+                - generic [ref=e1538]: Passed
+              - cell "—" [ref=e1539]
+            - row "C2371604 Verify token injection by whitelisted Product ID Critical Passed Passed —" [ref=e1540] [cursor=pointer]:
+              - cell "C2371604" [ref=e1541]:
+                - link "C2371604" [ref=e1542]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371604
+              - cell "Verify token injection by whitelisted Product ID" [ref=e1543]:
+                - generic [ref=e1544]: Verify token injection by whitelisted Product ID
+              - cell "Critical" [ref=e1545]
+              - cell "Passed" [ref=e1546]:
+                - generic [ref=e1547]: Passed
+              - cell "Passed" [ref=e1548]:
+                - generic [ref=e1549]: Passed
+              - cell "—" [ref=e1550]
+            - row "C2371605 Verify Product-ID config takes precedence over vertical config Critical Passed Passed —" [ref=e1551] [cursor=pointer]:
+              - cell "C2371605" [ref=e1552]:
+                - link "C2371605" [ref=e1553]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371605
+              - cell "Verify Product-ID config takes precedence over vertical config" [ref=e1554]:
+                - generic [ref=e1555]: Verify Product-ID config takes precedence over vertical config
+              - cell "Critical" [ref=e1556]
+              - cell "Passed" [ref=e1557]:
+                - generic [ref=e1558]: Passed
+              - cell "Passed" [ref=e1559]:
+                - generic [ref=e1560]: Passed
+              - cell "—" [ref=e1561]
+            - row "C2371606 Verify fallback to vertical config when Product ID has no config High Passed Passed —" [ref=e1562] [cursor=pointer]:
+              - cell "C2371606" [ref=e1563]:
+                - link "C2371606" [ref=e1564]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371606
+              - cell "Verify fallback to vertical config when Product ID has no config" [ref=e1565]:
+                - generic [ref=e1566]: Verify fallback to vertical config when Product ID has no config
+              - cell "High" [ref=e1567]
+              - cell "Passed" [ref=e1568]:
+                - generic [ref=e1569]: Passed
+              - cell "Passed" [ref=e1570]:
+                - generic [ref=e1571]: Passed
+              - cell "—" [ref=e1572]
+            - row "C2371607 Verify IDR 9,900 package injects 13 tokens Medium Passed Passed —" [ref=e1573] [cursor=pointer]:
+              - cell "C2371607" [ref=e1574]:
+                - link "C2371607" [ref=e1575]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371607
+              - cell "Verify IDR 9,900 package injects 13 tokens" [ref=e1576]:
+                - generic [ref=e1577]: Verify IDR 9,900 package injects 13 tokens
+              - cell "Medium" [ref=e1578]
+              - cell "Passed" [ref=e1579]:
+                - generic [ref=e1580]: Passed
+              - cell "Passed" [ref=e1581]:
+                - generic [ref=e1582]: Passed
+              - cell "—" [ref=e1583]
+            - row "C2371608 Verify IDR 19,900 package injects 30 tokens Medium Passed Passed —" [ref=e1584] [cursor=pointer]:
+              - cell "C2371608" [ref=e1585]:
+                - link "C2371608" [ref=e1586]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371608
+              - cell "Verify IDR 19,900 package injects 30 tokens" [ref=e1587]:
+                - generic [ref=e1588]: Verify IDR 19,900 package injects 30 tokens
+              - cell "Medium" [ref=e1589]
+              - cell "Passed" [ref=e1590]:
+                - generic [ref=e1591]: Passed
+              - cell "Passed" [ref=e1592]:
+                - generic [ref=e1593]: Passed
+              - cell "—" [ref=e1594]
+            - row "C2371609 Verify IDR 49,900 package injects 70 tokens Medium Passed Passed —" [ref=e1595] [cursor=pointer]:
+              - cell "C2371609" [ref=e1596]:
+                - link "C2371609" [ref=e1597]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371609
+              - cell "Verify IDR 49,900 package injects 70 tokens" [ref=e1598]:
+                - generic [ref=e1599]: Verify IDR 49,900 package injects 70 tokens
+              - cell "Medium" [ref=e1600]
+              - cell "Passed" [ref=e1601]:
+                - generic [ref=e1602]: Passed
+              - cell "Passed" [ref=e1603]:
+                - generic [ref=e1604]: Passed
+              - cell "—" [ref=e1605]
+            - row "C2371610 Verify existing vertical-only injection still works unchanged Critical Passed Passed —" [ref=e1606] [cursor=pointer]:
+              - cell "C2371610" [ref=e1607]:
+                - link "C2371610" [ref=e1608]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371610
+              - cell "Verify existing vertical-only injection still works unchanged" [ref=e1609]:
+                - generic [ref=e1610]: Verify existing vertical-only injection still works unchanged
+              - cell "Critical" [ref=e1611]
+              - cell "Passed" [ref=e1612]:
+                - generic [ref=e1613]: Passed
+              - cell "Passed" [ref=e1614]:
+                - generic [ref=e1615]: Passed
+              - cell "—" [ref=e1616]
+            - row "C2371616 Verify countdown resets after a successful auto bid Medium Untested Untested —" [ref=e1617] [cursor=pointer]:
+              - cell "C2371616" [ref=e1618]:
+                - link "C2371616" [ref=e1619]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371616
+              - cell "Verify countdown resets after a successful auto bid" [ref=e1620]:
+                - generic [ref=e1621]: Verify countdown resets after a successful auto bid
+              - cell "Medium" [ref=e1622]
+              - cell "Untested" [ref=e1623]:
+                - generic [ref=e1624]: Untested
+              - cell "Untested" [ref=e1625]:
+                - generic [ref=e1626]: Untested
+              - cell "—" [ref=e1627]
+            - row "C2371621 Verify FE trackers fire for the new BTM components High Untested Untested —" [ref=e1628] [cursor=pointer]:
+              - cell "C2371621" [ref=e1629]:
+                - link "C2371621" [ref=e1630]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371621
+              - cell "Verify FE trackers fire for the new BTM components" [ref=e1631]:
+                - generic [ref=e1632]: Verify FE trackers fire for the new BTM components
+              - cell "High" [ref=e1633]
+              - cell "Untested" [ref=e1634]:
+                - generic [ref=e1635]: Untested
+              - cell "Untested" [ref=e1636]:
+                - generic [ref=e1637]: Untested
+              - cell "—" [ref=e1638]
+            - row "C2371622 Verify end-to-end first-time user journey from onboarding to winning Critical Passed Passed —" [ref=e1639] [cursor=pointer]:
+              - cell "C2371622" [ref=e1640]:
+                - link "C2371622" [ref=e1641]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371622
+              - cell "Verify end-to-end first-time user journey from onboarding to winning" [ref=e1642]:
+                - generic [ref=e1643]: Verify end-to-end first-time user journey from onboarding to winning
+              - cell "Critical" [ref=e1644]
+              - cell "Passed" [ref=e1645]:
+                - generic [ref=e1646]: Passed
+              - cell "Passed" [ref=e1647]:
+                - generic [ref=e1648]: Passed
+              - cell "—" [ref=e1649]
+            - row "C2371623 Verify end-to-end buy voucher, token injection, and gameplay Critical Untested Untested —" [ref=e1650] [cursor=pointer]:
+              - cell "C2371623" [ref=e1651]:
+                - link "C2371623" [ref=e1652]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371623
+              - cell "Verify end-to-end buy voucher, token injection, and gameplay" [ref=e1653]:
+                - generic [ref=e1654]: Verify end-to-end buy voucher, token injection, and gameplay
+              - cell "Critical" [ref=e1655]
+              - cell "Untested" [ref=e1656]:
+                - generic [ref=e1657]: Untested
+              - cell "Untested" [ref=e1658]:
+                - generic [ref=e1659]: Untested
+              - cell "—" [ref=e1660]
+            - row "C2371624 Verify end-to-end trade points to snatch a product (regression from GRA-724) High Untested Untested —" [ref=e1661] [cursor=pointer]:
+              - cell "C2371624" [ref=e1662]:
+                - link "C2371624" [ref=e1663]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371624
+              - cell "Verify end-to-end trade points to snatch a product (regression from GRA-724)" [ref=e1664]:
+                - generic [ref=e1665]: Verify end-to-end trade points to snatch a product (regression from GRA-724)
+              - cell "High" [ref=e1666]
+              - cell "Untested" [ref=e1667]:
+                - generic [ref=e1668]: Untested
+              - cell "Untested" [ref=e1669]:
+                - generic [ref=e1670]: Untested
+              - cell "—" [ref=e1671]
+            - row "C2371625 Verify Steal/Bid CTA is disabled while the current user is the Prize Holder High Untested Untested —" [ref=e1672] [cursor=pointer]:
+              - cell "C2371625" [ref=e1673]:
+                - link "C2371625" [ref=e1674]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371625
+              - cell "Verify Steal/Bid CTA is disabled while the current user is the Prize Holder" [ref=e1675]:
+                - generic [ref=e1676]: Verify Steal/Bid CTA is disabled while the current user is the Prize Holder
+              - cell "High" [ref=e1677]
+              - cell "Untested" [ref=e1678]:
+                - generic [ref=e1679]: Untested
+              - cell "Untested" [ref=e1680]:
+                - generic [ref=e1681]: Untested
+              - cell "—" [ref=e1682]
+            - row "C2371626 Verify no token is deducted when the Prize Holder attempts to bid again Critical Passed Passed —" [ref=e1683] [cursor=pointer]:
+              - cell "C2371626" [ref=e1684]:
+                - link "C2371626" [ref=e1685]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371626
+              - cell "Verify no token is deducted when the Prize Holder attempts to bid again" [ref=e1686]:
+                - generic [ref=e1687]: Verify no token is deducted when the Prize Holder attempts to bid again
+              - cell "Critical" [ref=e1688]
+              - cell "Passed" [ref=e1689]:
+                - generic [ref=e1690]: Passed
+              - cell "Passed" [ref=e1691]:
+                - generic [ref=e1692]: Passed
+              - cell "—" [ref=e1693]
+            - row "C2371627 Verify snackbar copy when the Prize Holder attempts to bid again Medium Untested Untested —" [ref=e1694] [cursor=pointer]:
+              - cell "C2371627" [ref=e1695]:
+                - link "C2371627" [ref=e1696]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371627
+              - cell "Verify snackbar copy when the Prize Holder attempts to bid again" [ref=e1697]:
+                - generic [ref=e1698]: Verify snackbar copy when the Prize Holder attempts to bid again
+              - cell "Medium" [ref=e1699]
+              - cell "Untested" [ref=e1700]:
+                - generic [ref=e1701]: Untested
+              - cell "Untested" [ref=e1702]:
+                - generic [ref=e1703]: Untested
+              - cell "—" [ref=e1704]
+            - row "C2371628 Verify Cara Menang entry point below the treasure chest survives the Anniversary refresh Medium Untested Untested —" [ref=e1705] [cursor=pointer]:
+              - cell "C2371628" [ref=e1706]:
+                - link "C2371628" [ref=e1707]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371628
+              - cell "Verify Cara Menang entry point below the treasure chest survives the Anniversary refresh" [ref=e1708]:
+                - generic [ref=e1709]: Verify Cara Menang entry point below the treasure chest survives the Anniversary refresh
+              - cell "Medium" [ref=e1710]
+              - cell "Untested" [ref=e1711]:
+                - generic [ref=e1712]: Untested
+              - cell "Untested" [ref=e1713]:
+                - generic [ref=e1714]: Untested
+              - cell "—" [ref=e1715]
+            - row "C2371629 Verify ownership countdown copy when the current user holds the treasure Medium Untested Untested —" [ref=e1716] [cursor=pointer]:
+              - cell "C2371629" [ref=e1717]:
+                - link "C2371629" [ref=e1718]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371629
+              - cell "Verify ownership countdown copy when the current user holds the treasure" [ref=e1719]:
+                - generic [ref=e1720]: Verify ownership countdown copy when the current user holds the treasure
+              - cell "Medium" [ref=e1721]
+              - cell "Untested" [ref=e1722]:
+                - generic [ref=e1723]: Untested
+              - cell "Untested" [ref=e1724]:
+                - generic [ref=e1725]: Untested
+              - cell "—" [ref=e1726]
+            - row "C2371630 Verify ownership countdown copy when another user holds the treasure Medium Untested Untested —" [ref=e1727] [cursor=pointer]:
+              - cell "C2371630" [ref=e1728]:
+                - link "C2371630" [ref=e1729]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371630
+              - cell "Verify ownership countdown copy when another user holds the treasure" [ref=e1730]:
+                - generic [ref=e1731]: Verify ownership countdown copy when another user holds the treasure
+              - cell "Medium" [ref=e1732]
+              - cell "Untested" [ref=e1733]:
+                - generic [ref=e1734]: Untested
+              - cell "Untested" [ref=e1735]:
+                - generic [ref=e1736]: Untested
+              - cell "—" [ref=e1737]
+            - row "C2371631 Verify Prize Holder name follows the baseline identity masking rules Critical Untested Untested —" [ref=e1738] [cursor=pointer]:
+              - cell "C2371631" [ref=e1739]:
+                - link "C2371631" [ref=e1740]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371631
+              - cell "Verify Prize Holder name follows the baseline identity masking rules" [ref=e1741]:
+                - generic [ref=e1742]: Verify Prize Holder name follows the baseline identity masking rules
+              - cell "Critical" [ref=e1743]
+              - cell "Untested" [ref=e1744]:
+                - generic [ref=e1745]: Untested
+              - cell "Untested" [ref=e1746]:
+                - generic [ref=e1747]: Untested
+              - cell "—" [ref=e1748]
+            - row "C2371632 Verify blacklisted user can enter the redesigned mini PDP without interruption Medium Untested Untested —" [ref=e1749] [cursor=pointer]:
+              - cell "C2371632" [ref=e1750]:
+                - link "C2371632" [ref=e1751]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371632
+              - cell "Verify blacklisted user can enter the redesigned mini PDP without interruption" [ref=e1752]:
+                - generic [ref=e1753]: Verify blacklisted user can enter the redesigned mini PDP without interruption
+              - cell "Medium" [ref=e1754]
+              - cell "Untested" [ref=e1755]:
+                - generic [ref=e1756]: Untested
+              - cell "Untested" [ref=e1757]:
+                - generic [ref=e1758]: Untested
+              - cell "—" [ref=e1759]
+            - row "C2371633 Verify blacklisted user sees a greyed-out CTA and the campaign snackbar on the redesigned gameplay page High Untested Untested —" [ref=e1760] [cursor=pointer]:
+              - cell "C2371633" [ref=e1761]:
+                - link "C2371633" [ref=e1762]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371633
+              - cell "Verify blacklisted user sees a greyed-out CTA and the campaign snackbar on the redesigned gameplay page" [ref=e1763]:
+                - generic [ref=e1764]: Verify blacklisted user sees a greyed-out CTA and the campaign snackbar on the redesigned gameplay page
+              - cell "High" [ref=e1765]
+              - cell "Untested" [ref=e1766]:
+                - generic [ref=e1767]: Untested
+              - cell "Untested" [ref=e1768]:
+                - generic [ref=e1769]: Untested
+              - cell "—" [ref=e1770]
+            - row "C2371634 Verify transaction-token popup reports tokens injected by a Buy Voucher GV pack purchase Medium Untested Untested —" [ref=e1771] [cursor=pointer]:
+              - cell "C2371634" [ref=e1772]:
+                - link "C2371634" [ref=e1773]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371634
+              - cell "Verify transaction-token popup reports tokens injected by a Buy Voucher GV pack purchase" [ref=e1774]:
+                - generic [ref=e1775]: Verify transaction-token popup reports tokens injected by a Buy Voucher GV pack purchase
+              - cell "Medium" [ref=e1776]
+              - cell "Untested" [ref=e1777]:
+                - generic [ref=e1778]: Untested
+              - cell "Untested" [ref=e1779]:
+                - generic [ref=e1780]: Untested
+              - cell "—" [ref=e1781]
+            - row "C2371635 Verify token popup copy for the GV-purchase plus daily token combination Medium Untested Untested —" [ref=e1782] [cursor=pointer]:
+              - cell "C2371635" [ref=e1783]:
+                - link "C2371635" [ref=e1784]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371635
+              - cell "Verify token popup copy for the GV-purchase plus daily token combination" [ref=e1785]:
+                - generic [ref=e1786]: Verify token popup copy for the GV-purchase plus daily token combination
+              - cell "Medium" [ref=e1787]
+              - cell "Untested" [ref=e1788]:
+                - generic [ref=e1789]: Untested
+              - cell "Untested" [ref=e1790]:
+                - generic [ref=e1791]: Untested
+              - cell "—" [ref=e1792]
+            - row "C2371636 Verify token popup copy for the GV-purchase plus daily plus share combination Medium Untested Untested —" [ref=e1793] [cursor=pointer]:
+              - cell "C2371636" [ref=e1794]:
+                - link "C2371636" [ref=e1795]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371636
+              - cell "Verify token popup copy for the GV-purchase plus daily plus share combination" [ref=e1796]:
+                - generic [ref=e1797]: Verify token popup copy for the GV-purchase plus daily plus share combination
+              - cell "Medium" [ref=e1798]
+              - cell "Untested" [ref=e1799]:
+                - generic [ref=e1800]: Untested
+              - cell "Untested" [ref=e1801]:
+                - generic [ref=e1802]: Untested
+              - cell "—" [ref=e1803]
+            - row "C2371637 Verify token popup reports only not-yet-seen tokens after a second GV purchase Medium Untested Untested —" [ref=e1804] [cursor=pointer]:
+              - cell "C2371637" [ref=e1805]:
+                - link "C2371637" [ref=e1806]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371637
+              - cell "Verify token popup reports only not-yet-seen tokens after a second GV purchase" [ref=e1807]:
+                - generic [ref=e1808]: Verify token popup reports only not-yet-seen tokens after a second GV purchase
+              - cell "Medium" [ref=e1809]
+              - cell "Untested" [ref=e1810]:
+                - generic [ref=e1811]: Untested
+              - cell "Untested" [ref=e1812]:
+                - generic [ref=e1813]: Untested
+              - cell "—" [ref=e1814]
+            - row "C2371638 Verify daily tokens are spent before GV-injected tokens Critical Passed Passed —" [ref=e1815] [cursor=pointer]:
+              - cell "C2371638" [ref=e1816]:
+                - link "C2371638" [ref=e1817]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371638
+              - cell "Verify daily tokens are spent before GV-injected tokens" [ref=e1818]:
+                - generic [ref=e1819]: Verify daily tokens are spent before GV-injected tokens
+              - cell "Critical" [ref=e1820]
+              - cell "Passed" [ref=e1821]:
+                - generic [ref=e1822]: Passed
+              - cell "Passed" [ref=e1823]:
+                - generic [ref=e1824]: Passed
+              - cell "—" [ref=e1825]
+            - row "C2371639 Verify GV-injected tokens survive the nightly daily-token expiry Critical Passed Passed —" [ref=e1826] [cursor=pointer]:
+              - cell "C2371639" [ref=e1827]:
+                - link "C2371639" [ref=e1828]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371639
+              - cell "Verify GV-injected tokens survive the nightly daily-token expiry" [ref=e1829]:
+                - generic [ref=e1830]: Verify GV-injected tokens survive the nightly daily-token expiry
+              - cell "Critical" [ref=e1831]
+              - cell "Passed" [ref=e1832]:
+                - generic [ref=e1833]: Passed
+              - cell "Passed" [ref=e1834]:
+                - generic [ref=e1835]: Passed
+              - cell "—" [ref=e1836]
+            - row "C2371640 Verify the default-tab 2,000-point threshold is consistent with the 500-points-per-token rate Medium Untested Untested —" [ref=e1837] [cursor=pointer]:
+              - cell "C2371640" [ref=e1838]:
+                - link "C2371640" [ref=e1839]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371640
+              - cell "Verify the default-tab 2,000-point threshold is consistent with the 500-points-per-token rate" [ref=e1840]:
+                - generic [ref=e1841]: Verify the default-tab 2,000-point threshold is consistent with the 500-points-per-token rate
+              - cell "Medium" [ref=e1842]
+              - cell "Untested" [ref=e1843]:
+                - generic [ref=e1844]: Untested
+              - cell "Untested" [ref=e1845]:
+                - generic [ref=e1846]: Untested
+              - cell "—" [ref=e1847]
+            - row "C2371641 Verify a re-shared Info Page link does not accumulate duplicate params Medium Untested Untested —" [ref=e1848] [cursor=pointer]:
+              - cell "C2371641" [ref=e1849]:
+                - link "C2371641" [ref=e1850]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371641
+              - cell "Verify a re-shared Info Page link does not accumulate duplicate params" [ref=e1851]:
+                - generic [ref=e1852]: Verify a re-shared Info Page link does not accumulate duplicate params
+              - cell "Medium" [ref=e1853]
+              - cell "Untested" [ref=e1854]:
+                - generic [ref=e1855]: Untested
+              - cell "Untested" [ref=e1856]:
+                - generic [ref=e1857]: Untested
+              - cell "—" [ref=e1858]
+            - row "C2371642 Verify daily free token allocation still differs between app and web on the new layout High Untested Untested —" [ref=e1859] [cursor=pointer]:
+              - cell "C2371642" [ref=e1860]:
+                - link "C2371642" [ref=e1861]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371642
+              - cell "Verify daily free token allocation still differs between app and web on the new layout" [ref=e1862]:
+                - generic [ref=e1863]: Verify daily free token allocation still differs between app and web on the new layout
+              - cell "High" [ref=e1864]
+              - cell "Untested" [ref=e1865]:
+                - generic [ref=e1866]: Untested
+              - cell "Untested" [ref=e1867]:
+                - generic [ref=e1868]: Untested
+              - cell "—" [ref=e1869]
+            - row "C2371643 Verify the sound and BGM enable/disable CTA still works after the Anniversary asset refresh Medium Untested Untested —" [ref=e1870] [cursor=pointer]:
+              - cell "C2371643" [ref=e1871]:
+                - link "C2371643" [ref=e1872]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371643
+              - cell "Verify the sound and BGM enable/disable CTA still works after the Anniversary asset refresh" [ref=e1873]:
+                - generic [ref=e1874]: Verify the sound and BGM enable/disable CTA still works after the Anniversary asset refresh
+              - cell "Medium" [ref=e1875]
+              - cell "Untested" [ref=e1876]:
+                - generic [ref=e1877]: Untested
+              - cell "Untested" [ref=e1878]:
+                - generic [ref=e1879]: Untested
+              - cell "—" [ref=e1880]
+            - row "C2371644 Verify audio autoplay behaviour per platform after the refresh Medium Untested Untested —" [ref=e1881] [cursor=pointer]:
+              - cell "C2371644" [ref=e1882]:
+                - link "C2371644" [ref=e1883]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371644
+              - cell "Verify audio autoplay behaviour per platform after the refresh" [ref=e1884]:
+                - generic [ref=e1885]: Verify audio autoplay behaviour per platform after the refresh
+              - cell "Medium" [ref=e1886]
+              - cell "Untested" [ref=e1887]:
+                - generic [ref=e1888]: Untested
+              - cell "Untested" [ref=e1889]:
+                - generic [ref=e1890]: Untested
+              - cell "—" [ref=e1891]
+            - row "C2371646 Verify auto bid does not bypass the last-bidder re-bid restriction High Untested Untested —" [ref=e1892] [cursor=pointer]:
+              - cell "C2371646" [ref=e1893]:
+                - link "C2371646" [ref=e1894]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371646
+              - cell "Verify auto bid does not bypass the last-bidder re-bid restriction" [ref=e1895]:
+                - generic [ref=e1896]: Verify auto bid does not bypass the last-bidder re-bid restriction
+              - cell "High" [ref=e1897]
+              - cell "Untested" [ref=e1898]:
+                - generic [ref=e1899]: Untested
+              - cell "Untested" [ref=e1900]:
+                - generic [ref=e1901]: Untested
+              - cell "—" [ref=e1902]
+            - row "C2371647 Verify max bid limit per user per product including the -1 unlimited sentinel Medium Untested Untested —" [ref=e1903] [cursor=pointer]:
+              - cell "C2371647" [ref=e1904]:
+                - link "C2371647" [ref=e1905]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371647
+              - cell "Verify max bid limit per user per product including the -1 unlimited sentinel" [ref=e1906]:
+                - generic [ref=e1907]: Verify max bid limit per user per product including the -1 unlimited sentinel
+              - cell "Medium" [ref=e1908]
+              - cell "Untested" [ref=e1909]:
+                - generic [ref=e1910]: Untested
+              - cell "Untested" [ref=e1911]:
+                - generic [ref=e1912]: Untested
+              - cell "—" [ref=e1913]
+            - row "C2371648 Verify live viewer count and unique bidder count still render after the grid redesign Medium Untested Untested —" [ref=e1914] [cursor=pointer]:
+              - cell "C2371648" [ref=e1915]:
+                - link "C2371648" [ref=e1916]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371648
+              - cell "Verify live viewer count and unique bidder count still render after the grid redesign" [ref=e1917]:
+                - generic [ref=e1918]: Verify live viewer count and unique bidder count still render after the grid redesign
+              - cell "Medium" [ref=e1919]
+              - cell "Untested" [ref=e1920]:
+                - generic [ref=e1921]: Untested
+              - cell "Untested" [ref=e1922]:
+                - generic [ref=e1923]: Untested
+              - cell "—" [ref=e1924]
+            - row "C2371649 Verify the winner purchase window is stated as 6 hours across all surfaces High Passed Passed —" [ref=e1925] [cursor=pointer]:
+              - cell "C2371649" [ref=e1926]:
+                - link "C2371649" [ref=e1927]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371649
+              - cell "Verify the winner purchase window is stated as 6 hours across all surfaces" [ref=e1928]:
+                - generic [ref=e1929]: Verify the winner purchase window is stated as 6 hours across all surfaces
+              - cell "High" [ref=e1930]
+              - cell "Passed" [ref=e1931]:
+                - generic [ref=e1932]: Passed
+              - cell "Passed" [ref=e1933]:
+                - generic [ref=e1934]: Passed
+              - cell "—" [ref=e1935]
+            - row "C2371650 Verify BTM mini page state after minimising and reopening the iOS app Medium Untested Untested —" [ref=e1936] [cursor=pointer]:
+              - cell "C2371650" [ref=e1937]:
+                - link "C2371650" [ref=e1938]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371650
+              - cell "Verify BTM mini page state after minimising and reopening the iOS app" [ref=e1939]:
+                - generic [ref=e1940]: Verify BTM mini page state after minimising and reopening the iOS app
+              - cell "Medium" [ref=e1941]
+              - cell "Untested" [ref=e1942]:
+                - generic [ref=e1943]: Untested
+              - cell "Untested" [ref=e1944]:
+                - generic [ref=e1945]: Untested
+              - cell "—" [ref=e1946]
+            - row "C2371611 Verify panel supports configuring token injection at Product-ID level Medium Passed Passed —" [ref=e1947] [cursor=pointer]:
+              - cell "C2371611" [ref=e1948]:
+                - link "C2371611" [ref=e1949]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371611
+              - cell "Verify panel supports configuring token injection at Product-ID level" [ref=e1950]:
+                - generic [ref=e1951]: Verify panel supports configuring token injection at Product-ID level
+              - cell "Medium" [ref=e1952]
+              - cell "Passed" [ref=e1953]:
+                - generic [ref=e1954]: Passed
+              - cell "Passed" [ref=e1955]:
+                - generic [ref=e1956]: Passed
+              - cell "—" [ref=e1957]
+            - row "C2371612 Verify panel Product-ID whitelist can be edited Medium Passed Passed —" [ref=e1958] [cursor=pointer]:
+              - cell "C2371612" [ref=e1959]:
+                - link "C2371612" [ref=e1960]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371612
+              - cell "Verify panel Product-ID whitelist can be edited" [ref=e1961]:
+                - generic [ref=e1962]: Verify panel Product-ID whitelist can be edited
+              - cell "Medium" [ref=e1963]
+              - cell "Passed" [ref=e1964]:
+                - generic [ref=e1965]: Passed
+              - cell "Passed" [ref=e1966]:
+                - generic [ref=e1967]: Passed
+              - cell "—" [ref=e1968]
+            - row "C2371613 Verify panel config drives injected token amount High Passed Passed —" [ref=e1969] [cursor=pointer]:
+              - cell "C2371613" [ref=e1970]:
+                - link "C2371613" [ref=e1971]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371613
+              - cell "Verify panel config drives injected token amount" [ref=e1972]:
+                - generic [ref=e1973]: Verify panel config drives injected token amount
+              - cell "High" [ref=e1974]
+              - cell "Passed" [ref=e1975]:
+                - generic [ref=e1976]: Passed
+              - cell "Passed" [ref=e1977]:
+                - generic [ref=e1978]: Passed
+              - cell "—" [ref=e1979]
+            - row "C2371614 Verify Auto Bid service listens to the auction WebSocket Medium Untested Untested —" [ref=e1980] [cursor=pointer]:
+              - cell "C2371614" [ref=e1981]:
+                - link "C2371614" [ref=e1982]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371614
+              - cell "Verify Auto Bid service listens to the auction WebSocket" [ref=e1983]:
+                - generic [ref=e1984]: Verify Auto Bid service listens to the auction WebSocket
+              - cell "Medium" [ref=e1985]
+              - cell "Untested" [ref=e1986]:
+                - generic [ref=e1987]: Untested
+              - cell "Untested" [ref=e1988]:
+                - generic [ref=e1989]: Untested
+              - cell "—" [ref=e1990]
+            - row "C2371615 Verify auto bid triggers when countdown drops below the threshold High Untested Untested —" [ref=e1991] [cursor=pointer]:
+              - cell "C2371615" [ref=e1992]:
+                - link "C2371615" [ref=e1993]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371615
+              - cell "Verify auto bid triggers when countdown drops below the threshold" [ref=e1994]:
+                - generic [ref=e1995]: Verify auto bid triggers when countdown drops below the threshold
+              - cell "High" [ref=e1996]
+              - cell "Untested" [ref=e1997]:
+                - generic [ref=e1998]: Untested
+              - cell "Untested" [ref=e1999]:
+                - generic [ref=e2000]: Untested
+              - cell "—" [ref=e2001]
+            - row "C2371617 Verify duplicate bids are prevented per countdown window High Passed Passed —" [ref=e2002] [cursor=pointer]:
+              - cell "C2371617" [ref=e2003]:
+                - link "C2371617" [ref=e2004]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371617
+              - cell "Verify duplicate bids are prevented per countdown window" [ref=e2005]:
+                - generic [ref=e2006]: Verify duplicate bids are prevented per countdown window
+              - cell "High" [ref=e2007]
+              - cell "Passed" [ref=e2008]:
+                - generic [ref=e2009]: Passed
+              - cell "Passed" [ref=e2010]:
+                - generic [ref=e2011]: Passed
+              - cell "—" [ref=e2012]
+            - row "C2371618 Verify auto bid threshold is configurable Medium Untested Untested —" [ref=e2013] [cursor=pointer]:
+              - cell "C2371618" [ref=e2014]:
+                - link "C2371618" [ref=e2015]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371618
+              - cell "Verify auto bid threshold is configurable" [ref=e2016]:
+                - generic [ref=e2017]: Verify auto bid threshold is configurable
+              - cell "Medium" [ref=e2018]
+              - cell "Untested" [ref=e2019]:
+                - generic [ref=e2020]: Untested
+              - cell "Untested" [ref=e2021]:
+                - generic [ref=e2022]: Untested
+              - cell "—" [ref=e2023]
+            - row "C2371619 Verify auto bid handles retries and errors Medium Untested Untested —" [ref=e2024] [cursor=pointer]:
+              - cell "C2371619" [ref=e2025]:
+                - link "C2371619" [ref=e2026]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371619
+              - cell "Verify auto bid handles retries and errors" [ref=e2027]:
+                - generic [ref=e2028]: Verify auto bid handles retries and errors
+              - cell "Medium" [ref=e2029]
+              - cell "Untested" [ref=e2030]:
+                - generic [ref=e2031]: Untested
+              - cell "Untested" [ref=e2032]:
+                - generic [ref=e2033]: Untested
+              - cell "—" [ref=e2034]
+            - row "C2371620 Verify auto bid events are logged and monitored Medium Untested Untested —" [ref=e2035] [cursor=pointer]:
+              - cell "C2371620" [ref=e2036]:
+                - link "C2371620" [ref=e2037]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371620
+              - cell "Verify auto bid events are logged and monitored" [ref=e2038]:
+                - generic [ref=e2039]: Verify auto bid events are logged and monitored
+              - cell "Medium" [ref=e2040]
+              - cell "Untested" [ref=e2041]:
+                - generic [ref=e2042]: Untested
+              - cell "Untested" [ref=e2043]:
+                - generic [ref=e2044]: Untested
+              - cell "—" [ref=e2045]
+            - row "C2371645 Verify the auto bid threshold respects the configured countdown duration tier Medium Untested Untested —" [ref=e2046] [cursor=pointer]:
+              - cell "C2371645" [ref=e2047]:
+                - link "C2371645" [ref=e2048]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371645
+              - cell "Verify the auto bid threshold respects the configured countdown duration tier" [ref=e2049]:
+                - generic [ref=e2050]: Verify the auto bid threshold respects the configured countdown duration tier
+              - cell "Medium" [ref=e2051]
+              - cell "Untested" [ref=e2052]:
+                - generic [ref=e2053]: Untested
+              - cell "Untested" [ref=e2054]:
+                - generic [ref=e2055]: Untested
+              - cell "—" [ref=e2056]

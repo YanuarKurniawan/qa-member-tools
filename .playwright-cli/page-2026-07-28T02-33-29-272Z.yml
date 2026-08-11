@@ -1,0 +1,46 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - img [ref=e7]
+      - generic [ref=e9]:
+        - heading "QA Tools" [level=1] [ref=e10]
+        - paragraph [ref=e11]: Member Services
+    - navigation [ref=e12]:
+      - link "Dashboard" [ref=e13] [cursor=pointer]:
+        - /url: /
+        - img [ref=e14]
+        - text: Dashboard
+      - paragraph [ref=e20]: Dashboards
+      - link "Automation WEB" [ref=e21] [cursor=pointer]:
+        - /url: /automation-web
+        - img [ref=e22]
+        - text: Automation WEB
+      - paragraph [ref=e28]: Tools
+      - link "User Management" [ref=e29] [cursor=pointer]:
+        - /url: /user-management
+        - img [ref=e30]
+        - text: User Management
+      - link "User Auth" [ref=e35] [cursor=pointer]:
+        - /url: /user-auth
+        - img [ref=e36]
+        - text: User Auth
+      - link "Jira & TestRail" [ref=e38] [cursor=pointer]:
+        - /url: /jira
+        - img [ref=e39]
+        - text: Jira & TestRail
+      - link "Testing" [ref=e42] [cursor=pointer]:
+        - /url: /testing
+        - img [ref=e43]
+        - text: Testing
+      - link "Database" [ref=e45] [cursor=pointer]:
+        - /url: /database
+        - img [ref=e46]
+        - text: Database
+      - link "Automation" [ref=e50] [cursor=pointer]:
+        - /url: /automation
+        - img [ref=e51]
+        - text: Automation
+    - generic [ref=e63]:
+      - paragraph [ref=e64]: v2.0.0
+      - generic [ref=e65]: ⌘K
+  - main [ref=e66]

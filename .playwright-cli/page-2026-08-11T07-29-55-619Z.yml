@@ -1,0 +1,2916 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - img [ref=e7]
+      - generic [ref=e9]:
+        - heading "QA Tools" [level=1] [ref=e10]
+        - paragraph [ref=e11]: Member Services
+    - navigation [ref=e12]:
+      - link "Dashboard" [ref=e13] [cursor=pointer]:
+        - /url: /
+        - img [ref=e14]
+        - text: Dashboard
+      - paragraph [ref=e20]: Dashboards
+      - link "Automation WEB" [ref=e21] [cursor=pointer]:
+        - /url: /automation-web
+        - img [ref=e22]
+        - text: Automation WEB
+      - link "Test Runner" [ref=e27] [cursor=pointer]:
+        - /url: /test-runner
+        - img [ref=e28]
+        - text: Test Runner
+      - paragraph [ref=e33]: Tools
+      - link "User Management" [ref=e34] [cursor=pointer]:
+        - /url: /user-management
+        - img [ref=e35]
+        - text: User Management
+      - link "User Auth" [ref=e40] [cursor=pointer]:
+        - /url: /user-auth
+        - img [ref=e41]
+        - text: User Auth
+      - link "Jira & TestRail" [ref=e43] [cursor=pointer]:
+        - /url: /jira
+        - img [ref=e44]
+        - text: Jira & TestRail
+      - link "Testing" [ref=e47] [cursor=pointer]:
+        - /url: /testing
+        - img [ref=e48]
+        - text: Testing
+      - link "Database" [ref=e50] [cursor=pointer]:
+        - /url: /database
+        - img [ref=e51]
+        - text: Database
+      - link "Automation" [ref=e55] [cursor=pointer]:
+        - /url: /automation
+        - img [ref=e56]
+        - text: Automation
+    - generic [ref=e68]:
+      - paragraph [ref=e69]: v2.0.0
+      - generic [ref=e70]: ⌘K
+  - main [ref=e71]:
+    - generic [ref=e73]:
+      - heading "Test Runner" [level=1] [ref=e74]
+      - paragraph [ref=e75]: Execute a TestRail run without leaving one screen.
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - generic [ref=e80]:
+            - generic [ref=e81]:
+              - link "[General] Berburu Tiket Murah Improvement for Anniversary Campaign" [ref=e82] [cursor=pointer]:
+                - /url: https://tiket.testrail.com/index.php?/runs/view/17748
+                - text: "[General] Berburu Tiket Murah Improvement for Anniversary Campaign"
+                - img [ref=e83]
+              - paragraph [ref=e87]: Run 17748 · Project 184 · Plan 17742
+            - generic [ref=e88]:
+              - generic [ref=e89]:
+                - generic [ref=e90]: 59 Passed
+                - generic [ref=e91]: 117 Untested
+              - generic [ref=e92]:
+                - generic [ref=e93]:
+                  - button "Sync" [ref=e94] [cursor=pointer]:
+                    - img [ref=e95]
+                    - text: Sync
+                  - generic [ref=e100]: Synced 8m ago
+                - button "Upload" [disabled] [ref=e101]:
+                  - img [ref=e102]
+                  - text: Upload
+          - paragraph
+        - generic [ref=e105]:
+          - generic [ref=e106]:
+            - img
+            - searchbox "Search test name" [ref=e107]
+          - button "Passed" [active] [ref=e108] [cursor=pointer]
+          - button "Blocked" [ref=e109] [cursor=pointer]
+          - button "Untested" [pressed] [ref=e110] [cursor=pointer]
+          - button "Retest" [ref=e111] [cursor=pointer]
+          - button "Failed" [ref=e112] [cursor=pointer]
+          - button "Obsolete" [ref=e113] [cursor=pointer]
+          - button "Low" [ref=e114] [cursor=pointer]
+          - button "Medium" [ref=e115] [cursor=pointer]
+          - button "High" [ref=e116] [cursor=pointer]
+          - button "Critical" [ref=e117] [cursor=pointer]
+          - button "Only changed (0)" [ref=e118] [cursor=pointer]
+          - button "Only conflicts (0)" [ref=e119] [cursor=pointer]
+          - generic [ref=e120]: 117 of 176 tests
+        - table [ref=e123]:
+          - rowgroup [ref=e124]:
+            - row "Test ID Test Name Priority Status Latest TestRail Comments" [ref=e125]:
+              - columnheader "Test ID" [ref=e126]:
+                - button "Test ID" [ref=e127] [cursor=pointer]
+              - columnheader "Test Name" [ref=e128]:
+                - button "Test Name" [ref=e129] [cursor=pointer]
+              - columnheader "Priority" [ref=e130]:
+                - button "Priority" [ref=e131] [cursor=pointer]
+              - columnheader "Status" [ref=e132]:
+                - button "Status" [ref=e133] [cursor=pointer]
+              - columnheader "Latest TestRail" [ref=e134]:
+                - button "Latest TestRail" [ref=e135] [cursor=pointer]
+              - columnheader "Comments" [ref=e136]
+          - rowgroup [ref=e137]:
+            - row "C2371651 Verify BTM hero banner shows new Anniversary assets Medium P B R F More statuses Untested" [ref=e8702] [cursor=pointer]:
+              - cell "C2371651" [ref=e8703]:
+                - link "C2371651" [ref=e8704]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371651
+              - cell "Verify BTM hero banner shows new Anniversary assets" [ref=e8705]:
+                - generic [ref=e8706]: Verify BTM hero banner shows new Anniversary assets
+              - cell "Medium" [ref=e8707]:
+                - combobox [ref=e8709]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e8710]:
+                - generic [ref=e8711]:
+                  - button "P" [ref=e8712]
+                  - button "B" [ref=e8713]
+                  - button "R" [ref=e8714]
+                  - button "F" [ref=e8715]
+                  - button "More statuses" [ref=e8717]:
+                    - img [ref=e8718]
+              - cell "Untested" [ref=e8722]:
+                - generic [ref=e8723]: Untested
+              - cell [ref=e8724]:
+                - textbox [ref=e8726]
+            - row "C2371724 Verify gameplay visuals use Anniversary theme Medium P B R F More statuses Untested" [ref=e8727] [cursor=pointer]:
+              - cell "C2371724" [ref=e8728]:
+                - link "C2371724" [ref=e8729]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371724
+              - cell "Verify gameplay visuals use Anniversary theme" [ref=e8730]:
+                - generic [ref=e8731]: Verify gameplay visuals use Anniversary theme
+              - cell "Medium" [ref=e8732]:
+                - combobox [ref=e8734]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e8735]:
+                - generic [ref=e8736]:
+                  - button "P" [ref=e8737]
+                  - button "B" [ref=e8738]
+                  - button "R" [ref=e8739]
+                  - button "F" [ref=e8740]
+                  - button "More statuses" [ref=e8742]:
+                    - img [ref=e8743]
+              - cell "Untested" [ref=e8747]:
+                - generic [ref=e8748]: Untested
+              - cell [ref=e8749]:
+                - textbox [ref=e8751]
+            - row "C2371725 Verify Anniversary Lottie animations are applied Medium P B R F More statuses Untested" [ref=e8752] [cursor=pointer]:
+              - cell "C2371725" [ref=e8753]:
+                - link "C2371725" [ref=e8754]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371725
+              - cell "Verify Anniversary Lottie animations are applied" [ref=e8755]:
+                - generic [ref=e8756]: Verify Anniversary Lottie animations are applied
+              - cell "Medium" [ref=e8757]:
+                - combobox [ref=e8759]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e8760]:
+                - generic [ref=e8761]:
+                  - button "P" [ref=e8762]
+                  - button "B" [ref=e8763]
+                  - button "R" [ref=e8764]
+                  - button "F" [ref=e8765]
+                  - button "More statuses" [ref=e8767]:
+                    - img [ref=e8768]
+              - cell "Untested" [ref=e8772]:
+                - generic [ref=e8773]: Untested
+              - cell [ref=e8774]:
+                - textbox [ref=e8776]
+            - row "C2371726 Verify banner dimensions, behavior, and CTA are unchanged after refresh High P B R F More statuses Untested" [ref=e8777] [cursor=pointer]:
+              - cell "C2371726" [ref=e8778]:
+                - link "C2371726" [ref=e8779]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371726
+              - cell "Verify banner dimensions, behavior, and CTA are unchanged after refresh" [ref=e8780]:
+                - generic [ref=e8781]: Verify banner dimensions, behavior, and CTA are unchanged after refresh
+              - cell "High" [ref=e8782]:
+                - combobox [ref=e8784]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e8785]:
+                - generic [ref=e8786]:
+                  - button "P" [ref=e8787]
+                  - button "B" [ref=e8788]
+                  - button "R" [ref=e8789]
+                  - button "F" [ref=e8790]
+                  - button "More statuses" [ref=e8792]:
+                    - img [ref=e8793]
+              - cell "Untested" [ref=e8797]:
+                - generic [ref=e8798]: Untested
+              - cell [ref=e8799]:
+                - textbox [ref=e8801]
+            - row "C2371727 Verify animation triggers and timing are unchanged after refresh Medium P B R F More statuses Untested" [ref=e8802] [cursor=pointer]:
+              - cell "C2371727" [ref=e8803]:
+                - link "C2371727" [ref=e8804]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371727
+              - cell "Verify animation triggers and timing are unchanged after refresh" [ref=e8805]:
+                - generic [ref=e8806]: Verify animation triggers and timing are unchanged after refresh
+              - cell "Medium" [ref=e8807]:
+                - combobox [ref=e8809]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e8810]:
+                - generic [ref=e8811]:
+                  - button "P" [ref=e8812]
+                  - button "B" [ref=e8813]
+                  - button "R" [ref=e8814]
+                  - button "F" [ref=e8815]
+                  - button "More statuses" [ref=e8817]:
+                    - img [ref=e8818]
+              - cell "Untested" [ref=e8822]:
+                - generic [ref=e8823]: Untested
+              - cell [ref=e8824]:
+                - textbox [ref=e8826]
+            - row "C2371728 Verify core gameplay mechanics and sounds are unchanged after branding refresh High P B R F More statuses Untested" [ref=e8827] [cursor=pointer]:
+              - cell "C2371728" [ref=e8828]:
+                - link "C2371728" [ref=e8829]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371728
+              - cell "Verify core gameplay mechanics and sounds are unchanged after branding refresh" [ref=e8830]:
+                - generic [ref=e8831]: Verify core gameplay mechanics and sounds are unchanged after branding refresh
+              - cell "High" [ref=e8832]:
+                - combobox [ref=e8834]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e8835]:
+                - generic [ref=e8836]:
+                  - button "P" [ref=e8837]
+                  - button "B" [ref=e8838]
+                  - button "R" [ref=e8839]
+                  - button "F" [ref=e8840]
+                  - button "More statuses" [ref=e8842]:
+                    - img [ref=e8843]
+              - cell "Untested" [ref=e8847]:
+                - generic [ref=e8848]: Untested
+              - cell [ref=e8849]:
+                - textbox [ref=e8851]
+            - row "C2371729 Verify old crochet visual style is fully removed Medium P B R F More statuses Untested" [ref=e8852] [cursor=pointer]:
+              - cell "C2371729" [ref=e8853]:
+                - link "C2371729" [ref=e8854]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371729
+              - cell "Verify old crochet visual style is fully removed" [ref=e8855]:
+                - generic [ref=e8856]: Verify old crochet visual style is fully removed
+              - cell "Medium" [ref=e8857]:
+                - combobox [ref=e8859]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e8860]:
+                - generic [ref=e8861]:
+                  - button "P" [ref=e8862]
+                  - button "B" [ref=e8863]
+                  - button "R" [ref=e8864]
+                  - button "F" [ref=e8865]
+                  - button "More statuses" [ref=e8867]:
+                    - img [ref=e8868]
+              - cell "Untested" [ref=e8872]:
+                - generic [ref=e8873]: Untested
+              - cell [ref=e8874]:
+                - textbox [ref=e8876]
+            - row "C2371730 Verify Active Products displays as a 2-column vertical grid Critical P B R F More statuses Untested" [ref=e8877] [cursor=pointer]:
+              - cell "C2371730" [ref=e8878]:
+                - link "C2371730" [ref=e8879]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371730
+              - cell "Verify Active Products displays as a 2-column vertical grid" [ref=e8880]:
+                - generic [ref=e8881]: Verify Active Products displays as a 2-column vertical grid
+              - cell "Critical" [ref=e8882]:
+                - combobox [ref=e8884]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e8885]:
+                - generic [ref=e8886]:
+                  - button "P" [ref=e8887]
+                  - button "B" [ref=e8888]
+                  - button "R" [ref=e8889]
+                  - button "F" [ref=e8890]
+                  - button "More statuses" [ref=e8892]:
+                    - img [ref=e8893]
+              - cell "Untested" [ref=e8897]:
+                - generic [ref=e8898]: Untested
+              - cell [ref=e8899]:
+                - textbox [ref=e8901]
+            - row "C2371731 Verify horizontal carousels are replaced by the grid Medium P B R F More statuses Untested" [ref=e8902] [cursor=pointer]:
+              - cell "C2371731" [ref=e8903]:
+                - link "C2371731" [ref=e8904]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371731
+              - cell "Verify horizontal carousels are replaced by the grid" [ref=e8905]:
+                - generic [ref=e8906]: Verify horizontal carousels are replaced by the grid
+              - cell "Medium" [ref=e8907]:
+                - combobox [ref=e8909]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e8910]:
+                - generic [ref=e8911]:
+                  - button "P" [ref=e8912]
+                  - button "B" [ref=e8913]
+                  - button "R" [ref=e8914]
+                  - button "F" [ref=e8915]
+                  - button "More statuses" [ref=e8917]:
+                    - img [ref=e8918]
+              - cell "Untested" [ref=e8922]:
+                - generic [ref=e8923]: Untested
+              - cell [ref=e8924]:
+                - textbox [ref=e8926]
+            - row "C2371732 Verify Treasures You're After section is removed Medium P B R F More statuses Untested" [ref=e8927] [cursor=pointer]:
+              - cell "C2371732" [ref=e8928]:
+                - link "C2371732" [ref=e8929]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371732
+              - cell "Verify Treasures You're After section is removed" [ref=e8930]:
+                - generic [ref=e8931]: Verify Treasures You're After section is removed
+              - cell "Medium" [ref=e8932]:
+                - combobox [ref=e8934]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e8935]:
+                - generic [ref=e8936]:
+                  - button "P" [ref=e8937]
+                  - button "B" [ref=e8938]
+                  - button "R" [ref=e8939]
+                  - button "F" [ref=e8940]
+                  - button "More statuses" [ref=e8942]:
+                    - img [ref=e8943]
+              - cell "Untested" [ref=e8947]:
+                - generic [ref=e8948]: Untested
+              - cell [ref=e8949]:
+                - textbox [ref=e8951]
+            - row "C2371733 Verify vertical/category titles are preserved where configured Medium P B R F More statuses Untested" [ref=e8952] [cursor=pointer]:
+              - cell "C2371733" [ref=e8953]:
+                - link "C2371733" [ref=e8954]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371733
+              - cell "Verify vertical/category titles are preserved where configured" [ref=e8955]:
+                - generic [ref=e8956]: Verify vertical/category titles are preserved where configured
+              - cell "Medium" [ref=e8957]:
+                - combobox [ref=e8959]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e8960]:
+                - generic [ref=e8961]:
+                  - button "P" [ref=e8962]
+                  - button "B" [ref=e8963]
+                  - button "R" [ref=e8964]
+                  - button "F" [ref=e8965]
+                  - button "More statuses" [ref=e8967]:
+                    - img [ref=e8968]
+              - cell "Untested" [ref=e8972]:
+                - generic [ref=e8973]: Untested
+              - cell [ref=e8974]:
+                - textbox [ref=e8976]
+            - row "C2371734 Verify product subtext supports up to 2 lines Medium P B R F More statuses Untested" [ref=e8977] [cursor=pointer]:
+              - cell "C2371734" [ref=e8978]:
+                - link "C2371734" [ref=e8979]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371734
+              - cell "Verify product subtext supports up to 2 lines" [ref=e8980]:
+                - generic [ref=e8981]: Verify product subtext supports up to 2 lines
+              - cell "Medium" [ref=e8982]:
+                - combobox [ref=e8984]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e8985]:
+                - generic [ref=e8986]:
+                  - button "P" [ref=e8987]
+                  - button "B" [ref=e8988]
+                  - button "R" [ref=e8989]
+                  - button "F" [ref=e8990]
+                  - button "More statuses" [ref=e8992]:
+                    - img [ref=e8993]
+              - cell "Untested" [ref=e8997]:
+                - generic [ref=e8998]: Untested
+              - cell [ref=e8999]:
+                - textbox [ref=e9001]
+            - row "C2371735 Verify product subtext exceeding 2 lines is handled Medium P B R F More statuses Untested" [ref=e9002] [cursor=pointer]:
+              - cell "C2371735" [ref=e9003]:
+                - link "C2371735" [ref=e9004]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371735
+              - cell "Verify product subtext exceeding 2 lines is handled" [ref=e9005]:
+                - generic [ref=e9006]: Verify product subtext exceeding 2 lines is handled
+              - cell "Medium" [ref=e9007]:
+                - combobox [ref=e9009]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9010]:
+                - generic [ref=e9011]:
+                  - button "P" [ref=e9012]
+                  - button "B" [ref=e9013]
+                  - button "R" [ref=e9014]
+                  - button "F" [ref=e9015]
+                  - button "More statuses" [ref=e9017]:
+                    - img [ref=e9018]
+              - cell "Untested" [ref=e9022]:
+                - generic [ref=e9023]: Untested
+              - cell [ref=e9024]:
+                - textbox [ref=e9026]
+            - row "C2371736 Verify products are ordered by start-active date, newest first Medium P B R F More statuses Untested" [ref=e9027] [cursor=pointer]:
+              - cell "C2371736" [ref=e9028]:
+                - link "C2371736" [ref=e9029]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371736
+              - cell "Verify products are ordered by start-active date, newest first" [ref=e9030]:
+                - generic [ref=e9031]: Verify products are ordered by start-active date, newest first
+              - cell "Medium" [ref=e9032]:
+                - combobox [ref=e9034]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9035]:
+                - generic [ref=e9036]:
+                  - button "P" [ref=e9037]
+                  - button "B" [ref=e9038]
+                  - button "R" [ref=e9039]
+                  - button "F" [ref=e9040]
+                  - button "More statuses" [ref=e9042]:
+                    - img [ref=e9043]
+              - cell "Untested" [ref=e9047]:
+                - generic [ref=e9048]: Untested
+              - cell [ref=e9049]:
+                - textbox [ref=e9051]
+            - row "C2371737 Verify inventory purchase opens as a tabbed bottom sheet Critical P B R F More statuses Untested" [ref=e9052] [cursor=pointer]:
+              - cell "C2371737" [ref=e9053]:
+                - link "C2371737" [ref=e9054]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371737
+              - cell "Verify inventory purchase opens as a tabbed bottom sheet" [ref=e9055]:
+                - generic [ref=e9056]: Verify inventory purchase opens as a tabbed bottom sheet
+              - cell "Critical" [ref=e9057]:
+                - combobox [ref=e9059]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e9060]:
+                - generic [ref=e9061]:
+                  - button "P" [ref=e9062]
+                  - button "B" [ref=e9063]
+                  - button "R" [ref=e9064]
+                  - button "F" [ref=e9065]
+                  - button "More statuses" [ref=e9067]:
+                    - img [ref=e9068]
+              - cell "Untested" [ref=e9072]:
+                - generic [ref=e9073]: Untested
+              - cell [ref=e9074]:
+                - textbox [ref=e9076]
+            - row "C2371738 Verify Trade Points tab exchanges points at the current 500-points-per-token rate (regression from GRA-724 / GRA-2843) Critical P B R F More statuses Untested" [ref=e9077] [cursor=pointer]:
+              - cell "C2371738" [ref=e9078]:
+                - link "C2371738" [ref=e9079]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371738
+              - cell "Verify Trade Points tab exchanges points at the current 500-points-per-token rate (regression from GRA-724 / GRA-2843)" [ref=e9080]:
+                - generic [ref=e9081]: Verify Trade Points tab exchanges points at the current 500-points-per-token rate (regression from GRA-724 / GRA-2843)
+              - cell "Critical" [ref=e9082]:
+                - combobox [ref=e9084]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e9085]:
+                - generic [ref=e9086]:
+                  - button "P" [ref=e9087]
+                  - button "B" [ref=e9088]
+                  - button "R" [ref=e9089]
+                  - button "F" [ref=e9090]
+                  - button "More statuses" [ref=e9092]:
+                    - img [ref=e9093]
+              - cell "Untested" [ref=e9097]:
+                - generic [ref=e9098]: Untested
+              - cell [ref=e9099]:
+                - textbox [ref=e9101]
+            - row "C2371739 Verify Buy Voucher tab renders using the Image with Chips (3:4) module Critical P B R F More statuses Untested" [ref=e9102] [cursor=pointer]:
+              - cell "C2371739" [ref=e9103]:
+                - link "C2371739" [ref=e9104]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371739
+              - cell "Verify Buy Voucher tab renders using the Image with Chips (3:4) module" [ref=e9105]:
+                - generic [ref=e9106]: Verify Buy Voucher tab renders using the Image with Chips (3:4) module
+              - cell "Critical" [ref=e9107]:
+                - combobox [ref=e9109]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e9110]:
+                - generic [ref=e9111]:
+                  - button "P" [ref=e9112]
+                  - button "B" [ref=e9113]
+                  - button "R" [ref=e9114]
+                  - button "F" [ref=e9115]
+                  - button "More statuses" [ref=e9117]:
+                    - img [ref=e9118]
+              - cell "Untested" [ref=e9122]:
+                - generic [ref=e9123]: Untested
+              - cell [ref=e9124]:
+                - textbox [ref=e9126]
+            - row "C2371740 Verify Buy Voucher content is fully configurable Medium P B R F More statuses Untested" [ref=e9127] [cursor=pointer]:
+              - cell "C2371740" [ref=e9128]:
+                - link "C2371740" [ref=e9129]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371740
+              - cell "Verify Buy Voucher content is fully configurable" [ref=e9130]:
+                - generic [ref=e9131]: Verify Buy Voucher content is fully configurable
+              - cell "Medium" [ref=e9132]:
+                - combobox [ref=e9134]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9135]:
+                - generic [ref=e9136]:
+                  - button "P" [ref=e9137]
+                  - button "B" [ref=e9138]
+                  - button "R" [ref=e9139]
+                  - button "F" [ref=e9140]
+                  - button "More statuses" [ref=e9142]:
+                    - img [ref=e9143]
+              - cell "Untested" [ref=e9147]:
+                - generic [ref=e9148]: Untested
+              - cell [ref=e9149]:
+                - textbox [ref=e9151]
+            - row "C2371741 Verify Buy Voucher content is not hardcoded Medium P B R F More statuses Untested" [ref=e9152] [cursor=pointer]:
+              - cell "C2371741" [ref=e9153]:
+                - link "C2371741" [ref=e9154]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371741
+              - cell "Verify Buy Voucher content is not hardcoded" [ref=e9155]:
+                - generic [ref=e9156]: Verify Buy Voucher content is not hardcoded
+              - cell "Medium" [ref=e9157]:
+                - combobox [ref=e9159]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9160]:
+                - generic [ref=e9161]:
+                  - button "P" [ref=e9162]
+                  - button "B" [ref=e9163]
+                  - button "R" [ref=e9164]
+                  - button "F" [ref=e9165]
+                  - button "More statuses" [ref=e9167]:
+                    - img [ref=e9168]
+              - cell "Untested" [ref=e9172]:
+                - generic [ref=e9173]: Untested
+              - cell [ref=e9174]:
+                - textbox [ref=e9176]
+            - row "C2371742 Verify Cheapest promotional badge renders when configured Medium P B R F More statuses Untested" [ref=e9177] [cursor=pointer]:
+              - cell "C2371742" [ref=e9178]:
+                - link "C2371742" [ref=e9179]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371742
+              - cell "Verify Cheapest promotional badge renders when configured" [ref=e9180]:
+                - generic [ref=e9181]: Verify Cheapest promotional badge renders when configured
+              - cell "Medium" [ref=e9182]:
+                - combobox [ref=e9184]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9185]:
+                - generic [ref=e9186]:
+                  - button "P" [ref=e9187]
+                  - button "B" [ref=e9188]
+                  - button "R" [ref=e9189]
+                  - button "F" [ref=e9190]
+                  - button "More statuses" [ref=e9192]:
+                    - img [ref=e9193]
+              - cell "Untested" [ref=e9197]:
+                - generic [ref=e9198]: Untested
+              - cell [ref=e9199]:
+                - textbox [ref=e9201]
+            - row "C2371743 Verify Best Value promotional badge renders when configured Medium P B R F More statuses Untested" [ref=e9202] [cursor=pointer]:
+              - cell "C2371743" [ref=e9203]:
+                - link "C2371743" [ref=e9204]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371743
+              - cell "Verify Best Value promotional badge renders when configured" [ref=e9205]:
+                - generic [ref=e9206]: Verify Best Value promotional badge renders when configured
+              - cell "Medium" [ref=e9207]:
+                - combobox [ref=e9209]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9210]:
+                - generic [ref=e9211]:
+                  - button "P" [ref=e9212]
+                  - button "B" [ref=e9213]
+                  - button "R" [ref=e9214]
+                  - button "F" [ref=e9215]
+                  - button "More statuses" [ref=e9217]:
+                    - img [ref=e9218]
+              - cell "Untested" [ref=e9222]:
+                - generic [ref=e9223]: Untested
+              - cell [ref=e9224]:
+                - textbox [ref=e9226]
+            - row "C2371744 Verify More Affordable promotional badge renders when configured Medium P B R F More statuses Untested" [ref=e9227] [cursor=pointer]:
+              - cell "C2371744" [ref=e9228]:
+                - link "C2371744" [ref=e9229]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371744
+              - cell "Verify More Affordable promotional badge renders when configured" [ref=e9230]:
+                - generic [ref=e9231]: Verify More Affordable promotional badge renders when configured
+              - cell "Medium" [ref=e9232]:
+                - combobox [ref=e9234]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9235]:
+                - generic [ref=e9236]:
+                  - button "P" [ref=e9237]
+                  - button "B" [ref=e9238]
+                  - button "R" [ref=e9239]
+                  - button "F" [ref=e9240]
+                  - button "More statuses" [ref=e9242]:
+                    - img [ref=e9243]
+              - cell "Untested" [ref=e9247]:
+                - generic [ref=e9248]: Untested
+              - cell [ref=e9249]:
+                - textbox [ref=e9251]
+            - row "C2371745 Verify voucher badge is absent when not configured Medium P B R F More statuses Untested" [ref=e9252] [cursor=pointer]:
+              - cell "C2371745" [ref=e9253]:
+                - link "C2371745" [ref=e9254]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371745
+              - cell "Verify voucher badge is absent when not configured" [ref=e9255]:
+                - generic [ref=e9256]: Verify voucher badge is absent when not configured
+              - cell "Medium" [ref=e9257]:
+                - combobox [ref=e9259]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9260]:
+                - generic [ref=e9261]:
+                  - button "P" [ref=e9262]
+                  - button "B" [ref=e9263]
+                  - button "R" [ref=e9264]
+                  - button "F" [ref=e9265]
+                  - button "More statuses" [ref=e9267]:
+                    - img [ref=e9268]
+              - cell "Untested" [ref=e9272]:
+                - generic [ref=e9273]: Untested
+              - cell [ref=e9274]:
+                - textbox [ref=e9276]
+            - row "C2371746 Verify default tab is Trade Points when points are below 2,000 Medium P B R F More statuses Untested" [ref=e9277] [cursor=pointer]:
+              - cell "C2371746" [ref=e9278]:
+                - link "C2371746" [ref=e9279]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371746
+              - cell "Verify default tab is Trade Points when points are below 2,000" [ref=e9280]:
+                - generic [ref=e9281]: Verify default tab is Trade Points when points are below 2,000
+              - cell "Medium" [ref=e9282]:
+                - combobox [ref=e9284]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9285]:
+                - generic [ref=e9286]:
+                  - button "P" [ref=e9287]
+                  - button "B" [ref=e9288]
+                  - button "R" [ref=e9289]
+                  - button "F" [ref=e9290]
+                  - button "More statuses" [ref=e9292]:
+                    - img [ref=e9293]
+              - cell "Untested" [ref=e9297]:
+                - generic [ref=e9298]: Untested
+              - cell [ref=e9299]:
+                - textbox [ref=e9301]
+            - row "C2371747 Verify default tab is Buy Voucher when points are 2,000 or above Medium P B R F More statuses Untested" [ref=e9302] [cursor=pointer]:
+              - cell "C2371747" [ref=e9303]:
+                - link "C2371747" [ref=e9304]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371747
+              - cell "Verify default tab is Buy Voucher when points are 2,000 or above" [ref=e9305]:
+                - generic [ref=e9306]: Verify default tab is Buy Voucher when points are 2,000 or above
+              - cell "Medium" [ref=e9307]:
+                - combobox [ref=e9309]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9310]:
+                - generic [ref=e9311]:
+                  - button "P" [ref=e9312]
+                  - button "B" [ref=e9313]
+                  - button "R" [ref=e9314]
+                  - button "F" [ref=e9315]
+                  - button "More statuses" [ref=e9317]:
+                    - img [ref=e9318]
+              - cell "Untested" [ref=e9322]:
+                - generic [ref=e9323]: Untested
+              - cell [ref=e9324]:
+                - textbox [ref=e9326]
+            - row "C2371748 Verify default tab at the exact 2,000-point boundary Medium P B R F More statuses Untested" [ref=e9327] [cursor=pointer]:
+              - cell "C2371748" [ref=e9328]:
+                - link "C2371748" [ref=e9329]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371748
+              - cell "Verify default tab at the exact 2,000-point boundary" [ref=e9330]:
+                - generic [ref=e9331]: Verify default tab at the exact 2,000-point boundary
+              - cell "Medium" [ref=e9332]:
+                - combobox [ref=e9334]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9335]:
+                - generic [ref=e9336]:
+                  - button "P" [ref=e9337]
+                  - button "B" [ref=e9338]
+                  - button "R" [ref=e9339]
+                  - button "F" [ref=e9340]
+                  - button "More statuses" [ref=e9342]:
+                    - img [ref=e9343]
+              - cell "Untested" [ref=e9347]:
+                - generic [ref=e9348]: Untested
+              - cell [ref=e9349]:
+                - textbox [ref=e9351]
+            - row "C2371749 Verify Buy Voucher CTA deep link navigation Critical P B R F More statuses Untested" [ref=e9352] [cursor=pointer]:
+              - cell "C2371749" [ref=e9353]:
+                - link "C2371749" [ref=e9354]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371749
+              - cell "Verify Buy Voucher CTA deep link navigation" [ref=e9355]:
+                - generic [ref=e9356]: Verify Buy Voucher CTA deep link navigation
+              - cell "Critical" [ref=e9357]:
+                - combobox [ref=e9359]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e9360]:
+                - generic [ref=e9361]:
+                  - button "P" [ref=e9362]
+                  - button "B" [ref=e9363]
+                  - button "R" [ref=e9364]
+                  - button "F" [ref=e9365]
+                  - button "More statuses" [ref=e9367]:
+                    - img [ref=e9368]
+              - cell "Untested" [ref=e9372]:
+                - generic [ref=e9373]: Untested
+              - cell [ref=e9374]:
+                - textbox [ref=e9376]
+            - row "C2371750 Verify inventory bottom sheet can be dismissed without side effects Medium P B R F More statuses Untested" [ref=e9377] [cursor=pointer]:
+              - cell "C2371750" [ref=e9378]:
+                - link "C2371750" [ref=e9379]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371750
+              - cell "Verify inventory bottom sheet can be dismissed without side effects" [ref=e9380]:
+                - generic [ref=e9381]: Verify inventory bottom sheet can be dismissed without side effects
+              - cell "Medium" [ref=e9382]:
+                - combobox [ref=e9384]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9385]:
+                - generic [ref=e9386]:
+                  - button "P" [ref=e9387]
+                  - button "B" [ref=e9388]
+                  - button "R" [ref=e9389]
+                  - button "F" [ref=e9390]
+                  - button "More statuses" [ref=e9392]:
+                    - img [ref=e9393]
+              - cell "Untested" [ref=e9397]:
+                - generic [ref=e9398]: Untested
+              - cell [ref=e9399]:
+                - textbox [ref=e9401]
+            - row "C2371751 Verify Gameplay token CTA copy is Get More Tokens in English Medium P B R F More statuses Untested" [ref=e9402] [cursor=pointer]:
+              - cell "C2371751" [ref=e9403]:
+                - link "C2371751" [ref=e9404]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371751
+              - cell "Verify Gameplay token CTA copy is Get More Tokens in English" [ref=e9405]:
+                - generic [ref=e9406]: Verify Gameplay token CTA copy is Get More Tokens in English
+              - cell "Medium" [ref=e9407]:
+                - combobox [ref=e9409]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9410]:
+                - generic [ref=e9411]:
+                  - button "P" [ref=e9412]
+                  - button "B" [ref=e9413]
+                  - button "R" [ref=e9414]
+                  - button "F" [ref=e9415]
+                  - button "More statuses" [ref=e9417]:
+                    - img [ref=e9418]
+              - cell "Untested" [ref=e9422]:
+                - generic [ref=e9423]: Untested
+              - cell [ref=e9424]:
+                - textbox [ref=e9426]
+            - row "C2371752 Verify Gameplay token CTA copy is Tambah Token in Indonesian Medium P B R F More statuses Untested" [ref=e9427] [cursor=pointer]:
+              - cell "C2371752" [ref=e9428]:
+                - link "C2371752" [ref=e9429]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371752
+              - cell "Verify Gameplay token CTA copy is Tambah Token in Indonesian" [ref=e9430]:
+                - generic [ref=e9431]: Verify Gameplay token CTA copy is Tambah Token in Indonesian
+              - cell "Medium" [ref=e9432]:
+                - combobox [ref=e9434]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9435]:
+                - generic [ref=e9436]:
+                  - button "P" [ref=e9437]
+                  - button "B" [ref=e9438]
+                  - button "R" [ref=e9439]
+                  - button "F" [ref=e9440]
+                  - button "More statuses" [ref=e9442]:
+                    - img [ref=e9443]
+              - cell "Untested" [ref=e9447]:
+                - generic [ref=e9448]: Untested
+              - cell [ref=e9449]:
+                - textbox [ref=e9451]
+            - row "C2371753 Verify token purchase CTA keeps the same position Medium P B R F More statuses Untested" [ref=e9452] [cursor=pointer]:
+              - cell "C2371753" [ref=e9453]:
+                - link "C2371753" [ref=e9454]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371753
+              - cell "Verify token purchase CTA keeps the same position" [ref=e9455]:
+                - generic [ref=e9456]: Verify token purchase CTA keeps the same position
+              - cell "Medium" [ref=e9457]:
+                - combobox [ref=e9459]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9460]:
+                - generic [ref=e9461]:
+                  - button "P" [ref=e9462]
+                  - button "B" [ref=e9463]
+                  - button "R" [ref=e9464]
+                  - button "F" [ref=e9465]
+                  - button "More statuses" [ref=e9467]:
+                    - img [ref=e9468]
+              - cell "Untested" [ref=e9472]:
+                - generic [ref=e9473]: Untested
+              - cell [ref=e9474]:
+                - textbox [ref=e9476]
+            - row "C2371754 Verify tapping token purchase CTA opens the token-purchase section High P B R F More statuses Untested" [ref=e9477] [cursor=pointer]:
+              - cell "C2371754" [ref=e9478]:
+                - link "C2371754" [ref=e9479]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371754
+              - cell "Verify tapping token purchase CTA opens the token-purchase section" [ref=e9480]:
+                - generic [ref=e9481]: Verify tapping token purchase CTA opens the token-purchase section
+              - cell "High" [ref=e9482]:
+                - combobox [ref=e9484]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9485]:
+                - generic [ref=e9486]:
+                  - button "P" [ref=e9487]
+                  - button "B" [ref=e9488]
+                  - button "R" [ref=e9489]
+                  - button "F" [ref=e9490]
+                  - button "More statuses" [ref=e9492]:
+                    - img [ref=e9493]
+              - cell "Untested" [ref=e9497]:
+                - generic [ref=e9498]: Untested
+              - cell [ref=e9499]:
+                - textbox [ref=e9501]
+            - row "C2371755 Verify onboarding banner is shown to first-time BTM users High P B R F More statuses Untested" [ref=e9502] [cursor=pointer]:
+              - cell "C2371755" [ref=e9503]:
+                - link "C2371755" [ref=e9504]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371755
+              - cell "Verify onboarding banner is shown to first-time BTM users" [ref=e9505]:
+                - generic [ref=e9506]: Verify onboarding banner is shown to first-time BTM users
+              - cell "High" [ref=e9507]:
+                - combobox [ref=e9509]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9510]:
+                - generic [ref=e9511]:
+                  - button "P" [ref=e9512]
+                  - button "B" [ref=e9513]
+                  - button "R" [ref=e9514]
+                  - button "F" [ref=e9515]
+                  - button "More statuses" [ref=e9517]:
+                    - img [ref=e9518]
+              - cell "Untested" [ref=e9522]:
+                - generic [ref=e9523]: Untested
+              - cell [ref=e9524]:
+                - textbox [ref=e9526]
+            - row "C2371756 Verify onboarding banner is not shown to returning users Medium P B R F More statuses Untested" [ref=e9527] [cursor=pointer]:
+              - cell "C2371756" [ref=e9528]:
+                - link "C2371756" [ref=e9529]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371756
+              - cell "Verify onboarding banner is not shown to returning users" [ref=e9530]:
+                - generic [ref=e9531]: Verify onboarding banner is not shown to returning users
+              - cell "Medium" [ref=e9532]:
+                - combobox [ref=e9534]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9535]:
+                - generic [ref=e9536]:
+                  - button "P" [ref=e9537]
+                  - button "B" [ref=e9538]
+                  - button "R" [ref=e9539]
+                  - button "F" [ref=e9540]
+                  - button "More statuses" [ref=e9542]:
+                    - img [ref=e9543]
+              - cell "Untested" [ref=e9547]:
+                - generic [ref=e9548]: Untested
+              - cell [ref=e9549]:
+                - textbox [ref=e9551]
+            - row "C2371757 Verify onboarding does not auto-appear after completion or dismissal Medium P B R F More statuses Untested" [ref=e9552] [cursor=pointer]:
+              - cell "C2371757" [ref=e9553]:
+                - link "C2371757" [ref=e9554]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371757
+              - cell "Verify onboarding does not auto-appear after completion or dismissal" [ref=e9555]:
+                - generic [ref=e9556]: Verify onboarding does not auto-appear after completion or dismissal
+              - cell "Medium" [ref=e9557]:
+                - combobox [ref=e9559]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9560]:
+                - generic [ref=e9561]:
+                  - button "P" [ref=e9562]
+                  - button "B" [ref=e9563]
+                  - button "R" [ref=e9564]
+                  - button "F" [ref=e9565]
+                  - button "More statuses" [ref=e9567]:
+                    - img [ref=e9568]
+              - cell "Untested" [ref=e9572]:
+                - generic [ref=e9573]: Untested
+              - cell [ref=e9574]:
+                - textbox [ref=e9576]
+            - row "C2371758 Verify onboarding banner redirects to the configured Info Page URL Medium P B R F More statuses Untested" [ref=e9577] [cursor=pointer]:
+              - cell "C2371758" [ref=e9578]:
+                - link "C2371758" [ref=e9579]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371758
+              - cell "Verify onboarding banner redirects to the configured Info Page URL" [ref=e9580]:
+                - generic [ref=e9581]: Verify onboarding banner redirects to the configured Info Page URL
+              - cell "Medium" [ref=e9582]:
+                - combobox [ref=e9584]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9585]:
+                - generic [ref=e9586]:
+                  - button "P" [ref=e9587]
+                  - button "B" [ref=e9588]
+                  - button "R" [ref=e9589]
+                  - button "F" [ref=e9590]
+                  - button "More statuses" [ref=e9592]:
+                    - img [ref=e9593]
+              - cell "Untested" [ref=e9597]:
+                - generic [ref=e9598]: Untested
+              - cell [ref=e9599]:
+                - textbox [ref=e9601]
+            - row "C2371759 Verify Info Page URL is configurable Medium P B R F More statuses Untested" [ref=e9602] [cursor=pointer]:
+              - cell "C2371759" [ref=e9603]:
+                - link "C2371759" [ref=e9604]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371759
+              - cell "Verify Info Page URL is configurable" [ref=e9605]:
+                - generic [ref=e9606]: Verify Info Page URL is configurable
+              - cell "Medium" [ref=e9607]:
+                - combobox [ref=e9609]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9610]:
+                - generic [ref=e9611]:
+                  - button "P" [ref=e9612]
+                  - button "B" [ref=e9613]
+                  - button "R" [ref=e9614]
+                  - button "F" [ref=e9615]
+                  - button "More statuses" [ref=e9617]:
+                    - img [ref=e9618]
+              - cell "Untested" [ref=e9622]:
+                - generic [ref=e9623]: Untested
+              - cell [ref=e9624]:
+                - textbox [ref=e9626]
+            - row "C2371760 Verify shareable onboarding/Info Page redirect link works Medium P B R F More statuses Untested" [ref=e9627] [cursor=pointer]:
+              - cell "C2371760" [ref=e9628]:
+                - link "C2371760" [ref=e9629]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371760
+              - cell "Verify shareable onboarding/Info Page redirect link works" [ref=e9630]:
+                - generic [ref=e9631]: Verify shareable onboarding/Info Page redirect link works
+              - cell "Medium" [ref=e9632]:
+                - combobox [ref=e9634]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9635]:
+                - generic [ref=e9636]:
+                  - button "P" [ref=e9637]
+                  - button "B" [ref=e9638]
+                  - button "R" [ref=e9639]
+                  - button "F" [ref=e9640]
+                  - button "More statuses" [ref=e9642]:
+                    - img [ref=e9643]
+              - cell "Untested" [ref=e9647]:
+                - generic [ref=e9648]: Untested
+              - cell [ref=e9649]:
+                - textbox [ref=e9651]
+            - row "C2371761 Verify onboarding content explains BTM gameplay basics Medium P B R F More statuses Untested" [ref=e9652] [cursor=pointer]:
+              - cell "C2371761" [ref=e9653]:
+                - link "C2371761" [ref=e9654]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371761
+              - cell "Verify onboarding content explains BTM gameplay basics" [ref=e9655]:
+                - generic [ref=e9656]: Verify onboarding content explains BTM gameplay basics
+              - cell "Medium" [ref=e9657]:
+                - combobox [ref=e9659]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9660]:
+                - generic [ref=e9661]:
+                  - button "P" [ref=e9662]
+                  - button "B" [ref=e9663]
+                  - button "R" [ref=e9664]
+                  - button "F" [ref=e9665]
+                  - button "More statuses" [ref=e9667]:
+                    - img [ref=e9668]
+              - cell "Untested" [ref=e9672]:
+                - generic [ref=e9673]: Untested
+              - cell [ref=e9674]:
+                - textbox [ref=e9676]
+            - row "C2371762 Verify first-time-user Gameplay section introduces the Prize Holder mechanic Medium P B R F More statuses Untested" [ref=e9677] [cursor=pointer]:
+              - cell "C2371762" [ref=e9678]:
+                - link "C2371762" [ref=e9679]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371762
+              - cell "Verify first-time-user Gameplay section introduces the Prize Holder mechanic" [ref=e9680]:
+                - generic [ref=e9681]: Verify first-time-user Gameplay section introduces the Prize Holder mechanic
+              - cell "Medium" [ref=e9682]:
+                - combobox [ref=e9684]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9685]:
+                - generic [ref=e9686]:
+                  - button "P" [ref=e9687]
+                  - button "B" [ref=e9688]
+                  - button "R" [ref=e9689]
+                  - button "F" [ref=e9690]
+                  - button "More statuses" [ref=e9692]:
+                    - img [ref=e9693]
+              - cell "Untested" [ref=e9697]:
+                - generic [ref=e9698]: Untested
+              - cell [ref=e9699]:
+                - textbox [ref=e9701]
+            - row "C2371763 Verify Prize Holder shows the current prize holder High P B R F More statuses Untested" [ref=e9702] [cursor=pointer]:
+              - cell "C2371763" [ref=e9703]:
+                - link "C2371763" [ref=e9704]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371763
+              - cell "Verify Prize Holder shows the current prize holder" [ref=e9705]:
+                - generic [ref=e9706]: Verify Prize Holder shows the current prize holder
+              - cell "High" [ref=e9707]:
+                - combobox [ref=e9709]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9710]:
+                - generic [ref=e9711]:
+                  - button "P" [ref=e9712]
+                  - button "B" [ref=e9713]
+                  - button "R" [ref=e9714]
+                  - button "F" [ref=e9715]
+                  - button "More statuses" [ref=e9717]:
+                    - img [ref=e9718]
+              - cell "Untested" [ref=e9722]:
+                - generic [ref=e9723]: Untested
+              - cell [ref=e9724]:
+                - textbox [ref=e9726]
+            - row "C2371764 Verify updated Steal Prize interaction Critical P B R F More statuses Untested" [ref=e9727] [cursor=pointer]:
+              - cell "C2371764" [ref=e9728]:
+                - link "C2371764" [ref=e9729]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371764
+              - cell "Verify updated Steal Prize interaction" [ref=e9730]:
+                - generic [ref=e9731]: Verify updated Steal Prize interaction
+              - cell "Critical" [ref=e9732]:
+                - combobox [ref=e9734]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e9735]:
+                - generic [ref=e9736]:
+                  - button "P" [ref=e9737]
+                  - button "B" [ref=e9738]
+                  - button "R" [ref=e9739]
+                  - button "F" [ref=e9740]
+                  - button "More statuses" [ref=e9742]:
+                    - img [ref=e9743]
+              - cell "Untested" [ref=e9747]:
+                - generic [ref=e9748]: Untested
+              - cell [ref=e9749]:
+                - textbox [ref=e9751]
+            - row "C2371765 Verify new wide fade transition animation plays Medium P B R F More statuses Untested" [ref=e9752] [cursor=pointer]:
+              - cell "C2371765" [ref=e9753]:
+                - link "C2371765" [ref=e9754]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371765
+              - cell "Verify new wide fade transition animation plays" [ref=e9755]:
+                - generic [ref=e9756]: Verify new wide fade transition animation plays
+              - cell "Medium" [ref=e9757]:
+                - combobox [ref=e9759]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9760]:
+                - generic [ref=e9761]:
+                  - button "P" [ref=e9762]
+                  - button "B" [ref=e9763]
+                  - button "R" [ref=e9764]
+                  - button "F" [ref=e9765]
+                  - button "More statuses" [ref=e9767]:
+                    - img [ref=e9768]
+              - cell "Untested" [ref=e9772]:
+                - generic [ref=e9773]: Untested
+              - cell [ref=e9774]:
+                - textbox [ref=e9776]
+            - row "C2371766 Verify existing gameplay sounds are unchanged after the refresh (regression from GRA-3099 / GRA-2863) Medium P B R F More statuses Untested" [ref=e9777] [cursor=pointer]:
+              - cell "C2371766" [ref=e9778]:
+                - link "C2371766" [ref=e9779]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371766
+              - cell "Verify existing gameplay sounds are unchanged after the refresh (regression from GRA-3099 / GRA-2863)" [ref=e9780]:
+                - generic [ref=e9781]: Verify existing gameplay sounds are unchanged after the refresh (regression from GRA-3099 / GRA-2863)
+              - cell "Medium" [ref=e9782]:
+                - combobox [ref=e9784]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9785]:
+                - generic [ref=e9786]:
+                  - button "P" [ref=e9787]
+                  - button "B" [ref=e9788]
+                  - button "R" [ref=e9789]
+                  - button "F" [ref=e9790]
+                  - button "More statuses" [ref=e9792]:
+                    - img [ref=e9793]
+              - cell "Untested" [ref=e9797]:
+                - generic [ref=e9798]: Untested
+              - cell [ref=e9799]:
+                - textbox [ref=e9801]
+            - row "C2371767 Verify new gameplay Lottie assets load correctly Medium P B R F More statuses Untested" [ref=e9802] [cursor=pointer]:
+              - cell "C2371767" [ref=e9803]:
+                - link "C2371767" [ref=e9804]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371767
+              - cell "Verify new gameplay Lottie assets load correctly" [ref=e9805]:
+                - generic [ref=e9806]: Verify new gameplay Lottie assets load correctly
+              - cell "Medium" [ref=e9807]:
+                - combobox [ref=e9809]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9810]:
+                - generic [ref=e9811]:
+                  - button "P" [ref=e9812]
+                  - button "B" [ref=e9813]
+                  - button "R" [ref=e9814]
+                  - button "F" [ref=e9815]
+                  - button "More statuses" [ref=e9817]:
+                    - img [ref=e9818]
+              - cell "Untested" [ref=e9822]:
+                - generic [ref=e9823]: Untested
+              - cell [ref=e9824]:
+                - textbox [ref=e9826]
+            - row "C2371768 Verify Image with Chips (3:4) module is reused across BTM surfaces Medium P B R F More statuses Untested" [ref=e9827] [cursor=pointer]:
+              - cell "C2371768" [ref=e9828]:
+                - link "C2371768" [ref=e9829]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371768
+              - cell "Verify Image with Chips (3:4) module is reused across BTM surfaces" [ref=e9830]:
+                - generic [ref=e9831]: Verify Image with Chips (3:4) module is reused across BTM surfaces
+              - cell "Medium" [ref=e9832]:
+                - combobox [ref=e9834]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9835]:
+                - generic [ref=e9836]:
+                  - button "P" [ref=e9837]
+                  - button "B" [ref=e9838]
+                  - button "R" [ref=e9839]
+                  - button "F" [ref=e9840]
+                  - button "More statuses" [ref=e9842]:
+                    - img [ref=e9843]
+              - cell "Untested" [ref=e9847]:
+                - generic [ref=e9848]: Untested
+              - cell [ref=e9849]:
+                - textbox [ref=e9851]
+            - row "C2371769 Verify token injection by whitelisted Product ID Critical P B R F More statuses Untested" [ref=e9852] [cursor=pointer]:
+              - cell "C2371769" [ref=e9853]:
+                - link "C2371769" [ref=e9854]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371769
+              - cell "Verify token injection by whitelisted Product ID" [ref=e9855]:
+                - generic [ref=e9856]: Verify token injection by whitelisted Product ID
+              - cell "Critical" [ref=e9857]:
+                - combobox [ref=e9859]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e9860]:
+                - generic [ref=e9861]:
+                  - button "P" [ref=e9862]
+                  - button "B" [ref=e9863]
+                  - button "R" [ref=e9864]
+                  - button "F" [ref=e9865]
+                  - button "More statuses" [ref=e9867]:
+                    - img [ref=e9868]
+              - cell "Untested" [ref=e9872]:
+                - generic [ref=e9873]: Untested
+              - cell [ref=e9874]:
+                - textbox [ref=e9876]
+            - row "C2371770 Verify Product-ID config takes precedence over vertical config Critical P B R F More statuses Untested" [ref=e9877] [cursor=pointer]:
+              - cell "C2371770" [ref=e9878]:
+                - link "C2371770" [ref=e9879]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371770
+              - cell "Verify Product-ID config takes precedence over vertical config" [ref=e9880]:
+                - generic [ref=e9881]: Verify Product-ID config takes precedence over vertical config
+              - cell "Critical" [ref=e9882]:
+                - combobox [ref=e9884]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e9885]:
+                - generic [ref=e9886]:
+                  - button "P" [ref=e9887]
+                  - button "B" [ref=e9888]
+                  - button "R" [ref=e9889]
+                  - button "F" [ref=e9890]
+                  - button "More statuses" [ref=e9892]:
+                    - img [ref=e9893]
+              - cell "Untested" [ref=e9897]:
+                - generic [ref=e9898]: Untested
+              - cell [ref=e9899]:
+                - textbox [ref=e9901]
+            - row "C2371771 Verify fallback to vertical config when Product ID has no config High P B R F More statuses Untested" [ref=e9902] [cursor=pointer]:
+              - cell "C2371771" [ref=e9903]:
+                - link "C2371771" [ref=e9904]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371771
+              - cell "Verify fallback to vertical config when Product ID has no config" [ref=e9905]:
+                - generic [ref=e9906]: Verify fallback to vertical config when Product ID has no config
+              - cell "High" [ref=e9907]:
+                - combobox [ref=e9909]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9910]:
+                - generic [ref=e9911]:
+                  - button "P" [ref=e9912]
+                  - button "B" [ref=e9913]
+                  - button "R" [ref=e9914]
+                  - button "F" [ref=e9915]
+                  - button "More statuses" [ref=e9917]:
+                    - img [ref=e9918]
+              - cell "Untested" [ref=e9922]:
+                - generic [ref=e9923]: Untested
+              - cell [ref=e9924]:
+                - textbox [ref=e9926]
+            - row "C2371772 Verify IDR 9,900 package injects 13 tokens Medium P B R F More statuses Untested" [ref=e9927] [cursor=pointer]:
+              - cell "C2371772" [ref=e9928]:
+                - link "C2371772" [ref=e9929]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371772
+              - cell "Verify IDR 9,900 package injects 13 tokens" [ref=e9930]:
+                - generic [ref=e9931]: Verify IDR 9,900 package injects 13 tokens
+              - cell "Medium" [ref=e9932]:
+                - combobox [ref=e9934]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9935]:
+                - generic [ref=e9936]:
+                  - button "P" [ref=e9937]
+                  - button "B" [ref=e9938]
+                  - button "R" [ref=e9939]
+                  - button "F" [ref=e9940]
+                  - button "More statuses" [ref=e9942]:
+                    - img [ref=e9943]
+              - cell "Untested" [ref=e9947]:
+                - generic [ref=e9948]: Untested
+              - cell [ref=e9949]:
+                - textbox [ref=e9951]
+            - row "C2371773 Verify IDR 19,900 package injects 30 tokens Medium P B R F More statuses Untested" [ref=e9952] [cursor=pointer]:
+              - cell "C2371773" [ref=e9953]:
+                - link "C2371773" [ref=e9954]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371773
+              - cell "Verify IDR 19,900 package injects 30 tokens" [ref=e9955]:
+                - generic [ref=e9956]: Verify IDR 19,900 package injects 30 tokens
+              - cell "Medium" [ref=e9957]:
+                - combobox [ref=e9959]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9960]:
+                - generic [ref=e9961]:
+                  - button "P" [ref=e9962]
+                  - button "B" [ref=e9963]
+                  - button "R" [ref=e9964]
+                  - button "F" [ref=e9965]
+                  - button "More statuses" [ref=e9967]:
+                    - img [ref=e9968]
+              - cell "Untested" [ref=e9972]:
+                - generic [ref=e9973]: Untested
+              - cell [ref=e9974]:
+                - textbox [ref=e9976]
+            - row "C2371774 Verify IDR 49,900 package injects 70 tokens Medium P B R F More statuses Untested" [ref=e9977] [cursor=pointer]:
+              - cell "C2371774" [ref=e9978]:
+                - link "C2371774" [ref=e9979]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371774
+              - cell "Verify IDR 49,900 package injects 70 tokens" [ref=e9980]:
+                - generic [ref=e9981]: Verify IDR 49,900 package injects 70 tokens
+              - cell "Medium" [ref=e9982]:
+                - combobox [ref=e9984]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e9985]:
+                - generic [ref=e9986]:
+                  - button "P" [ref=e9987]
+                  - button "B" [ref=e9988]
+                  - button "R" [ref=e9989]
+                  - button "F" [ref=e9990]
+                  - button "More statuses" [ref=e9992]:
+                    - img [ref=e9993]
+              - cell "Untested" [ref=e9997]:
+                - generic [ref=e9998]: Untested
+              - cell [ref=e9999]:
+                - textbox [ref=e10001]
+            - row "C2371775 Verify existing vertical-only injection still works unchanged Critical P B R F More statuses Untested" [ref=e10002] [cursor=pointer]:
+              - cell "C2371775" [ref=e10003]:
+                - link "C2371775" [ref=e10004]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371775
+              - cell "Verify existing vertical-only injection still works unchanged" [ref=e10005]:
+                - generic [ref=e10006]: Verify existing vertical-only injection still works unchanged
+              - cell "Critical" [ref=e10007]:
+                - combobox [ref=e10009]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e10010]:
+                - generic [ref=e10011]:
+                  - button "P" [ref=e10012]
+                  - button "B" [ref=e10013]
+                  - button "R" [ref=e10014]
+                  - button "F" [ref=e10015]
+                  - button "More statuses" [ref=e10017]:
+                    - img [ref=e10018]
+              - cell "Untested" [ref=e10022]:
+                - generic [ref=e10023]: Untested
+              - cell [ref=e10024]:
+                - textbox [ref=e10026]
+            - row "C2371776 Verify countdown resets after a successful auto bid Medium P B R F More statuses Untested" [ref=e10027] [cursor=pointer]:
+              - cell "C2371776" [ref=e10028]:
+                - link "C2371776" [ref=e10029]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371776
+              - cell "Verify countdown resets after a successful auto bid" [ref=e10030]:
+                - generic [ref=e10031]: Verify countdown resets after a successful auto bid
+              - cell "Medium" [ref=e10032]:
+                - combobox [ref=e10034]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10035]:
+                - generic [ref=e10036]:
+                  - button "P" [ref=e10037]
+                  - button "B" [ref=e10038]
+                  - button "R" [ref=e10039]
+                  - button "F" [ref=e10040]
+                  - button "More statuses" [ref=e10042]:
+                    - img [ref=e10043]
+              - cell "Untested" [ref=e10047]:
+                - generic [ref=e10048]: Untested
+              - cell [ref=e10049]:
+                - textbox [ref=e10051]
+            - row "C2371777 Verify FE trackers fire for the new BTM components High P B R F More statuses Untested" [ref=e10052] [cursor=pointer]:
+              - cell "C2371777" [ref=e10053]:
+                - link "C2371777" [ref=e10054]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371777
+              - cell "Verify FE trackers fire for the new BTM components" [ref=e10055]:
+                - generic [ref=e10056]: Verify FE trackers fire for the new BTM components
+              - cell "High" [ref=e10057]:
+                - combobox [ref=e10059]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10060]:
+                - generic [ref=e10061]:
+                  - button "P" [ref=e10062]
+                  - button "B" [ref=e10063]
+                  - button "R" [ref=e10064]
+                  - button "F" [ref=e10065]
+                  - button "More statuses" [ref=e10067]:
+                    - img [ref=e10068]
+              - cell "Untested" [ref=e10072]:
+                - generic [ref=e10073]: Untested
+              - cell [ref=e10074]:
+                - textbox [ref=e10076]
+            - row "C2371778 Verify end-to-end first-time user journey from onboarding to winning Critical P B R F More statuses Untested" [ref=e10077] [cursor=pointer]:
+              - cell "C2371778" [ref=e10078]:
+                - link "C2371778" [ref=e10079]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371778
+              - cell "Verify end-to-end first-time user journey from onboarding to winning" [ref=e10080]:
+                - generic [ref=e10081]: Verify end-to-end first-time user journey from onboarding to winning
+              - cell "Critical" [ref=e10082]:
+                - combobox [ref=e10084]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e10085]:
+                - generic [ref=e10086]:
+                  - button "P" [ref=e10087]
+                  - button "B" [ref=e10088]
+                  - button "R" [ref=e10089]
+                  - button "F" [ref=e10090]
+                  - button "More statuses" [ref=e10092]:
+                    - img [ref=e10093]
+              - cell "Untested" [ref=e10097]:
+                - generic [ref=e10098]: Untested
+              - cell [ref=e10099]:
+                - textbox [ref=e10101]
+            - row "C2371779 Verify end-to-end buy voucher, token injection, and gameplay Critical P B R F More statuses Untested" [ref=e10102] [cursor=pointer]:
+              - cell "C2371779" [ref=e10103]:
+                - link "C2371779" [ref=e10104]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371779
+              - cell "Verify end-to-end buy voucher, token injection, and gameplay" [ref=e10105]:
+                - generic [ref=e10106]: Verify end-to-end buy voucher, token injection, and gameplay
+              - cell "Critical" [ref=e10107]:
+                - combobox [ref=e10109]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e10110]:
+                - generic [ref=e10111]:
+                  - button "P" [ref=e10112]
+                  - button "B" [ref=e10113]
+                  - button "R" [ref=e10114]
+                  - button "F" [ref=e10115]
+                  - button "More statuses" [ref=e10117]:
+                    - img [ref=e10118]
+              - cell "Untested" [ref=e10122]:
+                - generic [ref=e10123]: Untested
+              - cell [ref=e10124]:
+                - textbox [ref=e10126]
+            - row "C2371780 Verify end-to-end trade points to snatch a product (regression from GRA-724) High P B R F More statuses Untested" [ref=e10127] [cursor=pointer]:
+              - cell "C2371780" [ref=e10128]:
+                - link "C2371780" [ref=e10129]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371780
+              - cell "Verify end-to-end trade points to snatch a product (regression from GRA-724)" [ref=e10130]:
+                - generic [ref=e10131]: Verify end-to-end trade points to snatch a product (regression from GRA-724)
+              - cell "High" [ref=e10132]:
+                - combobox [ref=e10134]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10135]:
+                - generic [ref=e10136]:
+                  - button "P" [ref=e10137]
+                  - button "B" [ref=e10138]
+                  - button "R" [ref=e10139]
+                  - button "F" [ref=e10140]
+                  - button "More statuses" [ref=e10142]:
+                    - img [ref=e10143]
+              - cell "Untested" [ref=e10147]:
+                - generic [ref=e10148]: Untested
+              - cell [ref=e10149]:
+                - textbox [ref=e10151]
+            - row "C2371781 Verify Steal/Bid CTA is disabled while the current user is the Prize Holder High P B R F More statuses Untested" [ref=e10152] [cursor=pointer]:
+              - cell "C2371781" [ref=e10153]:
+                - link "C2371781" [ref=e10154]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371781
+              - cell "Verify Steal/Bid CTA is disabled while the current user is the Prize Holder" [ref=e10155]:
+                - generic [ref=e10156]: Verify Steal/Bid CTA is disabled while the current user is the Prize Holder
+              - cell "High" [ref=e10157]:
+                - combobox [ref=e10159]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10160]:
+                - generic [ref=e10161]:
+                  - button "P" [ref=e10162]
+                  - button "B" [ref=e10163]
+                  - button "R" [ref=e10164]
+                  - button "F" [ref=e10165]
+                  - button "More statuses" [ref=e10167]:
+                    - img [ref=e10168]
+              - cell "Untested" [ref=e10172]:
+                - generic [ref=e10173]: Untested
+              - cell [ref=e10174]:
+                - textbox [ref=e10176]
+            - row "C2371782 Verify no token is deducted when the Prize Holder attempts to bid again Critical P B R F More statuses Untested" [ref=e10177] [cursor=pointer]:
+              - cell "C2371782" [ref=e10178]:
+                - link "C2371782" [ref=e10179]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371782
+              - cell "Verify no token is deducted when the Prize Holder attempts to bid again" [ref=e10180]:
+                - generic [ref=e10181]: Verify no token is deducted when the Prize Holder attempts to bid again
+              - cell "Critical" [ref=e10182]:
+                - combobox [ref=e10184]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e10185]:
+                - generic [ref=e10186]:
+                  - button "P" [ref=e10187]
+                  - button "B" [ref=e10188]
+                  - button "R" [ref=e10189]
+                  - button "F" [ref=e10190]
+                  - button "More statuses" [ref=e10192]:
+                    - img [ref=e10193]
+              - cell "Untested" [ref=e10197]:
+                - generic [ref=e10198]: Untested
+              - cell [ref=e10199]:
+                - textbox [ref=e10201]
+            - row "C2371783 Verify snackbar copy when the Prize Holder attempts to bid again Medium P B R F More statuses Untested" [ref=e10202] [cursor=pointer]:
+              - cell "C2371783" [ref=e10203]:
+                - link "C2371783" [ref=e10204]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371783
+              - cell "Verify snackbar copy when the Prize Holder attempts to bid again" [ref=e10205]:
+                - generic [ref=e10206]: Verify snackbar copy when the Prize Holder attempts to bid again
+              - cell "Medium" [ref=e10207]:
+                - combobox [ref=e10209]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10210]:
+                - generic [ref=e10211]:
+                  - button "P" [ref=e10212]
+                  - button "B" [ref=e10213]
+                  - button "R" [ref=e10214]
+                  - button "F" [ref=e10215]
+                  - button "More statuses" [ref=e10217]:
+                    - img [ref=e10218]
+              - cell "Untested" [ref=e10222]:
+                - generic [ref=e10223]: Untested
+              - cell [ref=e10224]:
+                - textbox [ref=e10226]
+            - row "C2371784 Verify Cara Menang entry point below the treasure chest survives the Anniversary refresh Medium P B R F More statuses Untested" [ref=e10227] [cursor=pointer]:
+              - cell "C2371784" [ref=e10228]:
+                - link "C2371784" [ref=e10229]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371784
+              - cell "Verify Cara Menang entry point below the treasure chest survives the Anniversary refresh" [ref=e10230]:
+                - generic [ref=e10231]: Verify Cara Menang entry point below the treasure chest survives the Anniversary refresh
+              - cell "Medium" [ref=e10232]:
+                - combobox [ref=e10234]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10235]:
+                - generic [ref=e10236]:
+                  - button "P" [ref=e10237]
+                  - button "B" [ref=e10238]
+                  - button "R" [ref=e10239]
+                  - button "F" [ref=e10240]
+                  - button "More statuses" [ref=e10242]:
+                    - img [ref=e10243]
+              - cell "Untested" [ref=e10247]:
+                - generic [ref=e10248]: Untested
+              - cell [ref=e10249]:
+                - textbox [ref=e10251]
+            - row "C2371785 Verify ownership countdown copy when the current user holds the treasure Medium P B R F More statuses Untested" [ref=e10252] [cursor=pointer]:
+              - cell "C2371785" [ref=e10253]:
+                - link "C2371785" [ref=e10254]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371785
+              - cell "Verify ownership countdown copy when the current user holds the treasure" [ref=e10255]:
+                - generic [ref=e10256]: Verify ownership countdown copy when the current user holds the treasure
+              - cell "Medium" [ref=e10257]:
+                - combobox [ref=e10259]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10260]:
+                - generic [ref=e10261]:
+                  - button "P" [ref=e10262]
+                  - button "B" [ref=e10263]
+                  - button "R" [ref=e10264]
+                  - button "F" [ref=e10265]
+                  - button "More statuses" [ref=e10267]:
+                    - img [ref=e10268]
+              - cell "Untested" [ref=e10272]:
+                - generic [ref=e10273]: Untested
+              - cell [ref=e10274]:
+                - textbox [ref=e10276]
+            - row "C2371786 Verify ownership countdown copy when another user holds the treasure Medium P B R F More statuses Untested" [ref=e10277] [cursor=pointer]:
+              - cell "C2371786" [ref=e10278]:
+                - link "C2371786" [ref=e10279]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371786
+              - cell "Verify ownership countdown copy when another user holds the treasure" [ref=e10280]:
+                - generic [ref=e10281]: Verify ownership countdown copy when another user holds the treasure
+              - cell "Medium" [ref=e10282]:
+                - combobox [ref=e10284]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10285]:
+                - generic [ref=e10286]:
+                  - button "P" [ref=e10287]
+                  - button "B" [ref=e10288]
+                  - button "R" [ref=e10289]
+                  - button "F" [ref=e10290]
+                  - button "More statuses" [ref=e10292]:
+                    - img [ref=e10293]
+              - cell "Untested" [ref=e10297]:
+                - generic [ref=e10298]: Untested
+              - cell [ref=e10299]:
+                - textbox [ref=e10301]
+            - row "C2371787 Verify Prize Holder name follows the baseline identity masking rules Critical P B R F More statuses Untested" [ref=e10302] [cursor=pointer]:
+              - cell "C2371787" [ref=e10303]:
+                - link "C2371787" [ref=e10304]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371787
+              - cell "Verify Prize Holder name follows the baseline identity masking rules" [ref=e10305]:
+                - generic [ref=e10306]: Verify Prize Holder name follows the baseline identity masking rules
+              - cell "Critical" [ref=e10307]:
+                - combobox [ref=e10309]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e10310]:
+                - generic [ref=e10311]:
+                  - button "P" [ref=e10312]
+                  - button "B" [ref=e10313]
+                  - button "R" [ref=e10314]
+                  - button "F" [ref=e10315]
+                  - button "More statuses" [ref=e10317]:
+                    - img [ref=e10318]
+              - cell "Untested" [ref=e10322]:
+                - generic [ref=e10323]: Untested
+              - cell [ref=e10324]:
+                - textbox [ref=e10326]
+            - row "C2371788 Verify blacklisted user can enter the redesigned mini PDP without interruption Medium P B R F More statuses Untested" [ref=e10327] [cursor=pointer]:
+              - cell "C2371788" [ref=e10328]:
+                - link "C2371788" [ref=e10329]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371788
+              - cell "Verify blacklisted user can enter the redesigned mini PDP without interruption" [ref=e10330]:
+                - generic [ref=e10331]: Verify blacklisted user can enter the redesigned mini PDP without interruption
+              - cell "Medium" [ref=e10332]:
+                - combobox [ref=e10334]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10335]:
+                - generic [ref=e10336]:
+                  - button "P" [ref=e10337]
+                  - button "B" [ref=e10338]
+                  - button "R" [ref=e10339]
+                  - button "F" [ref=e10340]
+                  - button "More statuses" [ref=e10342]:
+                    - img [ref=e10343]
+              - cell "Untested" [ref=e10347]:
+                - generic [ref=e10348]: Untested
+              - cell [ref=e10349]:
+                - textbox [ref=e10351]
+            - row "C2371789 Verify blacklisted user sees a greyed-out CTA and the campaign snackbar on the redesigned gameplay page High P B R F More statuses Untested" [ref=e10352] [cursor=pointer]:
+              - cell "C2371789" [ref=e10353]:
+                - link "C2371789" [ref=e10354]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371789
+              - cell "Verify blacklisted user sees a greyed-out CTA and the campaign snackbar on the redesigned gameplay page" [ref=e10355]:
+                - generic [ref=e10356]: Verify blacklisted user sees a greyed-out CTA and the campaign snackbar on the redesigned gameplay page
+              - cell "High" [ref=e10357]:
+                - combobox [ref=e10359]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10360]:
+                - generic [ref=e10361]:
+                  - button "P" [ref=e10362]
+                  - button "B" [ref=e10363]
+                  - button "R" [ref=e10364]
+                  - button "F" [ref=e10365]
+                  - button "More statuses" [ref=e10367]:
+                    - img [ref=e10368]
+              - cell "Untested" [ref=e10372]:
+                - generic [ref=e10373]: Untested
+              - cell [ref=e10374]:
+                - textbox [ref=e10376]
+            - row "C2371790 Verify transaction-token popup reports tokens injected by a Buy Voucher GV pack purchase Medium P B R F More statuses Untested" [ref=e10377] [cursor=pointer]:
+              - cell "C2371790" [ref=e10378]:
+                - link "C2371790" [ref=e10379]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371790
+              - cell "Verify transaction-token popup reports tokens injected by a Buy Voucher GV pack purchase" [ref=e10380]:
+                - generic [ref=e10381]: Verify transaction-token popup reports tokens injected by a Buy Voucher GV pack purchase
+              - cell "Medium" [ref=e10382]:
+                - combobox [ref=e10384]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10385]:
+                - generic [ref=e10386]:
+                  - button "P" [ref=e10387]
+                  - button "B" [ref=e10388]
+                  - button "R" [ref=e10389]
+                  - button "F" [ref=e10390]
+                  - button "More statuses" [ref=e10392]:
+                    - img [ref=e10393]
+              - cell "Untested" [ref=e10397]:
+                - generic [ref=e10398]: Untested
+              - cell [ref=e10399]:
+                - textbox [ref=e10401]
+            - row "C2371791 Verify token popup copy for the GV-purchase plus daily token combination Medium P B R F More statuses Untested" [ref=e10402] [cursor=pointer]:
+              - cell "C2371791" [ref=e10403]:
+                - link "C2371791" [ref=e10404]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371791
+              - cell "Verify token popup copy for the GV-purchase plus daily token combination" [ref=e10405]:
+                - generic [ref=e10406]: Verify token popup copy for the GV-purchase plus daily token combination
+              - cell "Medium" [ref=e10407]:
+                - combobox [ref=e10409]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10410]:
+                - generic [ref=e10411]:
+                  - button "P" [ref=e10412]
+                  - button "B" [ref=e10413]
+                  - button "R" [ref=e10414]
+                  - button "F" [ref=e10415]
+                  - button "More statuses" [ref=e10417]:
+                    - img [ref=e10418]
+              - cell "Untested" [ref=e10422]:
+                - generic [ref=e10423]: Untested
+              - cell [ref=e10424]:
+                - textbox [ref=e10426]
+            - row "C2371792 Verify token popup copy for the GV-purchase plus daily plus share combination Medium P B R F More statuses Untested" [ref=e10427] [cursor=pointer]:
+              - cell "C2371792" [ref=e10428]:
+                - link "C2371792" [ref=e10429]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371792
+              - cell "Verify token popup copy for the GV-purchase plus daily plus share combination" [ref=e10430]:
+                - generic [ref=e10431]: Verify token popup copy for the GV-purchase plus daily plus share combination
+              - cell "Medium" [ref=e10432]:
+                - combobox [ref=e10434]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10435]:
+                - generic [ref=e10436]:
+                  - button "P" [ref=e10437]
+                  - button "B" [ref=e10438]
+                  - button "R" [ref=e10439]
+                  - button "F" [ref=e10440]
+                  - button "More statuses" [ref=e10442]:
+                    - img [ref=e10443]
+              - cell "Untested" [ref=e10447]:
+                - generic [ref=e10448]: Untested
+              - cell [ref=e10449]:
+                - textbox [ref=e10451]
+            - row "C2371793 Verify token popup reports only not-yet-seen tokens after a second GV purchase Medium P B R F More statuses Untested" [ref=e10452] [cursor=pointer]:
+              - cell "C2371793" [ref=e10453]:
+                - link "C2371793" [ref=e10454]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371793
+              - cell "Verify token popup reports only not-yet-seen tokens after a second GV purchase" [ref=e10455]:
+                - generic [ref=e10456]: Verify token popup reports only not-yet-seen tokens after a second GV purchase
+              - cell "Medium" [ref=e10457]:
+                - combobox [ref=e10459]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10460]:
+                - generic [ref=e10461]:
+                  - button "P" [ref=e10462]
+                  - button "B" [ref=e10463]
+                  - button "R" [ref=e10464]
+                  - button "F" [ref=e10465]
+                  - button "More statuses" [ref=e10467]:
+                    - img [ref=e10468]
+              - cell "Untested" [ref=e10472]:
+                - generic [ref=e10473]: Untested
+              - cell [ref=e10474]:
+                - textbox [ref=e10476]
+            - row "C2371794 Verify daily tokens are spent before GV-injected tokens Critical P B R F More statuses Untested" [ref=e10477] [cursor=pointer]:
+              - cell "C2371794" [ref=e10478]:
+                - link "C2371794" [ref=e10479]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371794
+              - cell "Verify daily tokens are spent before GV-injected tokens" [ref=e10480]:
+                - generic [ref=e10481]: Verify daily tokens are spent before GV-injected tokens
+              - cell "Critical" [ref=e10482]:
+                - combobox [ref=e10484]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e10485]:
+                - generic [ref=e10486]:
+                  - button "P" [ref=e10487]
+                  - button "B" [ref=e10488]
+                  - button "R" [ref=e10489]
+                  - button "F" [ref=e10490]
+                  - button "More statuses" [ref=e10492]:
+                    - img [ref=e10493]
+              - cell "Untested" [ref=e10497]:
+                - generic [ref=e10498]: Untested
+              - cell [ref=e10499]:
+                - textbox [ref=e10501]
+            - row "C2371795 Verify GV-injected tokens survive the nightly daily-token expiry Critical P B R F More statuses Untested" [ref=e10502] [cursor=pointer]:
+              - cell "C2371795" [ref=e10503]:
+                - link "C2371795" [ref=e10504]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371795
+              - cell "Verify GV-injected tokens survive the nightly daily-token expiry" [ref=e10505]:
+                - generic [ref=e10506]: Verify GV-injected tokens survive the nightly daily-token expiry
+              - cell "Critical" [ref=e10507]:
+                - combobox [ref=e10509]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e10510]:
+                - generic [ref=e10511]:
+                  - button "P" [ref=e10512]
+                  - button "B" [ref=e10513]
+                  - button "R" [ref=e10514]
+                  - button "F" [ref=e10515]
+                  - button "More statuses" [ref=e10517]:
+                    - img [ref=e10518]
+              - cell "Untested" [ref=e10522]:
+                - generic [ref=e10523]: Untested
+              - cell [ref=e10524]:
+                - textbox [ref=e10526]
+            - row "C2371796 Verify the default-tab 2,000-point threshold is consistent with the 500-points-per-token rate Medium P B R F More statuses Untested" [ref=e10527] [cursor=pointer]:
+              - cell "C2371796" [ref=e10528]:
+                - link "C2371796" [ref=e10529]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371796
+              - cell "Verify the default-tab 2,000-point threshold is consistent with the 500-points-per-token rate" [ref=e10530]:
+                - generic [ref=e10531]: Verify the default-tab 2,000-point threshold is consistent with the 500-points-per-token rate
+              - cell "Medium" [ref=e10532]:
+                - combobox [ref=e10534]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10535]:
+                - generic [ref=e10536]:
+                  - button "P" [ref=e10537]
+                  - button "B" [ref=e10538]
+                  - button "R" [ref=e10539]
+                  - button "F" [ref=e10540]
+                  - button "More statuses" [ref=e10542]:
+                    - img [ref=e10543]
+              - cell "Untested" [ref=e10547]:
+                - generic [ref=e10548]: Untested
+              - cell [ref=e10549]:
+                - textbox [ref=e10551]
+            - row "C2371797 Verify a re-shared Info Page link does not accumulate duplicate params Medium P B R F More statuses Untested" [ref=e10552] [cursor=pointer]:
+              - cell "C2371797" [ref=e10553]:
+                - link "C2371797" [ref=e10554]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371797
+              - cell "Verify a re-shared Info Page link does not accumulate duplicate params" [ref=e10555]:
+                - generic [ref=e10556]: Verify a re-shared Info Page link does not accumulate duplicate params
+              - cell "Medium" [ref=e10557]:
+                - combobox [ref=e10559]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10560]:
+                - generic [ref=e10561]:
+                  - button "P" [ref=e10562]
+                  - button "B" [ref=e10563]
+                  - button "R" [ref=e10564]
+                  - button "F" [ref=e10565]
+                  - button "More statuses" [ref=e10567]:
+                    - img [ref=e10568]
+              - cell "Untested" [ref=e10572]:
+                - generic [ref=e10573]: Untested
+              - cell [ref=e10574]:
+                - textbox [ref=e10576]
+            - row "C2371798 Verify daily free token allocation still differs between app and web on the new layout High P B R F More statuses Untested" [ref=e10577] [cursor=pointer]:
+              - cell "C2371798" [ref=e10578]:
+                - link "C2371798" [ref=e10579]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371798
+              - cell "Verify daily free token allocation still differs between app and web on the new layout" [ref=e10580]:
+                - generic [ref=e10581]: Verify daily free token allocation still differs between app and web on the new layout
+              - cell "High" [ref=e10582]:
+                - combobox [ref=e10584]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10585]:
+                - generic [ref=e10586]:
+                  - button "P" [ref=e10587]
+                  - button "B" [ref=e10588]
+                  - button "R" [ref=e10589]
+                  - button "F" [ref=e10590]
+                  - button "More statuses" [ref=e10592]:
+                    - img [ref=e10593]
+              - cell "Untested" [ref=e10597]:
+                - generic [ref=e10598]: Untested
+              - cell [ref=e10599]:
+                - textbox [ref=e10601]
+            - row "C2371799 Verify the sound and BGM enable/disable CTA still works after the Anniversary asset refresh Medium P B R F More statuses Untested" [ref=e10602] [cursor=pointer]:
+              - cell "C2371799" [ref=e10603]:
+                - link "C2371799" [ref=e10604]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371799
+              - cell "Verify the sound and BGM enable/disable CTA still works after the Anniversary asset refresh" [ref=e10605]:
+                - generic [ref=e10606]: Verify the sound and BGM enable/disable CTA still works after the Anniversary asset refresh
+              - cell "Medium" [ref=e10607]:
+                - combobox [ref=e10609]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10610]:
+                - generic [ref=e10611]:
+                  - button "P" [ref=e10612]
+                  - button "B" [ref=e10613]
+                  - button "R" [ref=e10614]
+                  - button "F" [ref=e10615]
+                  - button "More statuses" [ref=e10617]:
+                    - img [ref=e10618]
+              - cell "Untested" [ref=e10622]:
+                - generic [ref=e10623]: Untested
+              - cell [ref=e10624]:
+                - textbox [ref=e10626]
+            - row "C2371800 Verify audio autoplay behaviour per platform after the refresh Medium P B R F More statuses Untested" [ref=e10627] [cursor=pointer]:
+              - cell "C2371800" [ref=e10628]:
+                - link "C2371800" [ref=e10629]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371800
+              - cell "Verify audio autoplay behaviour per platform after the refresh" [ref=e10630]:
+                - generic [ref=e10631]: Verify audio autoplay behaviour per platform after the refresh
+              - cell "Medium" [ref=e10632]:
+                - combobox [ref=e10634]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10635]:
+                - generic [ref=e10636]:
+                  - button "P" [ref=e10637]
+                  - button "B" [ref=e10638]
+                  - button "R" [ref=e10639]
+                  - button "F" [ref=e10640]
+                  - button "More statuses" [ref=e10642]:
+                    - img [ref=e10643]
+              - cell "Untested" [ref=e10647]:
+                - generic [ref=e10648]: Untested
+              - cell [ref=e10649]:
+                - textbox [ref=e10651]
+            - row "C2371801 Verify auto bid does not bypass the last-bidder re-bid restriction High P B R F More statuses Untested" [ref=e10652] [cursor=pointer]:
+              - cell "C2371801" [ref=e10653]:
+                - link "C2371801" [ref=e10654]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371801
+              - cell "Verify auto bid does not bypass the last-bidder re-bid restriction" [ref=e10655]:
+                - generic [ref=e10656]: Verify auto bid does not bypass the last-bidder re-bid restriction
+              - cell "High" [ref=e10657]:
+                - combobox [ref=e10659]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10660]:
+                - generic [ref=e10661]:
+                  - button "P" [ref=e10662]
+                  - button "B" [ref=e10663]
+                  - button "R" [ref=e10664]
+                  - button "F" [ref=e10665]
+                  - button "More statuses" [ref=e10667]:
+                    - img [ref=e10668]
+              - cell "Untested" [ref=e10672]:
+                - generic [ref=e10673]: Untested
+              - cell [ref=e10674]:
+                - textbox [ref=e10676]
+            - row "C2371802 Verify max bid limit per user per product including the -1 unlimited sentinel Medium P B R F More statuses Untested" [ref=e10677] [cursor=pointer]:
+              - cell "C2371802" [ref=e10678]:
+                - link "C2371802" [ref=e10679]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371802
+              - cell "Verify max bid limit per user per product including the -1 unlimited sentinel" [ref=e10680]:
+                - generic [ref=e10681]: Verify max bid limit per user per product including the -1 unlimited sentinel
+              - cell "Medium" [ref=e10682]:
+                - combobox [ref=e10684]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10685]:
+                - generic [ref=e10686]:
+                  - button "P" [ref=e10687]
+                  - button "B" [ref=e10688]
+                  - button "R" [ref=e10689]
+                  - button "F" [ref=e10690]
+                  - button "More statuses" [ref=e10692]:
+                    - img [ref=e10693]
+              - cell "Untested" [ref=e10697]:
+                - generic [ref=e10698]: Untested
+              - cell [ref=e10699]:
+                - textbox [ref=e10701]
+            - row "C2371803 Verify live viewer count and unique bidder count still render after the grid redesign Medium P B R F More statuses Untested" [ref=e10702] [cursor=pointer]:
+              - cell "C2371803" [ref=e10703]:
+                - link "C2371803" [ref=e10704]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371803
+              - cell "Verify live viewer count and unique bidder count still render after the grid redesign" [ref=e10705]:
+                - generic [ref=e10706]: Verify live viewer count and unique bidder count still render after the grid redesign
+              - cell "Medium" [ref=e10707]:
+                - combobox [ref=e10709]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10710]:
+                - generic [ref=e10711]:
+                  - button "P" [ref=e10712]
+                  - button "B" [ref=e10713]
+                  - button "R" [ref=e10714]
+                  - button "F" [ref=e10715]
+                  - button "More statuses" [ref=e10717]:
+                    - img [ref=e10718]
+              - cell "Untested" [ref=e10722]:
+                - generic [ref=e10723]: Untested
+              - cell [ref=e10724]:
+                - textbox [ref=e10726]
+            - row "C2371804 Verify the winner purchase window is stated as 6 hours across all surfaces High P B R F More statuses Untested" [ref=e10727] [cursor=pointer]:
+              - cell "C2371804" [ref=e10728]:
+                - link "C2371804" [ref=e10729]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371804
+              - cell "Verify the winner purchase window is stated as 6 hours across all surfaces" [ref=e10730]:
+                - generic [ref=e10731]: Verify the winner purchase window is stated as 6 hours across all surfaces
+              - cell "High" [ref=e10732]:
+                - combobox [ref=e10734]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10735]:
+                - generic [ref=e10736]:
+                  - button "P" [ref=e10737]
+                  - button "B" [ref=e10738]
+                  - button "R" [ref=e10739]
+                  - button "F" [ref=e10740]
+                  - button "More statuses" [ref=e10742]:
+                    - img [ref=e10743]
+              - cell "Untested" [ref=e10747]:
+                - generic [ref=e10748]: Untested
+              - cell [ref=e10749]:
+                - textbox [ref=e10751]
+            - row "C2371805 Verify BTM mini page state after minimising and reopening the iOS app Medium P B R F More statuses Untested" [ref=e10752] [cursor=pointer]:
+              - cell "C2371805" [ref=e10753]:
+                - link "C2371805" [ref=e10754]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371805
+              - cell "Verify BTM mini page state after minimising and reopening the iOS app" [ref=e10755]:
+                - generic [ref=e10756]: Verify BTM mini page state after minimising and reopening the iOS app
+              - cell "Medium" [ref=e10757]:
+                - combobox [ref=e10759]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10760]:
+                - generic [ref=e10761]:
+                  - button "P" [ref=e10762]
+                  - button "B" [ref=e10763]
+                  - button "R" [ref=e10764]
+                  - button "F" [ref=e10765]
+                  - button "More statuses" [ref=e10767]:
+                    - img [ref=e10768]
+              - cell "Untested" [ref=e10772]:
+                - generic [ref=e10773]: Untested
+              - cell [ref=e10774]:
+                - textbox [ref=e10776]
+            - row "C2371569 Verify product subtext supports up to 2 lines Medium P B R F More statuses Untested" [ref=e10777] [cursor=pointer]:
+              - cell "C2371569" [ref=e10778]:
+                - link "C2371569" [ref=e10779]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371569
+              - cell "Verify product subtext supports up to 2 lines" [ref=e10780]:
+                - generic [ref=e10781]: Verify product subtext supports up to 2 lines
+              - cell "Medium" [ref=e10782]:
+                - combobox [ref=e10784]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10785]:
+                - generic [ref=e10786]:
+                  - button "P" [ref=e10787]
+                  - button "B" [ref=e10788]
+                  - button "R" [ref=e10789]
+                  - button "F" [ref=e10790]
+                  - button "More statuses" [ref=e10792]:
+                    - img [ref=e10793]
+              - cell "Untested" [ref=e10797]:
+                - generic [ref=e10798]: Untested
+              - cell [ref=e10799]:
+                - textbox [ref=e10801]
+            - row "C2371570 Verify product subtext exceeding 2 lines is handled Medium P B R F More statuses Untested" [ref=e10802] [cursor=pointer]:
+              - cell "C2371570" [ref=e10803]:
+                - link "C2371570" [ref=e10804]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371570
+              - cell "Verify product subtext exceeding 2 lines is handled" [ref=e10805]:
+                - generic [ref=e10806]: Verify product subtext exceeding 2 lines is handled
+              - cell "Medium" [ref=e10807]:
+                - combobox [ref=e10809]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10810]:
+                - generic [ref=e10811]:
+                  - button "P" [ref=e10812]
+                  - button "B" [ref=e10813]
+                  - button "R" [ref=e10814]
+                  - button "F" [ref=e10815]
+                  - button "More statuses" [ref=e10817]:
+                    - img [ref=e10818]
+              - cell "Untested" [ref=e10822]:
+                - generic [ref=e10823]: Untested
+              - cell [ref=e10824]:
+                - textbox [ref=e10826]
+            - row "C2371571 Verify products are ordered by start-active date, newest first Medium P B R F More statuses Untested" [ref=e10827] [cursor=pointer]:
+              - cell "C2371571" [ref=e10828]:
+                - link "C2371571" [ref=e10829]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371571
+              - cell "Verify products are ordered by start-active date, newest first" [ref=e10830]:
+                - generic [ref=e10831]: Verify products are ordered by start-active date, newest first
+              - cell "Medium" [ref=e10832]:
+                - combobox [ref=e10834]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10835]:
+                - generic [ref=e10836]:
+                  - button "P" [ref=e10837]
+                  - button "B" [ref=e10838]
+                  - button "R" [ref=e10839]
+                  - button "F" [ref=e10840]
+                  - button "More statuses" [ref=e10842]:
+                    - img [ref=e10843]
+              - cell "Untested" [ref=e10847]:
+                - generic [ref=e10848]: Untested
+              - cell [ref=e10849]:
+                - textbox [ref=e10851]
+            - row "C2371616 Verify countdown resets after a successful auto bid Medium P B R F More statuses Untested" [ref=e10852] [cursor=pointer]:
+              - cell "C2371616" [ref=e10853]:
+                - link "C2371616" [ref=e10854]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371616
+              - cell "Verify countdown resets after a successful auto bid" [ref=e10855]:
+                - generic [ref=e10856]: Verify countdown resets after a successful auto bid
+              - cell "Medium" [ref=e10857]:
+                - combobox [ref=e10859]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10860]:
+                - generic [ref=e10861]:
+                  - button "P" [ref=e10862]
+                  - button "B" [ref=e10863]
+                  - button "R" [ref=e10864]
+                  - button "F" [ref=e10865]
+                  - button "More statuses" [ref=e10867]:
+                    - img [ref=e10868]
+              - cell "Untested" [ref=e10872]:
+                - generic [ref=e10873]: Untested
+              - cell [ref=e10874]:
+                - textbox [ref=e10876]
+            - row "C2371621 Verify FE trackers fire for the new BTM components High P B R F More statuses Untested" [ref=e10877] [cursor=pointer]:
+              - cell "C2371621" [ref=e10878]:
+                - link "C2371621" [ref=e10879]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371621
+              - cell "Verify FE trackers fire for the new BTM components" [ref=e10880]:
+                - generic [ref=e10881]: Verify FE trackers fire for the new BTM components
+              - cell "High" [ref=e10882]:
+                - combobox [ref=e10884]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10885]:
+                - generic [ref=e10886]:
+                  - button "P" [ref=e10887]
+                  - button "B" [ref=e10888]
+                  - button "R" [ref=e10889]
+                  - button "F" [ref=e10890]
+                  - button "More statuses" [ref=e10892]:
+                    - img [ref=e10893]
+              - cell "Untested" [ref=e10897]:
+                - generic [ref=e10898]: Untested
+              - cell [ref=e10899]:
+                - textbox [ref=e10901]
+            - row "C2371623 Verify end-to-end buy voucher, token injection, and gameplay Critical P B R F More statuses Untested" [ref=e10902] [cursor=pointer]:
+              - cell "C2371623" [ref=e10903]:
+                - link "C2371623" [ref=e10904]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371623
+              - cell "Verify end-to-end buy voucher, token injection, and gameplay" [ref=e10905]:
+                - generic [ref=e10906]: Verify end-to-end buy voucher, token injection, and gameplay
+              - cell "Critical" [ref=e10907]:
+                - combobox [ref=e10909]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e10910]:
+                - generic [ref=e10911]:
+                  - button "P" [ref=e10912]
+                  - button "B" [ref=e10913]
+                  - button "R" [ref=e10914]
+                  - button "F" [ref=e10915]
+                  - button "More statuses" [ref=e10917]:
+                    - img [ref=e10918]
+              - cell "Untested" [ref=e10922]:
+                - generic [ref=e10923]: Untested
+              - cell [ref=e10924]:
+                - textbox [ref=e10926]
+            - row "C2371624 Verify end-to-end trade points to snatch a product (regression from GRA-724) High P B R F More statuses Untested" [ref=e10927] [cursor=pointer]:
+              - cell "C2371624" [ref=e10928]:
+                - link "C2371624" [ref=e10929]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371624
+              - cell "Verify end-to-end trade points to snatch a product (regression from GRA-724)" [ref=e10930]:
+                - generic [ref=e10931]: Verify end-to-end trade points to snatch a product (regression from GRA-724)
+              - cell "High" [ref=e10932]:
+                - combobox [ref=e10934]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10935]:
+                - generic [ref=e10936]:
+                  - button "P" [ref=e10937]
+                  - button "B" [ref=e10938]
+                  - button "R" [ref=e10939]
+                  - button "F" [ref=e10940]
+                  - button "More statuses" [ref=e10942]:
+                    - img [ref=e10943]
+              - cell "Untested" [ref=e10947]:
+                - generic [ref=e10948]: Untested
+              - cell [ref=e10949]:
+                - textbox [ref=e10951]
+            - row "C2371625 Verify Steal/Bid CTA is disabled while the current user is the Prize Holder High P B R F More statuses Untested" [ref=e10952] [cursor=pointer]:
+              - cell "C2371625" [ref=e10953]:
+                - link "C2371625" [ref=e10954]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371625
+              - cell "Verify Steal/Bid CTA is disabled while the current user is the Prize Holder" [ref=e10955]:
+                - generic [ref=e10956]: Verify Steal/Bid CTA is disabled while the current user is the Prize Holder
+              - cell "High" [ref=e10957]:
+                - combobox [ref=e10959]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10960]:
+                - generic [ref=e10961]:
+                  - button "P" [ref=e10962]
+                  - button "B" [ref=e10963]
+                  - button "R" [ref=e10964]
+                  - button "F" [ref=e10965]
+                  - button "More statuses" [ref=e10967]:
+                    - img [ref=e10968]
+              - cell "Untested" [ref=e10972]:
+                - generic [ref=e10973]: Untested
+              - cell [ref=e10974]:
+                - textbox [ref=e10976]
+            - row "C2371627 Verify snackbar copy when the Prize Holder attempts to bid again Medium P B R F More statuses Untested" [ref=e10977] [cursor=pointer]:
+              - cell "C2371627" [ref=e10978]:
+                - link "C2371627" [ref=e10979]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371627
+              - cell "Verify snackbar copy when the Prize Holder attempts to bid again" [ref=e10980]:
+                - generic [ref=e10981]: Verify snackbar copy when the Prize Holder attempts to bid again
+              - cell "Medium" [ref=e10982]:
+                - combobox [ref=e10984]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e10985]:
+                - generic [ref=e10986]:
+                  - button "P" [ref=e10987]
+                  - button "B" [ref=e10988]
+                  - button "R" [ref=e10989]
+                  - button "F" [ref=e10990]
+                  - button "More statuses" [ref=e10992]:
+                    - img [ref=e10993]
+              - cell "Untested" [ref=e10997]:
+                - generic [ref=e10998]: Untested
+              - cell [ref=e10999]:
+                - textbox [ref=e11001]
+            - row "C2371628 Verify Cara Menang entry point below the treasure chest survives the Anniversary refresh Medium P B R F More statuses Untested" [ref=e11002] [cursor=pointer]:
+              - cell "C2371628" [ref=e11003]:
+                - link "C2371628" [ref=e11004]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371628
+              - cell "Verify Cara Menang entry point below the treasure chest survives the Anniversary refresh" [ref=e11005]:
+                - generic [ref=e11006]: Verify Cara Menang entry point below the treasure chest survives the Anniversary refresh
+              - cell "Medium" [ref=e11007]:
+                - combobox [ref=e11009]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11010]:
+                - generic [ref=e11011]:
+                  - button "P" [ref=e11012]
+                  - button "B" [ref=e11013]
+                  - button "R" [ref=e11014]
+                  - button "F" [ref=e11015]
+                  - button "More statuses" [ref=e11017]:
+                    - img [ref=e11018]
+              - cell "Untested" [ref=e11022]:
+                - generic [ref=e11023]: Untested
+              - cell [ref=e11024]:
+                - textbox [ref=e11026]
+            - row "C2371629 Verify ownership countdown copy when the current user holds the treasure Medium P B R F More statuses Untested" [ref=e11027] [cursor=pointer]:
+              - cell "C2371629" [ref=e11028]:
+                - link "C2371629" [ref=e11029]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371629
+              - cell "Verify ownership countdown copy when the current user holds the treasure" [ref=e11030]:
+                - generic [ref=e11031]: Verify ownership countdown copy when the current user holds the treasure
+              - cell "Medium" [ref=e11032]:
+                - combobox [ref=e11034]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11035]:
+                - generic [ref=e11036]:
+                  - button "P" [ref=e11037]
+                  - button "B" [ref=e11038]
+                  - button "R" [ref=e11039]
+                  - button "F" [ref=e11040]
+                  - button "More statuses" [ref=e11042]:
+                    - img [ref=e11043]
+              - cell "Untested" [ref=e11047]:
+                - generic [ref=e11048]: Untested
+              - cell [ref=e11049]:
+                - textbox [ref=e11051]
+            - row "C2371630 Verify ownership countdown copy when another user holds the treasure Medium P B R F More statuses Untested" [ref=e11052] [cursor=pointer]:
+              - cell "C2371630" [ref=e11053]:
+                - link "C2371630" [ref=e11054]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371630
+              - cell "Verify ownership countdown copy when another user holds the treasure" [ref=e11055]:
+                - generic [ref=e11056]: Verify ownership countdown copy when another user holds the treasure
+              - cell "Medium" [ref=e11057]:
+                - combobox [ref=e11059]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11060]:
+                - generic [ref=e11061]:
+                  - button "P" [ref=e11062]
+                  - button "B" [ref=e11063]
+                  - button "R" [ref=e11064]
+                  - button "F" [ref=e11065]
+                  - button "More statuses" [ref=e11067]:
+                    - img [ref=e11068]
+              - cell "Untested" [ref=e11072]:
+                - generic [ref=e11073]: Untested
+              - cell [ref=e11074]:
+                - textbox [ref=e11076]
+            - row "C2371631 Verify Prize Holder name follows the baseline identity masking rules Critical P B R F More statuses Untested" [ref=e11077] [cursor=pointer]:
+              - cell "C2371631" [ref=e11078]:
+                - link "C2371631" [ref=e11079]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371631
+              - cell "Verify Prize Holder name follows the baseline identity masking rules" [ref=e11080]:
+                - generic [ref=e11081]: Verify Prize Holder name follows the baseline identity masking rules
+              - cell "Critical" [ref=e11082]:
+                - combobox [ref=e11084]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High"
+                  - option "Critical" [selected]
+              - cell "P B R F More statuses" [ref=e11085]:
+                - generic [ref=e11086]:
+                  - button "P" [ref=e11087]
+                  - button "B" [ref=e11088]
+                  - button "R" [ref=e11089]
+                  - button "F" [ref=e11090]
+                  - button "More statuses" [ref=e11092]:
+                    - img [ref=e11093]
+              - cell "Untested" [ref=e11097]:
+                - generic [ref=e11098]: Untested
+              - cell [ref=e11099]:
+                - textbox [ref=e11101]
+            - row "C2371632 Verify blacklisted user can enter the redesigned mini PDP without interruption Medium P B R F More statuses Untested" [ref=e11102] [cursor=pointer]:
+              - cell "C2371632" [ref=e11103]:
+                - link "C2371632" [ref=e11104]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371632
+              - cell "Verify blacklisted user can enter the redesigned mini PDP without interruption" [ref=e11105]:
+                - generic [ref=e11106]: Verify blacklisted user can enter the redesigned mini PDP without interruption
+              - cell "Medium" [ref=e11107]:
+                - combobox [ref=e11109]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11110]:
+                - generic [ref=e11111]:
+                  - button "P" [ref=e11112]
+                  - button "B" [ref=e11113]
+                  - button "R" [ref=e11114]
+                  - button "F" [ref=e11115]
+                  - button "More statuses" [ref=e11117]:
+                    - img [ref=e11118]
+              - cell "Untested" [ref=e11122]:
+                - generic [ref=e11123]: Untested
+              - cell [ref=e11124]:
+                - textbox [ref=e11126]
+            - row "C2371633 Verify blacklisted user sees a greyed-out CTA and the campaign snackbar on the redesigned gameplay page High P B R F More statuses Untested" [ref=e11127] [cursor=pointer]:
+              - cell "C2371633" [ref=e11128]:
+                - link "C2371633" [ref=e11129]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371633
+              - cell "Verify blacklisted user sees a greyed-out CTA and the campaign snackbar on the redesigned gameplay page" [ref=e11130]:
+                - generic [ref=e11131]: Verify blacklisted user sees a greyed-out CTA and the campaign snackbar on the redesigned gameplay page
+              - cell "High" [ref=e11132]:
+                - combobox [ref=e11134]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11135]:
+                - generic [ref=e11136]:
+                  - button "P" [ref=e11137]
+                  - button "B" [ref=e11138]
+                  - button "R" [ref=e11139]
+                  - button "F" [ref=e11140]
+                  - button "More statuses" [ref=e11142]:
+                    - img [ref=e11143]
+              - cell "Untested" [ref=e11147]:
+                - generic [ref=e11148]: Untested
+              - cell [ref=e11149]:
+                - textbox [ref=e11151]
+            - row "C2371634 Verify transaction-token popup reports tokens injected by a Buy Voucher GV pack purchase Medium P B R F More statuses Untested" [ref=e11152] [cursor=pointer]:
+              - cell "C2371634" [ref=e11153]:
+                - link "C2371634" [ref=e11154]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371634
+              - cell "Verify transaction-token popup reports tokens injected by a Buy Voucher GV pack purchase" [ref=e11155]:
+                - generic [ref=e11156]: Verify transaction-token popup reports tokens injected by a Buy Voucher GV pack purchase
+              - cell "Medium" [ref=e11157]:
+                - combobox [ref=e11159]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11160]:
+                - generic [ref=e11161]:
+                  - button "P" [ref=e11162]
+                  - button "B" [ref=e11163]
+                  - button "R" [ref=e11164]
+                  - button "F" [ref=e11165]
+                  - button "More statuses" [ref=e11167]:
+                    - img [ref=e11168]
+              - cell "Untested" [ref=e11172]:
+                - generic [ref=e11173]: Untested
+              - cell [ref=e11174]:
+                - textbox [ref=e11176]
+            - row "C2371635 Verify token popup copy for the GV-purchase plus daily token combination Medium P B R F More statuses Untested" [ref=e11177] [cursor=pointer]:
+              - cell "C2371635" [ref=e11178]:
+                - link "C2371635" [ref=e11179]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371635
+              - cell "Verify token popup copy for the GV-purchase plus daily token combination" [ref=e11180]:
+                - generic [ref=e11181]: Verify token popup copy for the GV-purchase plus daily token combination
+              - cell "Medium" [ref=e11182]:
+                - combobox [ref=e11184]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11185]:
+                - generic [ref=e11186]:
+                  - button "P" [ref=e11187]
+                  - button "B" [ref=e11188]
+                  - button "R" [ref=e11189]
+                  - button "F" [ref=e11190]
+                  - button "More statuses" [ref=e11192]:
+                    - img [ref=e11193]
+              - cell "Untested" [ref=e11197]:
+                - generic [ref=e11198]: Untested
+              - cell [ref=e11199]:
+                - textbox [ref=e11201]
+            - row "C2371636 Verify token popup copy for the GV-purchase plus daily plus share combination Medium P B R F More statuses Untested" [ref=e11202] [cursor=pointer]:
+              - cell "C2371636" [ref=e11203]:
+                - link "C2371636" [ref=e11204]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371636
+              - cell "Verify token popup copy for the GV-purchase plus daily plus share combination" [ref=e11205]:
+                - generic [ref=e11206]: Verify token popup copy for the GV-purchase plus daily plus share combination
+              - cell "Medium" [ref=e11207]:
+                - combobox [ref=e11209]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11210]:
+                - generic [ref=e11211]:
+                  - button "P" [ref=e11212]
+                  - button "B" [ref=e11213]
+                  - button "R" [ref=e11214]
+                  - button "F" [ref=e11215]
+                  - button "More statuses" [ref=e11217]:
+                    - img [ref=e11218]
+              - cell "Untested" [ref=e11222]:
+                - generic [ref=e11223]: Untested
+              - cell [ref=e11224]:
+                - textbox [ref=e11226]
+            - row "C2371637 Verify token popup reports only not-yet-seen tokens after a second GV purchase Medium P B R F More statuses Untested" [ref=e11227] [cursor=pointer]:
+              - cell "C2371637" [ref=e11228]:
+                - link "C2371637" [ref=e11229]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371637
+              - cell "Verify token popup reports only not-yet-seen tokens after a second GV purchase" [ref=e11230]:
+                - generic [ref=e11231]: Verify token popup reports only not-yet-seen tokens after a second GV purchase
+              - cell "Medium" [ref=e11232]:
+                - combobox [ref=e11234]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11235]:
+                - generic [ref=e11236]:
+                  - button "P" [ref=e11237]
+                  - button "B" [ref=e11238]
+                  - button "R" [ref=e11239]
+                  - button "F" [ref=e11240]
+                  - button "More statuses" [ref=e11242]:
+                    - img [ref=e11243]
+              - cell "Untested" [ref=e11247]:
+                - generic [ref=e11248]: Untested
+              - cell [ref=e11249]:
+                - textbox [ref=e11251]
+            - row "C2371640 Verify the default-tab 2,000-point threshold is consistent with the 500-points-per-token rate Medium P B R F More statuses Untested" [ref=e11252] [cursor=pointer]:
+              - cell "C2371640" [ref=e11253]:
+                - link "C2371640" [ref=e11254]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371640
+              - cell "Verify the default-tab 2,000-point threshold is consistent with the 500-points-per-token rate" [ref=e11255]:
+                - generic [ref=e11256]: Verify the default-tab 2,000-point threshold is consistent with the 500-points-per-token rate
+              - cell "Medium" [ref=e11257]:
+                - combobox [ref=e11259]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11260]:
+                - generic [ref=e11261]:
+                  - button "P" [ref=e11262]
+                  - button "B" [ref=e11263]
+                  - button "R" [ref=e11264]
+                  - button "F" [ref=e11265]
+                  - button "More statuses" [ref=e11267]:
+                    - img [ref=e11268]
+              - cell "Untested" [ref=e11272]:
+                - generic [ref=e11273]: Untested
+              - cell [ref=e11274]:
+                - textbox [ref=e11276]
+            - row "C2371641 Verify a re-shared Info Page link does not accumulate duplicate params Medium P B R F More statuses Untested" [ref=e11277] [cursor=pointer]:
+              - cell "C2371641" [ref=e11278]:
+                - link "C2371641" [ref=e11279]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371641
+              - cell "Verify a re-shared Info Page link does not accumulate duplicate params" [ref=e11280]:
+                - generic [ref=e11281]: Verify a re-shared Info Page link does not accumulate duplicate params
+              - cell "Medium" [ref=e11282]:
+                - combobox [ref=e11284]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11285]:
+                - generic [ref=e11286]:
+                  - button "P" [ref=e11287]
+                  - button "B" [ref=e11288]
+                  - button "R" [ref=e11289]
+                  - button "F" [ref=e11290]
+                  - button "More statuses" [ref=e11292]:
+                    - img [ref=e11293]
+              - cell "Untested" [ref=e11297]:
+                - generic [ref=e11298]: Untested
+              - cell [ref=e11299]:
+                - textbox [ref=e11301]
+            - row "C2371642 Verify daily free token allocation still differs between app and web on the new layout High P B R F More statuses Untested" [ref=e11302] [cursor=pointer]:
+              - cell "C2371642" [ref=e11303]:
+                - link "C2371642" [ref=e11304]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371642
+              - cell "Verify daily free token allocation still differs between app and web on the new layout" [ref=e11305]:
+                - generic [ref=e11306]: Verify daily free token allocation still differs between app and web on the new layout
+              - cell "High" [ref=e11307]:
+                - combobox [ref=e11309]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11310]:
+                - generic [ref=e11311]:
+                  - button "P" [ref=e11312]
+                  - button "B" [ref=e11313]
+                  - button "R" [ref=e11314]
+                  - button "F" [ref=e11315]
+                  - button "More statuses" [ref=e11317]:
+                    - img [ref=e11318]
+              - cell "Untested" [ref=e11322]:
+                - generic [ref=e11323]: Untested
+              - cell [ref=e11324]:
+                - textbox [ref=e11326]
+            - row "C2371643 Verify the sound and BGM enable/disable CTA still works after the Anniversary asset refresh Medium P B R F More statuses Untested" [ref=e11327] [cursor=pointer]:
+              - cell "C2371643" [ref=e11328]:
+                - link "C2371643" [ref=e11329]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371643
+              - cell "Verify the sound and BGM enable/disable CTA still works after the Anniversary asset refresh" [ref=e11330]:
+                - generic [ref=e11331]: Verify the sound and BGM enable/disable CTA still works after the Anniversary asset refresh
+              - cell "Medium" [ref=e11332]:
+                - combobox [ref=e11334]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11335]:
+                - generic [ref=e11336]:
+                  - button "P" [ref=e11337]
+                  - button "B" [ref=e11338]
+                  - button "R" [ref=e11339]
+                  - button "F" [ref=e11340]
+                  - button "More statuses" [ref=e11342]:
+                    - img [ref=e11343]
+              - cell "Untested" [ref=e11347]:
+                - generic [ref=e11348]: Untested
+              - cell [ref=e11349]:
+                - textbox [ref=e11351]
+            - row "C2371644 Verify audio autoplay behaviour per platform after the refresh Medium P B R F More statuses Untested" [ref=e11352] [cursor=pointer]:
+              - cell "C2371644" [ref=e11353]:
+                - link "C2371644" [ref=e11354]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371644
+              - cell "Verify audio autoplay behaviour per platform after the refresh" [ref=e11355]:
+                - generic [ref=e11356]: Verify audio autoplay behaviour per platform after the refresh
+              - cell "Medium" [ref=e11357]:
+                - combobox [ref=e11359]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11360]:
+                - generic [ref=e11361]:
+                  - button "P" [ref=e11362]
+                  - button "B" [ref=e11363]
+                  - button "R" [ref=e11364]
+                  - button "F" [ref=e11365]
+                  - button "More statuses" [ref=e11367]:
+                    - img [ref=e11368]
+              - cell "Untested" [ref=e11372]:
+                - generic [ref=e11373]: Untested
+              - cell [ref=e11374]:
+                - textbox [ref=e11376]
+            - row "C2371646 Verify auto bid does not bypass the last-bidder re-bid restriction High P B R F More statuses Untested" [ref=e11377] [cursor=pointer]:
+              - cell "C2371646" [ref=e11378]:
+                - link "C2371646" [ref=e11379]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371646
+              - cell "Verify auto bid does not bypass the last-bidder re-bid restriction" [ref=e11380]:
+                - generic [ref=e11381]: Verify auto bid does not bypass the last-bidder re-bid restriction
+              - cell "High" [ref=e11382]:
+                - combobox [ref=e11384]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11385]:
+                - generic [ref=e11386]:
+                  - button "P" [ref=e11387]
+                  - button "B" [ref=e11388]
+                  - button "R" [ref=e11389]
+                  - button "F" [ref=e11390]
+                  - button "More statuses" [ref=e11392]:
+                    - img [ref=e11393]
+              - cell "Untested" [ref=e11397]:
+                - generic [ref=e11398]: Untested
+              - cell [ref=e11399]:
+                - textbox [ref=e11401]
+            - row "C2371647 Verify max bid limit per user per product including the -1 unlimited sentinel Medium P B R F More statuses Untested" [ref=e11402] [cursor=pointer]:
+              - cell "C2371647" [ref=e11403]:
+                - link "C2371647" [ref=e11404]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371647
+              - cell "Verify max bid limit per user per product including the -1 unlimited sentinel" [ref=e11405]:
+                - generic [ref=e11406]: Verify max bid limit per user per product including the -1 unlimited sentinel
+              - cell "Medium" [ref=e11407]:
+                - combobox [ref=e11409]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11410]:
+                - generic [ref=e11411]:
+                  - button "P" [ref=e11412]
+                  - button "B" [ref=e11413]
+                  - button "R" [ref=e11414]
+                  - button "F" [ref=e11415]
+                  - button "More statuses" [ref=e11417]:
+                    - img [ref=e11418]
+              - cell "Untested" [ref=e11422]:
+                - generic [ref=e11423]: Untested
+              - cell [ref=e11424]:
+                - textbox [ref=e11426]
+            - row "C2371648 Verify live viewer count and unique bidder count still render after the grid redesign Medium P B R F More statuses Untested" [ref=e11427] [cursor=pointer]:
+              - cell "C2371648" [ref=e11428]:
+                - link "C2371648" [ref=e11429]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371648
+              - cell "Verify live viewer count and unique bidder count still render after the grid redesign" [ref=e11430]:
+                - generic [ref=e11431]: Verify live viewer count and unique bidder count still render after the grid redesign
+              - cell "Medium" [ref=e11432]:
+                - combobox [ref=e11434]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11435]:
+                - generic [ref=e11436]:
+                  - button "P" [ref=e11437]
+                  - button "B" [ref=e11438]
+                  - button "R" [ref=e11439]
+                  - button "F" [ref=e11440]
+                  - button "More statuses" [ref=e11442]:
+                    - img [ref=e11443]
+              - cell "Untested" [ref=e11447]:
+                - generic [ref=e11448]: Untested
+              - cell [ref=e11449]:
+                - textbox [ref=e11451]
+            - row "C2371650 Verify BTM mini page state after minimising and reopening the iOS app Medium P B R F More statuses Untested" [ref=e11452] [cursor=pointer]:
+              - cell "C2371650" [ref=e11453]:
+                - link "C2371650" [ref=e11454]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371650
+              - cell "Verify BTM mini page state after minimising and reopening the iOS app" [ref=e11455]:
+                - generic [ref=e11456]: Verify BTM mini page state after minimising and reopening the iOS app
+              - cell "Medium" [ref=e11457]:
+                - combobox [ref=e11459]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11460]:
+                - generic [ref=e11461]:
+                  - button "P" [ref=e11462]
+                  - button "B" [ref=e11463]
+                  - button "R" [ref=e11464]
+                  - button "F" [ref=e11465]
+                  - button "More statuses" [ref=e11467]:
+                    - img [ref=e11468]
+              - cell "Untested" [ref=e11472]:
+                - generic [ref=e11473]: Untested
+              - cell [ref=e11474]:
+                - textbox [ref=e11476]
+            - row "C2371614 Verify Auto Bid service listens to the auction WebSocket Medium P B R F More statuses Untested" [ref=e11477] [cursor=pointer]:
+              - cell "C2371614" [ref=e11478]:
+                - link "C2371614" [ref=e11479]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371614
+              - cell "Verify Auto Bid service listens to the auction WebSocket" [ref=e11480]:
+                - generic [ref=e11481]: Verify Auto Bid service listens to the auction WebSocket
+              - cell "Medium" [ref=e11482]:
+                - combobox [ref=e11484]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11485]:
+                - generic [ref=e11486]:
+                  - button "P" [ref=e11487]
+                  - button "B" [ref=e11488]
+                  - button "R" [ref=e11489]
+                  - button "F" [ref=e11490]
+                  - button "More statuses" [ref=e11492]:
+                    - img [ref=e11493]
+              - cell "Untested" [ref=e11497]:
+                - generic [ref=e11498]: Untested
+              - cell [ref=e11499]:
+                - textbox [ref=e11501]
+            - row "C2371615 Verify auto bid triggers when countdown drops below the threshold High P B R F More statuses Untested" [ref=e11502] [cursor=pointer]:
+              - cell "C2371615" [ref=e11503]:
+                - link "C2371615" [ref=e11504]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371615
+              - cell "Verify auto bid triggers when countdown drops below the threshold" [ref=e11505]:
+                - generic [ref=e11506]: Verify auto bid triggers when countdown drops below the threshold
+              - cell "High" [ref=e11507]:
+                - combobox [ref=e11509]:
+                  - option "Low"
+                  - option "Medium"
+                  - option "High" [selected]
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11510]:
+                - generic [ref=e11511]:
+                  - button "P" [ref=e11512]
+                  - button "B" [ref=e11513]
+                  - button "R" [ref=e11514]
+                  - button "F" [ref=e11515]
+                  - button "More statuses" [ref=e11517]:
+                    - img [ref=e11518]
+              - cell "Untested" [ref=e11522]:
+                - generic [ref=e11523]: Untested
+              - cell [ref=e11524]:
+                - textbox [ref=e11526]
+            - row "C2371618 Verify auto bid threshold is configurable Medium P B R F More statuses Untested" [ref=e11527] [cursor=pointer]:
+              - cell "C2371618" [ref=e11528]:
+                - link "C2371618" [ref=e11529]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371618
+              - cell "Verify auto bid threshold is configurable" [ref=e11530]:
+                - generic [ref=e11531]: Verify auto bid threshold is configurable
+              - cell "Medium" [ref=e11532]:
+                - combobox [ref=e11534]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11535]:
+                - generic [ref=e11536]:
+                  - button "P" [ref=e11537]
+                  - button "B" [ref=e11538]
+                  - button "R" [ref=e11539]
+                  - button "F" [ref=e11540]
+                  - button "More statuses" [ref=e11542]:
+                    - img [ref=e11543]
+              - cell "Untested" [ref=e11547]:
+                - generic [ref=e11548]: Untested
+              - cell [ref=e11549]:
+                - textbox [ref=e11551]
+            - row "C2371619 Verify auto bid handles retries and errors Medium P B R F More statuses Untested" [ref=e11552] [cursor=pointer]:
+              - cell "C2371619" [ref=e11553]:
+                - link "C2371619" [ref=e11554]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371619
+              - cell "Verify auto bid handles retries and errors" [ref=e11555]:
+                - generic [ref=e11556]: Verify auto bid handles retries and errors
+              - cell "Medium" [ref=e11557]:
+                - combobox [ref=e11559]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11560]:
+                - generic [ref=e11561]:
+                  - button "P" [ref=e11562]
+                  - button "B" [ref=e11563]
+                  - button "R" [ref=e11564]
+                  - button "F" [ref=e11565]
+                  - button "More statuses" [ref=e11567]:
+                    - img [ref=e11568]
+              - cell "Untested" [ref=e11572]:
+                - generic [ref=e11573]: Untested
+              - cell [ref=e11574]:
+                - textbox [ref=e11576]
+            - row "C2371620 Verify auto bid events are logged and monitored Medium P B R F More statuses Untested" [ref=e11577] [cursor=pointer]:
+              - cell "C2371620" [ref=e11578]:
+                - link "C2371620" [ref=e11579]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371620
+              - cell "Verify auto bid events are logged and monitored" [ref=e11580]:
+                - generic [ref=e11581]: Verify auto bid events are logged and monitored
+              - cell "Medium" [ref=e11582]:
+                - combobox [ref=e11584]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11585]:
+                - generic [ref=e11586]:
+                  - button "P" [ref=e11587]
+                  - button "B" [ref=e11588]
+                  - button "R" [ref=e11589]
+                  - button "F" [ref=e11590]
+                  - button "More statuses" [ref=e11592]:
+                    - img [ref=e11593]
+              - cell "Untested" [ref=e11597]:
+                - generic [ref=e11598]: Untested
+              - cell [ref=e11599]:
+                - textbox [ref=e11601]
+            - row "C2371645 Verify the auto bid threshold respects the configured countdown duration tier Medium P B R F More statuses Untested" [ref=e11602] [cursor=pointer]:
+              - cell "C2371645" [ref=e11603]:
+                - link "C2371645" [ref=e11604]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/2371645
+              - cell "Verify the auto bid threshold respects the configured countdown duration tier" [ref=e11605]:
+                - generic [ref=e11606]: Verify the auto bid threshold respects the configured countdown duration tier
+              - cell "Medium" [ref=e11607]:
+                - combobox [ref=e11609]:
+                  - option "Low"
+                  - option "Medium" [selected]
+                  - option "High"
+                  - option "Critical"
+              - cell "P B R F More statuses" [ref=e11610]:
+                - generic [ref=e11611]:
+                  - button "P" [ref=e11612]
+                  - button "B" [ref=e11613]
+                  - button "R" [ref=e11614]
+                  - button "F" [ref=e11615]
+                  - button "More statuses" [ref=e11617]:
+                    - img [ref=e11618]
+              - cell "Untested" [ref=e11622]:
+                - generic [ref=e11623]: Untested
+              - cell [ref=e11624]:
+                - textbox [ref=e11626]

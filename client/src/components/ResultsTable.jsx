@@ -32,11 +32,12 @@ export default function ResultsTable({ results = [], title = 'Results' }) {
       <div className="flex items-center justify-between border-b border-gray-200 px-4 py-3">
         <h4 className="text-sm font-semibold text-gray-700">
           {title}{' '}
-          <span className="font-normal text-gray-400">({results.length} rows)</span>
+          <span className="font-normal text-gray-500">({results.length} rows)</span>
         </h4>
         <button
+          type="button"
           onClick={downloadCsv}
-          className="flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50"
+          className="flex items-center gap-1.5 rounded-md border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
         >
           <Download size={14} />
           Export CSV
@@ -70,7 +71,7 @@ export default function ResultsTable({ results = [], title = 'Results' }) {
           </tbody>
         </table>
         {results.length > 100 && (
-          <div className="border-t border-gray-100 px-4 py-2 text-center text-xs text-gray-400">
+          <div className="border-t border-gray-100 px-4 py-2 text-center text-xs text-gray-500">
             Showing first 100 of {results.length} rows. Export CSV for full data.
           </div>
         )}

@@ -28,6 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api', apiKeyAuth);
 
 app.use('/api/tools', require('./routes/tools'));
+app.use('/api/automation-web', require('./routes/automationWeb'));
 app.use('/api/test-runs', require('./routes/testRuns'));
 
 const publicDir = path.join(__dirname, 'public');

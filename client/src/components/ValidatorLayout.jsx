@@ -1,12 +1,18 @@
-import { useState, useRef, useCallback } from 'react';
+import { useState, useRef, useCallback, useMemo } from 'react';
 import {
   Play,
   Loader2,
   CheckCircle2,
   XCircle,
+  AlignLeft,
 } from 'lucide-react';
 
-function CodePanel({ label, value, onChange, placeholder, badge }) {
+function formatJson(raw) {
+  const parsed = JSON.parse(raw);
+  return JSON.stringify(parsed, null, 2);
+}
+
+function CodePanel({ label, value, onChange, placeholder, badge, onFormat, formatError }) {
   const textareaRef = useRef(null);
   const gutterRef = useRef(null);
 
@@ -18,26 +24,44 @@ function CodePanel({ label, value, onChange, placeholder, badge }) {
     }
   }, []);
 
+  const gutterLines = useMemo(
+    () => Array.from({ length: lineCount }, (_, i) => (
+      <div key={i} className="px-2 text-right">{i + 1}</div>
+    )),
+    [lineCount]
+  );
+
   return (
     <div className="flex flex-col">
-      <div className="mb-1.5 flex items-center justify-between">
+      <div className="mb-1.5 flex items-center justify-between gap-2">
         <label className="text-sm font-medium text-gray-700">{label}</label>
-        {badge}
+        <div className="flex items-center gap-2">
+          {formatError && (
+            <span className="text-xs text-red-600">{formatError}</span>
+          )}
+          {badge}
+          {onFormat && (
+            <button
+              type="button"
+              onClick={onFormat}
+              disabled={!value?.trim()}
+              className="inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-2 py-1 text-xs font-medium text-gray-700 shadow-sm transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:opacity-40"
+              title="Format JSON"
+            >
+              <AlignLeft size={12} />
+              Format
+            </button>
+          )}
+        </div>
       </div>
       <div
-        className="flex flex-1 overflow-hidden rounded-lg border border-gray-300 bg-white"
-        style={{ minHeight: '340px' }}
+        className="flex flex-1 overflow-hidden rounded-lg border border-gray-300 bg-white min-h-[340px]"
       >
         <div
           ref={gutterRef}
-          className="select-none overflow-hidden border-r border-gray-200 bg-gray-50 py-2 font-mono text-xs leading-5 text-gray-400"
-          style={{ width: '3rem' }}
+          className="w-12 select-none overflow-hidden border-r border-gray-200 bg-gray-50 py-2 font-mono text-xs leading-5 text-gray-400"
         >
-          {Array.from({ length: lineCount }, (_, i) => (
-            <div key={i} className="px-2 text-right">
-              {i + 1}
-            </div>
-          ))}
+          {gutterLines}
         </div>
         <textarea
           ref={textareaRef}
@@ -64,12 +88,14 @@ function ResultPanel({ label, annotatedJson, onEdit, badge }) {
         {badge}
       </div>
       <div
-        className="flex-1 cursor-text overflow-hidden rounded-lg border border-gray-300 bg-white"
-        style={{ minHeight: '340px' }}
+        role="button"
+        tabIndex={0}
+        className="flex-1 cursor-text overflow-hidden rounded-lg border border-gray-300 bg-white min-h-[340px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
         onClick={onEdit}
-        title="Click to edit"
+        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), onEdit())}
+        aria-label="Edit JSON input"
       >
-        <div className="h-full overflow-auto" style={{ minHeight: '340px' }}>
+        <div className="h-full overflow-auto min-h-[340px]">
           {lines.map((line, i) => {
             const lineErrs = errors[String(i)];
             return (
@@ -158,12 +184,36 @@ export default function ValidatorLayout({ tool }) {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [schemaFormatError, setSchemaFormatError] = useState(null);
+  const [jsonFormatError, setJsonFormatError] = useState(null);
+
+  const handleFormatSchema = () => {
+    setSchemaFormatError(null);
+    try {
+      setSchemaInput(formatJson(schemaInput));
+      setResult(null);
+    } catch (err) {
+      setSchemaFormatError(`Invalid JSON: ${err.message}`);
+    }
+  };
+
+  const handleFormatJson = () => {
+    setJsonFormatError(null);
+    try {
+      setJsonInput(formatJson(jsonInput));
+      setResult(null);
+    } catch (err) {
+      setJsonFormatError(`Invalid JSON: ${err.message}`);
+    }
+  };
 
   const handleValidate = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
     setResult(null);
+    setSchemaFormatError(null);
+    setJsonFormatError(null);
 
     try {
       const res = await fetch(`/api/tools/${tool.id}`, {
@@ -211,11 +261,14 @@ export default function ValidatorLayout({ tool }) {
           value={schemaInput}
           onChange={(val) => {
             setSchemaInput(val);
+            setSchemaFormatError(null);
             setResult(null);
           }}
           placeholder={
             '{\n  "$schema": "http://json-schema.org/draft-07/schema#",\n  "type": "object",\n  "properties": {\n    "name": { "type": "string" }\n  },\n  "required": ["name"]\n}'
           }
+          onFormat={handleFormatSchema}
+          formatError={schemaFormatError}
         />
 
         {annotated ? (
@@ -231,10 +284,13 @@ export default function ValidatorLayout({ tool }) {
             value={jsonInput}
             onChange={(val) => {
               setJsonInput(val);
+              setJsonFormatError(null);
               setResult(null);
             }}
             placeholder={'{\n  "name": "John Doe",\n  "age": 30\n}'}
             badge={jsonBadge}
+            onFormat={handleFormatJson}
+            formatError={jsonFormatError}
           />
         )}
       </div>
@@ -242,7 +298,7 @@ export default function ValidatorLayout({ tool }) {
       <button
         type="submit"
         disabled={loading}
-        className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
+        className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {loading ? (
           <>

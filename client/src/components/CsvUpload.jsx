@@ -38,7 +38,7 @@ export default function CsvUpload({ csvInfo, csvExample, onFileSelect, file }) {
           <button
             type="button"
             onClick={downloadExample}
-            className="flex items-center gap-1 text-xs text-blue-600 hover:text-blue-800"
+            className="flex min-h-[44px] items-center gap-1 rounded px-1 text-xs text-blue-600 hover:text-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
           >
             <Download size={12} />
             Download template
@@ -62,27 +62,31 @@ export default function CsvUpload({ csvInfo, csvExample, onFileSelect, file }) {
           <button
             type="button"
             onClick={() => onFileSelect(null)}
-            className="rounded p-1 text-green-600 hover:bg-green-100"
+            aria-label="Remove file"
+            className="flex h-11 w-11 items-center justify-center rounded-lg text-green-600 hover:bg-green-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500"
           >
             <X size={16} />
           </button>
         </div>
       ) : (
         <div
+          role="button"
+          tabIndex={0}
           onClick={() => inputRef.current?.click()}
+          onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), inputRef.current?.click())}
           onDragOver={(e) => {
             e.preventDefault();
             setDragOver(true);
           }}
           onDragLeave={() => setDragOver(false)}
           onDrop={handleDrop}
-          className={`flex cursor-pointer flex-col items-center gap-2 rounded-lg border-2 border-dashed px-6 py-8 transition-colors ${
+          className={`flex cursor-pointer flex-col items-center gap-2 rounded-lg border-2 border-dashed px-6 py-8 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${
             dragOver
               ? 'border-blue-400 bg-blue-50'
               : 'border-gray-300 bg-white hover:border-gray-400 hover:bg-gray-50'
           }`}
         >
-          <Upload size={24} className="text-gray-400" />
+          <Upload size={24} className="text-gray-500" />
           <div className="text-center">
             <p className="text-sm font-medium text-gray-700">
               Drop your CSV file here or{' '}

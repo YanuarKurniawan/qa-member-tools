@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -16,5 +24,13 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background: #94a3b8;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }

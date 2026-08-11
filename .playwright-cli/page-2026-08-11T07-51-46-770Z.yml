@@ -1,0 +1,7 @@
+- generic [ref=e3]:
+  - button "Open navigation" [active] [ref=e4] [cursor=pointer]:
+    - img [ref=e5]
+  - main [ref=e6]:
+    - generic [ref=e8]:
+      - heading "Test Runner" [level=1] [ref=e9]
+      - paragraph [ref=e10]: Execute a TestRail run without leaving one screen.

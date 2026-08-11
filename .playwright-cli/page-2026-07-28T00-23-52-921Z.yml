@@ -1,0 +1,1145 @@
+- generic [ref=e7]:
+  - complementary [ref=e8]:
+    - generic [ref=e9]:
+      - img [ref=e11]
+      - generic [ref=e13]:
+        - heading "QA Tools" [level=1] [ref=e14]
+        - paragraph [ref=e15]: Member Services
+    - navigation [ref=e16]:
+      - link "Dashboard" [ref=e17] [cursor=pointer]:
+        - /url: /
+        - img [ref=e18]
+        - text: Dashboard
+      - paragraph [ref=e24]: Dashboards
+      - link "Automation WEB" [ref=e25] [cursor=pointer]:
+        - /url: /automation-web
+        - img [ref=e26]
+        - text: Automation WEB
+      - paragraph [ref=e32]: Tools
+      - link "User Management" [ref=e33] [cursor=pointer]:
+        - /url: /user-management
+        - img [ref=e34]
+        - text: User Management
+      - link "User Auth" [ref=e39] [cursor=pointer]:
+        - /url: /user-auth
+        - img [ref=e40]
+        - text: User Auth
+      - link "Jira & TestRail" [ref=e42] [cursor=pointer]:
+        - /url: /jira
+        - img [ref=e43]
+        - text: Jira & TestRail
+      - link "Testing" [ref=e46] [cursor=pointer]:
+        - /url: /testing
+        - img [ref=e47]
+        - text: Testing
+      - link "Database" [ref=e49] [cursor=pointer]:
+        - /url: /database
+        - img [ref=e50]
+        - text: Database
+      - link "Automation" [ref=e54] [cursor=pointer]:
+        - /url: /automation
+        - img [ref=e55]
+        - text: Automation
+    - generic [ref=e67]:
+      - paragraph [ref=e68]: v2.0.0
+      - generic [ref=e69]: ⌘K
+  - main [ref=e70]:
+    - generic [ref=e72]:
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - heading "Automation WEB" [level=1] [ref=e75]
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - img [ref=e78]
+              - generic [ref=e81]: "Last Data Update:"
+              - generic [ref=e82]: Jul 28, 2026, 07:23 AM
+              - generic [ref=e83]: (just now)
+            - button "Refreshing…" [disabled] [ref=e1199]:
+              - img [ref=e85]
+              - text: Refreshing…
+        - paragraph [ref=e90]: Reconciles WEB automation coverage across Google Sheet, Jira, and TestRail — WEB (dWeb) — Eiffel.
+        - paragraph [ref=e1200]: Pulling live from each platform — this can take ~15s.
+      - generic [ref=e91]:
+        - generic [ref=e92]:
+          - img [ref=e93]
+          - generic [ref=e95]:
+            - heading "Sources do not match" [level=2] [ref=e96]
+            - paragraph [ref=e97]: Spread of 43 between the highest (67) and lowest (24).
+        - generic [ref=e98]:
+          - generic [ref=e99]:
+            - link "Google Sheet" [ref=e101] [cursor=pointer]:
+              - /url: https://docs.google.com/spreadsheets/d/1awvp3vH5N9BhFDlVmVj0dJQ-cB9S3Rh7QaYF-4RmpQk/edit#gid=0
+              - text: Google Sheet
+              - img [ref=e102]
+            - generic [ref=e107]: "24"
+          - generic [ref=e108]:
+            - link "Jira (Done)" [ref=e110] [cursor=pointer]:
+              - /url: https://borobudur.atlassian.net/issues/?jql=parent%20%3D%20QAAUT-30177%20AND%20status%20%3D%20%22Done%22
+              - text: Jira (Done)
+              - img [ref=e111]
+            - generic [ref=e116]: "65"
+          - generic [ref=e117]:
+            - link "TestRail (Yes)" [ref=e119] [cursor=pointer]:
+              - /url: https://tiket.testrail.com/index.php?/suites/view/4844&group_id=103762
+              - text: TestRail (Yes)
+              - img [ref=e120]
+            - generic [ref=e125]: "67"
+      - generic [ref=e126]:
+        - 'link "Open Google Sheet — ShouldRun: y (dweb) in Google Sheets" [ref=e127] [cursor=pointer]':
+          - /url: https://docs.google.com/spreadsheets/d/1awvp3vH5N9BhFDlVmVj0dJQ-cB9S3Rh7QaYF-4RmpQk/edit#gid=0
+          - generic [ref=e128]:
+            - img [ref=e130]
+            - img [ref=e132]
+          - 'heading "Google Sheet — ShouldRun: y (dweb)" [level=3] [ref=e136]'
+          - generic [ref=e137]:
+            - generic [ref=e138]: "24"
+            - generic [ref=e139]: / 57
+          - paragraph [ref=e140]: Rows with Platform = "dweb" and ShouldRun = "y" (of 57 dweb rows)
+          - generic [ref=e141]:
+            - text: Open in Google Sheets
+            - img [ref=e142]
+        - link "Open Jira — Done in Jira" [ref=e145] [cursor=pointer]:
+          - /url: https://borobudur.atlassian.net/issues/?jql=parent%20%3D%20QAAUT-30177%20AND%20status%20%3D%20%22Done%22
+          - generic [ref=e146]:
+            - img [ref=e148]
+            - img [ref=e151]
+          - heading "Jira — Done" [level=3] [ref=e155]
+          - generic [ref=e156]:
+            - generic [ref=e157]: "65"
+            - generic [ref=e158]: / 112
+          - paragraph [ref=e159]: Child issues of QAAUT-30177 in "Done"
+          - generic [ref=e160]:
+            - text: Open in Jira
+            - img [ref=e161]
+        - 'link "Open TestRail — Automation Type: Yes in TestRail" [ref=e164] [cursor=pointer]':
+          - /url: https://tiket.testrail.com/index.php?/suites/view/4844&group_id=103762
+          - generic [ref=e165]:
+            - img [ref=e167]
+            - img [ref=e169]
+          - 'heading "TestRail — Automation Type: Yes" [level=3] [ref=e173]'
+          - generic [ref=e174]:
+            - generic [ref=e175]: "67"
+            - generic [ref=e176]: / 82
+          - paragraph [ref=e177]: Cases under "Platform-Eiffel" with Automation Type = Yes (of 82 cases)
+          - generic [ref=e178]:
+            - text: Open in TestRail
+            - img [ref=e179]
+      - generic [ref=e182]:
+        - generic [ref=e183]:
+          - generic [ref=e184]:
+            - heading "Google Sheet breakdown — dweb" [level=2] [ref=e185]
+            - paragraph [ref=e186]: 24 of 57 dweb rows have ShouldRun = y
+          - link "Open sheet" [ref=e187] [cursor=pointer]:
+            - /url: https://docs.google.com/spreadsheets/d/1awvp3vH5N9BhFDlVmVj0dJQ-cB9S3Rh7QaYF-4RmpQk/edit#gid=0
+            - text: Open sheet
+            - img [ref=e188]
+        - table [ref=e192]:
+          - rowgroup [ref=e193]:
+            - row "Title Platform ShouldRun Jira Link TestRail Link Priority" [ref=e194]:
+              - columnheader "Title" [ref=e195]
+              - columnheader "Platform" [ref=e196]
+              - columnheader "ShouldRun" [ref=e197]
+              - columnheader "Jira Link" [ref=e198]
+              - columnheader "TestRail Link" [ref=e199]
+              - columnheader "Priority" [ref=e200]
+          - rowgroup [ref=e201]:
+            - row "editMainProfileWeb dWeb y QAAUT-40274 — P0" [ref=e202]:
+              - cell "editMainProfileWeb" [ref=e203]
+              - cell "dWeb" [ref=e204]
+              - cell "y" [ref=e205]:
+                - generic [ref=e206]: "y"
+              - cell "QAAUT-40274" [ref=e207]:
+                - link "QAAUT-40274" [ref=e208] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-40274
+                  - text: QAAUT-40274
+                  - img [ref=e209]
+              - cell "—" [ref=e212]
+              - cell "P0" [ref=e213]:
+                - generic [ref=e214]: P0
+            - row "openRewardsPageAsGuestUserWeb dWeb y QAAUT-39714 — P0" [ref=e215]:
+              - cell "openRewardsPageAsGuestUserWeb" [ref=e216]
+              - cell "dWeb" [ref=e217]
+              - cell "y" [ref=e218]:
+                - generic [ref=e219]: "y"
+              - cell "QAAUT-39714" [ref=e220]:
+                - link "QAAUT-39714" [ref=e221] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-39714
+                  - text: QAAUT-39714
+                  - img [ref=e222]
+              - cell "—" [ref=e225]
+              - cell "P0" [ref=e226]:
+                - generic [ref=e227]: P0
+            - row "openRewardsPageAsLoginUserWeb dWeb y QAAUT-39711 — P0" [ref=e228]:
+              - cell "openRewardsPageAsLoginUserWeb" [ref=e229]
+              - cell "dWeb" [ref=e230]
+              - cell "y" [ref=e231]:
+                - generic [ref=e232]: "y"
+              - cell "QAAUT-39711" [ref=e233]:
+                - link "QAAUT-39711" [ref=e234] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-39711
+                  - text: QAAUT-39711
+                  - img [ref=e235]
+              - cell "—" [ref=e238]
+              - cell "P0" [ref=e239]:
+                - generic [ref=e240]: P0
+            - row "testAddAndDeleteSmartProfileWeb dweb y QAAUT-22743 1194562 P0" [ref=e241]:
+              - cell "testAddAndDeleteSmartProfileWeb" [ref=e242]
+              - cell "dweb" [ref=e243]
+              - cell "y" [ref=e244]:
+                - generic [ref=e245]: "y"
+              - cell "QAAUT-22743" [ref=e246]:
+                - link "QAAUT-22743" [ref=e247] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22743
+                  - text: QAAUT-22743
+                  - img [ref=e248]
+              - cell "1194562" [ref=e251]:
+                - link "1194562" [ref=e252] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194562
+                  - text: "1194562"
+                  - img [ref=e253]
+              - cell "P0" [ref=e256]:
+                - generic [ref=e257]: P0
+            - row "testChangeCurrency dWeb y QAAUT-22763 1194582 P0" [ref=e258]:
+              - cell "testChangeCurrency" [ref=e259]
+              - cell "dWeb" [ref=e260]
+              - cell "y" [ref=e261]:
+                - generic [ref=e262]: "y"
+              - cell "QAAUT-22763" [ref=e263]:
+                - link "QAAUT-22763" [ref=e264] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22763
+                  - text: QAAUT-22763
+                  - img [ref=e265]
+              - cell "1194582" [ref=e268]:
+                - link "1194582" [ref=e269] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194582
+                  - text: "1194582"
+                  - img [ref=e270]
+              - cell "P0" [ref=e273]:
+                - generic [ref=e274]: P0
+            - row "testChangeIntoNewEmail dweb y QAAUT-22696 1194396 P0" [ref=e275]:
+              - cell "testChangeIntoNewEmail" [ref=e276]
+              - cell "dweb" [ref=e277]
+              - cell "y" [ref=e278]:
+                - generic [ref=e279]: "y"
+              - cell "QAAUT-22696" [ref=e280]:
+                - link "QAAUT-22696" [ref=e281] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22696
+                  - text: QAAUT-22696
+                  - img [ref=e282]
+              - cell "1194396" [ref=e285]:
+                - link "1194396" [ref=e286] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194396
+                  - text: "1194396"
+                  - img [ref=e287]
+              - cell "P0" [ref=e290]:
+                - generic [ref=e291]: P0
+            - row "testChangeIntoNewPNLoggedIn dweb y QAAUT-22692 1194394 P0" [ref=e292]:
+              - cell "testChangeIntoNewPNLoggedIn" [ref=e293]
+              - cell "dweb" [ref=e294]
+              - cell "y" [ref=e295]:
+                - generic [ref=e296]: "y"
+              - cell "QAAUT-22692" [ref=e297]:
+                - link "QAAUT-22692" [ref=e298] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22692
+                  - text: QAAUT-22692
+                  - img [ref=e299]
+              - cell "1194394" [ref=e302]:
+                - link "1194394" [ref=e303] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194394
+                  - text: "1194394"
+                  - img [ref=e304]
+              - cell "P0" [ref=e307]:
+                - generic [ref=e308]: P0
+            - row "testChangeLanguageToEnglishLogin dweb y QAAUT-22761 1194568 P0" [ref=e309]:
+              - cell "testChangeLanguageToEnglishLogin" [ref=e310]
+              - cell "dweb" [ref=e311]
+              - cell "y" [ref=e312]:
+                - generic [ref=e313]: "y"
+              - cell "QAAUT-22761" [ref=e314]:
+                - link "QAAUT-22761" [ref=e315] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22761
+                  - text: QAAUT-22761
+                  - img [ref=e316]
+              - cell "1194568" [ref=e319]:
+                - link "1194568" [ref=e320] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194568
+                  - text: "1194568"
+                  - img [ref=e321]
+              - cell "P0" [ref=e324]:
+                - generic [ref=e325]: P0
+            - row "testChangeLanguageToIDNonLogin dweb y QAAUT-22770 1194590 P0" [ref=e326]:
+              - cell "testChangeLanguageToIDNonLogin" [ref=e327]
+              - cell "dweb" [ref=e328]
+              - cell "y" [ref=e329]:
+                - generic [ref=e330]: "y"
+              - cell "QAAUT-22770" [ref=e331]:
+                - link "QAAUT-22770" [ref=e332] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22770
+                  - text: QAAUT-22770
+                  - img [ref=e333]
+              - cell "1194590" [ref=e336]:
+                - link "1194590" [ref=e337] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194590
+                  - text: "1194590"
+                  - img [ref=e338]
+              - cell "P0" [ref=e341]:
+                - generic [ref=e342]: P0
+            - row "testDeleteAccountLoggedIn dweb y QAAUT-22699 1194397 P0" [ref=e343]:
+              - cell "testDeleteAccountLoggedIn" [ref=e344]
+              - cell "dweb" [ref=e345]
+              - cell "y" [ref=e346]:
+                - generic [ref=e347]: "y"
+              - cell "QAAUT-22699" [ref=e348]:
+                - link "QAAUT-22699" [ref=e349] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22699
+                  - text: QAAUT-22699
+                  - img [ref=e350]
+              - cell "1194397" [ref=e353]:
+                - link "1194397" [ref=e354] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194397
+                  - text: "1194397"
+                  - img [ref=e355]
+              - cell "P0" [ref=e358]:
+                - generic [ref=e359]: P0
+            - row "testForgotPasswordUsingPNWeb dweb y QAAUT-22718 1194404 P0" [ref=e360]:
+              - cell "testForgotPasswordUsingPNWeb" [ref=e361]
+              - cell "dweb" [ref=e362]
+              - cell "y" [ref=e363]:
+                - generic [ref=e364]: "y"
+              - cell "QAAUT-22718" [ref=e365]:
+                - link "QAAUT-22718" [ref=e366] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22718
+                  - text: QAAUT-22718
+                  - img [ref=e367]
+              - cell "1194404" [ref=e370]:
+                - link "1194404" [ref=e371] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194404
+                  - text: "1194404"
+                  - img [ref=e372]
+              - cell "P0" [ref=e375]:
+                - generic [ref=e376]: P0
+            - row "testLogoutDeviceLevelWeb dweb y QAAUT-22684 1194393 P0" [ref=e377]:
+              - cell "testLogoutDeviceLevelWeb" [ref=e378]
+              - cell "dweb" [ref=e379]
+              - cell "y" [ref=e380]:
+                - generic [ref=e381]: "y"
+              - cell "QAAUT-22684" [ref=e382]:
+                - link "QAAUT-22684" [ref=e383] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22684
+                  - text: QAAUT-22684
+                  - img [ref=e384]
+              - cell "1194393" [ref=e387]:
+                - link "1194393" [ref=e388] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194393
+                  - text: "1194393"
+                  - img [ref=e389]
+              - cell "P0" [ref=e392]:
+                - generic [ref=e393]: P0
+            - row "testLoyaltyCappingPointsTrainWeb dWeb y QAAUT-39745 — P0" [ref=e394]:
+              - cell "testLoyaltyCappingPointsTrainWeb" [ref=e395]
+              - cell "dWeb" [ref=e396]
+              - cell "y" [ref=e397]:
+                - generic [ref=e398]: "y"
+              - cell "QAAUT-39745" [ref=e399]:
+                - link "QAAUT-39745" [ref=e400] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-39745
+                  - text: QAAUT-39745
+                  - img [ref=e401]
+              - cell "—" [ref=e404]
+              - cell "P0" [ref=e405]:
+                - generic [ref=e406]: P0
+            - row "testLoyaltyCappingPointsTtdWeb dWeb y QAAUT-39746 — P0" [ref=e407]:
+              - cell "testLoyaltyCappingPointsTtdWeb" [ref=e408]
+              - cell "dWeb" [ref=e409]
+              - cell "y" [ref=e410]:
+                - generic [ref=e411]: "y"
+              - cell "QAAUT-39746" [ref=e412]:
+                - link "QAAUT-39746" [ref=e413] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-39746
+                  - text: QAAUT-39746
+                  - img [ref=e414]
+              - cell "—" [ref=e417]
+              - cell "P0" [ref=e418]:
+                - generic [ref=e419]: P0
+            - row "testLoyaltyPayHalfPointsHotelsWeb dweb y QAAUT-22958 1198886 P0" [ref=e420]:
+              - cell "testLoyaltyPayHalfPointsHotelsWeb" [ref=e421]
+              - cell "dweb" [ref=e422]
+              - cell "y" [ref=e423]:
+                - generic [ref=e424]: "y"
+              - cell "QAAUT-22958" [ref=e425]:
+                - link "QAAUT-22958" [ref=e426] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22958
+                  - text: QAAUT-22958
+                  - img [ref=e427]
+              - cell "1198886" [ref=e430]:
+                - link "1198886" [ref=e431] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1198886
+                  - text: "1198886"
+                  - img [ref=e432]
+              - cell "P0" [ref=e435]:
+                - generic [ref=e436]: P0
+            - row "testNoPendingEarningPointsWhenOrderFinishedWithPromoWeb dWeb y QAAUT-40276 — P0" [ref=e437]:
+              - cell "testNoPendingEarningPointsWhenOrderFinishedWithPromoWeb" [ref=e438]
+              - cell "dWeb" [ref=e439]
+              - cell "y" [ref=e440]:
+                - generic [ref=e441]: "y"
+              - cell "QAAUT-40276" [ref=e442]:
+                - link "QAAUT-40276" [ref=e443] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-40276
+                  - text: QAAUT-40276
+                  - img [ref=e444]
+              - cell "—" [ref=e447]
+              - cell "P0" [ref=e448]:
+                - generic [ref=e449]: P0
+            - row "testPendingEarningPointsAfterTtdOrderWeb dWeb y QAAUT-39712 — P0" [ref=e450]:
+              - cell "testPendingEarningPointsAfterTtdOrderWeb" [ref=e451]
+              - cell "dWeb" [ref=e452]
+              - cell "y" [ref=e453]:
+                - generic [ref=e454]: "y"
+              - cell "QAAUT-39712" [ref=e455]:
+                - link "QAAUT-39712" [ref=e456] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-39712
+                  - text: QAAUT-39712
+                  - img [ref=e457]
+              - cell "—" [ref=e460]
+              - cell "P0" [ref=e461]:
+                - generic [ref=e462]: P0
+            - row "testRefundHotelNegativePoints dWeb y QAAUT-41239 — —" [ref=e463]:
+              - cell "testRefundHotelNegativePoints" [ref=e464]
+              - cell "dWeb" [ref=e465]
+              - cell "y" [ref=e466]:
+                - generic [ref=e467]: "y"
+              - cell "QAAUT-41239" [ref=e468]:
+                - link "QAAUT-41239" [ref=e469] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-41239
+                  - text: QAAUT-41239
+                  - img [ref=e470]
+              - cell "—" [ref=e473]
+              - cell "—" [ref=e474]
+            - row "testRegisterPhoneNoNonLogin dweb y QAAUT-22701 1194398 P0" [ref=e475]:
+              - cell "testRegisterPhoneNoNonLogin" [ref=e476]
+              - cell "dweb" [ref=e477]
+              - cell "y" [ref=e478]:
+                - generic [ref=e479]: "y"
+              - cell "QAAUT-22701" [ref=e480]:
+                - link "QAAUT-22701" [ref=e481] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22701
+                  - text: QAAUT-22701
+                  - img [ref=e482]
+              - cell "1194398" [ref=e485]:
+                - link "1194398" [ref=e486] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194398
+                  - text: "1194398"
+                  - img [ref=e487]
+              - cell "P0" [ref=e490]:
+                - generic [ref=e491]: P0
+            - row "testUserEditSmartProfile dweb y QAAUT-22745 1194563 P0" [ref=e492]:
+              - cell "testUserEditSmartProfile" [ref=e493]
+              - cell "dweb" [ref=e494]
+              - cell "y" [ref=e495]:
+                - generic [ref=e496]: "y"
+              - cell "QAAUT-22745" [ref=e497]:
+                - link "QAAUT-22745" [ref=e498] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22745
+                  - text: QAAUT-22745
+                  - img [ref=e499]
+              - cell "1194563" [ref=e502]:
+                - link "1194563" [ref=e503] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194563
+                  - text: "1194563"
+                  - img [ref=e504]
+              - cell "P0" [ref=e507]:
+                - generic [ref=e508]: P0
+            - row "testVerifyUnverifiedEmailLoggedInWeb dWeb y QAAUT-40275 — P0" [ref=e509]:
+              - cell "testVerifyUnverifiedEmailLoggedInWeb" [ref=e510]
+              - cell "dWeb" [ref=e511]
+              - cell "y" [ref=e512]:
+                - generic [ref=e513]: "y"
+              - cell "QAAUT-40275" [ref=e514]:
+                - link "QAAUT-40275" [ref=e515] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-40275
+                  - text: QAAUT-40275
+                  - img [ref=e516]
+              - cell "—" [ref=e519]
+              - cell "P0" [ref=e520]:
+                - generic [ref=e521]: P0
+            - row "verifyClaimMissionRewardsWeb dWeb y QAAUT-39710 — P0" [ref=e522]:
+              - cell "verifyClaimMissionRewardsWeb" [ref=e523]
+              - cell "dWeb" [ref=e524]
+              - cell "y" [ref=e525]:
+                - generic [ref=e526]: "y"
+              - cell "QAAUT-39710" [ref=e527]:
+                - link "QAAUT-39710" [ref=e528] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-39710
+                  - text: QAAUT-39710
+                  - img [ref=e529]
+              - cell "—" [ref=e532]
+              - cell "P0" [ref=e533]:
+                - generic [ref=e534]: P0
+            - row "verifyMissionStampIncreaseForEligibleHotelWeb dweb y QAAUT-40441 — P0" [ref=e535]:
+              - cell "verifyMissionStampIncreaseForEligibleHotelWeb" [ref=e536]
+              - cell "dweb" [ref=e537]
+              - cell "y" [ref=e538]:
+                - generic [ref=e539]: "y"
+              - cell "QAAUT-40441" [ref=e540]:
+                - link "QAAUT-40441" [ref=e541] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-40441
+                  - text: QAAUT-40441
+                  - img [ref=e542]
+              - cell "—" [ref=e545]
+              - cell "P0" [ref=e546]:
+                - generic [ref=e547]: P0
+            - row "verifyNoMissionStampForPayAtHotelWeb dweb y QAAUT-40441 — P0" [ref=e548]:
+              - cell "verifyNoMissionStampForPayAtHotelWeb" [ref=e549]
+              - cell "dweb" [ref=e550]
+              - cell "y" [ref=e551]:
+                - generic [ref=e552]: "y"
+              - cell "QAAUT-40441" [ref=e553]:
+                - link "QAAUT-40441" [ref=e554] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-40441
+                  - text: QAAUT-40441
+                  - img [ref=e555]
+              - cell "—" [ref=e558]
+              - cell "P0" [ref=e559]:
+                - generic [ref=e560]: P0
+            - row "loginChangeAccountNameWeb dweb n QAAUT-22686 1194421 P1" [ref=e561]:
+              - cell "loginChangeAccountNameWeb" [ref=e562]
+              - cell "dweb" [ref=e563]
+              - cell "n" [ref=e564]:
+                - generic [ref=e565]: "n"
+              - cell "QAAUT-22686" [ref=e566]:
+                - link "QAAUT-22686" [ref=e567] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22686
+                  - text: QAAUT-22686
+                  - img [ref=e568]
+              - cell "1194421" [ref=e571]:
+                - link "1194421" [ref=e572] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194421
+                  - text: "1194421"
+                  - img [ref=e573]
+              - cell "P1" [ref=e576]:
+                - generic [ref=e577]: P1
+            - row "loginChangeCountryWeb dWeb n QAAUT-22698 1194424 P1" [ref=e578]:
+              - cell "loginChangeCountryWeb" [ref=e579]
+              - cell "dWeb" [ref=e580]
+              - cell "n" [ref=e581]:
+                - generic [ref=e582]: "n"
+              - cell "QAAUT-22698" [ref=e583]:
+                - link "QAAUT-22698" [ref=e584] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22698
+                  - text: QAAUT-22698
+                  - img [ref=e585]
+              - cell "1194424" [ref=e588]:
+                - link "1194424" [ref=e589] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194424
+                  - text: "1194424"
+                  - img [ref=e590]
+              - cell "P1" [ref=e593]:
+                - generic [ref=e594]: P1
+            - row "openVoucherBoxLoginTest dweb n QAAUT-22752 1194580 P1" [ref=e595]:
+              - cell "openVoucherBoxLoginTest" [ref=e596]
+              - cell "dweb" [ref=e597]
+              - cell "n" [ref=e598]:
+                - generic [ref=e599]: "n"
+              - cell "QAAUT-22752" [ref=e600]:
+                - link "QAAUT-22752" [ref=e601] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22752
+                  - text: QAAUT-22752
+                  - img [ref=e602]
+              - cell "1194580" [ref=e605]:
+                - link "1194580" [ref=e606] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194580
+                  - text: "1194580"
+                  - img [ref=e607]
+              - cell "P1" [ref=e610]:
+                - generic [ref=e611]: P1
+            - row "testAddSmartProfileBookingPage dweb n QAAUT-22748 1194565 P1" [ref=e612]:
+              - cell "testAddSmartProfileBookingPage" [ref=e613]
+              - cell "dweb" [ref=e614]
+              - cell "n" [ref=e615]:
+                - generic [ref=e616]: "n"
+              - cell "QAAUT-22748" [ref=e617]:
+                - link "QAAUT-22748" [ref=e618] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22748
+                  - text: QAAUT-22748
+                  - img [ref=e619]
+              - cell "1194565" [ref=e622]:
+                - link "1194565" [ref=e623] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194565
+                  - text: "1194565"
+                  - img [ref=e624]
+              - cell "P1" [ref=e627]:
+                - generic [ref=e628]: P1
+            - row "testAutoLoginUNMWeb dweb n QAAUT-22715 1194403 P1" [ref=e629]:
+              - cell "testAutoLoginUNMWeb" [ref=e630]
+              - cell "dweb" [ref=e631]
+              - cell "n" [ref=e632]:
+                - generic [ref=e633]: "n"
+              - cell "QAAUT-22715" [ref=e634]:
+                - link "QAAUT-22715" [ref=e635] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22715
+                  - text: QAAUT-22715
+                  - img [ref=e636]
+              - cell "1194403" [ref=e639]:
+                - link "1194403" [ref=e640] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194403
+                  - text: "1194403"
+                  - img [ref=e641]
+              - cell "P1" [ref=e644]:
+                - generic [ref=e645]: P1
+            - row "testBookingProductsWithFreshGuestEmailWeb dweb n QAAUT-22764 1194586 P1" [ref=e646]:
+              - cell "testBookingProductsWithFreshGuestEmailWeb" [ref=e647]
+              - cell "dweb" [ref=e648]
+              - cell "n" [ref=e649]:
+                - generic [ref=e650]: "n"
+              - cell "QAAUT-22764" [ref=e651]:
+                - link "QAAUT-22764" [ref=e652] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22764
+                  - text: QAAUT-22764
+                  - img [ref=e653]
+              - cell "1194586" [ref=e656]:
+                - link "1194586" [ref=e657] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194586
+                  - text: "1194586"
+                  - img [ref=e658]
+              - cell "P1" [ref=e661]:
+                - generic [ref=e662]: P1
+            - row "testChangeCurrencyLogin dWeb n QAAUT-22774 1194593 P1" [ref=e663]:
+              - cell "testChangeCurrencyLogin" [ref=e664]
+              - cell "dWeb" [ref=e665]
+              - cell "n" [ref=e666]:
+                - generic [ref=e667]: "n"
+              - cell "QAAUT-22774" [ref=e668]:
+                - link "QAAUT-22774" [ref=e669] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22774
+                  - text: QAAUT-22774
+                  - img [ref=e670]
+              - cell "1194593" [ref=e673]:
+                - link "1194593" [ref=e674] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194593
+                  - text: "1194593"
+                  - img [ref=e675]
+              - cell "P1" [ref=e678]:
+                - generic [ref=e679]: P1
+            - row "testChangeDOBLoggedIn dweb n QAAUT-22688 1194422 P1" [ref=e680]:
+              - cell "testChangeDOBLoggedIn" [ref=e681]
+              - cell "dweb" [ref=e682]
+              - cell "n" [ref=e683]:
+                - generic [ref=e684]: "n"
+              - cell "QAAUT-22688" [ref=e685]:
+                - link "QAAUT-22688" [ref=e686] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22688
+                  - text: QAAUT-22688
+                  - img [ref=e687]
+              - cell "1194422" [ref=e690]:
+                - link "1194422" [ref=e691] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194422
+                  - text: "1194422"
+                  - img [ref=e692]
+              - cell "P1" [ref=e695]:
+                - generic [ref=e696]: P1
+            - row "testChangeGenderLoggedIn dweb n QAAUT-22690 1194423 P1" [ref=e697]:
+              - cell "testChangeGenderLoggedIn" [ref=e698]
+              - cell "dweb" [ref=e699]
+              - cell "n" [ref=e700]:
+                - generic [ref=e701]: "n"
+              - cell "QAAUT-22690" [ref=e702]:
+                - link "QAAUT-22690" [ref=e703] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22690
+                  - text: QAAUT-22690
+                  - img [ref=e704]
+              - cell "1194423" [ref=e707]:
+                - link "1194423" [ref=e708] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194423
+                  - text: "1194423"
+                  - img [ref=e709]
+              - cell "P1" [ref=e712]:
+                - generic [ref=e713]: P1
+            - row "testChangeLangToIDLogin dweb n QAAUT-22770 1194590 P0" [ref=e714]:
+              - cell "testChangeLangToIDLogin" [ref=e715]
+              - cell "dweb" [ref=e716]
+              - cell "n" [ref=e717]:
+                - generic [ref=e718]: "n"
+              - cell "QAAUT-22770" [ref=e719]:
+                - link "QAAUT-22770" [ref=e720] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22770
+                  - text: QAAUT-22770
+                  - img [ref=e721]
+              - cell "1194590" [ref=e724]:
+                - link "1194590" [ref=e725] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194590
+                  - text: "1194590"
+                  - img [ref=e726]
+              - cell "P0" [ref=e729]:
+                - generic [ref=e730]: P0
+            - row "testChangeLanguageToENG dweb n QAAUT-22772 1194591 P1" [ref=e731]:
+              - cell "testChangeLanguageToENG" [ref=e732]
+              - cell "dweb" [ref=e733]
+              - cell "n" [ref=e734]:
+                - generic [ref=e735]: "n"
+              - cell "QAAUT-22772" [ref=e736]:
+                - link "QAAUT-22772" [ref=e737] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22772
+                  - text: QAAUT-22772
+                  - img [ref=e738]
+              - cell "1194591" [ref=e741]:
+                - link "1194591" [ref=e742] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194591
+                  - text: "1194591"
+                  - img [ref=e743]
+              - cell "P1" [ref=e746]:
+                - generic [ref=e747]: P1
+            - row "testChangeLanguageToENGLogin dweb n QAAUT-22761 1194568 P0" [ref=e748]:
+              - cell "testChangeLanguageToENGLogin" [ref=e749]
+              - cell "dweb" [ref=e750]
+              - cell "n" [ref=e751]:
+                - generic [ref=e752]: "n"
+              - cell "QAAUT-22761" [ref=e753]:
+                - link "QAAUT-22761" [ref=e754] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22761
+                  - text: QAAUT-22761
+                  - img [ref=e755]
+              - cell "1194568" [ref=e758]:
+                - link "1194568" [ref=e759] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194568
+                  - text: "1194568"
+                  - img [ref=e760]
+              - cell "P0" [ref=e763]:
+                - generic [ref=e764]: P0
+            - row "testChangeLanguageToENGNonLogin dweb n QAAUT-22772 1194591 P1" [ref=e765]:
+              - cell "testChangeLanguageToENGNonLogin" [ref=e766]
+              - cell "dweb" [ref=e767]
+              - cell "n" [ref=e768]:
+                - generic [ref=e769]: "n"
+              - cell "QAAUT-22772" [ref=e770]:
+                - link "QAAUT-22772" [ref=e771] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22772
+                  - text: QAAUT-22772
+                  - img [ref=e772]
+              - cell "1194591" [ref=e775]:
+                - link "1194591" [ref=e776] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194591
+                  - text: "1194591"
+                  - img [ref=e777]
+              - cell "P1" [ref=e780]:
+                - generic [ref=e781]: P1
+            - row "testChangeLanguageToID dweb n QAAUT-22770 1194590 P0" [ref=e782]:
+              - cell "testChangeLanguageToID" [ref=e783]
+              - cell "dweb" [ref=e784]
+              - cell "n" [ref=e785]:
+                - generic [ref=e786]: "n"
+              - cell "QAAUT-22770" [ref=e787]:
+                - link "QAAUT-22770" [ref=e788] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22770
+                  - text: QAAUT-22770
+                  - img [ref=e789]
+              - cell "1194590" [ref=e792]:
+                - link "1194590" [ref=e793] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194590
+                  - text: "1194590"
+                  - img [ref=e794]
+              - cell "P0" [ref=e797]:
+                - generic [ref=e798]: P0
+            - row "testChangeLanguageToIDLogin dweb n QAAUT-22759 1194567 P1" [ref=e799]:
+              - cell "testChangeLanguageToIDLogin" [ref=e800]
+              - cell "dweb" [ref=e801]
+              - cell "n" [ref=e802]:
+                - generic [ref=e803]: "n"
+              - cell "QAAUT-22759" [ref=e804]:
+                - link "QAAUT-22759" [ref=e805] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22759
+                  - text: QAAUT-22759
+                  - img [ref=e806]
+              - cell "1194567" [ref=e809]:
+                - link "1194567" [ref=e810] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194567
+                  - text: "1194567"
+                  - img [ref=e811]
+              - cell "P1" [ref=e814]:
+                - generic [ref=e815]: P1
+            - row "testLoginChangeNotificationLanguageWeb dweb n QAAUT-22682 1194420 P1" [ref=e816]:
+              - cell "testLoginChangeNotificationLanguageWeb" [ref=e817]
+              - cell "dweb" [ref=e818]
+              - cell "n" [ref=e819]:
+                - generic [ref=e820]: "n"
+              - cell "QAAUT-22682" [ref=e821]:
+                - link "QAAUT-22682" [ref=e822] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22682
+                  - text: QAAUT-22682
+                  - img [ref=e823]
+              - cell "1194420" [ref=e826]:
+                - link "1194420" [ref=e827] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194420
+                  - text: "1194420"
+                  - img [ref=e828]
+              - cell "P1" [ref=e831]:
+                - generic [ref=e832]: P1
+            - row "testloginForEMVAccountNonLogin dweb n QAAUT-22708 1194429 P1" [ref=e833]:
+              - cell "testloginForEMVAccountNonLogin" [ref=e834]
+              - cell "dweb" [ref=e835]
+              - cell "n" [ref=e836]:
+                - generic [ref=e837]: "n"
+              - cell "QAAUT-22708" [ref=e838]:
+                - link "QAAUT-22708" [ref=e839] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22708
+                  - text: QAAUT-22708
+                  - img [ref=e840]
+              - cell "1194429" [ref=e843]:
+                - link "1194429" [ref=e844] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194429
+                  - text: "1194429"
+                  - img [ref=e845]
+              - cell "P1" [ref=e848]:
+                - generic [ref=e849]: P1
+            - row "testloginUsingSuspendedAccountNonLogIn dweb n QAAUT-22722 1194432 P1" [ref=e850]:
+              - cell "testloginUsingSuspendedAccountNonLogIn" [ref=e851]
+              - cell "dweb" [ref=e852]
+              - cell "n" [ref=e853]:
+                - generic [ref=e854]: "n"
+              - cell "QAAUT-22722" [ref=e855]:
+                - link "QAAUT-22722" [ref=e856] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22722
+                  - text: QAAUT-22722
+                  - img [ref=e857]
+              - cell "1194432" [ref=e860]:
+                - link "1194432" [ref=e861] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194432
+                  - text: "1194432"
+                  - img [ref=e862]
+              - cell "P1" [ref=e865]:
+                - generic [ref=e866]: P1
+            - row "testLoyaltyPayFullPointsBusWeb dweb n QAAUT-22967 1198878 P1" [ref=e867]:
+              - cell "testLoyaltyPayFullPointsBusWeb" [ref=e868]
+              - cell "dweb" [ref=e869]
+              - cell "n" [ref=e870]:
+                - generic [ref=e871]: "n"
+              - cell "QAAUT-22967" [ref=e872]:
+                - link "QAAUT-22967" [ref=e873] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22967
+                  - text: QAAUT-22967
+                  - img [ref=e874]
+              - cell "1198878" [ref=e877]:
+                - link "1198878" [ref=e878] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1198878
+                  - text: "1198878"
+                  - img [ref=e879]
+              - cell "P1" [ref=e882]:
+                - generic [ref=e883]: P1
+            - row "testLoyaltyPayFullPointsCarRentalWeb dweb n QAAUT-22959 1198874 P1" [ref=e884]:
+              - cell "testLoyaltyPayFullPointsCarRentalWeb" [ref=e885]
+              - cell "dweb" [ref=e886]
+              - cell "n" [ref=e887]:
+                - generic [ref=e888]: "n"
+              - cell "QAAUT-22959" [ref=e889]:
+                - link "QAAUT-22959" [ref=e890] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22959
+                  - text: QAAUT-22959
+                  - img [ref=e891]
+              - cell "1198874" [ref=e894]:
+                - link "1198874" [ref=e895] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1198874
+                  - text: "1198874"
+                  - img [ref=e896]
+              - cell "P1" [ref=e899]:
+                - generic [ref=e900]: P1
+            - row "testLoyaltyPayFullPointsFerryWeb dweb n QAAUT-22969 1198879 P1" [ref=e901]:
+              - cell "testLoyaltyPayFullPointsFerryWeb" [ref=e902]
+              - cell "dweb" [ref=e903]
+              - cell "n" [ref=e904]:
+                - generic [ref=e905]: "n"
+              - cell "QAAUT-22969" [ref=e906]:
+                - link "QAAUT-22969" [ref=e907] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22969
+                  - text: QAAUT-22969
+                  - img [ref=e908]
+              - cell "1198879" [ref=e911]:
+                - link "1198879" [ref=e912] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1198879
+                  - text: "1198879"
+                  - img [ref=e913]
+              - cell "P1" [ref=e916]:
+                - generic [ref=e917]: P1
+            - row "testLoyaltyPayFullPointsFlightsWeb dweb n QAAUT-22955 1198872 P1" [ref=e918]:
+              - cell "testLoyaltyPayFullPointsFlightsWeb" [ref=e919]
+              - cell "dweb" [ref=e920]
+              - cell "n" [ref=e921]:
+                - generic [ref=e922]: "n"
+              - cell "QAAUT-22955" [ref=e923]:
+                - link "QAAUT-22955" [ref=e924] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22955
+                  - text: QAAUT-22955
+                  - img [ref=e925]
+              - cell "1198872" [ref=e928]:
+                - link "1198872" [ref=e929] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1198872
+                  - text: "1198872"
+                  - img [ref=e930]
+              - cell "P1" [ref=e933]:
+                - generic [ref=e934]: P1
+            - row "testLoyaltyPayFullPointsHotelsWeb dweb n QAAUT-22957 1198873 P1" [ref=e935]:
+              - cell "testLoyaltyPayFullPointsHotelsWeb" [ref=e936]
+              - cell "dweb" [ref=e937]
+              - cell "n" [ref=e938]:
+                - generic [ref=e939]: "n"
+              - cell "QAAUT-22957" [ref=e940]:
+                - link "QAAUT-22957" [ref=e941] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22957
+                  - text: QAAUT-22957
+                  - img [ref=e942]
+              - cell "1198873" [ref=e945]:
+                - link "1198873" [ref=e946] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1198873
+                  - text: "1198873"
+                  - img [ref=e947]
+              - cell "P1" [ref=e950]:
+                - generic [ref=e951]: P1
+            - row "testLoyaltyPayFullPointsTrainWeb dweb n QAAUT-22961 1198875 P0" [ref=e952]:
+              - cell "testLoyaltyPayFullPointsTrainWeb" [ref=e953]
+              - cell "dweb" [ref=e954]
+              - cell "n" [ref=e955]:
+                - generic [ref=e956]: "n"
+              - cell "QAAUT-22961" [ref=e957]:
+                - link "QAAUT-22961" [ref=e958] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22961
+                  - text: QAAUT-22961
+                  - img [ref=e959]
+              - cell "1198875" [ref=e962]:
+                - link "1198875" [ref=e963] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1198875
+                  - text: "1198875"
+                  - img [ref=e964]
+              - cell "P0" [ref=e967]:
+                - generic [ref=e968]: P0
+            - row "testLoyaltyPayFullPointsTtdWeb dweb n QAAUT-22965 1198877 P0" [ref=e969]:
+              - cell "testLoyaltyPayFullPointsTtdWeb" [ref=e970]
+              - cell "dweb" [ref=e971]
+              - cell "n" [ref=e972]:
+                - generic [ref=e973]: "n"
+              - cell "QAAUT-22965" [ref=e974]:
+                - link "QAAUT-22965" [ref=e975] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22965
+                  - text: QAAUT-22965
+                  - img [ref=e976]
+              - cell "1198877" [ref=e979]:
+                - link "1198877" [ref=e980] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1198877
+                  - text: "1198877"
+                  - img [ref=e981]
+              - cell "P0" [ref=e984]:
+                - generic [ref=e985]: P0
+            - row "testLoyaltyPayHalfPointsFerryWeb dweb n QAAUT-22970 1198892 P1" [ref=e986]:
+              - cell "testLoyaltyPayHalfPointsFerryWeb" [ref=e987]
+              - cell "dweb" [ref=e988]
+              - cell "n" [ref=e989]:
+                - generic [ref=e990]: "n"
+              - cell "QAAUT-22970" [ref=e991]:
+                - link "QAAUT-22970" [ref=e992] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22970
+                  - text: QAAUT-22970
+                  - img [ref=e993]
+              - cell "1198892" [ref=e996]:
+                - link "1198892" [ref=e997] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1198892
+                  - text: "1198892"
+                  - img [ref=e998]
+              - cell "P1" [ref=e1001]:
+                - generic [ref=e1002]: P1
+            - row "testOpenPrivacyPolicyPage dweb n QAAUT-22756 1194573 P1" [ref=e1003]:
+              - cell "testOpenPrivacyPolicyPage" [ref=e1004]
+              - cell "dweb" [ref=e1005]
+              - cell "n" [ref=e1006]:
+                - generic [ref=e1007]: "n"
+              - cell "QAAUT-22756" [ref=e1008]:
+                - link "QAAUT-22756" [ref=e1009] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22756
+                  - text: QAAUT-22756
+                  - img [ref=e1010]
+              - cell "1194573" [ref=e1013]:
+                - link "1194573" [ref=e1014] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194573
+                  - text: "1194573"
+                  - img [ref=e1015]
+              - cell "P1" [ref=e1018]:
+                - generic [ref=e1019]: P1
+            - row "testOpenReviewSection dweb n QAAUT-22751 1194579 P1" [ref=e1020]:
+              - cell "testOpenReviewSection" [ref=e1021]
+              - cell "dweb" [ref=e1022]
+              - cell "n" [ref=e1023]:
+                - generic [ref=e1024]: "n"
+              - cell "QAAUT-22751" [ref=e1025]:
+                - link "QAAUT-22751" [ref=e1026] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22751
+                  - text: QAAUT-22751
+                  - img [ref=e1027]
+              - cell "1194579" [ref=e1030]:
+                - link "1194579" [ref=e1031] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194579
+                  - text: "1194579"
+                  - img [ref=e1032]
+              - cell "P1" [ref=e1035]:
+                - generic [ref=e1036]: P1
+            - row "testOpenReviewSectionLogin dweb n QAAUT-22751 1194579 P1" [ref=e1037]:
+              - cell "testOpenReviewSectionLogin" [ref=e1038]
+              - cell "dweb" [ref=e1039]
+              - cell "n" [ref=e1040]:
+                - generic [ref=e1041]: "n"
+              - cell "QAAUT-22751" [ref=e1042]:
+                - link "QAAUT-22751" [ref=e1043] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22751
+                  - text: QAAUT-22751
+                  - img [ref=e1044]
+              - cell "1194579" [ref=e1047]:
+                - link "1194579" [ref=e1048] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194579
+                  - text: "1194579"
+                  - img [ref=e1049]
+              - cell "P1" [ref=e1052]:
+                - generic [ref=e1053]: P1
+            - row "testOpenTnCPageLogin dweb n QAAUT-22758 1194574 P1" [ref=e1054]:
+              - cell "testOpenTnCPageLogin" [ref=e1055]
+              - cell "dweb" [ref=e1056]
+              - cell "n" [ref=e1057]:
+                - generic [ref=e1058]: "n"
+              - cell "QAAUT-22758" [ref=e1059]:
+                - link "QAAUT-22758" [ref=e1060] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22758
+                  - text: QAAUT-22758
+                  - img [ref=e1061]
+              - cell "1194574" [ref=e1064]:
+                - link "1194574" [ref=e1065] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194574
+                  - text: "1194574"
+                  - img [ref=e1066]
+              - cell "P1" [ref=e1069]:
+                - generic [ref=e1070]: P1
+            - row "testOpenVoucherBoxLogin dweb n QAAUT-22752 1194580 P1" [ref=e1071]:
+              - cell "testOpenVoucherBoxLogin" [ref=e1072]
+              - cell "dweb" [ref=e1073]
+              - cell "n" [ref=e1074]:
+                - generic [ref=e1075]: "n"
+              - cell "QAAUT-22752" [ref=e1076]:
+                - link "QAAUT-22752" [ref=e1077] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22752
+                  - text: QAAUT-22752
+                  - img [ref=e1078]
+              - cell "1194580" [ref=e1081]:
+                - link "1194580" [ref=e1082] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194580
+                  - text: "1194580"
+                  - img [ref=e1083]
+              - cell "P1" [ref=e1086]:
+                - generic [ref=e1087]: P1
+            - row "testRegisterPhoneNoFromBookingFormNonLogin dweb n QAAUT-22702 1194426 P1" [ref=e1088]:
+              - cell "testRegisterPhoneNoFromBookingFormNonLogin" [ref=e1089]
+              - cell "dweb" [ref=e1090]
+              - cell "n" [ref=e1091]:
+                - generic [ref=e1092]: "n"
+              - cell "QAAUT-22702" [ref=e1093]:
+                - link "QAAUT-22702" [ref=e1094] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22702
+                  - text: QAAUT-22702
+                  - img [ref=e1095]
+              - cell "1194426" [ref=e1098]:
+                - link "1194426" [ref=e1099] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194426
+                  - text: "1194426"
+                  - img [ref=e1100]
+              - cell "P1" [ref=e1103]:
+                - generic [ref=e1104]: P1
+            - row "testRegisterPhoneNoFromSRPNonLogin dweb n QAAUT-22703 1194427 P1" [ref=e1105]:
+              - cell "testRegisterPhoneNoFromSRPNonLogin" [ref=e1106]
+              - cell "dweb" [ref=e1107]
+              - cell "n" [ref=e1108]:
+                - generic [ref=e1109]: "n"
+              - cell "QAAUT-22703" [ref=e1110]:
+                - link "QAAUT-22703" [ref=e1111] [cursor=pointer]:
+                  - /url: https://borobudur.atlassian.net/browse/QAAUT-22703
+                  - text: QAAUT-22703
+                  - img [ref=e1112]
+              - cell "1194427" [ref=e1115]:
+                - link "1194427" [ref=e1116] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/cases/view/1194427
+                  - text: "1194427"
+                  - img [ref=e1117]
+              - cell "P1" [ref=e1120]:
+                - generic [ref=e1121]: P1
+      - generic [ref=e1122]:
+        - generic [ref=e1123]:
+          - heading "TestRail breakdown — Platform-Eiffel" [level=2] [ref=e1124]
+          - generic [ref=e1125]:
+            - generic [ref=e1126]:
+              - text: "Yes"
+              - generic [ref=e1127]: "67"
+            - generic [ref=e1128]:
+              - text: "No"
+              - generic [ref=e1129]: "10"
+            - generic [ref=e1130]:
+              - text: TBR
+              - generic [ref=e1131]: "5"
+            - generic [ref=e1132]:
+              - text: Unset
+              - generic [ref=e1133]: "0"
+        - table [ref=e1135]:
+          - rowgroup [ref=e1136]:
+            - row "Section Automation = Yes Total cases" [ref=e1137]:
+              - columnheader "Section" [ref=e1138]
+              - columnheader "Automation = Yes" [ref=e1139]
+              - columnheader "Total cases" [ref=e1140]
+          - rowgroup [ref=e1141]:
+            - row "UNM / P1 13 19" [ref=e1142]:
+              - cell "UNM / P1" [ref=e1143]:
+                - link "UNM / P1" [ref=e1144] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/suites/view/4844&group_id=111080
+                  - text: UNM / P1
+                  - img [ref=e1145]
+              - cell "13" [ref=e1148]
+              - cell "19" [ref=e1149]
+            - row "Membership / P1 18 18" [ref=e1150]:
+              - cell "Membership / P1" [ref=e1151]:
+                - link "Membership / P1" [ref=e1152] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/suites/view/4844&group_id=111323
+                  - text: Membership / P1
+                  - img [ref=e1153]
+              - cell "18" [ref=e1156]
+              - cell "18" [ref=e1157]
+            - row "UNM / P0 7 13" [ref=e1158]:
+              - cell "UNM / P0" [ref=e1159]:
+                - link "UNM / P0" [ref=e1160] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/suites/view/4844&group_id=111079
+                  - text: UNM / P0
+                  - img [ref=e1161]
+              - cell "7" [ref=e1164]
+              - cell "13" [ref=e1165]
+            - row "LOYALTY / P1 12 12" [ref=e1166]:
+              - cell "LOYALTY / P1" [ref=e1167]:
+                - link "LOYALTY / P1" [ref=e1168] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/suites/view/4844&group_id=111329
+                  - text: LOYALTY / P1
+                  - img [ref=e1169]
+              - cell "12" [ref=e1172]
+              - cell "12" [ref=e1173]
+            - row "LOYALTY / P0 11 11" [ref=e1174]:
+              - cell "LOYALTY / P0" [ref=e1175]:
+                - link "LOYALTY / P0" [ref=e1176] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/suites/view/4844&group_id=111328
+                  - text: LOYALTY / P0
+                  - img [ref=e1177]
+              - cell "11" [ref=e1180]
+              - cell "11" [ref=e1181]
+            - row "Membership / P0 6 6" [ref=e1182]:
+              - cell "Membership / P0" [ref=e1183]:
+                - link "Membership / P0" [ref=e1184] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/suites/view/4844&group_id=111322
+                  - text: Membership / P0
+                  - img [ref=e1185]
+              - cell "6" [ref=e1188]
+              - cell "6" [ref=e1189]
+            - row "Additional Cases 0 3" [ref=e1190]:
+              - cell "Additional Cases" [ref=e1191]:
+                - link "Additional Cases" [ref=e1192] [cursor=pointer]:
+                  - /url: https://tiket.testrail.com/index.php?/suites/view/4844&group_id=159873
+                  - text: Additional Cases
+                  - img [ref=e1193]
+              - cell "0" [ref=e1196]
+              - cell "3" [ref=e1197]
+      - paragraph [ref=e1198]: Snapshot data. Refresh with the /update-automation-web command or node scripts/refreshAutomationWeb.js.

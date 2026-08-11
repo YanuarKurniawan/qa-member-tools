@@ -27,7 +27,7 @@ export default function LogViewer({ logs = [] }) {
   return (
     <div className="mt-4 overflow-hidden rounded-lg border border-slate-700 bg-slate-900">
       <div className="flex items-center justify-between border-b border-slate-700 px-4 py-2">
-        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate-300">
           Output Log
         </span>
         <span className="text-xs text-slate-500">{logs.length} entries</span>

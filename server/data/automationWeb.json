@@ -1,0 +1,2071 @@
+{
+  "lastUpdated": "2026-07-28T03:21:52.727Z",
+  "generatedBy": "src/lib/automationWeb.js",
+  "platform": "WEB (dWeb) — Eiffel",
+  "refreshed": [
+    "jira"
+  ],
+  "sources": {
+    "googleSheet": {
+      "label": "Google Sheet — ShouldRun: y (dweb)",
+      "count": 24,
+      "total": 57,
+      "detail": "Rows with Platform = \"dweb\" and ShouldRun = \"y\" (of 57 dweb rows)",
+      "url": "https://docs.google.com/spreadsheets/d/1awvp3vH5N9BhFDlVmVj0dJQ-cB9S3Rh7QaYF-4RmpQk/edit#gid=0",
+      "rows": [
+        {
+          "title": "editMainProfileWeb",
+          "platform": "dWeb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40274",
+          "jiraKey": "QAAUT-40274",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1880629",
+          "testrailId": "1880629"
+        },
+        {
+          "title": "openRewardsPageAsGuestUserWeb",
+          "platform": "dWeb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39714",
+          "jiraKey": "QAAUT-39714",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862664",
+          "testrailId": "1862664"
+        },
+        {
+          "title": "openRewardsPageAsLoginUserWeb",
+          "platform": "dWeb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39711",
+          "jiraKey": "QAAUT-39711",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862660",
+          "testrailId": "1862660"
+        },
+        {
+          "title": "testAddAndDeleteSmartProfileWeb",
+          "platform": "dweb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22743",
+          "jiraKey": "QAAUT-22743",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194562",
+          "testrailId": "1194562"
+        },
+        {
+          "title": "testChangeCurrency",
+          "platform": "dWeb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22763",
+          "jiraKey": "QAAUT-22763",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194582",
+          "testrailId": "1194582"
+        },
+        {
+          "title": "testChangeIntoNewEmail",
+          "platform": "dweb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22696",
+          "jiraKey": "QAAUT-22696",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194396",
+          "testrailId": "1194396"
+        },
+        {
+          "title": "testChangeIntoNewPNLoggedIn",
+          "platform": "dweb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22692",
+          "jiraKey": "QAAUT-22692",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194394",
+          "testrailId": "1194394"
+        },
+        {
+          "title": "testChangeLanguageToEnglishLogin",
+          "platform": "dweb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22761",
+          "jiraKey": "QAAUT-22761",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194568",
+          "testrailId": "1194568"
+        },
+        {
+          "title": "testChangeLanguageToIDNonLogin",
+          "platform": "dweb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22770",
+          "jiraKey": "QAAUT-22770",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194590",
+          "testrailId": "1194590"
+        },
+        {
+          "title": "testDeleteAccountLoggedIn",
+          "platform": "dweb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22699",
+          "jiraKey": "QAAUT-22699",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194397",
+          "testrailId": "1194397"
+        },
+        {
+          "title": "testForgotPasswordUsingPNWeb",
+          "platform": "dweb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22718",
+          "jiraKey": "QAAUT-22718",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194404",
+          "testrailId": "1194404"
+        },
+        {
+          "title": "testLogoutDeviceLevelWeb",
+          "platform": "dweb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22684",
+          "jiraKey": "QAAUT-22684",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194393",
+          "testrailId": "1194393"
+        },
+        {
+          "title": "testLoyaltyCappingPointsTrainWeb",
+          "platform": "dWeb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39745",
+          "jiraKey": "QAAUT-39745",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1198875",
+          "testrailId": "1198875"
+        },
+        {
+          "title": "testLoyaltyCappingPointsTtdWeb",
+          "platform": "dWeb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39746",
+          "jiraKey": "QAAUT-39746",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1198877",
+          "testrailId": "1198877"
+        },
+        {
+          "title": "testLoyaltyPayHalfPointsHotelsWeb",
+          "platform": "dweb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22958",
+          "jiraKey": "QAAUT-22958",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1198886",
+          "testrailId": "1198886"
+        },
+        {
+          "title": "testNoPendingEarningPointsWhenOrderFinishedWithPromoWeb",
+          "platform": "dWeb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40276",
+          "jiraKey": "QAAUT-40276",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1881507",
+          "testrailId": "1881507"
+        },
+        {
+          "title": "testPendingEarningPointsAfterTtdOrderWeb",
+          "platform": "dWeb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39712",
+          "jiraKey": "QAAUT-39712",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862661",
+          "testrailId": "1862661"
+        },
+        {
+          "title": "testRefundHotelNegativePoints",
+          "platform": "dWeb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-41239",
+          "jiraKey": "QAAUT-41239",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1880644",
+          "testrailId": "1880644"
+        },
+        {
+          "title": "testRegisterPhoneNoNonLogin",
+          "platform": "dweb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22701",
+          "jiraKey": "QAAUT-22701",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194398",
+          "testrailId": "1194398"
+        },
+        {
+          "title": "testUserEditSmartProfile",
+          "platform": "dweb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22745",
+          "jiraKey": "QAAUT-22745",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194563",
+          "testrailId": "1194563"
+        },
+        {
+          "title": "testVerifyUnverifiedEmailLoggedInWeb",
+          "platform": "dWeb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40275",
+          "jiraKey": "QAAUT-40275",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1880641",
+          "testrailId": "1880641"
+        },
+        {
+          "title": "verifyClaimMissionRewardsWeb",
+          "platform": "dWeb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39710",
+          "jiraKey": "QAAUT-39710",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862659",
+          "testrailId": "1862659"
+        },
+        {
+          "title": "verifyMissionStampIncreaseForEligibleHotelWeb",
+          "platform": "dweb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40441",
+          "jiraKey": "QAAUT-40441",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862657",
+          "testrailId": "1862657"
+        },
+        {
+          "title": "verifyNoMissionStampForPayAtHotelWeb",
+          "platform": "dweb",
+          "shouldRun": "y",
+          "run": true,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40441",
+          "jiraKey": "QAAUT-40441",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1881194",
+          "testrailId": "1881194"
+        },
+        {
+          "title": "loginChangeAccountNameWeb",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22686",
+          "jiraKey": "QAAUT-22686",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194421",
+          "testrailId": "1194421"
+        },
+        {
+          "title": "loginChangeCountryWeb",
+          "platform": "dWeb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22698",
+          "jiraKey": "QAAUT-22698",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194424",
+          "testrailId": "1194424"
+        },
+        {
+          "title": "openVoucherBoxLoginTest",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22752",
+          "jiraKey": "QAAUT-22752",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194580",
+          "testrailId": "1194580"
+        },
+        {
+          "title": "testAddSmartProfileBookingPage",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22748",
+          "jiraKey": "QAAUT-22748",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194565",
+          "testrailId": "1194565"
+        },
+        {
+          "title": "testAutoLoginUNMWeb",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22715",
+          "jiraKey": "QAAUT-22715",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194403",
+          "testrailId": "1194403"
+        },
+        {
+          "title": "testBookingProductsWithFreshGuestEmailWeb",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22764",
+          "jiraKey": "QAAUT-22764",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194586",
+          "testrailId": "1194586"
+        },
+        {
+          "title": "testChangeCurrencyLogin",
+          "platform": "dWeb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22774",
+          "jiraKey": "QAAUT-22774",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194593",
+          "testrailId": "1194593"
+        },
+        {
+          "title": "testChangeDOBLoggedIn",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22688",
+          "jiraKey": "QAAUT-22688",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194422",
+          "testrailId": "1194422"
+        },
+        {
+          "title": "testChangeGenderLoggedIn",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22690",
+          "jiraKey": "QAAUT-22690",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194423",
+          "testrailId": "1194423"
+        },
+        {
+          "title": "testChangeLangToIDLogin",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22770",
+          "jiraKey": "QAAUT-22770",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194590",
+          "testrailId": "1194590"
+        },
+        {
+          "title": "testChangeLanguageToENG",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22772",
+          "jiraKey": "QAAUT-22772",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194591",
+          "testrailId": "1194591"
+        },
+        {
+          "title": "testChangeLanguageToENGLogin",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22761",
+          "jiraKey": "QAAUT-22761",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194568",
+          "testrailId": "1194568"
+        },
+        {
+          "title": "testChangeLanguageToENGNonLogin",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22772",
+          "jiraKey": "QAAUT-22772",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194591",
+          "testrailId": "1194591"
+        },
+        {
+          "title": "testChangeLanguageToID",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22770",
+          "jiraKey": "QAAUT-22770",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194590",
+          "testrailId": "1194590"
+        },
+        {
+          "title": "testChangeLanguageToIDLogin",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22759",
+          "jiraKey": "QAAUT-22759",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194567",
+          "testrailId": "1194567"
+        },
+        {
+          "title": "testLoginChangeNotificationLanguageWeb",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22682",
+          "jiraKey": "QAAUT-22682",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194420",
+          "testrailId": "1194420"
+        },
+        {
+          "title": "testloginForEMVAccountNonLogin",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22708",
+          "jiraKey": "QAAUT-22708",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194429",
+          "testrailId": "1194429"
+        },
+        {
+          "title": "testloginUsingSuspendedAccountNonLogIn",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22722",
+          "jiraKey": "QAAUT-22722",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194432",
+          "testrailId": "1194432"
+        },
+        {
+          "title": "testLoyaltyPayFullPointsBusWeb",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22967",
+          "jiraKey": "QAAUT-22967",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1198878",
+          "testrailId": "1198878"
+        },
+        {
+          "title": "testLoyaltyPayFullPointsCarRentalWeb",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22959",
+          "jiraKey": "QAAUT-22959",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1198874",
+          "testrailId": "1198874"
+        },
+        {
+          "title": "testLoyaltyPayFullPointsFerryWeb",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22969",
+          "jiraKey": "QAAUT-22969",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1198879",
+          "testrailId": "1198879"
+        },
+        {
+          "title": "testLoyaltyPayFullPointsFlightsWeb",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22955",
+          "jiraKey": "QAAUT-22955",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1198872",
+          "testrailId": "1198872"
+        },
+        {
+          "title": "testLoyaltyPayFullPointsHotelsWeb",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22957",
+          "jiraKey": "QAAUT-22957",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1198873",
+          "testrailId": "1198873"
+        },
+        {
+          "title": "testLoyaltyPayFullPointsTrainWeb",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22961",
+          "jiraKey": "QAAUT-22961",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1198875",
+          "testrailId": "1198875"
+        },
+        {
+          "title": "testLoyaltyPayFullPointsTtdWeb",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P0",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22965",
+          "jiraKey": "QAAUT-22965",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1198877",
+          "testrailId": "1198877"
+        },
+        {
+          "title": "testLoyaltyPayHalfPointsFerryWeb",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22970",
+          "jiraKey": "QAAUT-22970",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1198892",
+          "testrailId": "1198892"
+        },
+        {
+          "title": "testOpenPrivacyPolicyPage",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22756",
+          "jiraKey": "QAAUT-22756",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194573",
+          "testrailId": "1194573"
+        },
+        {
+          "title": "testOpenReviewSection",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22751",
+          "jiraKey": "QAAUT-22751",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194579",
+          "testrailId": "1194579"
+        },
+        {
+          "title": "testOpenReviewSectionLogin",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22751",
+          "jiraKey": "QAAUT-22751",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194579",
+          "testrailId": "1194579"
+        },
+        {
+          "title": "testOpenTnCPageLogin",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22758",
+          "jiraKey": "QAAUT-22758",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194574",
+          "testrailId": "1194574"
+        },
+        {
+          "title": "testOpenVoucherBoxLogin",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22752",
+          "jiraKey": "QAAUT-22752",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194580",
+          "testrailId": "1194580"
+        },
+        {
+          "title": "testRegisterPhoneNoFromBookingFormNonLogin",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22702",
+          "jiraKey": "QAAUT-22702",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194426",
+          "testrailId": "1194426"
+        },
+        {
+          "title": "testRegisterPhoneNoFromSRPNonLogin",
+          "platform": "dweb",
+          "shouldRun": "n",
+          "run": false,
+          "priority": "P1",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22703",
+          "jiraKey": "QAAUT-22703",
+          "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194427",
+          "testrailId": "1194427"
+        }
+      ],
+      "meta": {
+        "spreadsheetId": "1awvp3vH5N9BhFDlVmVj0dJQ-cB9S3Rh7QaYF-4RmpQk",
+        "tab": "Sheet1",
+        "platform": "dweb"
+      },
+      "fetchedAt": "2026-07-28T03:03:13.970Z"
+    },
+    "testrail": {
+      "label": "TestRail — Automation Yes + Done",
+      "count": 24,
+      "total": 30,
+      "detail": "Cases under \"Platform-Eiffel\" P0 with Automation Type = Yes and Automation Status = Done (of 30 cases)",
+      "url": "https://tiket.testrail.com/index.php?/suites/view/4844&group_id=103762",
+      "breakdown": {
+        "type": {
+          "Yes": 24,
+          "No": 6
+        },
+        "status": {
+          "Done": 24,
+          "Not yet": 6
+        }
+      },
+      "cases": [
+        {
+          "id": 1194562,
+          "title": "User add smart profile and delete smart profile",
+          "folder": "Membership",
+          "label": "P0",
+          "sectionId": 111322,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1194562",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-22743",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-22743"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1194563,
+          "title": "User edit smart profile",
+          "folder": "Membership",
+          "label": "P0",
+          "sectionId": 111322,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1194563",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-22745",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-22745"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1194568,
+          "title": "User can change language ENG",
+          "folder": "Membership",
+          "label": "P0",
+          "sectionId": 111322,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1194568",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-22761",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-22761"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1194582,
+          "title": "Verify user can change currency",
+          "folder": "Membership",
+          "label": "P0",
+          "sectionId": 111322,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1194582",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-22763",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-22763"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1194590,
+          "title": "User can change language IND",
+          "folder": "Membership",
+          "label": "P0",
+          "sectionId": 111322,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1194590",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-22770",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-22770"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1880629,
+          "title": "User edit the main profile",
+          "folder": "Membership",
+          "label": "P0",
+          "sectionId": 111322,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1880629",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-40274",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-40274"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1194393,
+          "title": "Verify logout on device level",
+          "folder": "UNM",
+          "label": "P0",
+          "sectionId": 111079,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1194393",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-22684",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-22684"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1194394,
+          "title": "Change phone number using new PN",
+          "folder": "UNM",
+          "label": "P0",
+          "sectionId": 111079,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1194394",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [],
+          "counted": true
+        },
+        {
+          "id": 1194396,
+          "title": "Change email using new email address",
+          "folder": "UNM",
+          "label": "P0",
+          "sectionId": 111079,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1194396",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-22696",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-22696"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1194397,
+          "title": "Verify delete account - user didn't have any ongoing requirements",
+          "folder": "UNM",
+          "label": "P0",
+          "sectionId": 111079,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1194397",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-22699",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-22699"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1194398,
+          "title": "Register using new phone number & new email",
+          "folder": "UNM",
+          "label": "P0",
+          "sectionId": 111079,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1194398",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-22701",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-22701"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1194404,
+          "title": "Forgot password using phone number",
+          "folder": "UNM",
+          "label": "P0",
+          "sectionId": 111079,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1194404",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-22718",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-22718"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1880641,
+          "title": "Verify email",
+          "folder": "UNM",
+          "label": "P0",
+          "sectionId": 111079,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1880641",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [],
+          "counted": true
+        },
+        {
+          "id": 1862653,
+          "title": "Verify add passkey",
+          "folder": "UNM",
+          "label": "P0",
+          "sectionId": 111079,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1862653",
+          "automationType": "No",
+          "automationStatus": "Not yet",
+          "refs": [],
+          "counted": false
+        },
+        {
+          "id": 1862654,
+          "title": "Verify delete passkey",
+          "folder": "UNM",
+          "label": "P0",
+          "sectionId": 111079,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1862654",
+          "automationType": "No",
+          "automationStatus": "Not yet",
+          "refs": [],
+          "counted": false
+        },
+        {
+          "id": 1862662,
+          "title": "Verify login using Microsoft account",
+          "folder": "UNM",
+          "label": "P0",
+          "sectionId": 111079,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1862662",
+          "automationType": "No",
+          "automationStatus": "Not yet",
+          "refs": [
+            {
+              "key": "QAAUT-39713",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-39713"
+            }
+          ],
+          "counted": false
+        },
+        {
+          "id": 1862663,
+          "title": "Verify login using passkey",
+          "folder": "UNM",
+          "label": "P0",
+          "sectionId": 111079,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1862663",
+          "automationType": "No",
+          "automationStatus": "Not yet",
+          "refs": [],
+          "counted": false
+        },
+        {
+          "id": 1880642,
+          "title": "Verify register using Google",
+          "folder": "UNM",
+          "label": "P0",
+          "sectionId": 111079,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1880642",
+          "automationType": "No",
+          "automationStatus": "Not yet",
+          "refs": [],
+          "counted": false
+        },
+        {
+          "id": 1880643,
+          "title": "Verify login using Google",
+          "folder": "UNM",
+          "label": "P0",
+          "sectionId": 111079,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1880643",
+          "automationType": "No",
+          "automationStatus": "Not yet",
+          "refs": [],
+          "counted": false
+        },
+        {
+          "id": 1198875,
+          "title": "Pay with capping points - Trains",
+          "folder": "LOYALTY",
+          "label": "P0",
+          "sectionId": 111328,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1198875",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-39745",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-39745"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1198877,
+          "title": "Pay with capping points - Todos",
+          "folder": "LOYALTY",
+          "label": "P0",
+          "sectionId": 111328,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1198877",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-39746",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-39746"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1198886,
+          "title": "Pay with half points - Hotel Native",
+          "folder": "LOYALTY",
+          "label": "P0",
+          "sectionId": 111328,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1198886",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-22958",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-22958"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1862657,
+          "title": "Verify mission stamps",
+          "folder": "LOYALTY",
+          "label": "P0",
+          "sectionId": 111328,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1862657",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-39708",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-39708"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1862659,
+          "title": "Veriy claim mission rewards",
+          "folder": "LOYALTY",
+          "label": "P0",
+          "sectionId": 111328,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1862659",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-39710",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-39710"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1862660,
+          "title": "Verify open rewards page as login user",
+          "folder": "LOYALTY",
+          "label": "P0",
+          "sectionId": 111328,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1862660",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-39711",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-39711"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1862661,
+          "title": "Verify earning points for transaction paid using ATM/CC/Sakuku",
+          "folder": "LOYALTY",
+          "label": "P0",
+          "sectionId": 111328,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1862661",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-39712",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-39712"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1862664,
+          "title": "Verify open rewards page as a nonlogin user",
+          "folder": "LOYALTY",
+          "label": "P0",
+          "sectionId": 111328,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1862664",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [
+            {
+              "key": "QAAUT-39714",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-39714"
+            }
+          ],
+          "counted": true
+        },
+        {
+          "id": 1880644,
+          "title": "Verify the IPC revoke",
+          "folder": "LOYALTY",
+          "label": "P0",
+          "sectionId": 111328,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1880644",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [],
+          "counted": true
+        },
+        {
+          "id": 1881194,
+          "title": "Verify mission on transaction paid using Pay at Hotel",
+          "folder": "LOYALTY",
+          "label": "P0",
+          "sectionId": 111328,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1881194",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [],
+          "counted": true
+        },
+        {
+          "id": 1881507,
+          "title": "Verify not cobrand user checkout product and use promo",
+          "folder": "LOYALTY",
+          "label": "P0",
+          "sectionId": 111328,
+          "url": "https://tiket.testrail.com/index.php?/cases/view/1881507",
+          "automationType": "Yes",
+          "automationStatus": "Done",
+          "refs": [],
+          "counted": true
+        }
+      ],
+      "meta": {
+        "sectionName": "Platform-Eiffel",
+        "sectionLabel": "P0"
+      },
+      "fetchedAt": "2026-07-28T03:06:09.489Z"
+    },
+    "jira": {
+      "label": "Jira — Done",
+      "detail": "Child issues of QAAUT-30177 with Story Type = \"New Feature\" and label P0 in \"Done\" (excludes Invalid / Dropped)",
+      "url": "https://borobudur.atlassian.net/issues/?jql=parent%20%3D%20QAAUT-30177%20AND%20%22Story%20Type%22%20%3D%20%22New%20Feature%22%20AND%20labels%20%3D%20%22P0%22%20AND%20status%20NOT%20IN%20(%22Invalid%22%2C%20%22Dropped%22)%20AND%20status%20%3D%20%22Done%22",
+      "scopeUrl": "https://borobudur.atlassian.net/issues/?jql=parent%20%3D%20QAAUT-30177%20AND%20%22Story%20Type%22%20%3D%20%22New%20Feature%22%20AND%20labels%20%3D%20%22P0%22%20AND%20status%20NOT%20IN%20(%22Invalid%22%2C%20%22Dropped%22)",
+      "epicUrl": "https://borobudur.atlassian.net/browse/QAAUT-30177",
+      "meta": {
+        "epicKey": "QAAUT-30177",
+        "storyType": "New Feature",
+        "label": "P0",
+        "doneStatus": "Done",
+        "excludeStatuses": [
+          "Invalid",
+          "Dropped"
+        ],
+        "jql": "parent = QAAUT-30177 AND \"Story Type\" = \"New Feature\" AND labels = \"P0\" AND status NOT IN (\"Invalid\", \"Dropped\")"
+      },
+      "count": 24,
+      "total": 24,
+      "rows": [
+        {
+          "key": "QAAUT-22684",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-22684",
+          "title": "[WEB][UNM] Login - Verify logout on device level",
+          "labels": [
+            "Non-Complex",
+            "P0",
+            "Team_SaurabhP"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Yanuar Luhur Kurniawan",
+          "qaAssignee": "Yanuar Luhur Kurniawan",
+          "done": true
+        },
+        {
+          "key": "QAAUT-22692",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-22692",
+          "title": "[WEB][UNM] Login - Change phone number using new PN",
+          "labels": [
+            "Non-Complex",
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "ishika.mangla",
+          "qaAssignee": "ishika.mangla",
+          "done": true
+        },
+        {
+          "key": "QAAUT-22696",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-22696",
+          "title": "[WEB][UNM] Login - Change email using new email address",
+          "labels": [
+            "Non-Complex",
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "ishika.mangla",
+          "qaAssignee": "ishika.mangla",
+          "done": true
+        },
+        {
+          "key": "QAAUT-22699",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-22699",
+          "title": "[WEB][UNM] Login - Verify delete account - user didn't have any ongoing requirements",
+          "labels": [
+            "Non-Complex",
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "ishika.mangla",
+          "qaAssignee": "ishika.mangla",
+          "done": true
+        },
+        {
+          "key": "QAAUT-22701",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-22701",
+          "title": "[WEB][UNM] Non Login - Register using new phone number & new email",
+          "labels": [
+            "Non-Complex",
+            "P0",
+            "biz_critical"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "ishika.mangla",
+          "qaAssignee": "ishika.mangla",
+          "done": true
+        },
+        {
+          "key": "QAAUT-22718",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-22718",
+          "title": "[WEB][UNM] Non Login - Forgot password using phone number",
+          "labels": [
+            "Non-Complex",
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "ishika.mangla",
+          "qaAssignee": "ishika.mangla",
+          "done": true
+        },
+        {
+          "key": "QAAUT-22743",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-22743",
+          "title": "[WEB][Membership] Login - User add smart profile and delete smart profile",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Aditi Awasthi",
+          "qaAssignee": "Aditi Awasthi",
+          "done": true
+        },
+        {
+          "key": "QAAUT-22745",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-22745",
+          "title": "[WEB][Membership] Login - User edit smart profile",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Aditi Awasthi",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-22761",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-22761",
+          "title": "[WEB][Membership] Login - User can change language ENG",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Aditi Awasthi",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-22763",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-22763",
+          "title": "[WEB][Membership] Login - Verify user can change currency",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Aditi Awasthi",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-22770",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-22770",
+          "title": "[WEB][Membership] Non Login - User can change language IND",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Aditi Awasthi",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-22958",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-22958",
+          "title": "[WEB][Loyalty] Login - Pay with half points - Hotel Native",
+          "labels": [
+            "Complex",
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Yanuar Luhur Kurniawan",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-39708",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-39708",
+          "title": "[Loyalty] Login - Verify mission stamps",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Ashish Kumar Santu",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-39710",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-39710",
+          "title": "[Loyalty] Login - Veriy claim mission rewards",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Ashish Kumar Santu",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-39711",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-39711",
+          "title": "[Loyalty] Login - Verify open rewards page as login user",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Mridul Gupta",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-39712",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-39712",
+          "title": "[Loyalty] Login - Verify earning points for transaction paid using ATM/CC/Sakuku",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Mridul Gupta",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-39714",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-39714",
+          "title": "[Loyalty] Non Login - Verify open rewards page as a nonlogin user",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Mridul Gupta",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-39745",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-39745",
+          "title": "[Loyalty] Pay with capping points - Trains",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Mridul Gupta",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-39746",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-39746",
+          "title": "[Loyalty] Pay with capping points - TODO",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Mridul Gupta",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-40274",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-40274",
+          "title": "[Membership] User edit the main profile\t",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Mridul Gupta",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-40275",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-40275",
+          "title": "[UNM] Verify email\t",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Mridul Gupta",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-40276",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-40276",
+          "title": "[Loyalty] User is not cobrand, user use promo",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Mridul Gupta",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-40277",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-40277",
+          "title": "[Loyalty] Verify the IPC revoke",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Aditi Awasthi",
+          "qaAssignee": "",
+          "done": true
+        },
+        {
+          "key": "QAAUT-40441",
+          "url": "https://borobudur.atlassian.net/browse/QAAUT-40441",
+          "title": "[Loyalty] Verify mission on transaction paid using Pay at Hotel",
+          "labels": [
+            "P0"
+          ],
+          "status": "Done",
+          "statusCategory": "done",
+          "assignee": "Ashish Kumar Santu",
+          "qaAssignee": "",
+          "done": true
+        }
+      ],
+      "source": "jira-api",
+      "fetchedAt": "2026-07-28T03:21:52.727Z"
+    }
+  },
+  "connections": {
+    "spine": "googleSheet",
+    "total": 26,
+    "synced": 18,
+    "rows": [
+      {
+        "id": "jira:QAAUT-39708",
+        "testName": "[Loyalty] Login - Verify mission stamps",
+        "jiraKey": "QAAUT-39708",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39708",
+        "testrailId": "1862657",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862657",
+        "sheet": {
+          "state": "missing",
+          "notes": [
+            "No ShouldRun = y sheet row points at QAAUT-39708"
+          ]
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "warn",
+          "notes": [
+            "Case 1862657 references QAAUT-39708 but the sheet maps that case to QAAUT-40441"
+          ]
+        },
+        "synced": false
+      },
+      {
+        "id": "jira:QAAUT-40277",
+        "testName": "[Loyalty] Verify the IPC revoke",
+        "jiraKey": "QAAUT-40277",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40277",
+        "testrailId": "",
+        "testrailUrl": null,
+        "sheet": {
+          "state": "missing",
+          "notes": [
+            "No ShouldRun = y sheet row points at QAAUT-40277"
+          ]
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "missing",
+          "notes": [
+            "No TestRail case under Platform-Eiffel / P0 references QAAUT-40277"
+          ]
+        },
+        "synced": false
+      },
+      {
+        "id": "tr:1194394",
+        "testName": "testChangeIntoNewPNLoggedIn",
+        "jiraKey": "QAAUT-22692",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22692",
+        "testrailId": "1194394",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194394",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "warn",
+          "notes": [
+            "Case 1194394 has no Jira reference"
+          ]
+        },
+        "synced": false
+      },
+      {
+        "id": "tr:1881507",
+        "testName": "testNoPendingEarningPointsWhenOrderFinishedWithPromoWeb",
+        "jiraKey": "QAAUT-40276",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40276",
+        "testrailId": "1881507",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1881507",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "warn",
+          "notes": [
+            "Case 1881507 has no Jira reference"
+          ]
+        },
+        "synced": false
+      },
+      {
+        "id": "tr:1880644",
+        "testName": "testRefundHotelNegativePoints",
+        "jiraKey": "QAAUT-41239",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-41239",
+        "testrailId": "1880644",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1880644",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "warn",
+          "notes": [
+            "QAAUT-41239 exists but is outside the Jira filter — parent is QAAUT-42322, not QAAUT-30177"
+          ]
+        },
+        "testrail": {
+          "state": "warn",
+          "notes": [
+            "Case 1880644 has no Jira reference"
+          ]
+        },
+        "synced": false
+      },
+      {
+        "id": "tr:1880641",
+        "testName": "testVerifyUnverifiedEmailLoggedInWeb",
+        "jiraKey": "QAAUT-40275",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40275",
+        "testrailId": "1880641",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1880641",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "warn",
+          "notes": [
+            "Case 1880641 has no Jira reference"
+          ]
+        },
+        "synced": false
+      },
+      {
+        "id": "tr:1862657",
+        "testName": "verifyMissionStampIncreaseForEligibleHotelWeb",
+        "jiraKey": "QAAUT-40441",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40441",
+        "testrailId": "1862657",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862657",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "warn",
+          "notes": [
+            "QAAUT-40441 is claimed by 2 sheet rows"
+          ]
+        },
+        "testrail": {
+          "state": "warn",
+          "notes": [
+            "Case 1862657 references QAAUT-39708 but the sheet says QAAUT-40441"
+          ]
+        },
+        "synced": false
+      },
+      {
+        "id": "tr:1881194",
+        "testName": "verifyNoMissionStampForPayAtHotelWeb",
+        "jiraKey": "QAAUT-40441",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40441",
+        "testrailId": "1881194",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1881194",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "warn",
+          "notes": [
+            "QAAUT-40441 is claimed by 2 sheet rows"
+          ]
+        },
+        "testrail": {
+          "state": "warn",
+          "notes": [
+            "Case 1881194 has no Jira reference"
+          ]
+        },
+        "synced": false
+      },
+      {
+        "id": "tr:1880629",
+        "testName": "editMainProfileWeb",
+        "jiraKey": "QAAUT-40274",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40274",
+        "testrailId": "1880629",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1880629",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1862664",
+        "testName": "openRewardsPageAsGuestUserWeb",
+        "jiraKey": "QAAUT-39714",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39714",
+        "testrailId": "1862664",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862664",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1862660",
+        "testName": "openRewardsPageAsLoginUserWeb",
+        "jiraKey": "QAAUT-39711",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39711",
+        "testrailId": "1862660",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862660",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1194562",
+        "testName": "testAddAndDeleteSmartProfileWeb",
+        "jiraKey": "QAAUT-22743",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22743",
+        "testrailId": "1194562",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194562",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1194582",
+        "testName": "testChangeCurrency",
+        "jiraKey": "QAAUT-22763",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22763",
+        "testrailId": "1194582",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194582",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1194396",
+        "testName": "testChangeIntoNewEmail",
+        "jiraKey": "QAAUT-22696",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22696",
+        "testrailId": "1194396",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194396",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1194568",
+        "testName": "testChangeLanguageToEnglishLogin",
+        "jiraKey": "QAAUT-22761",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22761",
+        "testrailId": "1194568",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194568",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1194590",
+        "testName": "testChangeLanguageToIDNonLogin",
+        "jiraKey": "QAAUT-22770",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22770",
+        "testrailId": "1194590",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194590",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1194397",
+        "testName": "testDeleteAccountLoggedIn",
+        "jiraKey": "QAAUT-22699",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22699",
+        "testrailId": "1194397",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194397",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1194404",
+        "testName": "testForgotPasswordUsingPNWeb",
+        "jiraKey": "QAAUT-22718",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22718",
+        "testrailId": "1194404",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194404",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1194393",
+        "testName": "testLogoutDeviceLevelWeb",
+        "jiraKey": "QAAUT-22684",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22684",
+        "testrailId": "1194393",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194393",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1198875",
+        "testName": "testLoyaltyCappingPointsTrainWeb",
+        "jiraKey": "QAAUT-39745",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39745",
+        "testrailId": "1198875",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1198875",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1198877",
+        "testName": "testLoyaltyCappingPointsTtdWeb",
+        "jiraKey": "QAAUT-39746",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39746",
+        "testrailId": "1198877",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1198877",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1198886",
+        "testName": "testLoyaltyPayHalfPointsHotelsWeb",
+        "jiraKey": "QAAUT-22958",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22958",
+        "testrailId": "1198886",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1198886",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1862661",
+        "testName": "testPendingEarningPointsAfterTtdOrderWeb",
+        "jiraKey": "QAAUT-39712",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39712",
+        "testrailId": "1862661",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862661",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1194398",
+        "testName": "testRegisterPhoneNoNonLogin",
+        "jiraKey": "QAAUT-22701",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22701",
+        "testrailId": "1194398",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194398",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1194563",
+        "testName": "testUserEditSmartProfile",
+        "jiraKey": "QAAUT-22745",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22745",
+        "testrailId": "1194563",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194563",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1862659",
+        "testName": "verifyClaimMissionRewardsWeb",
+        "jiraKey": "QAAUT-39710",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39710",
+        "testrailId": "1862659",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862659",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      }
+    ]
+  },
+  "reconciliation": {
+    "counts": {
+      "googleSheet": 24,
+      "jira": 24,
+      "testrail": 24
+    },
+    "allMatch": true,
+    "max": 24,
+    "min": 24,
+    "spread": 0
+  }
+}

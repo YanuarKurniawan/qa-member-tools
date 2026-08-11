@@ -1,9 +1,10 @@
-import { useState } from 'react';
-import { Play, Loader2, CheckCircle2, XCircle, AlertTriangle, Copy, Check } from 'lucide-react';
+import { useState, useRef, useCallback } from 'react';
+import { Play, Loader2, CheckCircle2, XCircle, AlertTriangle, Copy, Check, RotateCcw, Square } from 'lucide-react';
 import CsvUpload from './CsvUpload';
 import LogViewer from './LogViewer';
 import ResultsTable from './ResultsTable';
 import ValidatorLayout from './ValidatorLayout';
+import JsonPathFinderLayout from './JsonPathFinderLayout';
 
 function AnnotatedJsonView({ annotatedJson }) {
   const { lines, errors, unmappedErrors } = annotatedJson;
@@ -15,7 +16,7 @@ function AnnotatedJsonView({ annotatedJson }) {
   return (
     <div className="mt-4 overflow-hidden rounded-lg border border-slate-700 bg-slate-900">
       <div className="flex items-center justify-between border-b border-slate-700 px-4 py-2">
-        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate-300">
           Validation Result
         </span>
         {isValid ? (
@@ -62,7 +63,7 @@ function AnnotatedJsonView({ annotatedJson }) {
       </div>
       {unmappedErrors.length > 0 && (
         <div className="space-y-1.5 border-t border-slate-700 px-4 py-2.5">
-          <span className="text-xs font-medium text-slate-400">
+          <span className="text-xs font-medium text-slate-300">
             General errors:
           </span>
           {unmappedErrors.map((msg, i) => (
@@ -92,13 +93,13 @@ function SchemaOutput({ schema }) {
   return (
     <div className="mt-4 overflow-hidden rounded-lg border border-slate-700 bg-slate-900">
       <div className="flex items-center justify-between border-b border-slate-700 px-4 py-2">
-        <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+        <span className="text-xs font-semibold uppercase tracking-wider text-slate-300">
           Generated Schema
         </span>
         <button
           type="button"
           onClick={handleCopy}
-          className="flex items-center gap-1.5 rounded-md border border-slate-600 bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:bg-slate-700"
+          className="flex items-center gap-1.5 rounded-md border border-slate-600 bg-slate-800 px-3 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
         >
           {copied ? (
             <>
@@ -120,6 +121,42 @@ function SchemaOutput({ schema }) {
   );
 }
 
+const STATUS_MESSAGES = {
+  400: 'Invalid request. Check your inputs and try again.',
+  401: 'Authentication required. Check your credentials.',
+  403: 'Permission denied. You may not have access to this environment.',
+  404: 'Not found. The target may have been removed or the endpoint is incorrect.',
+  408: 'Request timed out. The target environment may be slow or unreachable.',
+  422: 'Invalid data. Check that all fields contain valid values.',
+  429: 'Too many requests. Wait a moment and try again.',
+  500: 'Server error. Try again; if it persists, check the target environment.',
+  502: 'Server temporarily unreachable. Try again in a few seconds.',
+  503: 'Server temporarily unavailable. Try again in a few seconds.',
+  504: 'Gateway timeout. The target environment may be slow or unreachable.',
+};
+
+function classifyError(status, serverMessage) {
+  if (!status) {
+    const isNetwork = /fetch|network|abort|timeout|econnrefused/i.test(serverMessage || '');
+    return {
+      message: isNetwork
+        ? 'Could not reach the server. Check your connection and try again.'
+        : serverMessage || 'Something went wrong.',
+      detail: isNetwork ? serverMessage : null,
+      retryable: true,
+    };
+  }
+
+  const humanMessage = STATUS_MESSAGES[status]
+    || (status >= 500 ? 'Server error. Try again.' : `Request failed (HTTP ${status}).`);
+
+  return {
+    message: serverMessage || humanMessage,
+    detail: `HTTP ${status}`,
+    retryable: status >= 500 || status === 408 || status === 429,
+  };
+}
+
 export default function ToolForm({ tool }) {
   const [formData, setFormData] = useState({});
   const [csvFile, setCsvFile] = useState(null);
@@ -127,22 +164,137 @@ export default function ToolForm({ tool }) {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [previewData, setPreviewData] = useState(null);
+  const [streamLogs, setStreamLogs] = useState([]);
+  const [streamProgress, setStreamProgress] = useState(null);
+  const [streaming, setStreaming] = useState(false);
+  const formRef = useRef(null);
+  const lastActionRef = useRef('submit');
+  const abortRef = useRef(null);
 
   const inputDef = tool.input || {};
 
   if (inputDef.layout === 'validator') {
     return <ValidatorLayout tool={tool} />;
   }
+  if (inputDef.layout === 'json-path-finder') {
+    return <JsonPathFinderLayout tool={tool} />;
+  }
   const outputDef = tool.output || {};
   const toolType = inputDef.type || 'form';
   const allFields = [...(inputDef.fields || []), ...(inputDef.extraFields || [])];
+  const isStreamable = tool.streamable;
 
   const handleFieldChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleStop = useCallback(() => {
+    if (abortRef.current) {
+      abortRef.current.abort();
+      abortRef.current = null;
+    }
+  }, []);
+
+  const handleStreamSubmit = async (e) => {
     e.preventDefault();
+    lastActionRef.current = 'submit';
+    setLoading(true);
+    setStreaming(true);
+    setError(null);
+    setResult(null);
+    setStreamLogs([]);
+    setStreamProgress(null);
+
+    if (toolType === 'csv' || toolType === 'csv+form') {
+      if (!csvFile) {
+        setError({ message: 'Please upload a CSV file.', detail: null, retryable: false });
+        setLoading(false);
+        setStreaming(false);
+        return;
+      }
+    }
+
+    const fd = new FormData();
+    if (csvFile) fd.append('file', csvFile);
+    allFields.forEach((f) => {
+      if (formData[f.name] !== undefined) {
+        fd.append(f.name, formData[f.name]);
+      }
+    });
+
+    const controller = new AbortController();
+    abortRef.current = controller;
+
+    try {
+      const res = await fetch(`/api/tools/${tool.id}/stream`, {
+        method: 'POST',
+        body: fd,
+        signal: controller.signal,
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        setError(classifyError(res.status, data?.error));
+        setLoading(false);
+        setStreaming(false);
+        return;
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+
+        let eventType = null;
+        for (const line of lines) {
+          if (line.startsWith('event: ')) {
+            eventType = line.slice(7).trim();
+          } else if (line.startsWith('data: ') && eventType) {
+            try {
+              const payload = JSON.parse(line.slice(6));
+              if (eventType === 'log') {
+                setStreamLogs((prev) => [...prev, payload]);
+              } else if (eventType === 'progress') {
+                setStreamProgress(payload);
+              } else if (eventType === 'result') {
+                setResult((prev) => ({ ...prev, results: payload.results }));
+              } else if (eventType === 'done') {
+                setStreamProgress((prev) => prev ? { ...prev, phase: payload.stopped ? 'stopped' : 'done' } : prev);
+              } else if (eventType === 'error') {
+                setError({ message: payload.message, detail: null, retryable: true });
+              }
+            } catch {}
+            eventType = null;
+          } else if (line === '') {
+            eventType = null;
+          }
+        }
+      }
+    } catch (err) {
+      if (err.name !== 'AbortError') {
+        setError(classifyError(null, err.message));
+      }
+    } finally {
+      abortRef.current = null;
+      setLoading(false);
+      setStreaming(false);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    if (isStreamable) {
+      return handleStreamSubmit(e);
+    }
+
+    e.preventDefault();
+    lastActionRef.current = 'submit';
     setLoading(true);
     setError(null);
     setResult(null);
@@ -154,7 +306,7 @@ export default function ToolForm({ tool }) {
 
       if (toolType === 'csv' || toolType === 'csv+form') {
         if (!csvFile) {
-          setError('Please upload a CSV file');
+          setError({ message: 'Please upload a CSV file.', detail: null, retryable: false });
           setLoading(false);
           return;
         }
@@ -178,11 +330,12 @@ export default function ToolForm({ tool }) {
       try {
         data = await res.json();
       } catch {
-        throw new Error(`Server returned non-JSON response (HTTP ${res.status})`);
+        setError(classifyError(res.status, null));
+        return;
       }
 
       if (!res.ok) {
-        setError(data.error || `Request failed with status ${res.status}`);
+        setError(classifyError(res.status, data.error));
         if (data.logs) setResult({ logs: data.logs, results: [] });
       } else if (outputDef.hasConfirmStep && data.preview) {
         setPreviewData(data);
@@ -190,7 +343,7 @@ export default function ToolForm({ tool }) {
         setResult(data);
       }
     } catch (err) {
-      setError(err.message);
+      setError(classifyError(null, err.message));
     } finally {
       setLoading(false);
     }
@@ -198,6 +351,7 @@ export default function ToolForm({ tool }) {
 
   const handleConfirm = async () => {
     if (!previewData) return;
+    lastActionRef.current = 'confirm';
     setLoading(true);
     setError(null);
 
@@ -215,23 +369,32 @@ export default function ToolForm({ tool }) {
       try {
         data = await res.json();
       } catch {
-        throw new Error(`Server returned non-JSON response (HTTP ${res.status})`);
+        setError(classifyError(res.status, null));
+        return;
       }
       if (!res.ok) {
-        setError(data.error || 'Confirmation failed');
+        setError(classifyError(res.status, data.error));
       } else {
         setResult(data);
         setPreviewData(null);
       }
     } catch (err) {
-      setError(err.message);
+      setError(classifyError(null, err.message));
     } finally {
       setLoading(false);
     }
   };
 
+  const handleRetry = () => {
+    if (lastActionRef.current === 'confirm') {
+      handleConfirm();
+    } else {
+      formRef.current?.requestSubmit();
+    }
+  };
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
       {(toolType === 'csv' || toolType === 'csv+form') && (
         <CsvUpload
           csvInfo={inputDef.csvInfo}
@@ -270,7 +433,7 @@ export default function ToolForm({ tool }) {
                     className="w-full rounded-lg border border-gray-300 px-3 py-2.5 font-mono text-sm shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   />
                   {field.description && (
-                    <p className="mt-1 text-xs text-gray-400">
+                    <p className="mt-1 text-xs text-gray-500">
                       {field.description}
                     </p>
                   )}
@@ -289,8 +452,8 @@ export default function ToolForm({ tool }) {
                     {field.label}
                   </span>
                   {field.description && (
-                    <span className="text-xs text-gray-400">
-                      — {field.description}
+                    <span className="text-xs text-gray-500">
+                      ({field.description})
                     </span>
                   )}
                 </label>
@@ -337,23 +500,68 @@ export default function ToolForm({ tool }) {
         </div>
       )}
 
-      <button
-        type="submit"
-        disabled={loading}
-        className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-50"
-      >
-        {loading ? (
-          <>
-            <Loader2 size={16} className="animate-spin" />
-            Processing...
-          </>
-        ) : (
-          <>
-            <Play size={16} />
-            Run Tool
-          </>
+      <div className="flex items-center gap-3">
+        <button
+          type="submit"
+          disabled={loading}
+          className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          {loading ? (
+            <>
+              <Loader2 size={16} className="animate-spin" />
+              Processing...
+            </>
+          ) : (
+            <>
+              <Play size={16} />
+              Run Tool
+            </>
+          )}
+        </button>
+        {streaming && (
+          <button
+            type="button"
+            onClick={handleStop}
+            className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+          >
+            <Square size={14} fill="currentColor" />
+            Stop
+          </button>
         )}
-      </button>
+      </div>
+
+      {streamProgress && (
+        <div className="space-y-2">
+          <div className="flex items-center justify-between text-sm">
+            <span className="font-medium text-gray-700">
+              {streamProgress.phase === 'done'
+                ? 'Completed'
+                : streamProgress.phase === 'stopped'
+                  ? 'Stopped'
+                  : `Processing row ${streamProgress.current} of ${streamProgress.total}`}
+            </span>
+            <span className="text-xs text-gray-500">
+              {streamProgress.total > 0
+                ? `${Math.round((streamProgress.current / streamProgress.total) * 100)}%`
+                : '0%'}
+            </span>
+          </div>
+          <div className="h-2.5 overflow-hidden rounded-full bg-gray-200">
+            <div
+              className={`h-full rounded-full transition-all duration-300 ${
+                streamProgress.phase === 'stopped'
+                  ? 'bg-amber-500'
+                  : streamProgress.phase === 'done'
+                    ? 'bg-green-500'
+                    : 'bg-blue-600'
+              }`}
+              style={{
+                width: `${streamProgress.total > 0 ? (streamProgress.current / streamProgress.total) * 100 : 0}%`,
+              }}
+            />
+          </div>
+        </div>
+      )}
 
       {previewData && (
         <div className="rounded-lg border border-amber-200 bg-amber-50 p-4">
@@ -373,19 +581,19 @@ export default function ToolForm({ tool }) {
               type="button"
               onClick={handleConfirm}
               disabled={loading}
-              className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 disabled:opacity-50"
+              className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 disabled:opacity-50"
             >
               {loading ? (
                 <Loader2 size={14} className="animate-spin" />
               ) : (
                 <XCircle size={14} />
               )}
-              Yes, Delete
+              Delete
             </button>
             <button
               type="button"
               onClick={() => setPreviewData(null)}
-              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
             >
               Cancel
             </button>
@@ -394,14 +602,38 @@ export default function ToolForm({ tool }) {
       )}
 
       {error && (
-        <div className="flex items-start gap-2 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800">
-          <XCircle size={18} className="mt-0.5 shrink-0 text-red-500" />
-          <p>{error}</p>
+        <div role="alert" className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+          <div className="flex items-start gap-2">
+            <XCircle size={18} className="mt-0.5 shrink-0 text-red-500" />
+            <div className="flex-1 space-y-2">
+              <p>{error.message}</p>
+              {error.detail && (
+                <details className="text-xs text-red-600">
+                  <summary className="cursor-pointer font-medium hover:text-red-700">
+                    Technical details
+                  </summary>
+                  <pre className="mt-1 whitespace-pre-wrap rounded bg-red-100/60 px-2 py-1.5 font-mono">
+                    {error.detail}
+                  </pre>
+                </details>
+              )}
+              {error.retryable && (
+                <button
+                  type="button"
+                  onClick={handleRetry}
+                  className="inline-flex items-center gap-1.5 rounded-md border border-red-200 bg-white px-3 py-1.5 text-xs font-medium text-red-700 transition-colors hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                >
+                  <RotateCcw size={12} />
+                  Try again
+                </button>
+              )}
+            </div>
+          </div>
         </div>
       )}
 
       {result && !error && (
-        <div className="flex items-start gap-2 rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-800">
+        <div role="status" className="flex items-start gap-2 rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-800">
           <CheckCircle2 size={18} className="mt-0.5 shrink-0 text-green-500" />
           <p>
             {result.message ||
@@ -415,7 +647,8 @@ export default function ToolForm({ tool }) {
         <AnnotatedJsonView annotatedJson={result.annotatedJson} />
       )}
 
-      {result?.logs && <LogViewer logs={result.logs} />}
+      {streamLogs.length > 0 && <LogViewer logs={streamLogs} />}
+      {result?.logs && !isStreamable && <LogViewer logs={result.logs} />}
       {result?.results && result.results.length > 0 && (
         <ResultsTable results={result.results} />
       )}

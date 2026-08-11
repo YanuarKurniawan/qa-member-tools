@@ -1,28 +1,51 @@
 const Ajv = require('ajv');
+const Ajv2019 = require('ajv/dist/2019');
 const Ajv2020 = require('ajv/dist/2020');
 const addFormats = require('ajv-formats');
 
-const DRAFT_PATTERNS = {
-  'draft-04': 'draft-07',
-  'draft-06': 'draft-07',
-  'draft-07': 'draft-07',
-  'draft/2019-09': '2019-09',
-  'draft/2020-12': '2020-12',
+const DRAFT_META = {
+  'draft-07': 'http://json-schema.org/draft-07/schema#',
+  '2019-09': 'https://json-schema.org/draft/2019-09/schema',
+  '2020-12': 'https://json-schema.org/draft/2020-12/schema',
 };
+
+const DRAFT_PATTERNS = [
+  { pattern: 'draft-04', draft: 'draft-07', rewrite: true },
+  { pattern: 'draft-06', draft: 'draft-07', rewrite: true },
+  { pattern: 'draft-07', draft: 'draft-07', rewrite: false },
+  { pattern: 'draft/2019-09', draft: '2019-09', rewrite: false },
+  { pattern: 'draft/2020-12', draft: '2020-12', rewrite: false },
+];
 
 function detectDraft(schema) {
   const $schema = schema.$schema || '';
-  for (const [pattern, draft] of Object.entries(DRAFT_PATTERNS)) {
-    if ($schema.includes(pattern)) return draft;
+  for (const entry of DRAFT_PATTERNS) {
+    if ($schema.includes(entry.pattern)) return entry;
   }
-  return 'draft-07';
+  return { pattern: null, draft: 'draft-07', rewrite: false };
 }
 
 function createValidator(draft) {
-  const AjvClass = draft === '2020-12' ? Ajv2020 : Ajv;
+  let AjvClass = Ajv;
+  if (draft === '2020-12') AjvClass = Ajv2020;
+  else if (draft === '2019-09') AjvClass = Ajv2019;
+
   const ajv = new AjvClass({ allErrors: true, verbose: true, strict: false });
   addFormats(ajv);
   return ajv;
+}
+
+/**
+ * Ajv 8 does not ship draft-04/06 meta-schemas. When a schema declares those
+ * drafts, rewrite $schema to the closest supported meta-schema so compile()
+ * can resolve the ref.
+ */
+function prepareSchema(schema, draftInfo) {
+  if (!draftInfo.rewrite || !schema.$schema) return schema;
+  return {
+    ...schema,
+    $schema: DRAFT_META[draftInfo.draft],
+  };
 }
 
 function mapErrorsToLines(prettyJson, errors) {
@@ -101,14 +124,15 @@ module.exports = async function validateJsonSchema({ options, onLog }) {
     throw new Error(`Invalid JSON input: ${err.message}`);
   }
 
-  const draft = detectDraft(schema);
-  onLog.info(`Detected schema draft: ${draft}`);
+  const draftInfo = detectDraft(schema);
+  onLog.info(`Detected schema draft: ${draftInfo.draft}${draftInfo.rewrite ? ` (rewritten from ${draftInfo.pattern})` : ''}`);
 
-  const ajv = createValidator(draft);
+  const ajv = createValidator(draftInfo.draft);
+  const schemaToCompile = prepareSchema(schema, draftInfo);
 
   let validate;
   try {
-    validate = ajv.compile(schema);
+    validate = ajv.compile(schemaToCompile);
   } catch (err) {
     throw new Error(`Schema compilation failed: ${err.message}`);
   }

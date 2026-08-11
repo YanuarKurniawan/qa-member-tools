@@ -37,6 +37,12 @@ Thumbs.db
 *~
 *.tmp
 
-# ─── Cursor IDE (keep .cursor/skills/ tracked) ─
+# ─── Cursor IDE (keep .cursor/skills/ + commands tracked) ─
 .cursor/*
 !.cursor/skills/
+!.cursor/commands/
+.cursor/skills/impeccable/
+.impeccable/
+
+# ─── Superpowers scratch ──────────────────────
+.superpowers/

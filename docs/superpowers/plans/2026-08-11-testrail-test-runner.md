@@ -1622,10 +1622,17 @@ git commit -m "Add name search with highlighting plus status, priority, and chan
 **Files:**
 - Create: `client/src/components/testRunner/CaseDrawer.jsx`
 - Modify: `client/src/pages/TestRunner.jsx`
+- Modify: `client/package.json`
 
 **Interfaces:**
 - Consumes: `GET /api/test-runs/:runId/tests/:testId` returning `{ testId, caseId, runTitle, caseTitle, refs, preconds, steps, expected, lastResultComment }`
 - Produces: `CaseDrawer({ runId, test, vocab, detail, loading, disabled, onClose, onPatch })`
+
+- [ ] **Step 0: Install DOMPurify**
+
+```bash
+cd client && npm install dompurify
+```
 
 - [ ] **Step 1: Write `CaseDrawer.jsx`**
 
@@ -1633,7 +1640,24 @@ Container: `<aside className="w-[440px] shrink-0 overflow-y-auto rounded-xl bord
 
 Header: `sticky top-0 border-b border-gray-200 bg-white px-5 py-4` containing the effective title in `text-sm font-semibold text-gray-900`, a `text-xs text-gray-500` line with `C${caseId}` linked to TestRail and the Jira ref when present, and an `X` close button at `absolute right-3 top-3`.
 
-Body: `space-y-5 px-5 py-4`, with sections rendered only when their content exists. Each section is a `text-xs font-semibold uppercase tracking-wide text-gray-500` label above content. HTML fields (`preconds`, `steps`, `expected`) render via `dangerouslySetInnerHTML` inside a wrapper with `prose-sm max-w-none text-sm text-gray-700 [&_ol]:list-decimal [&_ol]:pl-5 [&_ul]:list-disc [&_ul]:pl-5 [&_p]:mb-2`. The content is TestRail-authored case text from an authenticated internal instance, which is the same trust level as the rest of this tool.
+Body: `space-y-5 px-5 py-4`, with sections rendered only when their content exists. Each section is a `text-xs font-semibold uppercase tracking-wide text-gray-500` label above content.
+
+HTML fields (`preconds`, `steps`, `expected`) are **sanitized before rendering** — a TestRail case body is user-editable content, so it must not be trusted to execute inside this tool:
+
+```jsx
+import DOMPurify from 'dompurify';
+
+function CaseHtml({ html }) {
+  if (!html) return null;
+  const clean = DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
+  return (
+    <div
+      className="max-w-none text-sm text-gray-700 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mb-2 [&_ul]:list-disc [&_ul]:pl-5"
+      dangerouslySetInnerHTML={{ __html: clean }}
+    />
+  );
+}
+```
 
 Below the case text, repeat the execution controls: `<StatusCell test={test} vocab={vocab} disabled={disabled} onPatch={onPatch} />` and a `<textarea rows={4}>` bound to the comment with the same commit-on-blur behavior as the table cell.
 

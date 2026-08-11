@@ -187,8 +187,9 @@ export default function TestRunTable({
             ) : (
             tests.map((test) => (
               <tr
+                id={`test-row-${test.testId}`}
                 key={test.testId}
-                className={rowClassName(test, activeTestId, focusedTestId)}
+                className={`scroll-mt-10 ${rowClassName(test, activeTestId, focusedTestId)}`}
                 onClick={() => onRowClick(test.testId)}
               >
                 <td className="whitespace-nowrap px-4 py-2.5">

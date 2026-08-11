@@ -4,7 +4,7 @@ import { Search, X } from 'lucide-react';
 import RunToolbar from '../components/testRunner/RunToolbar';
 import TestRunTable from '../components/testRunner/TestRunTable';
 import CaseDrawer from '../components/testRunner/CaseDrawer';
-import { statusStyle, priorityLabel } from '../components/testRunner/statusVocab';
+import { statusStyle, priorityLabel, SHORTCUT_TO_STATUS } from '../components/testRunner/statusVocab';
 
 const API = '/api/test-runs';
 
@@ -58,6 +58,7 @@ export default function TestRunner() {
   const [detailLoading, setDetailLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [savedAt, setSavedAt] = useState(null);
+  const [showShortcuts, setShowShortcuts] = useState(false);
 
   useEffect(() => {
     mountedRef.current = true;
@@ -167,6 +168,12 @@ export default function TestRunner() {
   );
 
   useEffect(() => {
+    setActiveTestId(null);
+    setFocusedTestId(null);
+    setShowShortcuts(false);
+  }, [runIdParam]);
+
+  useEffect(() => {
     runTokenRef.current += 1;
     const ctx = beginRequest();
     refreshRecent(ctx);
@@ -210,6 +217,7 @@ export default function TestRunner() {
   useEffect(() => {
     if (!activeTestId || !Number.isFinite(runId)) {
       setDetail(null);
+      setDetailLoading(false);
       return;
     }
     let cancelled = false;
@@ -357,6 +365,81 @@ export default function TestRunner() {
     if (!Number.isFinite(id)) return;
     syncRun(id, beginRequest());
   }, [runIdParam, beginRequest, syncRun]);
+
+  const readOnlyResults = state?.run?.isCompleted || state?.run?.isArchived;
+
+  useEffect(() => {
+    const isTyping = (target) =>
+      target &&
+      (target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA' ||
+        target.tagName === 'SELECT' ||
+        target.isContentEditable);
+
+    const onKeyDown = (event) => {
+      if (event.metaKey || event.ctrlKey || event.altKey) return;
+
+      if (event.key === 'Escape') {
+        if (isTyping(event.target)) return;
+        if (document.querySelector('[aria-label="More statuses"][aria-expanded="true"]')) return;
+        setActiveTestId(null);
+        setShowShortcuts(false);
+        return;
+      }
+
+      if (isTyping(event.target)) return;
+
+      if (event.key === '/') {
+        event.preventDefault();
+        searchRef.current?.focus();
+        return;
+      }
+
+      if (event.key === '?') {
+        event.preventDefault();
+        setShowShortcuts((value) => !value);
+        return;
+      }
+
+      if (visibleTests.length === 0) return;
+      const index = visibleTests.findIndex((test) => test.testId === focusedTestId);
+
+      if (event.key === 'j' || event.key === 'ArrowDown') {
+        event.preventDefault();
+        const next = visibleTests[Math.min(index + 1, visibleTests.length - 1)] || visibleTests[0];
+        setFocusedTestId(next.testId);
+        document.getElementById(`test-row-${next.testId}`)?.scrollIntoView({ block: 'nearest' });
+        return;
+      }
+
+      if (event.key === 'k' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        const prev = visibleTests[Math.max(index - 1, 0)] || visibleTests[0];
+        setFocusedTestId(prev.testId);
+        document.getElementById(`test-row-${prev.testId}`)?.scrollIntoView({ block: 'nearest' });
+        return;
+      }
+
+      if (event.key === 'Enter' && focusedTestId) {
+        event.preventDefault();
+        setActiveTestId((current) => (current === focusedTestId ? null : focusedTestId));
+        return;
+      }
+
+      const statusId = SHORTCUT_TO_STATUS[event.key.toLowerCase()];
+      if (statusId && focusedTestId && !readOnlyResults) {
+        event.preventDefault();
+        const focused = visibleTests.find((test) => test.testId === focusedTestId);
+        if (focused && focused.statusId !== statusId) onPatch(focusedTestId, { statusId });
+      }
+    };
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [visibleTests, focusedTestId, readOnlyResults, onPatch]);
+
+  const kbdClass =
+    'rounded border border-gray-300 bg-gray-50 px-1 text-[10px] font-medium text-gray-600';
 
   return (
     <div>
@@ -551,6 +634,54 @@ export default function TestRunner() {
             </span>
           </div>
 
+          <p className="text-xs text-gray-500">
+            <kbd className={kbdClass}>j</kbd> / <kbd className={kbdClass}>k</kbd> move ·{' '}
+            <kbd className={kbdClass}>p</kbd> <kbd className={kbdClass}>f</kbd>{' '}
+            <kbd className={kbdClass}>b</kbd> <kbd className={kbdClass}>r</kbd> set status ·{' '}
+            <kbd className={kbdClass}>Enter</kbd> details · <kbd className={kbdClass}>/</kbd>{' '}
+            search · <kbd className={kbdClass}>?</kbd> shortcuts
+          </p>
+
+          {showShortcuts && (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
+              onClick={() => setShowShortcuts(false)}
+              role="presentation"
+            >
+              <div
+                className="w-80 rounded-xl border border-gray-200 bg-white p-5 shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+                role="dialog"
+                aria-labelledby="shortcuts-title"
+              >
+                <h2 id="shortcuts-title" className="text-sm font-semibold text-gray-900">
+                  Keyboard shortcuts
+                </h2>
+                <dl className="mt-4 space-y-2 text-sm">
+                  {[
+                    ['Move down', 'j / ↓'],
+                    ['Move up', 'k / ↑'],
+                    ['Set Passed', 'p'],
+                    ['Set Failed', 'f'],
+                    ['Set Blocked', 'b'],
+                    ['Set Retest', 'r'],
+                    ['Open / close details', 'Enter'],
+                    ['Focus search', '/'],
+                    ['Show shortcuts', '?'],
+                    ['Close drawer / overlay', 'Esc'],
+                  ].map(([label, keys]) => (
+                    <div key={label} className="flex items-center justify-between gap-4">
+                      <dt className="text-gray-600">{label}</dt>
+                      <dd>
+                        <kbd className={kbdClass}>{keys}</kbd>
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          )}
+
           <div className="flex gap-4">
             <div className="min-w-0 flex-1">
               <TestRunTable
@@ -563,12 +694,11 @@ export default function TestRunner() {
                 focusedTestId={focusedTestId}
                 onRowClick={onRowClick}
                 onPatch={onPatch}
-                readOnlyResults={state.run.isCompleted || state.run.isArchived}
+                readOnlyResults={readOnlyResults}
               />
             </div>
             {activeTest && (
               <CaseDrawer
-                runId={runId}
                 test={activeTest}
                 vocab={state.vocab}
                 detail={detail}

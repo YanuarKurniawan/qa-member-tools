@@ -27,6 +27,8 @@ export default function TestRunner() {
   const { runId: runIdParam } = useParams();
   const navigate = useNavigate();
   const mountedRef = useRef(true);
+  const requestGenRef = useRef(0);
+  const abortRef = useRef(null);
 
   const [runInput, setRunInput] = useState('');
   const [state, setState] = useState(null);
@@ -48,10 +50,25 @@ export default function TestRunner() {
     };
   }, []);
 
-  const refreshRecent = useCallback(async (signal) => {
+  const beginRequest = useCallback(() => {
+    abortRef.current?.abort();
+    requestGenRef.current += 1;
+    const generation = requestGenRef.current;
+    const controller = new AbortController();
+    abortRef.current = controller;
+    const isCurrent = () => mountedRef.current && requestGenRef.current === generation;
+    return { signal: controller.signal, isCurrent };
+  }, []);
+
+  const invalidateRequest = useCallback(() => {
+    abortRef.current?.abort();
+    requestGenRef.current += 1;
+  }, []);
+
+  const refreshRecent = useCallback(async ({ signal, isCurrent }) => {
     try {
       const body = await json(API, { signal });
-      if (!mountedRef.current) return;
+      if (!isCurrent()) return;
       setRecent(body.runs || []);
     } catch (err) {
       if (isAbortError(err)) return;
@@ -60,13 +77,16 @@ export default function TestRunner() {
   }, []);
 
   const syncRun = useCallback(
-    async (id, signal) => {
-      setSyncing(true);
-      setError(null);
-      setNotice(null);
+    async (id, ctx) => {
+      const { signal, isCurrent } = ctx;
+      if (isCurrent()) {
+        setSyncing(true);
+        setError(null);
+        setNotice(null);
+      }
       try {
         const body = await json(`${API}/${id}/sync`, { method: 'POST', signal });
-        if (!mountedRef.current) return;
+        if (!isCurrent()) return;
         const { summary, ...view } = body;
         setState(view);
         if (summary?.removedWithDrafts?.length) {
@@ -75,12 +95,12 @@ export default function TestRunner() {
             `${summary.removedWithDrafts.length} test(s) you edited are no longer in this run: ${titles}`
           );
         }
-        await refreshRecent(signal);
+        await refreshRecent(ctx);
       } catch (err) {
-        if (isAbortError(err) || !mountedRef.current) return;
+        if (isAbortError(err) || !isCurrent()) return;
         setError(err.message);
       } finally {
-        if (mountedRef.current) {
+        if (isCurrent()) {
           setSyncing(false);
           setLoading(false);
         }
@@ -90,57 +110,63 @@ export default function TestRunner() {
   );
 
   const openRun = useCallback(
-    async (id, signal) => {
-      setState((prev) => (prev?.run?.runId === id ? prev : null));
-      setLoading(true);
-      setError(null);
-      setNotice(null);
+    async (id, ctx) => {
+      const { signal, isCurrent } = ctx;
+      if (isCurrent()) {
+        setState((prev) => (prev?.run?.runId === id ? prev : null));
+        setLoading(true);
+        setError(null);
+        setNotice(null);
+      }
       try {
         const res = await fetch(`${API}/${id}`, { signal });
         const body = await res.json().catch(() => ({}));
         if (res.status === 404) {
-          await syncRun(id, signal);
+          await syncRun(id, ctx);
           return;
         }
         if (!res.ok) throw new Error(body.error || `Request failed (HTTP ${res.status})`);
-        if (!mountedRef.current) return;
+        if (!isCurrent()) return;
         setState(body);
-        await refreshRecent(signal);
+        await refreshRecent(ctx);
       } catch (err) {
-        if (isAbortError(err) || !mountedRef.current) return;
+        if (isAbortError(err) || !isCurrent()) return;
         setError(err.message);
       } finally {
-        if (mountedRef.current) setLoading(false);
+        if (isCurrent()) setLoading(false);
       }
     },
     [syncRun, refreshRecent]
   );
 
   useEffect(() => {
-    const controller = new AbortController();
-    const { signal } = controller;
-
-    refreshRecent(signal);
+    const ctx = beginRequest();
+    refreshRecent(ctx);
 
     if (!runIdParam) {
-      setState(null);
-      setLoading(false);
-      setError(null);
-      setNotice(null);
-      return () => controller.abort();
+      if (ctx.isCurrent()) {
+        setState(null);
+        setLoading(false);
+        setError(null);
+        setNotice(null);
+      }
+      return invalidateRequest;
     }
 
     const id = Number(runIdParam);
     if (!Number.isFinite(id)) {
-      setState(null);
-      setError('Invalid run ID');
-      return () => controller.abort();
+      if (ctx.isCurrent()) {
+        setState(null);
+        setError('Invalid run ID');
+        setLoading(false);
+      }
+      return invalidateRequest;
     }
 
-    openRun(id, signal);
+    openRun(id, ctx);
 
-    return () => controller.abort();
-  }, [runIdParam, openRun, refreshRecent]);
+    return invalidateRequest;
+  }, [runIdParam, openRun, refreshRecent, beginRequest, invalidateRequest]);
 
   const sortedTests = useMemo(() => {
     if (!state?.tests) return [];
@@ -178,13 +204,11 @@ export default function TestRunner() {
   const onPatch = () => {};
   const onRowClick = () => {};
   const onUpload = () => {};
-  const onSync = () => {
-    const id = runIdParam ? Number(runIdParam) : state?.run?.runId;
-    if (id) {
-      const controller = new AbortController();
-      syncRun(id, controller.signal);
-    }
-  };
+  const onSync = useCallback(() => {
+    const id = Number(runIdParam);
+    if (!Number.isFinite(id)) return;
+    syncRun(id, beginRequest());
+  }, [runIdParam, beginRequest, syncRun]);
 
   return (
     <div>

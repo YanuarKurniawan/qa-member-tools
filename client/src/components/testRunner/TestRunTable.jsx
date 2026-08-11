@@ -146,9 +146,16 @@ export default function TestRunTable({
   };
 
   return (
-    <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
-      <div className="overflow-x-auto">
-        <table className="w-full min-w-[900px] text-left text-sm">
+    <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
+      <table className="w-full min-w-[960px] table-fixed text-left text-sm">
+          <colgroup>
+            <col className="w-[1%]" />
+            <col />
+            <col className="w-[1%]" />
+            <col className="w-[1%]" />
+            <col className="w-[1%]" />
+            <col className="w-[1%]" />
+          </colgroup>
           <thead className="sticky top-0 z-10 bg-gray-50 text-xs uppercase text-gray-500">
             <tr>
               {SORT_COLUMNS.map(({ key, label }) => (
@@ -201,7 +208,7 @@ export default function TestRunTable({
                     C{test.caseId}
                   </a>
                 </td>
-                <td className="w-full max-w-0 whitespace-nowrap px-4 py-2.5 text-gray-800">
+                <td className="w-full max-w-0 break-words px-4 py-2.5 text-gray-800">
                   {editingId === test.testId ? (
                     <input
                       type="text"
@@ -218,18 +225,21 @@ export default function TestRunTable({
                     />
                   ) : (
                     <span
-                      className="inline-flex items-center gap-1"
+                      className="inline break-words"
                       onClick={(e) => startTitleEdit(test, e)}
                     >
                       <Highlight text={test.title} needle={searchNeedle} />
                       {test.titleDivergedFromRun && (
                         <Info
                           size={12}
-                          className="shrink-0 text-gray-400"
+                          className="ml-1 inline shrink-0 align-middle text-gray-400"
                           title="Case renamed. TestRail's run view keeps the original title until a new run is created."
                         />
                       )}
-                      <Pencil size={12} className="invisible text-gray-400 group-hover:visible" />
+                      <Pencil
+                        size={12}
+                        className="invisible ml-1 inline align-middle text-gray-400 group-hover:visible"
+                      />
                       {test.dirtyFields.includes('title') && (
                         <DirtyDot title="Unsaved title change" />
                       )}
@@ -315,7 +325,6 @@ export default function TestRunTable({
             )}
           </tbody>
         </table>
-      </div>
     </div>
   );
 }

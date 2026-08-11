@@ -58,7 +58,7 @@ async function request(method, endpoint, body) {
     if (text) {
       try {
         payload = JSON.parse(text);
-      } catch (_err) {
+      } catch {
         payload = null;
       }
     }

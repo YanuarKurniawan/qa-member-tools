@@ -37,7 +37,7 @@ function listSnapshots(limit = 8) {
           lastSyncedAt: snapshot.lastSyncedAt,
           dirtyCount: Object.values(snapshot.tests || {}).filter(logic.isDirty).length,
         };
-      } catch (_err) {
+      } catch {
         return null;
       }
     })

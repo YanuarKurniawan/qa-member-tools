@@ -154,12 +154,19 @@ async function uploadRun(runId) {
     snapshot.tests[String(item.testId)].uploadError = null;
   }
 
+  const addError = (message) => {
+    if (!outcome.errors.includes(message)) outcome.errors.push(message);
+  };
+
   if (delta.results.length > 0) {
     if (snapshot.isCompleted || snapshot.isArchived) {
+      const message =
+        'Run is completed or archived, so TestRail rejects new results. Reopen the run in TestRail to upload them.';
       outcome.resultsFailed = delta.results.length;
-      outcome.errors.push(
-        'Run is completed or archived, so TestRail rejects new results. Reopen the run in TestRail to upload them.'
-      );
+      addError(message);
+      for (const result of delta.results) {
+        snapshot.tests[String(result.testId)].uploadError = message;
+      }
     } else {
       for (const batch of chunk(delta.results, RESULT_CHUNK)) {
         const payload = batch.map((result) => {
@@ -174,11 +181,11 @@ async function uploadRun(runId) {
             const test = snapshot.tests[String(result.testId)];
             if ('statusId' in result) {
               test.remote.statusId = result.statusId;
-              delete test.draft.statusId;
+              if (test.draft) delete test.draft.statusId;
             }
             if ('comment' in result) {
               test.remote.lastResultComment = result.comment;
-              delete test.draft.comment;
+              if (test.draft) delete test.draft.comment;
             }
             outcome.pushed += 1;
           }
@@ -187,7 +194,7 @@ async function uploadRun(runId) {
             snapshot.tests[String(result.testId)].uploadError = err.message;
             outcome.resultsFailed += 1;
           }
-          outcome.errors.push(err.message);
+          addError(err.message);
         }
       }
     }
@@ -202,17 +209,17 @@ async function uploadRun(runId) {
           await testrail.updateCase(edit.caseId, edit.fields);
           if ('title' in edit.fields) {
             test.caseTitle = edit.fields.title;
-            delete test.draft.title;
+            if (test.draft) delete test.draft.title;
           }
           if ('priority_id' in edit.fields) {
             test.remote.priorityId = edit.fields.priority_id;
-            delete test.draft.priorityId;
+            if (test.draft) delete test.draft.priorityId;
           }
           outcome.casesUpdated += 1;
         } catch (err) {
           test.uploadError = err.message;
           outcome.casesFailed += 1;
-          outcome.errors.push(err.message);
+          addError(err.message);
         }
       })
     );

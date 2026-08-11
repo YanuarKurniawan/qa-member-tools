@@ -13,6 +13,8 @@
     "cli:help": "node cli/index.js --help",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "format": "prettier --write ."
   },
   "keywords": [
@@ -40,6 +42,7 @@
   },
   "devDependencies": {
     "eslint": "^9.39.4",
-    "prettier": "^3.8.3"
+    "prettier": "^3.8.3",
+    "vitest": "^4.1.10"
   }
 }

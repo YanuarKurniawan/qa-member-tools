@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import logicModule from '../src/lib/testRunnerLogic.js';
 
-const { dirtyFields, isDirty, mergeSnapshot, computeDelta, toView } = logicModule;
+const { dirtyFields, isDirty, effectiveTitle, mergeSnapshot, computeDelta, toView } = logicModule;
 
 const VOCAB = {
   statuses: [
@@ -73,6 +73,10 @@ describe('dirtyFields', () => {
     expect(dirtyFields(storedTest({ draft: { statusId: 3 } }))).toEqual([]);
   });
 
+  it('ignores a priorityId draft equal to remote', () => {
+    expect(dirtyFields(storedTest({ draft: { priorityId: 2 } }))).toEqual([]);
+  });
+
   it('treats any non-empty comment as dirty', () => {
     expect(dirtyFields(storedTest({ draft: { comment: 'note' } }))).toEqual(['comment']);
   });
@@ -85,6 +89,16 @@ describe('dirtyFields', () => {
     const test = storedTest({ caseTitle: 'success login via email', draft: { title: 'success login via email' } });
     expect(dirtyFields(test)).toEqual([]);
     expect(isDirty(test)).toBe(false);
+  });
+});
+
+describe('effectiveTitle', () => {
+  it('prefers draft.title, then caseTitle, then remote.title', () => {
+    expect(effectiveTitle(storedTest({ caseTitle: 'case title', draft: { title: 'draft title' } }))).toBe(
+      'draft title'
+    );
+    expect(effectiveTitle(storedTest({ caseTitle: 'case title' }))).toBe('case title');
+    expect(effectiveTitle(storedTest())).toBe('success login');
   });
 });
 
@@ -150,6 +164,16 @@ describe('mergeSnapshot', () => {
     const { summary } = mergeSnapshot(existing, incoming);
     expect(summary.added).toBe(1);
   });
+
+  it('never flags a comment draft as a conflict when remote changes', () => {
+    const existing = snapshot([storedTest({ draft: { comment: 'note' } })]);
+    const incoming = fresh([
+      freshTest({ remote: { ...freshTest().remote, statusId: 5, priorityId: 4, title: 'changed title' } }),
+    ]);
+    const { snapshot: merged, summary } = mergeSnapshot(existing, incoming);
+    expect(summary.conflicts).toBe(0);
+    expect(merged.tests['1001'].conflicts.some((conflict) => conflict.field === 'comment')).toBe(false);
+  });
 });
 
 describe('computeDelta', () => {
@@ -175,6 +199,42 @@ describe('computeDelta', () => {
     const delta = computeDelta(snapshot([stored]));
     expect(delta.skippedUntested).toEqual([{ testId: 1001, caseId: 2001, title: 'success login' }]);
     expect(delta.results).toEqual([{ testId: 1001, caseId: 2001, comment: 'needs redo' }]);
+  });
+
+  it('skips Untested status discovered by vocab flag, not hardcoded id 3', () => {
+    const vocab = {
+      statuses: [
+        { id: 1, label: 'Passed', isUntested: false },
+        { id: 9, label: 'Untested', isUntested: true },
+        { id: 5, label: 'Failed', isUntested: false },
+      ],
+      priorities: VOCAB.priorities,
+    };
+    const stored = storedTest({
+      remote: { ...storedTest().remote, statusId: 1 },
+      draft: { statusId: 9 },
+    });
+    const delta = computeDelta({ ...snapshot([stored]), vocab });
+    expect(delta.skippedUntested).toEqual([{ testId: 1001, caseId: 2001, title: 'success login' }]);
+    expect(delta.results).toEqual([]);
+  });
+
+  it('falls back to status id 3 when vocab has no isUntested flag', () => {
+    const vocab = {
+      statuses: [
+        { id: 1, label: 'Passed', isUntested: false },
+        { id: 3, label: 'Untested', isUntested: false },
+        { id: 5, label: 'Failed', isUntested: false },
+      ],
+      priorities: VOCAB.priorities,
+    };
+    const stored = storedTest({
+      remote: { ...storedTest().remote, statusId: 1 },
+      draft: { statusId: 3 },
+    });
+    const delta = computeDelta({ ...snapshot([stored]), vocab });
+    expect(delta.skippedUntested).toEqual([{ testId: 1001, caseId: 2001, title: 'success login' }]);
+    expect(delta.results).toEqual([]);
   });
 
   it('groups title and priority into one case edit', () => {
@@ -209,5 +269,17 @@ describe('toView', () => {
     const view = toView(snapshot([storedTest({ caseTitle: 'renamed in case' })]));
     expect(view.tests[0].title).toBe('renamed in case');
     expect(view.tests[0].titleDivergedFromRun).toBe(true);
+  });
+
+  it('counts rows with conflicts', () => {
+    const view = toView(
+      snapshot([
+        storedTest({
+          conflicts: [{ field: 'statusId', mine: 1, theirs: 5, detectedAt: '2026-08-11T01:00:00.000Z' }],
+        }),
+        storedTest({ testId: 1002, caseId: 2002, order: 1 }),
+      ])
+    );
+    expect(view.conflictCount).toBe(1);
   });
 });

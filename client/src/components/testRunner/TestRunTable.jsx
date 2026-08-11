@@ -79,7 +79,7 @@ export default function TestRunTable({
   void readOnlyResults;
 
   return (
-    <div className="overflow-hidden rounded-xl border border-gray-200 bg-white">
+    <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
       <div className="overflow-x-auto">
         <table className="w-full text-left text-sm">
           <thead className="sticky top-0 z-10 bg-gray-50 text-xs uppercase text-gray-500">

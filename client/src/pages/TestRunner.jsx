@@ -1,11 +1,15 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import RunToolbar from '../components/testRunner/RunToolbar';
 import TestRunTable from '../components/testRunner/TestRunTable';
 
 const API = '/api/test-runs';
-const STORAGE_KEY = 'testRunner:lastRunId';
 
-async function json(url, options) {
+function isAbortError(err) {
+  return err?.name === 'AbortError';
+}
+
+async function json(url, options = {}) {
   const res = await fetch(url, options);
   const body = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(body.error || `Request failed (HTTP ${res.status})`);
@@ -20,8 +24,11 @@ function parseRunInput(input) {
 }
 
 export default function TestRunner() {
+  const { runId: runIdParam } = useParams();
+  const navigate = useNavigate();
+  const mountedRef = useRef(true);
+
   const [runInput, setRunInput] = useState('');
-  const [runId, setRunId] = useState(null);
   const [state, setState] = useState(null);
   const [recent, setRecent] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -34,70 +41,106 @@ export default function TestRunner() {
   const [activeTestId, setActiveTestId] = useState(null);
   const [focusedTestId, setFocusedTestId] = useState(null);
 
-  const refreshRecent = useCallback(async () => {
+  useEffect(() => {
+    mountedRef.current = true;
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
+
+  const refreshRecent = useCallback(async (signal) => {
     try {
-      const body = await json(API);
+      const body = await json(API, { signal });
+      if (!mountedRef.current) return;
       setRecent(body.runs || []);
-    } catch {
+    } catch (err) {
+      if (isAbortError(err)) return;
       // recent list is optional UI
     }
   }, []);
 
-  const syncRun = useCallback(async (id) => {
-    setSyncing(true);
-    setError(null);
-    setNotice(null);
-    try {
-      const body = await json(`${API}/${id}/sync`, { method: 'POST' });
-      const { summary, ...view } = body;
-      setState(view);
-      setRunId(id);
-      sessionStorage.setItem(STORAGE_KEY, String(id));
-      if (summary?.removedWithDrafts?.length) {
-        const titles = summary.removedWithDrafts.map((item) => item.title).join(', ');
-        setNotice(
-          `${summary.removedWithDrafts.length} test(s) you edited are no longer in this run: ${titles}`
-        );
+  const syncRun = useCallback(
+    async (id, signal) => {
+      setSyncing(true);
+      setError(null);
+      setNotice(null);
+      try {
+        const body = await json(`${API}/${id}/sync`, { method: 'POST', signal });
+        if (!mountedRef.current) return;
+        const { summary, ...view } = body;
+        setState(view);
+        if (summary?.removedWithDrafts?.length) {
+          const titles = summary.removedWithDrafts.map((item) => item.title).join(', ');
+          setNotice(
+            `${summary.removedWithDrafts.length} test(s) you edited are no longer in this run: ${titles}`
+          );
+        }
+        await refreshRecent(signal);
+      } catch (err) {
+        if (isAbortError(err) || !mountedRef.current) return;
+        setError(err.message);
+      } finally {
+        if (mountedRef.current) {
+          setSyncing(false);
+          setLoading(false);
+        }
       }
-      await refreshRecent();
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setSyncing(false);
-      setLoading(false);
-    }
-  }, [refreshRecent]);
+    },
+    [refreshRecent]
+  );
 
-  const openRun = useCallback(async (id) => {
-    setRunId(id);
-    setLoading(true);
-    setError(null);
-    setNotice(null);
-    try {
-      const res = await fetch(`${API}/${id}`);
-      const body = await res.json().catch(() => ({}));
-      if (res.status === 404) {
-        await syncRun(id);
-        return;
+  const openRun = useCallback(
+    async (id, signal) => {
+      setState((prev) => (prev?.run?.runId === id ? prev : null));
+      setLoading(true);
+      setError(null);
+      setNotice(null);
+      try {
+        const res = await fetch(`${API}/${id}`, { signal });
+        const body = await res.json().catch(() => ({}));
+        if (res.status === 404) {
+          await syncRun(id, signal);
+          return;
+        }
+        if (!res.ok) throw new Error(body.error || `Request failed (HTTP ${res.status})`);
+        if (!mountedRef.current) return;
+        setState(body);
+        await refreshRecent(signal);
+      } catch (err) {
+        if (isAbortError(err) || !mountedRef.current) return;
+        setError(err.message);
+      } finally {
+        if (mountedRef.current) setLoading(false);
       }
-      if (!res.ok) throw new Error(body.error || `Request failed (HTTP ${res.status})`);
-      setState(body);
-      sessionStorage.setItem(STORAGE_KEY, String(id));
-      await refreshRecent();
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  }, [syncRun, refreshRecent]);
+    },
+    [syncRun, refreshRecent]
+  );
 
   useEffect(() => {
-    refreshRecent();
-    const saved = sessionStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      openRun(Number(saved));
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    refreshRecent(signal);
+
+    if (!runIdParam) {
+      setState(null);
+      setLoading(false);
+      setError(null);
+      setNotice(null);
+      return () => controller.abort();
     }
-  }, [refreshRecent, openRun]);
+
+    const id = Number(runIdParam);
+    if (!Number.isFinite(id)) {
+      setState(null);
+      setError('Invalid run ID');
+      return () => controller.abort();
+    }
+
+    openRun(id, signal);
+
+    return () => controller.abort();
+  }, [runIdParam, openRun, refreshRecent]);
 
   const sortedTests = useMemo(() => {
     if (!state?.tests) return [];
@@ -127,7 +170,7 @@ export default function TestRunner() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const id = parseRunInput(runInput);
-    if (id) openRun(id);
+    if (id) navigate(`/test-runner/${id}`);
   };
 
   const parsedId = parseRunInput(runInput);
@@ -136,7 +179,11 @@ export default function TestRunner() {
   const onRowClick = () => {};
   const onUpload = () => {};
   const onSync = () => {
-    if (runId) syncRun(runId);
+    const id = runIdParam ? Number(runIdParam) : state?.run?.runId;
+    if (id) {
+      const controller = new AbortController();
+      syncRun(id, controller.signal);
+    }
   };
 
   return (
@@ -158,7 +205,7 @@ export default function TestRunner() {
         </div>
       )}
 
-      {!state && (
+      {!runIdParam && (
         <div className="mt-6 rounded-xl border border-gray-200 bg-white p-5">
           <form onSubmit={handleSubmit}>
             <label htmlFor="run-input" className="block text-sm font-medium text-gray-700">
@@ -189,7 +236,7 @@ export default function TestRunner() {
                 <button
                   key={run.runId}
                   type="button"
-                  onClick={() => openRun(run.runId)}
+                  onClick={() => navigate(`/test-runner/${run.runId}`)}
                   className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs text-gray-700 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                 >
                   {run.runId} · {run.runName}
@@ -203,7 +250,7 @@ export default function TestRunner() {
         </div>
       )}
 
-      {loading && !state && (
+      {runIdParam && loading && !state && (
         <div className="mt-8 flex h-32 items-center justify-center">
           <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-600 border-t-transparent" />
         </div>

@@ -53,6 +53,7 @@ export default function App() {
       <Route element={<Layout categories={toolCategories} />}>
         <Route path="/" element={<Dashboard categories={toolCategories} />} />
         <Route path="/test-runner" element={<TestRunner />} />
+        <Route path="/test-runner/:runId" element={<TestRunner />} />
         {toolCategories.map((cat) => (
           <Route
             key={cat.id}

@@ -29,7 +29,7 @@ export default function RunToolbar({
   onUpload,
 }) {
   return (
-    <div className="rounded-xl border border-gray-200 bg-white p-5">
+    <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
       <div>
         <a
           href={run.runUrl}

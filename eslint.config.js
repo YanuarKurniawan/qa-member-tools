@@ -30,6 +30,18 @@ module.exports = [
     },
   },
   {
+    files: ['tests/**/*.js'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'module',
+    },
+    rules: {
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'prefer-const': 'error',
+      'no-var': 'error',
+    },
+  },
+  {
     ignores: ['node_modules/**', 'client/**', 'server/public/**', 'src/tools/**'],
   },
 ];

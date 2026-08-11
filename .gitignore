@@ -21,6 +21,9 @@ server/uploads/
 *.xlsx
 *.xls
 
+# ─── Test runner snapshots (working state) ────
+server/data/testRuns/
+
 # ─── Archives ─────────────────────────────────
 *.zip
 *.tar.gz

@@ -172,6 +172,7 @@ export default function TestRunner() {
     setActiveTestId(null);
     setFocusedTestId(null);
     setShowShortcuts(false);
+    setUploadOutcome(null);
   }, [runIdParam]);
 
   useEffect(() => {
@@ -380,9 +381,9 @@ export default function TestRunner() {
         setError(err.message);
       }
     } finally {
-      if (mountedRef.current && runTokenRef.current === runToken) {
-        setUploading(false);
-      }
+      // Not gated on the run token: this flag disables the toolbar for whichever run is
+      // showing, so an upload that resolves after navigation must still release it.
+      if (mountedRef.current) setUploading(false);
     }
   }, [runIdParam]);
   const onSync = useCallback(() => {
@@ -574,7 +575,10 @@ export default function TestRunner() {
           {uploadOutcome && (() => {
             const { pushed, resultsFailed, casesUpdated, casesFailed, skippedUntested, errors } =
               uploadOutcome;
-            const success = resultsFailed === 0 && casesFailed === 0;
+            // Skipped rows are not failures, but the engineer's intent was not honored either,
+            // so they must not be reported under a green "all done" banner.
+            const success =
+              resultsFailed === 0 && casesFailed === 0 && skippedUntested.length === 0;
             return (
               <div
                 className={`relative rounded-lg border p-4 text-sm ${
@@ -591,28 +595,25 @@ export default function TestRunner() {
                 >
                   <X size={14} />
                 </button>
-                {success ? (
-                  <p className="flex items-center gap-2 pr-6">
-                    <CheckCircle2 size={16} className="shrink-0" />
+                <div className="space-y-1 pr-6">
+                  <p className="flex items-center gap-2">
+                    {success && <CheckCircle2 size={16} className="shrink-0" />}
                     Uploaded {pushed} result(s) and {casesUpdated} case update(s).
                   </p>
-                ) : (
-                  <div className="space-y-1 pr-6">
-                    {resultsFailed > 0 && <p>{resultsFailed} result(s) failed</p>}
-                    {casesFailed > 0 && <p>{casesFailed} case update(s) failed</p>}
-                    {skippedUntested.length > 0 && (
-                      <p>
-                        {skippedUntested.length} row(s) skipped because TestRail cannot set a test
-                        back to Untested
-                      </p>
-                    )}
-                    {(errors || []).slice(0, 3).map((msg) => (
-                      <p key={msg} className="font-mono text-xs">
-                        {msg}
-                      </p>
-                    ))}
-                  </div>
-                )}
+                  {resultsFailed > 0 && <p>{resultsFailed} result(s) failed</p>}
+                  {casesFailed > 0 && <p>{casesFailed} case update(s) failed</p>}
+                  {skippedUntested.length > 0 && (
+                    <p>
+                      {skippedUntested.length} row(s) skipped because TestRail cannot set a test
+                      back to Untested
+                    </p>
+                  )}
+                  {(errors || []).slice(0, 3).map((msg) => (
+                    <p key={msg} className="font-mono text-xs">
+                      {msg}
+                    </p>
+                  ))}
+                </div>
               </div>
             );
           })()}

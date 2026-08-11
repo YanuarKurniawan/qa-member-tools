@@ -29,6 +29,9 @@ export default function TestRunner() {
   const mountedRef = useRef(true);
   const requestGenRef = useRef(0);
   const abortRef = useRef(null);
+  const mutationGenRef = useRef(0);
+  const patchGenRef = useRef(0);
+  const savingCountRef = useRef(0);
 
   const [runInput, setRunInput] = useState('');
   const [state, setState] = useState(null);
@@ -42,6 +45,8 @@ export default function TestRunner() {
   const [query] = useState('');
   const [activeTestId, setActiveTestId] = useState(null);
   const [focusedTestId, setFocusedTestId] = useState(null);
+  const [saving, setSaving] = useState(false);
+  const [savedAt, setSavedAt] = useState(null);
 
   useEffect(() => {
     mountedRef.current = true;
@@ -87,6 +92,7 @@ export default function TestRunner() {
   const syncRun = useCallback(
     async (id, ctx) => {
       const { signal, isCurrent } = ctx;
+      const mutationAtStart = mutationGenRef.current;
       if (isCurrent()) {
         setSyncing(true);
         setError(null);
@@ -94,7 +100,7 @@ export default function TestRunner() {
       }
       try {
         const body = await json(`${API}/${id}/sync`, { method: 'POST', signal });
-        if (!isCurrent()) return;
+        if (!isCurrent() || mutationGenRef.current !== mutationAtStart) return;
         const { summary, ...view } = body;
         setState(view);
         if (summary?.removedWithDrafts?.length) {
@@ -117,6 +123,7 @@ export default function TestRunner() {
   const openRun = useCallback(
     async (id, ctx) => {
       const { signal, isCurrent } = ctx;
+      const mutationAtStart = mutationGenRef.current;
       if (isCurrent()) {
         setState((prev) => (prev?.run?.runId === id ? prev : null));
         setLoading(true);
@@ -131,7 +138,7 @@ export default function TestRunner() {
           return;
         }
         if (!res.ok) throw new Error(body.error || `Request failed (HTTP ${res.status})`);
-        if (!isCurrent()) return;
+        if (!isCurrent() || mutationGenRef.current !== mutationAtStart) return;
         setState(body);
         await refreshRecent(ctx);
       } catch (err) {
@@ -206,7 +213,37 @@ export default function TestRunner() {
 
   const parsedId = parseRunInput(runInput);
 
-  const onPatch = () => {};
+  const onPatch = useCallback(
+    async (testId, patch) => {
+      const id = Number(runIdParam);
+      if (!Number.isFinite(id)) return;
+
+      const patchGen = ++patchGenRef.current;
+      savingCountRef.current += 1;
+      setSaving(true);
+
+      try {
+        const next = await json(`${API}/${id}/tests/${testId}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(patch),
+        });
+        if (patchGen !== patchGenRef.current) return;
+        mutationGenRef.current += 1;
+        setState(next);
+        setSavedAt(Date.now());
+        setError(null);
+      } catch (err) {
+        if (patchGen === patchGenRef.current) setError(err.message);
+      } finally {
+        savingCountRef.current -= 1;
+        if (savingCountRef.current === 0 && patchGen === patchGenRef.current) {
+          setSaving(false);
+        }
+      }
+    },
+    [runIdParam]
+  );
   const onRowClick = () => {};
   const onUpload = () => {};
   const onSync = useCallback(() => {
@@ -287,17 +324,22 @@ export default function TestRunner() {
 
       {state && (
         <div className="mt-6 space-y-4">
-          <RunToolbar
-            run={state.run}
-            counts={state.counts}
-            vocab={state.vocab}
-            lastSyncedAt={state.lastSyncedAt}
-            dirtyCount={state.dirtyCount}
-            syncing={syncing}
-            uploading={uploading}
-            onSync={onSync}
-            onUpload={onUpload}
-          />
+          <div className="flex items-start justify-between gap-4">
+            <RunToolbar
+              run={state.run}
+              counts={state.counts}
+              vocab={state.vocab}
+              lastSyncedAt={state.lastSyncedAt}
+              dirtyCount={state.dirtyCount}
+              syncing={syncing}
+              uploading={uploading}
+              onSync={onSync}
+              onUpload={onUpload}
+            />
+            <p className="shrink-0 pt-5 text-xs text-gray-500" aria-live="polite">
+              {saving ? 'Saving…' : savedAt ? 'Saved' : ''}
+            </p>
+          </div>
 
           {(loading || syncing) && (
             <div className="flex items-center gap-2 text-sm text-gray-500">

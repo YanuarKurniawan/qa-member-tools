@@ -50,20 +50,28 @@ export default function TestRunner() {
     };
   }, []);
 
+  const resetTransientFlags = useCallback(() => {
+    if (!mountedRef.current) return;
+    setLoading(false);
+    setSyncing(false);
+  }, []);
+
   const beginRequest = useCallback(() => {
     abortRef.current?.abort();
     requestGenRef.current += 1;
+    resetTransientFlags();
     const generation = requestGenRef.current;
     const controller = new AbortController();
     abortRef.current = controller;
     const isCurrent = () => mountedRef.current && requestGenRef.current === generation;
     return { signal: controller.signal, isCurrent };
-  }, []);
+  }, [resetTransientFlags]);
 
   const invalidateRequest = useCallback(() => {
     abortRef.current?.abort();
     requestGenRef.current += 1;
-  }, []);
+    resetTransientFlags();
+  }, [resetTransientFlags]);
 
   const refreshRecent = useCallback(async ({ signal, isCurrent }) => {
     try {
@@ -100,10 +108,7 @@ export default function TestRunner() {
         if (isAbortError(err) || !isCurrent()) return;
         setError(err.message);
       } finally {
-        if (isCurrent()) {
-          setSyncing(false);
-          setLoading(false);
-        }
+        if (isCurrent()) setSyncing(false);
       }
     },
     [refreshRecent]

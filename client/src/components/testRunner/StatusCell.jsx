@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MoreHorizontal } from 'lucide-react';
 import { QUICK_STATUS_IDS, statusStyle, statusLabel } from './statusVocab';
 
 export default function StatusCell({ test, vocab, disabled, onPatch }) {
   const [open, setOpen] = useState(false);
+  const menuRef = useRef(null);
   const quick = (vocab?.statuses || []).filter((status) => QUICK_STATUS_IDS.includes(status.id));
   const rest = (vocab?.statuses || []).filter((status) => !QUICK_STATUS_IDS.includes(status.id));
   const isDraft = test.dirtyFields.includes('statusId');
@@ -12,6 +13,31 @@ export default function StatusCell({ test, vocab, disabled, onPatch }) {
     setOpen(false);
     if (statusId !== test.statusId) onPatch(test.testId, { statusId });
   };
+
+  useEffect(() => {
+    if (!open) return;
+
+    const onPointerDown = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    const onKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        event.stopPropagation();
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [open]);
 
   return (
     <div className="flex items-center gap-1" onClick={(event) => event.stopPropagation()}>
@@ -35,12 +61,13 @@ export default function StatusCell({ test, vocab, disabled, onPatch }) {
         );
       })}
 
-      <div className="relative">
+      <div className="relative" ref={menuRef}>
         <button
           type="button"
           disabled={disabled}
           onClick={() => setOpen((value) => !value)}
           aria-label="More statuses"
+          aria-expanded={open}
           className="rounded-md border border-gray-200 bg-white p-1 text-gray-400 hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
         >
           <MoreHorizontal size={14} />
@@ -52,7 +79,7 @@ export default function StatusCell({ test, vocab, disabled, onPatch }) {
                 key={status.id}
                 type="button"
                 onClick={() => set(status.id)}
-                className="block w-full px-3 py-1.5 text-left text-xs text-gray-700 hover:bg-gray-50"
+                className="block w-full px-3 py-1.5 text-left text-xs text-gray-700 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
               >
                 {status.label}
               </button>
@@ -64,7 +91,7 @@ export default function StatusCell({ test, vocab, disabled, onPatch }) {
                   setOpen(false);
                   onPatch(test.testId, { statusId: null });
                 }}
-                className="block w-full border-t border-gray-100 px-3 py-1.5 text-left text-xs text-gray-500 hover:bg-gray-50"
+                className="block w-full border-t border-gray-100 px-3 py-1.5 text-left text-xs text-gray-500 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
               >
                 Clear draft status
               </button>

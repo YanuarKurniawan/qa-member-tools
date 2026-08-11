@@ -27,11 +27,12 @@ export default function TestRunner() {
   const { runId: runIdParam } = useParams();
   const navigate = useNavigate();
   const mountedRef = useRef(true);
+  const runTokenRef = useRef(0);
   const requestGenRef = useRef(0);
   const abortRef = useRef(null);
   const mutationGenRef = useRef(0);
-  const patchGenRef = useRef(0);
-  const savingCountRef = useRef(0);
+  const patchQueueRef = useRef(Promise.resolve());
+  const pendingPatchesRef = useRef(0);
 
   const [runInput, setRunInput] = useState('');
   const [state, setState] = useState(null);
@@ -100,7 +101,9 @@ export default function TestRunner() {
       }
       try {
         const body = await json(`${API}/${id}/sync`, { method: 'POST', signal });
+        const runToken = runTokenRef.current;
         if (!isCurrent() || mutationGenRef.current !== mutationAtStart) return;
+        if (runTokenRef.current !== runToken) return;
         const { summary, ...view } = body;
         setState(view);
         if (summary?.removedWithDrafts?.length) {
@@ -138,7 +141,9 @@ export default function TestRunner() {
           return;
         }
         if (!res.ok) throw new Error(body.error || `Request failed (HTTP ${res.status})`);
+        const runToken = runTokenRef.current;
         if (!isCurrent() || mutationGenRef.current !== mutationAtStart) return;
+        if (runTokenRef.current !== runToken) return;
         setState(body);
         await refreshRecent(ctx);
       } catch (err) {
@@ -152,6 +157,7 @@ export default function TestRunner() {
   );
 
   useEffect(() => {
+    runTokenRef.current += 1;
     const ctx = beginRequest();
     refreshRecent(ctx);
 
@@ -162,7 +168,10 @@ export default function TestRunner() {
         setError(null);
         setNotice(null);
       }
-      return invalidateRequest;
+      return () => {
+        runTokenRef.current += 1;
+        invalidateRequest();
+      };
     }
 
     const id = Number(runIdParam);
@@ -172,12 +181,18 @@ export default function TestRunner() {
         setError('Invalid run ID');
         setLoading(false);
       }
-      return invalidateRequest;
+      return () => {
+        runTokenRef.current += 1;
+        invalidateRequest();
+      };
     }
 
     openRun(id, ctx);
 
-    return invalidateRequest;
+    return () => {
+      runTokenRef.current += 1;
+      invalidateRequest();
+    };
   }, [runIdParam, openRun, refreshRecent, beginRequest, invalidateRequest]);
 
   const sortedTests = useMemo(() => {
@@ -214,33 +229,39 @@ export default function TestRunner() {
   const parsedId = parseRunInput(runInput);
 
   const onPatch = useCallback(
-    async (testId, patch) => {
+    (testId, patch) => {
       const id = Number(runIdParam);
       if (!Number.isFinite(id)) return;
 
-      const patchGen = ++patchGenRef.current;
-      savingCountRef.current += 1;
+      const runToken = runTokenRef.current;
+      pendingPatchesRef.current += 1;
       setSaving(true);
 
-      try {
-        const next = await json(`${API}/${id}/tests/${testId}`, {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(patch),
-        });
-        if (patchGen !== patchGenRef.current) return;
-        mutationGenRef.current += 1;
-        setState(next);
-        setSavedAt(Date.now());
-        setError(null);
-      } catch (err) {
-        if (patchGen === patchGenRef.current) setError(err.message);
-      } finally {
-        savingCountRef.current -= 1;
-        if (savingCountRef.current === 0 && patchGen === patchGenRef.current) {
-          setSaving(false);
-        }
-      }
+      patchQueueRef.current = patchQueueRef.current
+        .then(async () => {
+          try {
+            const next = await json(`${API}/${id}/tests/${testId}`, {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(patch),
+            });
+            if (runTokenRef.current !== runToken || !mountedRef.current) return;
+            mutationGenRef.current += 1;
+            setState(next);
+            setSavedAt(Date.now());
+            setError(null);
+          } catch (err) {
+            if (runTokenRef.current === runToken && mountedRef.current) {
+              setError(err.message);
+            }
+          } finally {
+            pendingPatchesRef.current -= 1;
+            if (pendingPatchesRef.current === 0 && mountedRef.current) {
+              setSaving(false);
+            }
+          }
+        })
+        .catch(() => {});
     },
     [runIdParam]
   );

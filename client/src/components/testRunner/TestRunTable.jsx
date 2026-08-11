@@ -3,9 +3,8 @@ import { ChevronUp, ChevronDown, Info, Pencil } from 'lucide-react';
 import { statusStyle, statusLabel, priorityLabel } from './statusVocab';
 import StatusCell from './StatusCell';
 
-export function Highlight({ text, query }) {
-  if (!query || !text) return text || '';
-  const needle = query.toLowerCase();
+export function Highlight({ text, needle }) {
+  if (!needle || !text) return text || '';
   const haystack = text.toLowerCase();
   const parts = [];
   let cursor = 0;
@@ -18,10 +17,10 @@ export function Highlight({ text, query }) {
     if (found > cursor) parts.push(text.slice(cursor, found));
     parts.push(
       <mark key={found} className="rounded bg-amber-100 px-0.5 text-amber-900">
-        {text.slice(found, found + query.length)}
+        {text.slice(found, found + needle.length)}
       </mark>
     );
-    cursor = found + query.length;
+    cursor = found + needle.length;
   }
   return <>{parts}</>;
 }
@@ -76,7 +75,7 @@ export default function TestRunTable({
   vocab,
   sort,
   onSortChange,
-  query,
+  searchNeedle,
   activeTestId,
   focusedTestId,
   onRowClick,
@@ -149,11 +148,16 @@ export default function TestRunTable({
   return (
     <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
       <div className="overflow-x-auto">
-        <table className="w-full text-left text-sm">
+        <table className="w-full min-w-[900px] text-left text-sm">
           <thead className="sticky top-0 z-10 bg-gray-50 text-xs uppercase text-gray-500">
             <tr>
               {SORT_COLUMNS.map(({ key, label }) => (
-                <th key={key} className="whitespace-nowrap px-4 py-2.5 font-medium">
+                <th
+                  key={key}
+                  className={`px-4 py-2.5 font-medium ${
+                    key === 'title' ? 'w-full max-w-0' : 'w-[1%] whitespace-nowrap'
+                  }`}
+                >
                   <button
                     type="button"
                     onClick={() => onSortChange(key)}
@@ -169,7 +173,7 @@ export default function TestRunTable({
                   </button>
                 </th>
               ))}
-              <th className="whitespace-nowrap px-4 py-2.5 font-medium">Comments</th>
+              <th className="w-[1%] whitespace-nowrap px-4 py-2.5 font-medium">Comments</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -186,7 +190,7 @@ export default function TestRunTable({
                 className={rowClassName(test, activeTestId, focusedTestId)}
                 onClick={() => onRowClick(test.testId)}
               >
-                <td className="whitespace-nowrap px-4 py-2.5">
+                <td className="w-[1%] whitespace-nowrap px-4 py-2.5">
                   <a
                     href={`https://tiket.testrail.com/index.php?/cases/view/${test.caseId}`}
                     target="_blank"
@@ -197,7 +201,7 @@ export default function TestRunTable({
                     C{test.caseId}
                   </a>
                 </td>
-                <td className="px-4 py-2.5 text-gray-800">
+                <td className="w-full max-w-0 whitespace-nowrap px-4 py-2.5 text-gray-800">
                   {editingId === test.testId ? (
                     <input
                       type="text"
@@ -217,7 +221,7 @@ export default function TestRunTable({
                       className="inline-flex items-center gap-1"
                       onClick={(e) => startTitleEdit(test, e)}
                     >
-                      <Highlight text={test.title} query={query} />
+                      <Highlight text={test.title} needle={searchNeedle} />
                       {test.titleDivergedFromRun && (
                         <Info
                           size={12}
@@ -233,7 +237,7 @@ export default function TestRunTable({
                   )}
                 </td>
                 <td
-                  className={`whitespace-nowrap px-4 py-2.5 ${
+                  className={`w-[1%] whitespace-nowrap px-4 py-2.5 ${
                     test.priorityId === 3 || test.priorityId === 4
                       ? 'font-medium text-gray-900'
                       : 'text-gray-700'
@@ -259,7 +263,7 @@ export default function TestRunTable({
                     )}
                   </span>
                 </td>
-                <td className="whitespace-nowrap px-4 py-2.5">
+                <td className="w-[1%] whitespace-nowrap px-4 py-2.5">
                   <StatusCell
                     test={test}
                     vocab={vocab}
@@ -267,10 +271,10 @@ export default function TestRunTable({
                     onPatch={onPatch}
                   />
                 </td>
-                <td className="whitespace-nowrap px-4 py-2.5">
+                <td className="w-[1%] whitespace-nowrap px-4 py-2.5">
                   <StatusPill statusId={test.remoteStatusId} vocab={vocab} muted />
                 </td>
-                <td className="px-4 py-2.5" onClick={(e) => e.stopPropagation()}>
+                <td className="w-[1%] whitespace-nowrap px-4 py-2.5" onClick={(e) => e.stopPropagation()}>
                   <span className="inline-flex w-full items-start gap-1">
                     <textarea
                       rows={commentExpanded[test.testId] ? 3 : 1}
@@ -299,7 +303,7 @@ export default function TestRunTable({
                           e.target.blur();
                         }
                       }}
-                      className="w-full resize-none rounded-md border border-gray-200 px-2 py-1 text-xs text-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                      className="w-32 resize-none rounded-md border border-gray-200 px-2 py-1 text-xs text-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                     />
                     {test.dirtyFields.includes('comment') && (
                       <DirtyDot title="Unsaved comment" />

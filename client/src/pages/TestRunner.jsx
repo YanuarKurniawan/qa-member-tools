@@ -202,6 +202,8 @@ export default function TestRunner() {
     };
   }, [runIdParam, openRun, refreshRecent, beginRequest, invalidateRequest]);
 
+  const searchNeedle = useMemo(() => query.trim().toLowerCase(), [query]);
+
   const sortedTests = useMemo(() => {
     if (!state?.tests) return [];
     const tests = [...state.tests];
@@ -220,16 +222,15 @@ export default function TestRunner() {
   }, [state?.tests, sort]);
 
   const visibleTests = useMemo(() => {
-    const needle = query.trim().toLowerCase();
     return sortedTests.filter((test) => {
-      if (needle && !test.title.toLowerCase().includes(needle)) return false;
+      if (searchNeedle && !test.title.toLowerCase().includes(searchNeedle)) return false;
       if (statusFilter.size > 0 && !statusFilter.has(test.statusId)) return false;
       if (priorityFilter.size > 0 && !priorityFilter.has(test.priorityId)) return false;
       if (onlyChanged && test.dirtyFields.length === 0) return false;
       if (onlyConflicts && test.conflicts.length === 0) return false;
       return true;
     });
-  }, [sortedTests, query, statusFilter, priorityFilter, onlyChanged, onlyConflicts]);
+  }, [sortedTests, searchNeedle, statusFilter, priorityFilter, onlyChanged, onlyConflicts]);
 
   const toggleStatusFilter = (id) => {
     setStatusFilter((prev) => {
@@ -415,7 +416,7 @@ export default function TestRunner() {
               />
               <input
                 ref={searchRef}
-                type="search"
+                type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search test name…"
@@ -508,7 +509,7 @@ export default function TestRunner() {
             vocab={state.vocab}
             sort={sort}
             onSortChange={handleSortChange}
-            query={query}
+            searchNeedle={searchNeedle}
             activeTestId={activeTestId}
             focusedTestId={focusedTestId}
             onRowClick={onRowClick}

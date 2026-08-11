@@ -19,6 +19,10 @@ async function json(url, options = {}) {
   return body;
 }
 
+function scrollRowIntoView(testId) {
+  document.getElementById(`test-row-${testId}`)?.scrollIntoView({ block: 'nearest' });
+}
+
 function parseRunInput(input) {
   const text = String(input || '').trim();
   const fromUrl = text.match(/\/runs\/view\/(\d+)/);
@@ -345,6 +349,39 @@ export default function TestRunner() {
     },
     [runIdParam]
   );
+  // Setting a status moves on to the next case, the way you actually work through a run. The
+  // next case is read from the list as it looks right now, because the status being set can
+  // drop this row out of a filtered list a moment later.
+  const setStatus = useCallback(
+    (testId, statusId) => {
+      const index = visibleTests.findIndex((test) => test.testId === testId);
+      const test = index === -1 ? state?.tests?.find((t) => t.testId === testId) : visibleTests[index];
+      if (!test) return;
+
+      const clearing = statusId === null;
+      const changed = clearing ? test.dirtyFields.includes('statusId') : test.statusId !== statusId;
+      if (changed) onPatch(testId, { statusId });
+
+      // A row outside the visible list has no neighbours to advance through.
+      if (index === -1) return;
+
+      // A status filter is the only filter a status change can push a row out of. When it
+      // does, the rows below slide up, so at the end of the list we step back to stay on a
+      // row that still exists rather than pointing at a gap.
+      const effective = clearing ? test.remoteStatusId : statusId;
+      const dropped = statusFilter.size > 0 && !statusFilter.has(effective);
+      const next = visibleTests[index + 1] ?? (dropped ? visibleTests[index - 1] : test);
+      const nextId = next?.testId ?? null;
+
+      setFocusedTestId(nextId);
+      // The panel is where you are, so it comes along; it stays put if it was showing a
+      // different case, and closes when a filter just consumed the last row.
+      setActiveTestId((current) => (current === testId ? nextId : current));
+      if (nextId) scrollRowIntoView(nextId);
+    },
+    [visibleTests, state?.tests, statusFilter, onPatch]
+  );
+
   const onRowClick = useCallback((testId) => {
     setActiveTestId((prev) => {
       if (prev === testId) {
@@ -438,19 +475,23 @@ export default function TestRunner() {
       if (visibleTests.length === 0) return;
       const index = visibleTests.findIndex((test) => test.testId === focusedTestId);
 
+      // An open panel tracks the focused row so the details on screen always describe the
+      // case you are standing on.
+      const moveTo = (test) => {
+        setFocusedTestId(test.testId);
+        setActiveTestId((current) => (current == null ? current : test.testId));
+        scrollRowIntoView(test.testId);
+      };
+
       if (event.key === 'j' || event.key === 'ArrowDown') {
         event.preventDefault();
-        const next = visibleTests[Math.min(index + 1, visibleTests.length - 1)] || visibleTests[0];
-        setFocusedTestId(next.testId);
-        document.getElementById(`test-row-${next.testId}`)?.scrollIntoView({ block: 'nearest' });
+        moveTo(visibleTests[Math.min(index + 1, visibleTests.length - 1)] || visibleTests[0]);
         return;
       }
 
       if (event.key === 'k' || event.key === 'ArrowUp') {
         event.preventDefault();
-        const prev = visibleTests[Math.max(index - 1, 0)] || visibleTests[0];
-        setFocusedTestId(prev.testId);
-        document.getElementById(`test-row-${prev.testId}`)?.scrollIntoView({ block: 'nearest' });
+        moveTo(visibleTests[Math.max(index - 1, 0)] || visibleTests[0]);
         return;
       }
 
@@ -463,14 +504,13 @@ export default function TestRunner() {
       const statusId = SHORTCUT_TO_STATUS[event.key.toLowerCase()];
       if (statusId && focusedTestId && !readOnlyResults) {
         event.preventDefault();
-        const focused = visibleTests.find((test) => test.testId === focusedTestId);
-        if (focused && focused.statusId !== statusId) onPatch(focusedTestId, { statusId });
+        setStatus(focusedTestId, statusId);
       }
     };
 
     document.addEventListener('keydown', onKeyDown);
     return () => document.removeEventListener('keydown', onKeyDown);
-  }, [visibleTests, focusedTestId, readOnlyResults, onPatch, showShortcuts]);
+  }, [visibleTests, focusedTestId, readOnlyResults, setStatus, showShortcuts]);
 
   const kbdClass =
     'rounded border border-gray-300 bg-gray-50 px-1 text-[10px] font-medium text-gray-600';
@@ -724,7 +764,7 @@ export default function TestRunner() {
           <p className="text-xs text-gray-500">
             <kbd className={kbdClass}>j</kbd> / <kbd className={kbdClass}>k</kbd> move ·{' '}
             <kbd className={kbdClass}>p</kbd> <kbd className={kbdClass}>f</kbd>{' '}
-            <kbd className={kbdClass}>b</kbd> <kbd className={kbdClass}>r</kbd> set status ·{' '}
+            <kbd className={kbdClass}>b</kbd> <kbd className={kbdClass}>r</kbd> set status + next ·{' '}
             <kbd className={kbdClass}>Enter</kbd> details · <kbd className={kbdClass}>/</kbd>{' '}
             search · <kbd className={kbdClass}>?</kbd> shortcuts
           </p>
@@ -748,10 +788,10 @@ export default function TestRunner() {
                   {[
                     ['Move down', 'j / ↓'],
                     ['Move up', 'k / ↑'],
-                    ['Set Passed', 'p'],
-                    ['Set Failed', 'f'],
-                    ['Set Blocked', 'b'],
-                    ['Set Retest', 'r'],
+                    ['Set Passed, go to next', 'p'],
+                    ['Set Failed, go to next', 'f'],
+                    ['Set Blocked, go to next', 'b'],
+                    ['Set Retest, go to next', 'r'],
                     ['Open / close details', 'Enter'],
                     ['Focus search', '/'],
                     ['Show shortcuts', '?'],
@@ -796,6 +836,7 @@ export default function TestRunner() {
                 focusedTestId={focusedTestId}
                 onRowClick={onRowClick}
                 onPatch={onPatch}
+                onSetStatus={setStatus}
                 readOnlyResults={readOnlyResults}
               />
             </div>
@@ -808,6 +849,7 @@ export default function TestRunner() {
                 disabled={state.run.isCompleted || state.run.isArchived}
                 onClose={closeDrawer}
                 onPatch={onPatch}
+                onSetStatus={setStatus}
               />
             )}
           </div>

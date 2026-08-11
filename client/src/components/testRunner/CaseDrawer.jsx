@@ -49,6 +49,7 @@ export default function CaseDrawer({
   disabled,
   onClose,
   onPatch,
+  onSetStatus,
 }) {
   const [commentLocal, setCommentLocal] = useState('');
   const [commentEditing, setCommentEditing] = useState(false);
@@ -162,7 +163,7 @@ export default function CaseDrawer({
                 test={test}
                 vocab={vocab}
                 disabled={disabled}
-                onPatch={onPatch}
+                onSetStatus={onSetStatus}
               />
               <textarea
                 rows={4}

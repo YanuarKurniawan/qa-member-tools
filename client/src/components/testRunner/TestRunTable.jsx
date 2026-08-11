@@ -123,6 +123,7 @@ export default function TestRunTable({
   focusedTestId,
   onRowClick,
   onPatch,
+  onSetStatus,
   readOnlyResults,
 }) {
   const [editingId, setEditingId] = useState(null);
@@ -341,7 +342,7 @@ export default function TestRunTable({
                     test={test}
                     vocab={vocab}
                     disabled={readOnlyResults}
-                    onPatch={onPatch}
+                    onSetStatus={onSetStatus}
                   />
                   {conflictForField(test, 'statusId') && (
                     <ConflictLine

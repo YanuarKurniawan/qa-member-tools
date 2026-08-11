@@ -324,13 +324,15 @@ Web UI page for executing a TestRail run from one keyboard-driven table — draf
 | Keys | Action |
 |------|--------|
 | `j` / `k` (or ↓ / ↑) | Move focused row |
-| `p` / `f` / `b` / `r` | Set Passed / Failed / Blocked / Retest on focused row |
+| `p` / `f` / `b` / `r` | Set Passed / Failed / Blocked / Retest on focused row, then move to the next case |
 | `Enter` | Open case detail drawer |
 | `/` | Focus search |
 | `?` | Show shortcut overlay |
 | `Escape` | Close drawer or overlay |
 
 Shortcuts are suppressed while a text input has focus.
+
+**Advancing after a status:** setting a status (by shortcut, by the inline buttons, or from the drawer) moves to the next case, so a run can be executed straight down the list. The open drawer follows the focused row, including when moving with `j` / `k`, so the details on screen always match the row you are on. When a status filter is active the row leaves the list as soon as it is set, and the case that slides up into its place becomes the next one; passing the last remaining row empties the list and closes the drawer.
 
 ---
 

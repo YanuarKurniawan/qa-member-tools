@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { MoreHorizontal } from 'lucide-react';
 import { QUICK_STATUS_IDS, statusStyle, statusLabel } from './statusVocab';
 
-export default function StatusCell({ test, vocab, disabled, onPatch }) {
+export default function StatusCell({ test, vocab, disabled, onSetStatus }) {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null);
   const quick = (vocab?.statuses || []).filter((status) => QUICK_STATUS_IDS.includes(status.id));
@@ -11,7 +11,7 @@ export default function StatusCell({ test, vocab, disabled, onPatch }) {
 
   const set = (statusId) => {
     setOpen(false);
-    if (statusId !== test.statusId) onPatch(test.testId, { statusId });
+    onSetStatus(test.testId, statusId);
   };
 
   useEffect(() => {
@@ -87,10 +87,7 @@ export default function StatusCell({ test, vocab, disabled, onPatch }) {
             {isDraft && (
               <button
                 type="button"
-                onClick={() => {
-                  setOpen(false);
-                  onPatch(test.testId, { statusId: null });
-                }}
+                onClick={() => set(null)}
                 className="block w-full border-t border-gray-100 px-3 py-1.5 text-left text-xs text-gray-500 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
               >
                 Clear draft status

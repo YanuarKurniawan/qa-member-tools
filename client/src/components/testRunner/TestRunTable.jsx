@@ -146,23 +146,17 @@ export default function TestRunTable({
   };
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-white shadow-sm">
-      <table className="w-full min-w-[960px] table-fixed text-left text-sm">
-          <colgroup>
-            <col className="w-[1%]" />
-            <col />
-            <col className="w-[1%]" />
-            <col className="w-[1%]" />
-            <col className="w-[1%]" />
-            <col className="w-[1%]" />
-          </colgroup>
+    <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+      {/* Bounded height so the header can stick to this container while rows scroll inside it. */}
+      <div className="max-h-[70vh] overflow-auto">
+        <table className="w-full text-left text-sm">
           <thead className="sticky top-0 z-10 bg-gray-50 text-xs uppercase text-gray-500">
             <tr>
               {SORT_COLUMNS.map(({ key, label }) => (
                 <th
                   key={key}
                   className={`px-4 py-2.5 font-medium ${
-                    key === 'title' ? 'w-full max-w-0' : 'w-[1%] whitespace-nowrap'
+                    key === 'title' ? 'w-full min-w-[20rem]' : 'whitespace-nowrap'
                   }`}
                 >
                   <button
@@ -180,7 +174,7 @@ export default function TestRunTable({
                   </button>
                 </th>
               ))}
-              <th className="w-[1%] whitespace-nowrap px-4 py-2.5 font-medium">Comments</th>
+              <th className="whitespace-nowrap px-4 py-2.5 font-medium">Comments</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
@@ -197,7 +191,7 @@ export default function TestRunTable({
                 className={rowClassName(test, activeTestId, focusedTestId)}
                 onClick={() => onRowClick(test.testId)}
               >
-                <td className="w-[1%] whitespace-nowrap px-4 py-2.5">
+                <td className="whitespace-nowrap px-4 py-2.5">
                   <a
                     href={`https://tiket.testrail.com/index.php?/cases/view/${test.caseId}`}
                     target="_blank"
@@ -208,7 +202,7 @@ export default function TestRunTable({
                     C{test.caseId}
                   </a>
                 </td>
-                <td className="w-full max-w-0 break-words px-4 py-2.5 text-gray-800">
+                <td className="w-full min-w-[20rem] break-words px-4 py-2.5 text-gray-800">
                   {editingId === test.testId ? (
                     <input
                       type="text"
@@ -247,7 +241,7 @@ export default function TestRunTable({
                   )}
                 </td>
                 <td
-                  className={`w-[1%] whitespace-nowrap px-4 py-2.5 ${
+                  className={`whitespace-nowrap px-4 py-2.5 ${
                     test.priorityId === 3 || test.priorityId === 4
                       ? 'font-medium text-gray-900'
                       : 'text-gray-700'
@@ -273,7 +267,7 @@ export default function TestRunTable({
                     )}
                   </span>
                 </td>
-                <td className="w-[1%] whitespace-nowrap px-4 py-2.5">
+                <td className="whitespace-nowrap px-4 py-2.5">
                   <StatusCell
                     test={test}
                     vocab={vocab}
@@ -281,10 +275,10 @@ export default function TestRunTable({
                     onPatch={onPatch}
                   />
                 </td>
-                <td className="w-[1%] whitespace-nowrap px-4 py-2.5">
+                <td className="whitespace-nowrap px-4 py-2.5">
                   <StatusPill statusId={test.remoteStatusId} vocab={vocab} muted />
                 </td>
-                <td className="w-[1%] whitespace-nowrap px-4 py-2.5" onClick={(e) => e.stopPropagation()}>
+                <td className="whitespace-nowrap px-4 py-2.5" onClick={(e) => e.stopPropagation()}>
                   <span className="inline-flex w-full items-start gap-1">
                     <textarea
                       rows={commentExpanded[test.testId] ? 3 : 1}
@@ -325,6 +319,7 @@ export default function TestRunTable({
             )}
           </tbody>
         </table>
+      </div>
     </div>
   );
 }

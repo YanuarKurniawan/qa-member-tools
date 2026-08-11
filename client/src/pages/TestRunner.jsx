@@ -94,6 +94,7 @@ export default function TestRunner() {
     async (id, ctx) => {
       const { signal, isCurrent } = ctx;
       const mutationAtStart = mutationGenRef.current;
+      const runToken = runTokenRef.current;
       if (isCurrent()) {
         setSyncing(true);
         setError(null);
@@ -101,7 +102,6 @@ export default function TestRunner() {
       }
       try {
         const body = await json(`${API}/${id}/sync`, { method: 'POST', signal });
-        const runToken = runTokenRef.current;
         if (!isCurrent() || mutationGenRef.current !== mutationAtStart) return;
         if (runTokenRef.current !== runToken) return;
         const { summary, ...view } = body;
@@ -127,6 +127,7 @@ export default function TestRunner() {
     async (id, ctx) => {
       const { signal, isCurrent } = ctx;
       const mutationAtStart = mutationGenRef.current;
+      const runToken = runTokenRef.current;
       if (isCurrent()) {
         setState((prev) => (prev?.run?.runId === id ? prev : null));
         setLoading(true);
@@ -141,7 +142,6 @@ export default function TestRunner() {
           return;
         }
         if (!res.ok) throw new Error(body.error || `Request failed (HTTP ${res.status})`);
-        const runToken = runTokenRef.current;
         if (!isCurrent() || mutationGenRef.current !== mutationAtStart) return;
         if (runTokenRef.current !== runToken) return;
         setState(body);

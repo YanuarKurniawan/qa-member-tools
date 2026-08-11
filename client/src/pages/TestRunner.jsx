@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Search, X } from 'lucide-react';
 import RunToolbar from '../components/testRunner/RunToolbar';
 import TestRunTable from '../components/testRunner/TestRunTable';
+import CaseDrawer from '../components/testRunner/CaseDrawer';
 import { statusStyle, priorityLabel } from '../components/testRunner/statusVocab';
 
 const API = '/api/test-runs';
@@ -53,6 +54,8 @@ export default function TestRunner() {
   const searchRef = useRef(null);
   const [activeTestId, setActiveTestId] = useState(null);
   const [focusedTestId, setFocusedTestId] = useState(null);
+  const [detail, setDetail] = useState(null);
+  const [detailLoading, setDetailLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [savedAt, setSavedAt] = useState(null);
 
@@ -202,6 +205,30 @@ export default function TestRunner() {
     };
   }, [runIdParam, openRun, refreshRecent, beginRequest, invalidateRequest]);
 
+  const runId = Number(runIdParam);
+
+  useEffect(() => {
+    if (!activeTestId || !Number.isFinite(runId)) {
+      setDetail(null);
+      return;
+    }
+    let cancelled = false;
+    setDetailLoading(true);
+    json(`${API}/${runId}/tests/${activeTestId}`)
+      .then((body) => {
+        if (!cancelled) setDetail(body);
+      })
+      .catch(() => {
+        if (!cancelled) setDetail(null);
+      })
+      .finally(() => {
+        if (!cancelled) setDetailLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [runId, activeTestId]);
+
   const searchNeedle = useMemo(() => query.trim().toLowerCase(), [query]);
 
   const sortedTests = useMemo(() => {
@@ -231,6 +258,11 @@ export default function TestRunner() {
       return true;
     });
   }, [sortedTests, searchNeedle, statusFilter, priorityFilter, onlyChanged, onlyConflicts]);
+
+  const activeTest = useMemo(() => {
+    if (!activeTestId || !state?.tests) return null;
+    return state.tests.find((t) => t.testId === activeTestId) ?? null;
+  }, [activeTestId, state?.tests]);
 
   const toggleStatusFilter = (id) => {
     setStatusFilter((prev) => {
@@ -303,7 +335,22 @@ export default function TestRunner() {
     },
     [runIdParam]
   );
-  const onRowClick = () => {};
+  const onRowClick = useCallback((testId) => {
+    setActiveTestId((prev) => {
+      if (prev === testId) {
+        setFocusedTestId(null);
+        return null;
+      }
+      setFocusedTestId(testId);
+      return testId;
+    });
+  }, []);
+
+  const closeDrawer = useCallback(() => {
+    setActiveTestId(null);
+    setFocusedTestId(null);
+  }, []);
+
   const onUpload = () => {};
   const onSync = useCallback(() => {
     const id = Number(runIdParam);
@@ -504,18 +551,34 @@ export default function TestRunner() {
             </span>
           </div>
 
-          <TestRunTable
-            tests={visibleTests}
-            vocab={state.vocab}
-            sort={sort}
-            onSortChange={handleSortChange}
-            searchNeedle={searchNeedle}
-            activeTestId={activeTestId}
-            focusedTestId={focusedTestId}
-            onRowClick={onRowClick}
-            onPatch={onPatch}
-            readOnlyResults={state.run.isCompleted || state.run.isArchived}
-          />
+          <div className="flex gap-4">
+            <div className="min-w-0 flex-1">
+              <TestRunTable
+                tests={visibleTests}
+                vocab={state.vocab}
+                sort={sort}
+                onSortChange={handleSortChange}
+                searchNeedle={searchNeedle}
+                activeTestId={activeTestId}
+                focusedTestId={focusedTestId}
+                onRowClick={onRowClick}
+                onPatch={onPatch}
+                readOnlyResults={state.run.isCompleted || state.run.isArchived}
+              />
+            </div>
+            {activeTest && (
+              <CaseDrawer
+                runId={runId}
+                test={activeTest}
+                vocab={state.vocab}
+                detail={detail}
+                loading={detailLoading}
+                disabled={state.run.isCompleted || state.run.isArchived}
+                onClose={closeDrawer}
+                onPatch={onPatch}
+              />
+            )}
+          </div>
         </div>
       )}
     </div>

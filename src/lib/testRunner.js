@@ -136,6 +136,26 @@ function saveDraft(runId, testId, patch) {
   return logic.toView(snapshot);
 }
 
+// Applies an upload journal to whatever the snapshot looks like now. A draft key is
+// only dropped when it still holds the value we actually pushed, so an edit the
+// engineer made while the upload was in flight survives instead of being discarded.
+function applyUploadJournal(snapshot, journal, observedDrafts) {
+  for (const [key, entry] of journal) {
+    const test = snapshot.tests[key];
+    if (!test) continue;
+
+    Object.assign(test.remote, entry.remote);
+    if (entry.caseTitle !== undefined) test.caseTitle = entry.caseTitle;
+    test.uploadError = entry.uploadError;
+
+    const draft = test.draft || {};
+    const observed = observedDrafts.get(key) || {};
+    for (const field of entry.cleared) {
+      if (field in draft && draft[field] === observed[field]) delete draft[field];
+    }
+  }
+}
+
 async function uploadRun(runId) {
   const snapshot = store.readSnapshot(runId);
   if (!snapshot) throw new Error(`Run ${runId} has not been synced yet`);
@@ -150,8 +170,26 @@ async function uploadRun(runId) {
     errors: [],
   };
 
+  // TestRail calls below take seconds, during which autosaves keep writing drafts to
+  // disk. Record what the upload achieved instead of mutating this now-aging copy, and
+  // replay it onto a fresh read at the end.
+  const journal = new Map();
+  const observedDrafts = new Map();
+
+  const record = (testId) => {
+    const key = String(testId);
+    if (!journal.has(key)) {
+      journal.set(key, { remote: {}, caseTitle: undefined, cleared: [], uploadError: null });
+    }
+    return journal.get(key);
+  };
+
   for (const item of [...delta.results, ...delta.caseEdits]) {
-    snapshot.tests[String(item.testId)].uploadError = null;
+    const key = String(item.testId);
+    record(item.testId);
+    if (!observedDrafts.has(key)) {
+      observedDrafts.set(key, { ...(snapshot.tests[key].draft || {}) });
+    }
   }
 
   const addError = (message) => {
@@ -165,7 +203,7 @@ async function uploadRun(runId) {
       outcome.resultsFailed = delta.results.length;
       addError(message);
       for (const result of delta.results) {
-        snapshot.tests[String(result.testId)].uploadError = message;
+        record(result.testId).uploadError = message;
       }
     } else {
       const resultDefaults = logic.requiredResultDefaults(
@@ -183,20 +221,20 @@ async function uploadRun(runId) {
         try {
           await testrail.addResultsForCases(runId, payload);
           for (const result of batch) {
-            const test = snapshot.tests[String(result.testId)];
+            const entry = record(result.testId);
             if ('statusId' in result) {
-              test.remote.statusId = result.statusId;
-              if (test.draft) delete test.draft.statusId;
+              entry.remote.statusId = result.statusId;
+              entry.cleared.push('statusId');
             }
             if ('comment' in result) {
-              test.remote.lastResultComment = result.comment;
-              if (test.draft) delete test.draft.comment;
+              entry.remote.lastResultComment = result.comment;
+              entry.cleared.push('comment');
             }
             outcome.pushed += 1;
           }
         } catch (err) {
           for (const result of batch) {
-            snapshot.tests[String(result.testId)].uploadError = err.message;
+            record(result.testId).uploadError = err.message;
             outcome.resultsFailed += 1;
           }
           addError(err.message);
@@ -209,20 +247,20 @@ async function uploadRun(runId) {
   for (let i = 0; i < caseGroups.length; i++) {
     await Promise.all(
       caseGroups[i].map(async (edit) => {
-        const test = snapshot.tests[String(edit.testId)];
+        const entry = record(edit.testId);
         try {
           await testrail.updateCase(edit.caseId, edit.fields);
           if ('title' in edit.fields) {
-            test.caseTitle = edit.fields.title;
-            if (test.draft) delete test.draft.title;
+            entry.caseTitle = edit.fields.title;
+            entry.cleared.push('title');
           }
           if ('priority_id' in edit.fields) {
-            test.remote.priorityId = edit.fields.priority_id;
-            if (test.draft) delete test.draft.priorityId;
+            entry.remote.priorityId = edit.fields.priority_id;
+            entry.cleared.push('priorityId');
           }
           outcome.casesUpdated += 1;
         } catch (err) {
-          test.uploadError = err.message;
+          entry.uploadError = err.message;
           outcome.casesFailed += 1;
           addError(err.message);
         }
@@ -231,8 +269,12 @@ async function uploadRun(runId) {
     if (i < caseGroups.length - 1) await sleep(CASE_EDIT_PAUSE_MS);
   }
 
-  snapshot.lastUploadedAt = new Date().toISOString();
-  store.writeSnapshot(runId, snapshot);
+  // Re-read so drafts saved during the upload are not clobbered. Read, apply, and write
+  // happen with no await between them, so nothing can interleave in this single process.
+  const current = store.readSnapshot(runId) || snapshot;
+  applyUploadJournal(current, journal, observedDrafts);
+  current.lastUploadedAt = new Date().toISOString();
+  store.writeSnapshot(runId, current);
   return outcome;
 }
 

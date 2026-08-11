@@ -365,14 +365,20 @@ export default function TestRunner() {
     const id = Number(runIdParam);
     if (!Number.isFinite(id)) return;
 
-    const mutationAtStart = mutationGenRef.current;
     const runToken = runTokenRef.current;
     setUploading(true);
     setUploadOutcome(null);
     try {
+      // Drafts autosave asynchronously, so a status set moments ago may still be queued.
+      // Let the queue drain first or the upload would push a snapshot missing that edit.
+      await patchQueueRef.current;
+      if (!mountedRef.current || runTokenRef.current !== runToken) return;
+
       const body = await json(`${API}/${id}/upload`, { method: 'POST' });
       if (!mountedRef.current || runTokenRef.current !== runToken) return;
-      if (mutationGenRef.current !== mutationAtStart) return;
+      // No mutation-generation guard here: the upload is itself the newest mutation, and
+      // discarding its response would hide results TestRail has already accepted.
+      mutationGenRef.current += 1;
       setState(body.state);
       setUploadOutcome(body.outcome);
       setError(null);

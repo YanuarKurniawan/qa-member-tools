@@ -359,6 +359,12 @@ export default function TestRunTable({
                   <span className="inline-flex w-full items-start gap-1">
                     <textarea
                       rows={commentExpanded[test.testId] ? 3 : 1}
+                      disabled={readOnlyResults}
+                      title={
+                        readOnlyResults
+                          ? 'This run is completed or archived, so TestRail rejects new results.'
+                          : undefined
+                      }
                       value={commentValue(test)}
                       onChange={(e) =>
                         setCommentLocal((prev) => ({
@@ -384,7 +390,7 @@ export default function TestRunTable({
                           e.target.blur();
                         }
                       }}
-                      className="w-32 resize-none rounded-md border border-gray-200 px-2 py-1 text-xs text-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                      className="w-32 resize-none rounded-md border border-gray-200 px-2 py-1 text-xs text-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-400"
                     />
                     {test.dirtyFields.includes('comment') && (
                       <DirtyDot title="Unsaved comment" />

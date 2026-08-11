@@ -94,12 +94,24 @@ router.get('/:runId/tests/:testId', (req, res) => {
 router.post('/:runId/upload', async (req, res) => {
   const runId = resolveRunId(req, res);
   if (!runId) return;
+  let outcome;
   try {
-    const outcome = await runner.uploadRun(runId);
+    outcome = await runner.uploadRun(runId);
+  } catch (err) {
+    return res.status(502).json({ error: err.message });
+  }
+
+  // The push already happened, so a failing refresh must not be reported as a failed
+  // upload. Fall back to the stored snapshot and tell the client the view may be stale.
+  try {
     const { state } = await runner.syncRun(runId);
     res.json({ outcome, state });
   } catch (err) {
-    res.status(502).json({ error: err.message });
+    res.json({
+      outcome: { ...outcome, errors: [...outcome.errors, `Upload succeeded but refreshing from TestRail failed: ${err.message}`] },
+      state: runner.loadRun(runId),
+      staleState: true,
+    });
   }
 });
 

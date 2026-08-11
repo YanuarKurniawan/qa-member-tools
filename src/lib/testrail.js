@@ -101,6 +101,7 @@ module.exports = {
   getTests: (runId) => getPaginated(`get_tests/${runId}`, 'tests'),
   getStatuses: () => request('GET', 'get_statuses'),
   getPriorities: () => request('GET', 'get_priorities'),
+  getResultFields: () => request('GET', 'get_result_fields'),
   updateCase: (caseId, fields) => request('POST', `update_case/${caseId}`, fields),
   addResultsForCases: (runId, results) =>
     request('POST', `add_results_for_cases/${runId}`, { results }),

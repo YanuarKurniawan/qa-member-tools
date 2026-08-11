@@ -1,7 +1,15 @@
 import { describe, it, expect } from 'vitest';
 import logicModule from '../src/lib/testRunnerLogic.js';
 
-const { dirtyFields, isDirty, effectiveTitle, mergeSnapshot, computeDelta, toView } = logicModule;
+const {
+  dirtyFields,
+  isDirty,
+  effectiveTitle,
+  mergeSnapshot,
+  computeDelta,
+  requiredResultDefaults,
+  toView,
+} = logicModule;
 
 const VOCAB = {
   statuses: [
@@ -281,5 +289,64 @@ describe('toView', () => {
       ])
     );
     expect(view.conflictCount).toBe(1);
+  });
+});
+
+describe('requiredResultDefaults', () => {
+  const field = (name, options, context = { is_global: true, project_ids: [] }) => ({
+    system_name: name,
+    configs: [{ context, options }],
+  });
+
+  it('sends the configured default for a required field', () => {
+    const defaults = requiredResultDefaults(
+      [field('custom_reusable', { is_required: true, default_value: '2' })],
+      184
+    );
+    expect(defaults).toEqual({ custom_reusable: 2 });
+  });
+
+  it('ignores fields that are not required', () => {
+    const defaults = requiredResultDefaults(
+      [field('custom_version', { is_required: false, default_value: '7' })],
+      184
+    );
+    expect(defaults).toEqual({});
+  });
+
+  it('omits a required field that has no usable default rather than inventing one', () => {
+    const defaults = requiredResultDefaults(
+      [
+        field('quality_rating', { is_required: true }),
+        field('custom_notes', { is_required: true, default_value: '' }),
+      ],
+      184
+    );
+    expect(defaults).toEqual({});
+  });
+
+  it('keeps non-numeric defaults as text', () => {
+    const defaults = requiredResultDefaults(
+      [field('custom_env', { is_required: true, default_value: 'staging' })],
+      184
+    );
+    expect(defaults).toEqual({ custom_env: 'staging' });
+  });
+
+  it('applies a project-scoped field only to that project', () => {
+    const scoped = [
+      field(
+        'custom_squad',
+        { is_required: true, default_value: '3' },
+        { is_global: false, project_ids: [184] }
+      ),
+    ];
+    expect(requiredResultDefaults(scoped, 184)).toEqual({ custom_squad: 3 });
+    expect(requiredResultDefaults(scoped, 999)).toEqual({});
+  });
+
+  it('tolerates missing or malformed field metadata', () => {
+    expect(requiredResultDefaults(undefined, 184)).toEqual({});
+    expect(requiredResultDefaults([{}, { system_name: 'custom_x' }], 184)).toEqual({});
   });
 });

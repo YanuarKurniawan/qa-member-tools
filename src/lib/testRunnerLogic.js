@@ -131,6 +131,37 @@ function computeDelta(snapshot) {
   return { results, caseEdits, skippedUntested };
 }
 
+// A TestRail instance can mark result fields required instance-wide, and it rejects
+// add_results_for_cases outright when one is missing. We cannot invent values, so we
+// send each required field's own configured default — the same value TestRail's web UI
+// pre-selects. Required fields with no default are left out for TestRail to rule on.
+function requiredResultDefaults(resultFields, projectId) {
+  const defaults = {};
+
+  for (const field of resultFields || []) {
+    const name = field.system_name;
+    if (!name) continue;
+
+    for (const config of field.configs || []) {
+      const context = config.context || {};
+      const applies =
+        Boolean(context.is_global) || (context.project_ids || []).includes(projectId);
+      if (!applies) continue;
+
+      const options = config.options || {};
+      if (!options.is_required) continue;
+
+      const fallback = options.default_value;
+      if (fallback === undefined || fallback === null || fallback === '') break;
+
+      defaults[name] = /^-?\d+$/.test(String(fallback)) ? Number(fallback) : fallback;
+      break;
+    }
+  }
+
+  return defaults;
+}
+
 function toView(snapshot) {
   const tests = Object.values(snapshot.tests)
     .slice()
@@ -186,5 +217,6 @@ module.exports = {
   effectiveTitle,
   mergeSnapshot,
   computeDelta,
+  requiredResultDefaults,
   toView,
 };

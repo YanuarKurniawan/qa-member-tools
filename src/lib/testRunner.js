@@ -168,9 +168,14 @@ async function uploadRun(runId) {
         snapshot.tests[String(result.testId)].uploadError = message;
       }
     } else {
+      const resultDefaults = logic.requiredResultDefaults(
+        await testrail.getResultFields(),
+        snapshot.projectId
+      );
+
       for (const batch of chunk(delta.results, RESULT_CHUNK)) {
         const payload = batch.map((result) => {
-          const entry = { case_id: result.caseId };
+          const entry = { case_id: result.caseId, ...resultDefaults };
           if ('statusId' in result) entry.status_id = result.statusId;
           if ('comment' in result) entry.comment = result.comment;
           return entry;

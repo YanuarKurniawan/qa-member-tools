@@ -140,14 +140,16 @@ One JSON file per run at `server/data/testRuns/<runId>.json`. Added to `.gitigno
         "refs": "PLAT-57190",
         "preconds": null,
         "steps": "<ol>...</ol>",
-        "expected": "<p>...</p>"
+        "expected": "<p>...</p>",
+        "lastResultComment": null
       },
+      "caseTitle": null,
       "draft": {
         "statusId": 1,
         "comment": "verified on iOS 17",
         "title": "Verify BTM hero banner shows new Anniversary assets on mobile"
       },
-      "conflict": null,
+      "conflicts": [],
       "uploadError": null
     }
   }
@@ -159,6 +161,8 @@ Rules that keep this honest:
 - `remote` is the last-synced TestRail truth. `draft` contains **only** fields you actually edited; an absent key means "unchanged".
 - Dirty is derived, never stored: a test is dirty when some `draft` key's value differs from the same key in `remote`. A `comment` is dirty when non-empty, since `remote` has no comment field (comments belong to results, not tests).
 - Every editable cell displays `draft.<field> ?? remote.<field>`. This is why clearing a draft after a successful upload does not blank the cell — it falls back to the freshly synced remote value.
+- `caseTitle` is the case-level title as this tool last wrote it, held separately from `remote.title` (the run's copy). Title display precedence is `draft.title ?? caseTitle ?? remote.title`, and title dirtiness compares against `caseTitle ?? remote.title`. This is what makes the rename question below a non-blocker: whichever way TestRail behaves, the row shows the title you actually set.
+- `conflicts` is an array, since a row can collide on more than one field at once. Each entry is `{ field, mine, theirs, detectedAt }`.
 - Because a comment has no remote counterpart, a comment can never be in conflict. On successful upload the comment is removed from `draft` and recorded as `remote.lastResultComment` for reference only; it is not an editable field and never re-enters the delta.
 - `order` preserves TestRail's own run ordering for the default sort, recomputed from the fresh payload on every Sync.
 - Snapshot writes are atomic: write `<runId>.json.tmp`, then rename. A crash mid-write cannot corrupt existing drafts.
@@ -211,8 +215,10 @@ Upload finishes with an automatic Sync so the screen reflects TestRail's actual 
 
 Implementation must first verify whether TestRail reflects a case rename in an existing run (see "Verified facts" above). Handling for both outcomes:
 
-- **If renames do propagate**: nothing extra. The next Sync shows the new title in `remote`.
-- **If TestRail snapshots titles at run creation**: the case is still genuinely updated and future runs pick it up, but the current run's `get_tests` keeps returning the old title. The row then shows the local title with a quiet note that TestRail's run view will keep the original, and the merge logic must not treat the stale remote title as a conflict against the just-uploaded draft — the uploaded title is recorded as `remote.title` locally on successful upload.
+- **If renames do propagate**: `remote.title` and `caseTitle` agree after the next Sync and nothing is shown.
+- **If TestRail snapshots titles at run creation**: the case is genuinely updated and future runs pick it up, but this run's `get_tests` keeps returning the old title. Because display precedence is `draft.title ?? caseTitle ?? remote.title`, the row still shows your title; the divergence between `caseTitle` and `remote.title` is what triggers a quiet per-row note explaining that TestRail's own run view keeps the original.
+
+Either way the behavior is correct, so the verification determines only whether that note ever appears — it does not block implementation.
 
 ## Interface
 

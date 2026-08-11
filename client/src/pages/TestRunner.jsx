@@ -1,0 +1,249 @@
+import { useState, useEffect, useMemo, useCallback } from 'react';
+import RunToolbar from '../components/testRunner/RunToolbar';
+import TestRunTable from '../components/testRunner/TestRunTable';
+
+const API = '/api/test-runs';
+const STORAGE_KEY = 'testRunner:lastRunId';
+
+async function json(url, options) {
+  const res = await fetch(url, options);
+  const body = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(body.error || `Request failed (HTTP ${res.status})`);
+  return body;
+}
+
+function parseRunInput(input) {
+  const text = String(input || '').trim();
+  const fromUrl = text.match(/\/runs\/view\/(\d+)/);
+  if (fromUrl) return Number(fromUrl[1]);
+  return /^\d+$/.test(text) ? Number(text) : null;
+}
+
+export default function TestRunner() {
+  const [runInput, setRunInput] = useState('');
+  const [runId, setRunId] = useState(null);
+  const [state, setState] = useState(null);
+  const [recent, setRecent] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+  const [uploading] = useState(false);
+  const [error, setError] = useState(null);
+  const [notice, setNotice] = useState(null);
+  const [sort, setSort] = useState({ key: 'order', dir: 'asc' });
+  const [query] = useState('');
+  const [activeTestId, setActiveTestId] = useState(null);
+  const [focusedTestId, setFocusedTestId] = useState(null);
+
+  const refreshRecent = useCallback(async () => {
+    try {
+      const body = await json(API);
+      setRecent(body.runs || []);
+    } catch {
+      // recent list is optional UI
+    }
+  }, []);
+
+  const syncRun = useCallback(async (id) => {
+    setSyncing(true);
+    setError(null);
+    setNotice(null);
+    try {
+      const body = await json(`${API}/${id}/sync`, { method: 'POST' });
+      const { summary, ...view } = body;
+      setState(view);
+      setRunId(id);
+      sessionStorage.setItem(STORAGE_KEY, String(id));
+      if (summary?.removedWithDrafts?.length) {
+        const titles = summary.removedWithDrafts.map((item) => item.title).join(', ');
+        setNotice(
+          `${summary.removedWithDrafts.length} test(s) you edited are no longer in this run: ${titles}`
+        );
+      }
+      await refreshRecent();
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSyncing(false);
+      setLoading(false);
+    }
+  }, [refreshRecent]);
+
+  const openRun = useCallback(async (id) => {
+    setRunId(id);
+    setLoading(true);
+    setError(null);
+    setNotice(null);
+    try {
+      const res = await fetch(`${API}/${id}`);
+      const body = await res.json().catch(() => ({}));
+      if (res.status === 404) {
+        await syncRun(id);
+        return;
+      }
+      if (!res.ok) throw new Error(body.error || `Request failed (HTTP ${res.status})`);
+      setState(body);
+      sessionStorage.setItem(STORAGE_KEY, String(id));
+      await refreshRecent();
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }, [syncRun, refreshRecent]);
+
+  useEffect(() => {
+    refreshRecent();
+    const saved = sessionStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      openRun(Number(saved));
+    }
+  }, [refreshRecent, openRun]);
+
+  const sortedTests = useMemo(() => {
+    if (!state?.tests) return [];
+    const tests = [...state.tests];
+    if (sort.key === 'order') return tests;
+
+    const dir = sort.dir === 'asc' ? 1 : -1;
+    return tests.sort((a, b) => {
+      let cmp;
+      if (sort.key === 'title') {
+        cmp = a.title.localeCompare(b.title);
+      } else {
+        cmp = (a[sort.key] ?? 0) - (b[sort.key] ?? 0);
+      }
+      return cmp * dir;
+    });
+  }, [state?.tests, sort]);
+
+  const handleSortChange = (key) => {
+    setSort((prev) =>
+      prev.key === key
+        ? { key, dir: prev.dir === 'asc' ? 'desc' : 'asc' }
+        : { key, dir: 'asc' }
+    );
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const id = parseRunInput(runInput);
+    if (id) openRun(id);
+  };
+
+  const parsedId = parseRunInput(runInput);
+
+  const onPatch = () => {};
+  const onRowClick = () => {};
+  const onUpload = () => {};
+  const onSync = () => {
+    if (runId) syncRun(runId);
+  };
+
+  return (
+    <div>
+      <h1 className="text-2xl font-bold text-gray-900">Test Runner</h1>
+      <p className="mt-1 text-sm text-gray-500">
+        Execute a TestRail run without leaving one screen.
+      </p>
+
+      {error && (
+        <div className="mt-4 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800">
+          {error}
+        </div>
+      )}
+
+      {notice && (
+        <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+          {notice}
+        </div>
+      )}
+
+      {!state && (
+        <div className="mt-6 rounded-xl border border-gray-200 bg-white p-5">
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="run-input" className="block text-sm font-medium text-gray-700">
+              TestRail run
+            </label>
+            <div className="mt-2 flex flex-wrap items-center gap-3">
+              <input
+                id="run-input"
+                type="text"
+                value={runInput}
+                onChange={(e) => setRunInput(e.target.value)}
+                placeholder="17748 or https://tiket.testrail.com/index.php?/runs/view/17748"
+                className="min-w-0 flex-1 rounded-lg border border-gray-300 px-3 py-2.5 text-sm shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              />
+              <button
+                type="submit"
+                disabled={parsedId == null || loading || syncing}
+                className="rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-300"
+              >
+                Open run
+              </button>
+            </div>
+          </form>
+
+          {recent.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {recent.map((run) => (
+                <button
+                  key={run.runId}
+                  type="button"
+                  onClick={() => openRun(run.runId)}
+                  className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs text-gray-700 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                >
+                  {run.runId} · {run.runName}
+                  {run.dirtyCount > 0 && (
+                    <span className="text-blue-700"> · {run.dirtyCount} unsaved</span>
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {loading && !state && (
+        <div className="mt-8 flex h-32 items-center justify-center">
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-600 border-t-transparent" />
+        </div>
+      )}
+
+      {state && (
+        <div className="mt-6 space-y-4">
+          <RunToolbar
+            run={state.run}
+            counts={state.counts}
+            vocab={state.vocab}
+            lastSyncedAt={state.lastSyncedAt}
+            dirtyCount={state.dirtyCount}
+            syncing={syncing}
+            uploading={uploading}
+            onSync={onSync}
+            onUpload={onUpload}
+          />
+
+          {(loading || syncing) && (
+            <div className="flex items-center gap-2 text-sm text-gray-500">
+              <div className="h-4 w-4 animate-spin rounded-full border-2 border-blue-600 border-t-transparent" />
+              {syncing ? 'Syncing from TestRail…' : 'Loading…'}
+            </div>
+          )}
+
+          <TestRunTable
+            tests={sortedTests}
+            vocab={state.vocab}
+            sort={sort}
+            onSortChange={handleSortChange}
+            query={query}
+            activeTestId={activeTestId}
+            focusedTestId={focusedTestId}
+            onRowClick={onRowClick}
+            onPatch={onPatch}
+            readOnlyResults={state.run.isCompleted || state.run.isArchived}
+          />
+        </div>
+      )}
+    </div>
+  );
+}

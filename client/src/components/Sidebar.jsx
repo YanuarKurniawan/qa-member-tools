@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Wrench } from 'lucide-react';
+import { LayoutDashboard, Wrench, ClipboardCheck } from 'lucide-react';
 
 export default function Sidebar({ categories = [] }) {
   const linkClass = ({ isActive }) =>
@@ -25,6 +25,11 @@ export default function Sidebar({ categories = [] }) {
         <NavLink to="/" end className={linkClass}>
           <LayoutDashboard size={18} />
           Dashboard
+        </NavLink>
+
+        <NavLink to="/test-runner" className={linkClass}>
+          <ClipboardCheck size={18} />
+          Test Runner
         </NavLink>
 
         <div className="pb-1 pt-4">

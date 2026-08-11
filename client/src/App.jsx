@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import ToolPage from './pages/ToolPage';
+import TestRunner from './pages/TestRunner';
 import { CATEGORY_META } from './categoryMeta';
 
 export default function App() {
@@ -51,6 +52,7 @@ export default function App() {
     <Routes>
       <Route element={<Layout categories={toolCategories} />}>
         <Route path="/" element={<Dashboard categories={toolCategories} />} />
+        <Route path="/test-runner" element={<TestRunner />} />
         {toolCategories.map((cat) => (
           <Route
             key={cat.id}

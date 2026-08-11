@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ChevronUp, ChevronDown, Info, Pencil } from 'lucide-react';
+import { ChevronUp, ChevronDown, Info, Pencil, AlertCircle } from 'lucide-react';
 import { statusStyle, statusLabel, priorityLabel } from './statusVocab';
 import StatusCell from './StatusCell';
 
@@ -48,6 +48,49 @@ function DirtyDot({ title }) {
   return (
     <span className="ml-1 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" title={title} />
   );
+}
+
+function ConflictLine({ conflict, vocab, testId, onPatch }) {
+  let label;
+  if (conflict.field === 'statusId') {
+    label = `TestRail: ${statusLabel(vocab, conflict.theirs)}`;
+  } else if (conflict.field === 'priorityId') {
+    label = `TestRail: ${priorityLabel(vocab, conflict.theirs)}`;
+  } else if (conflict.field === 'title') {
+    label = `TestRail: "${conflict.theirs}"`;
+  } else {
+    return null;
+  }
+
+  return (
+    <div className="mt-1 flex flex-wrap items-center gap-1 text-[11px] text-amber-800">
+      <span>{label}</span>
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          onPatch(testId, { [conflict.field]: conflict.mine });
+        }}
+        className="font-medium text-blue-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+      >
+        Keep mine
+      </button>
+      <button
+        type="button"
+        onClick={(e) => {
+          e.stopPropagation();
+          onPatch(testId, { [conflict.field]: null });
+        }}
+        className="font-medium text-blue-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+      >
+        Take theirs
+      </button>
+    </div>
+  );
+}
+
+function conflictForField(test, field) {
+  return test.conflicts.find((c) => c.field === field);
 }
 
 function rowClassName(test, activeTestId, focusedTestId) {
@@ -193,15 +236,24 @@ export default function TestRunTable({
                 onClick={() => onRowClick(test.testId)}
               >
                 <td className="whitespace-nowrap px-4 py-2.5">
-                  <a
-                    href={`https://tiket.testrail.com/index.php?/cases/view/${test.caseId}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="font-mono text-xs text-blue-700 hover:underline"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    C{test.caseId}
-                  </a>
+                  <span className="inline-flex items-center gap-1">
+                    <a
+                      href={`https://tiket.testrail.com/index.php?/cases/view/${test.caseId}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-mono text-xs text-blue-700 hover:underline"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      C{test.caseId}
+                    </a>
+                    {test.uploadError && (
+                      <AlertCircle
+                        size={12}
+                        className="shrink-0 text-red-500"
+                        title={test.uploadError}
+                      />
+                    )}
+                  </span>
                 </td>
                 <td className="w-full min-w-[20rem] break-words px-4 py-2.5 text-gray-800">
                   {editingId === test.testId ? (
@@ -240,6 +292,14 @@ export default function TestRunTable({
                       )}
                     </span>
                   )}
+                  {conflictForField(test, 'title') && (
+                    <ConflictLine
+                      conflict={conflictForField(test, 'title')}
+                      vocab={vocab}
+                      testId={test.testId}
+                      onPatch={onPatch}
+                    />
+                  )}
                 </td>
                 <td
                   className={`whitespace-nowrap px-4 py-2.5 ${
@@ -267,6 +327,14 @@ export default function TestRunTable({
                       <DirtyDot title={`Unsaved: ${priorityLabel(vocab, test.priorityId)}`} />
                     )}
                   </span>
+                  {conflictForField(test, 'priorityId') && (
+                    <ConflictLine
+                      conflict={conflictForField(test, 'priorityId')}
+                      vocab={vocab}
+                      testId={test.testId}
+                      onPatch={onPatch}
+                    />
+                  )}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2.5">
                   <StatusCell
@@ -275,6 +343,14 @@ export default function TestRunTable({
                     disabled={readOnlyResults}
                     onPatch={onPatch}
                   />
+                  {conflictForField(test, 'statusId') && (
+                    <ConflictLine
+                      conflict={conflictForField(test, 'statusId')}
+                      vocab={vocab}
+                      testId={test.testId}
+                      onPatch={onPatch}
+                    />
+                  )}
                 </td>
                 <td className="whitespace-nowrap px-4 py-2.5">
                   <StatusPill statusId={test.remoteStatusId} vocab={vocab} muted />

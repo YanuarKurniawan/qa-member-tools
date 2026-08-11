@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Search, X } from 'lucide-react';
+import { Search, X, CheckCircle2 } from 'lucide-react';
 import RunToolbar from '../components/testRunner/RunToolbar';
 import TestRunTable from '../components/testRunner/TestRunTable';
 import CaseDrawer from '../components/testRunner/CaseDrawer';
@@ -42,7 +42,8 @@ export default function TestRunner() {
   const [recent, setRecent] = useState([]);
   const [loading, setLoading] = useState(false);
   const [syncing, setSyncing] = useState(false);
-  const [uploading] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [uploadOutcome, setUploadOutcome] = useState(null);
   const [error, setError] = useState(null);
   const [notice, setNotice] = useState(null);
   const [sort, setSort] = useState({ key: 'order', dir: 'asc' });
@@ -359,7 +360,31 @@ export default function TestRunner() {
     setFocusedTestId(null);
   }, []);
 
-  const onUpload = () => {};
+  const onUpload = useCallback(async () => {
+    const id = Number(runIdParam);
+    if (!Number.isFinite(id)) return;
+
+    const mutationAtStart = mutationGenRef.current;
+    const runToken = runTokenRef.current;
+    setUploading(true);
+    setUploadOutcome(null);
+    try {
+      const body = await json(`${API}/${id}/upload`, { method: 'POST' });
+      if (!mountedRef.current || runTokenRef.current !== runToken) return;
+      if (mutationGenRef.current !== mutationAtStart) return;
+      setState(body.state);
+      setUploadOutcome(body.outcome);
+      setError(null);
+    } catch (err) {
+      if (mountedRef.current && runTokenRef.current === runToken) {
+        setError(err.message);
+      }
+    } finally {
+      if (mountedRef.current && runTokenRef.current === runToken) {
+        setUploading(false);
+      }
+    }
+  }, [runIdParam]);
   const onSync = useCallback(() => {
     const id = Number(runIdParam);
     if (!Number.isFinite(id)) return;
@@ -401,6 +426,8 @@ export default function TestRunner() {
         return;
       }
 
+      if (showShortcuts) return;
+
       if (visibleTests.length === 0) return;
       const index = visibleTests.findIndex((test) => test.testId === focusedTestId);
 
@@ -436,7 +463,7 @@ export default function TestRunner() {
 
     document.addEventListener('keydown', onKeyDown);
     return () => document.removeEventListener('keydown', onKeyDown);
-  }, [visibleTests, focusedTestId, readOnlyResults, onPatch]);
+  }, [visibleTests, focusedTestId, readOnlyResults, onPatch, showShortcuts]);
 
   const kbdClass =
     'rounded border border-gray-300 bg-gray-50 px-1 text-[10px] font-medium text-gray-600';
@@ -536,6 +563,59 @@ export default function TestRunner() {
               {syncing ? 'Syncing from TestRail…' : 'Loading…'}
             </div>
           )}
+
+          {readOnlyResults && (
+            <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+              This run is {state.run.isArchived ? 'archived' : 'completed'}, so TestRail rejects
+              new results. Names and priorities can still be updated.
+            </div>
+          )}
+
+          {uploadOutcome && (() => {
+            const { pushed, resultsFailed, casesUpdated, casesFailed, skippedUntested, errors } =
+              uploadOutcome;
+            const success = resultsFailed === 0 && casesFailed === 0;
+            return (
+              <div
+                className={`relative rounded-lg border p-4 text-sm ${
+                  success
+                    ? 'border-green-200 bg-green-50 text-green-800'
+                    : 'border-amber-200 bg-amber-50 text-amber-800'
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => setUploadOutcome(null)}
+                  aria-label="Dismiss upload summary"
+                  className="absolute right-3 top-3 rounded p-0.5 opacity-70 hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                >
+                  <X size={14} />
+                </button>
+                {success ? (
+                  <p className="flex items-center gap-2 pr-6">
+                    <CheckCircle2 size={16} className="shrink-0" />
+                    Uploaded {pushed} result(s) and {casesUpdated} case update(s).
+                  </p>
+                ) : (
+                  <div className="space-y-1 pr-6">
+                    {resultsFailed > 0 && <p>{resultsFailed} result(s) failed</p>}
+                    {casesFailed > 0 && <p>{casesFailed} case update(s) failed</p>}
+                    {skippedUntested.length > 0 && (
+                      <p>
+                        {skippedUntested.length} row(s) skipped because TestRail cannot set a test
+                        back to Untested
+                      </p>
+                    )}
+                    {(errors || []).slice(0, 3).map((msg) => (
+                      <p key={msg} className="font-mono text-xs">
+                        {msg}
+                      </p>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })()}
 
           <div className="flex flex-wrap items-center gap-2 rounded-xl border border-gray-200 bg-white p-3">
             <div className="relative">
@@ -679,6 +759,21 @@ export default function TestRunner() {
                   ))}
                 </dl>
               </div>
+            </div>
+          )}
+
+          {state.conflictCount > 0 && (
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
+              <span>
+                {state.conflictCount} row(s) changed in TestRail while you were editing.
+              </span>
+              <button
+                type="button"
+                onClick={() => setOnlyConflicts(true)}
+                className="rounded-lg border border-amber-300 bg-white px-3 py-1.5 text-xs font-semibold text-amber-900 hover:bg-amber-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+              >
+                Show only conflicts
+              </button>
             </div>
           )}
 

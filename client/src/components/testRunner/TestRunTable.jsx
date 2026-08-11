@@ -173,7 +173,14 @@ export default function TestRunTable({
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {tests.map((test) => (
+            {tests.length === 0 ? (
+              <tr>
+                <td colSpan={6} className="px-4 py-10 text-center text-sm text-gray-500">
+                  No tests match your filters.
+                </td>
+              </tr>
+            ) : (
+            tests.map((test) => (
               <tr
                 key={test.testId}
                 className={rowClassName(test, activeTestId, focusedTestId)}
@@ -300,7 +307,8 @@ export default function TestRunTable({
                   </span>
                 </td>
               </tr>
-            ))}
+            ))
+            )}
           </tbody>
         </table>
       </div>

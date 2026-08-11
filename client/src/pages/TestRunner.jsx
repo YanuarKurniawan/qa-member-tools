@@ -1,7 +1,9 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Search, X } from 'lucide-react';
 import RunToolbar from '../components/testRunner/RunToolbar';
 import TestRunTable from '../components/testRunner/TestRunTable';
+import { statusStyle, priorityLabel } from '../components/testRunner/statusVocab';
 
 const API = '/api/test-runs';
 
@@ -43,7 +45,12 @@ export default function TestRunner() {
   const [error, setError] = useState(null);
   const [notice, setNotice] = useState(null);
   const [sort, setSort] = useState({ key: 'order', dir: 'asc' });
-  const [query] = useState('');
+  const [query, setQuery] = useState('');
+  const [statusFilter, setStatusFilter] = useState(() => new Set());
+  const [priorityFilter, setPriorityFilter] = useState(() => new Set());
+  const [onlyChanged, setOnlyChanged] = useState(false);
+  const [onlyConflicts, setOnlyConflicts] = useState(false);
+  const searchRef = useRef(null);
   const [activeTestId, setActiveTestId] = useState(null);
   const [focusedTestId, setFocusedTestId] = useState(null);
   const [saving, setSaving] = useState(false);
@@ -212,6 +219,36 @@ export default function TestRunner() {
     });
   }, [state?.tests, sort]);
 
+  const visibleTests = useMemo(() => {
+    const needle = query.trim().toLowerCase();
+    return sortedTests.filter((test) => {
+      if (needle && !test.title.toLowerCase().includes(needle)) return false;
+      if (statusFilter.size > 0 && !statusFilter.has(test.statusId)) return false;
+      if (priorityFilter.size > 0 && !priorityFilter.has(test.priorityId)) return false;
+      if (onlyChanged && test.dirtyFields.length === 0) return false;
+      if (onlyConflicts && test.conflicts.length === 0) return false;
+      return true;
+    });
+  }, [sortedTests, query, statusFilter, priorityFilter, onlyChanged, onlyConflicts]);
+
+  const toggleStatusFilter = (id) => {
+    setStatusFilter((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const togglePriorityFilter = (id) => {
+    setPriorityFilter((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
   const handleSortChange = (key) => {
     setSort((prev) =>
       prev.key === key
@@ -369,8 +406,105 @@ export default function TestRunner() {
             </div>
           )}
 
+          <div className="flex flex-wrap items-center gap-2 rounded-xl border border-gray-200 bg-white p-3">
+            <div className="relative">
+              <Search
+                size={14}
+                className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400"
+                aria-hidden
+              />
+              <input
+                ref={searchRef}
+                type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search test name…"
+                aria-label="Search test name"
+                className={`w-64 rounded-lg border border-gray-300 py-2 pl-8 text-sm shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 ${query ? 'pr-8' : 'pr-3'}`}
+              />
+              {query && (
+                <button
+                  type="button"
+                  onClick={() => setQuery('')}
+                  aria-label="Clear search"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-0.5 text-gray-400 hover:text-gray-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                >
+                  <X size={14} />
+                </button>
+              )}
+            </div>
+
+            {(state.vocab?.statuses || []).map((status) => {
+              const selected = statusFilter.has(status.id);
+              return (
+                <button
+                  key={status.id}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() => toggleStatusFilter(status.id)}
+                  className={`rounded-full border px-2.5 py-1 text-xs font-medium ${
+                    selected
+                      ? statusStyle(status.id).pill
+                      : 'border-gray-200 bg-white text-gray-500 hover:bg-gray-50'
+                  }`}
+                >
+                  {status.label}
+                </button>
+              );
+            })}
+
+            {(state.vocab?.priorities || []).map((priority) => {
+              const selected = priorityFilter.has(priority.id);
+              return (
+                <button
+                  key={priority.id}
+                  type="button"
+                  aria-pressed={selected}
+                  onClick={() => togglePriorityFilter(priority.id)}
+                  className={`rounded-full border px-2.5 py-1 text-xs font-medium ${
+                    selected
+                      ? 'border-blue-200 bg-blue-50 text-blue-800'
+                      : 'border-gray-200 bg-white text-gray-500 hover:bg-gray-50'
+                  }`}
+                >
+                  {priorityLabel(state.vocab, priority.id)}
+                </button>
+              );
+            })}
+
+            <button
+              type="button"
+              aria-pressed={onlyChanged}
+              onClick={() => setOnlyChanged((v) => !v)}
+              className={`rounded-full border px-2.5 py-1 text-xs font-medium ${
+                onlyChanged
+                  ? 'border-blue-200 bg-blue-50 text-blue-800'
+                  : 'border-gray-200 bg-white text-gray-500 hover:bg-gray-50'
+              }`}
+            >
+              Only changed ({state.dirtyCount})
+            </button>
+
+            <button
+              type="button"
+              aria-pressed={onlyConflicts}
+              onClick={() => setOnlyConflicts((v) => !v)}
+              className={`rounded-full border px-2.5 py-1 text-xs font-medium ${
+                onlyConflicts
+                  ? 'border-blue-200 bg-blue-50 text-blue-800'
+                  : 'border-gray-200 bg-white text-gray-500 hover:bg-gray-50'
+              }`}
+            >
+              Only conflicts ({state.conflictCount})
+            </button>
+
+            <span className="ml-auto text-xs text-gray-500" aria-live="polite">
+              {visibleTests.length} of {state.tests.length} tests
+            </span>
+          </div>
+
           <TestRunTable
-            tests={sortedTests}
+            tests={visibleTests}
             vocab={state.vocab}
             sort={sort}
             onSortChange={handleSortChange}

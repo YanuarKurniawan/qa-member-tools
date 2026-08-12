@@ -4,6 +4,9 @@ const store = require('./testRunnerStore');
 const sleep = require('./sleep');
 
 const CASE_EDIT_CONCURRENCY = 5;
+const FOLDER_CONCURRENCY = 5;
+const FOLDER_SAMPLE_SIZE = 5;
+const FOLDER_MAX_ROUNDS = 20;
 const CASE_EDIT_PAUSE_MS = 250;
 const RESULT_CHUNK = 250;
 const MAX_TITLE = 250;
@@ -66,30 +69,134 @@ function loadRun(runId) {
   return snapshot ? logic.toView(snapshot) : null;
 }
 
-// Folders cost two extra endpoints, and they are a convenience column rather than
-// something a run cannot be executed without. A failure here leaves the folder unknown
-// instead of failing the whole sync; mergeSnapshot then keeps the last known value.
-async function fetchFolders(projectId, suiteId) {
+// Folders already established by an earlier sync, keyed by case. A case does not move
+// between folders during a run, so resolving one again would only cost requests.
+function knownFolders(existing) {
+  const known = new Map();
+  for (const test of Object.values((existing && existing.tests) || {})) {
+    if (test.remote && test.remote.folder) {
+      known.set(test.caseId, { name: test.remote.folder, path: test.remote.folderPath });
+    }
+  }
+  return known;
+}
+
+// Fetches sections and every ancestor above them, since a parent id is only known once
+// its child has been read. Sections that fail to load are cached as null so the walk
+// stops there instead of retrying.
+async function loadSections(sectionIds, sectionsById) {
+  const queued = new Set(sectionIds.filter((id) => id != null && !sectionsById.has(id)));
+  const pending = [...queued];
+
+  while (pending.length > 0) {
+    const batch = pending.splice(0, FOLDER_CONCURRENCY);
+    const fetched = await Promise.all(
+      batch.map((id) => testrail.getSection(id).catch(() => null))
+    );
+    batch.forEach((id, index) => sectionsById.set(id, fetched[index]));
+
+    for (const section of fetched) {
+      const parent = section && section.parent_id;
+      if (parent != null && !sectionsById.has(parent) && !queued.has(parent)) {
+        queued.add(parent);
+        pending.push(parent);
+      }
+    }
+  }
+}
+
+// Tests arrive grouped by folder, so consecutive cases are usually neighbours in the same
+// section and would teach us the same thing. Spreading the picks across what is left
+// discovers several of the run's folders per round.
+function spreadSamples(unresolved, count) {
+  const items = [...unresolved];
+  if (items.length <= count) return items;
+  const step = items.length / count;
+  return Array.from({ length: count }, (_, index) => items[Math.floor(index * step)]);
+}
+
+// get_tests does not report a case's section, and reading the suite's whole case list
+// costs one request per 250 cases of a suite that can hold thousands. Instead: look up a
+// few unresolved cases to learn which sections this run draws from, then pull those
+// sections whole. Cost tracks the handful of folders a run spans, not the suite.
+async function resolveFolders(rawTests, projectId, suiteId, existing) {
+  const folders = knownFolders(existing);
+  const unresolved = new Set(
+    rawTests.map((test) => test.case_id).filter((caseId) => !folders.has(caseId))
+  );
+  if (unresolved.size === 0) return folders;
+
+  const sectionByCase = new Map();
+  const fetchedSections = new Set();
+
+  for (let round = 0; unresolved.size > 0 && round < FOLDER_MAX_ROUNDS; round++) {
+    const samples = spreadSamples(unresolved, FOLDER_SAMPLE_SIZE);
+    const sampled = await Promise.all(
+      samples.map((caseId) => testrail.getCase(caseId).catch(() => null))
+    );
+
+    const sections = [];
+    sampled.forEach((item, index) => {
+      // A case that cannot be read at all is dropped from the queue so the loop advances.
+      if (!item || item.section_id == null) return unresolved.delete(samples[index]);
+      if (!fetchedSections.has(item.section_id)) sections.push(item.section_id);
+      fetchedSections.add(item.section_id);
+    });
+
+    const pages = await Promise.all(
+      sections.map((sectionId) =>
+        testrail.getCasesInSection(projectId, suiteId, sectionId).catch(() => [])
+      )
+    );
+    for (const page of pages) {
+      for (const item of page) {
+        if (!unresolved.has(item.id)) continue;
+        sectionByCase.set(item.id, item.section_id);
+        unresolved.delete(item.id);
+      }
+    }
+
+    // Whatever the section listing did not account for still has to leave the queue, or
+    // the same sample would be drawn forever.
+    for (const caseId of samples) unresolved.delete(caseId);
+  }
+
+  const sectionsById = new Map();
+  await loadSections([...new Set(sectionByCase.values())], sectionsById);
+  for (const [caseId, sectionId] of sectionByCase) {
+    const folder = logic.folderFromSections(sectionId, sectionsById);
+    if (folder) folders.set(caseId, folder);
+  }
+  return folders;
+}
+
+// Folders are a convenience column, not something a run cannot be executed without, so a
+// failure here leaves them unknown instead of failing the sync. mergeSnapshot then keeps
+// whatever the last sync established.
+async function fetchFolders(rawTests, projectId, suiteId, existing) {
   try {
-    const [sections, cases] = await Promise.all([
-      testrail.getSections(projectId, suiteId),
-      testrail.getCases(projectId, suiteId),
-    ]);
-    return logic.buildFolderIndex(sections, cases);
+    return await resolveFolders(rawTests, projectId, suiteId, existing);
   } catch (err) {
     console.warn(`[testRunner] folder lookup failed for project ${projectId}: ${err.message}`);
-    return new Map();
+    return knownFolders(existing);
   }
 }
 
 async function syncRun(runId) {
   const run = await testrail.getRun(runId);
-  const [rawTests, statuses, priorities, folders] = await Promise.all([
+  const [rawTests, statuses, priorities] = await Promise.all([
     testrail.getTests(runId),
     testrail.getStatuses(),
     testrail.getPriorities(),
-    fetchFolders(run.project_id, run.suite_id),
   ]);
+  // Read purely to reuse folders already resolved. The merge below re-reads the snapshot
+  // so drafts saved while these requests were in flight are not lost.
+  const folders = await fetchFolders(
+    rawTests,
+    run.project_id,
+    run.suite_id,
+    store.readSnapshot(runId)
+  );
 
   const fresh = {
     run: {

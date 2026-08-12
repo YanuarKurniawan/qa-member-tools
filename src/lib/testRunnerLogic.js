@@ -34,38 +34,23 @@ function isDirty(test) {
   return dirtyFields(test).length > 0;
 }
 
-// get_tests omits section_id, so a case's folder has to be reassembled from the suite's
-// sections and cases. Returns caseId -> { name, path }, where name is the folder the case
-// sits in and path is the trail from the top of the suite down to it.
-function buildFolderIndex(sections, cases) {
-  const byId = new Map();
-  for (const section of sections || []) byId.set(section.id, section);
+// Turns a section into { name, path } by walking up its parents: name is the folder the
+// case sits in, path is the trail from the top of the suite down to it. sectionsById holds
+// already-fetched sections, with null for any that could not be read.
+function folderFromSections(sectionId, sectionsById) {
+  const trail = [];
+  const visited = new Set();
+  let cursor = sectionsById.get(sectionId);
 
-  const resolved = new Map();
-  const folderFor = (sectionId) => {
-    if (resolved.has(sectionId)) return resolved.get(sectionId);
-
-    const trail = [];
-    const visited = new Set();
-    let cursor = byId.get(sectionId);
-    // visited also guards against a malformed parent chain looping forever.
-    while (cursor && !visited.has(cursor.id)) {
-      visited.add(cursor.id);
-      trail.unshift(cursor.name);
-      cursor = cursor.parent_id == null ? null : byId.get(cursor.parent_id);
-    }
-
-    const folder = trail.length === 0 ? null : { name: trail[trail.length - 1], path: trail.join(' / ') };
-    resolved.set(sectionId, folder);
-    return folder;
-  };
-
-  const byCase = new Map();
-  for (const item of cases || []) {
-    const folder = folderFor(item.section_id);
-    if (folder) byCase.set(item.id, folder);
+  // visited also guards against a malformed parent chain looping forever.
+  while (cursor && !visited.has(cursor.id)) {
+    visited.add(cursor.id);
+    trail.unshift(cursor.name);
+    cursor = cursor.parent_id == null ? null : sectionsById.get(cursor.parent_id);
   }
-  return byCase;
+
+  if (trail.length === 0) return null;
+  return { name: trail[trail.length - 1], path: trail.join(' / ') };
 }
 
 function mergeSnapshot(existing, fresh, now = new Date().toISOString()) {
@@ -283,7 +268,7 @@ module.exports = {
   isDirty,
   effectiveTitle,
   untestedStatusId,
-  buildFolderIndex,
+  folderFromSections,
   mergeSnapshot,
   computeDelta,
   requiredResultDefaults,

@@ -5,7 +5,7 @@ const {
   dirtyFields,
   isDirty,
   effectiveTitle,
-  buildFolderIndex,
+  folderFromSections,
   mergeSnapshot,
   computeDelta,
   requiredResultDefaults,
@@ -119,41 +119,42 @@ describe('effectiveTitle', () => {
   });
 });
 
-describe('buildFolderIndex', () => {
-  const SECTIONS = [
+describe('folderFromSections', () => {
+  const sections = (...items) => new Map(items.map((item) => [item.id, item]));
+
+  const NESTED = sections(
     { id: 10, name: 'Campaign', parent_id: null },
     { id: 11, name: 'Android', parent_id: 10 },
-    { id: 12, name: 'Login', parent_id: 11 },
-  ];
+    { id: 12, name: 'Login', parent_id: 11 }
+  );
 
-  it('names a nested folder by its leaf and keeps the trail as the path', () => {
-    const index = buildFolderIndex(SECTIONS, [{ id: 1, section_id: 12 }]);
-    expect(index.get(1)).toEqual({ name: 'Login', path: 'Campaign / Android / Login' });
-  });
-
-  it('uses the section itself for a case sitting at the top of the suite', () => {
-    const index = buildFolderIndex(SECTIONS, [{ id: 2, section_id: 10 }]);
-    expect(index.get(2)).toEqual({ name: 'Campaign', path: 'Campaign' });
-  });
-
-  it('leaves out a case whose section is missing from the suite', () => {
-    const index = buildFolderIndex(SECTIONS, [{ id: 3, section_id: 999 }]);
-    expect(index.has(3)).toBe(false);
-  });
-
-  it('does not hang on a section chain that loops back on itself', () => {
-    const cyclic = [
-      { id: 20, name: 'A', parent_id: 21 },
-      { id: 21, name: 'B', parent_id: 20 },
-    ];
-    expect(buildFolderIndex(cyclic, [{ id: 4, section_id: 20 }]).get(4)).toEqual({
-      name: 'A',
-      path: 'B / A',
+  it('names a folder by its leaf and keeps the trail as the path', () => {
+    expect(folderFromSections(12, NESTED)).toEqual({
+      name: 'Login',
+      path: 'Campaign / Android / Login',
     });
   });
 
-  it('tolerates missing sections and cases', () => {
-    expect(buildFolderIndex(null, null).size).toBe(0);
+  it('uses the section itself for a case sitting at the top of the suite', () => {
+    expect(folderFromSections(10, NESTED)).toEqual({ name: 'Campaign', path: 'Campaign' });
+  });
+
+  it('returns nothing for a section that was never loaded', () => {
+    expect(folderFromSections(999, NESTED)).toBeNull();
+  });
+
+  it('stops at a parent that could not be read', () => {
+    const partial = sections({ id: 11, name: 'Android', parent_id: 10 });
+    partial.set(10, null);
+    expect(folderFromSections(11, partial)).toEqual({ name: 'Android', path: 'Android' });
+  });
+
+  it('does not hang on a section chain that loops back on itself', () => {
+    const cyclic = sections(
+      { id: 20, name: 'A', parent_id: 21 },
+      { id: 21, name: 'B', parent_id: 20 }
+    );
+    expect(folderFromSections(20, cyclic)).toEqual({ name: 'A', path: 'B / A' });
   });
 });
 

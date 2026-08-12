@@ -329,7 +329,9 @@ TestRail refuses a result that carries only defects (it requires a status, comme
 
 **Folders:** the Folder column shows the TestRail section a case lives in, and the dropdown in the filter bar narrows the table to one folder (with the case count next to each name). The column shows only the folder itself — hover it for the full path from the top of the suite down. The dropdown is hidden when every case in the run sits in the same folder.
 
-`get_tests` does not report a case's section, so a sync resolves folders from `get_sections` and `get_cases` for the run's suite. Those two calls are treated as optional: if they fail, the sync still succeeds, the folder falls back to the value from the previous sync, and the column shows `—` when it was never known.
+`get_tests` does not report a case's section, and reading a whole suite costs one request per 250 cases (suite 3025 holds over 13,000, which took three minutes). Instead the first sync of a run looks up a few of its cases to learn which sections the run draws from, then pulls those sections whole, so the cost tracks the handful of folders a run spans rather than the size of the suite. Resolved folders are stored in the run's snapshot, so later syncs re-resolve nothing and cost no extra requests.
+
+The lookup is optional: if it fails, the sync still succeeds, the folder falls back to the value from the previous sync, and the column shows `—` when it was never known. A case that is moved to a different folder in TestRail keeps its original folder here until the run is removed with **Done** and opened again.
 
 **Keyboard shortcuts:**
 

@@ -23,6 +23,15 @@ function writeSnapshot(runId, snapshot) {
   fs.renameSync(tmp, file);
 }
 
+// Removes the local copy only. TestRail keeps every result already uploaded; re-entering
+// the run id pulls the run back, minus any drafts that were never pushed.
+function deleteSnapshot(runId) {
+  const file = snapshotPath(runId);
+  if (!fs.existsSync(file)) return false;
+  fs.unlinkSync(file);
+  return true;
+}
+
 // Progress is read from what TestRail last reported, not from drafts, so the run list
 // separates "how far the run has got" from "what you have not uploaded yet".
 function runProgress(snapshot) {
@@ -58,4 +67,4 @@ function listSnapshots(limit = 8) {
     .slice(0, limit);
 }
 
-module.exports = { readSnapshot, writeSnapshot, listSnapshots, snapshotPath };
+module.exports = { readSnapshot, writeSnapshot, deleteSnapshot, listSnapshots, snapshotPath };

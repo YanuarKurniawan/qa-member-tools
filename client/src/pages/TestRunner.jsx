@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { Search, X, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, X, CheckCircle2, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 import RunToolbar from '../components/testRunner/RunToolbar';
 import TestRunTable from '../components/testRunner/TestRunTable';
 import CaseDrawer from '../components/testRunner/CaseDrawer';
@@ -69,6 +69,9 @@ export default function TestRunner() {
   const [saving, setSaving] = useState(false);
   const [savedAt, setSavedAt] = useState(null);
   const [showShortcuts, setShowShortcuts] = useState(false);
+  const [confirmRun, setConfirmRun] = useState(null);
+  const [removing, setRemoving] = useState(false);
+  const [removeError, setRemoveError] = useState(null);
 
   useEffect(() => {
     mountedRef.current = true;
@@ -477,6 +480,28 @@ export default function TestRunner() {
       if (mountedRef.current) setUploading(false);
     }
   }, [runIdParam]);
+  const openRemoveDialog = useCallback((run) => {
+    setRemoveError(null);
+    setConfirmRun(run);
+  }, []);
+
+  const onRemoveRun = useCallback(async (run) => {
+    setRemoving(true);
+    setRemoveError(null);
+    try {
+      // The response carries the refreshed list, so the row disappears in one round trip.
+      const body = await json(`${API}/${run.runId}`, { method: 'DELETE' });
+      if (!mountedRef.current) return;
+      setRecent(body.runs || []);
+      setConfirmRun(null);
+    } catch (err) {
+      // Reported inside the dialog: the page banner would sit behind the backdrop.
+      if (mountedRef.current) setRemoveError(err.message);
+    } finally {
+      if (mountedRef.current) setRemoving(false);
+    }
+  }, []);
+
   const onSync = useCallback(() => {
     const id = Number(runIdParam);
     if (!Number.isFinite(id)) return;
@@ -499,6 +524,7 @@ export default function TestRunner() {
       if (event.key === 'Escape') {
         if (isTyping(event.target)) return;
         if (document.querySelector('[aria-label="More statuses"][aria-expanded="true"]')) return;
+        setConfirmRun(null);
         setActiveTestId(null);
         setShowShortcuts(false);
         return;
@@ -631,11 +657,11 @@ export default function TestRunner() {
             ) : (
               <ul className="mt-3 divide-y divide-gray-100 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
                 {recent.map((run) => (
-                  <li key={run.runId}>
+                  <li key={run.runId} className="flex items-center transition-colors hover:bg-gray-50">
                     {/* A real link, so a run can be opened in a new tab or bookmarked. */}
                     <Link
                       to={`/test-runner/${run.runId}`}
-                      className="flex items-center gap-4 px-5 py-3.5 transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-500"
+                      className="flex min-w-0 flex-1 items-center gap-4 py-3.5 pl-5 pr-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-500"
                     >
                       <div className="min-w-0 flex-1">
                         <p className="truncate text-sm font-medium text-gray-900">
@@ -654,6 +680,16 @@ export default function TestRunner() {
                       )}
                       <ChevronRight size={16} className="shrink-0 text-gray-400" />
                     </Link>
+                    <div className="shrink-0 py-3.5 pl-1 pr-4">
+                      <button
+                        type="button"
+                        onClick={() => openRemoveDialog(run)}
+                        title={`Remove run ${run.runId} from this list`}
+                        className="rounded-lg border border-gray-300 bg-white px-3 py-1.5 text-xs font-semibold text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      >
+                        Done
+                      </button>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -955,6 +991,66 @@ export default function TestRunner() {
                 onSetStatus={setStatus}
               />
             )}
+          </div>
+        </div>
+      )}
+
+      {confirmRun && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4"
+          onClick={() => setConfirmRun(null)}
+          role="presentation"
+        >
+          <div
+            className="w-full max-w-md rounded-xl border border-gray-200 bg-white p-5 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="remove-run-title"
+          >
+            <h2 id="remove-run-title" className="text-base font-semibold text-gray-900">
+              Remove this run from the list?
+            </h2>
+            <p className="mt-2 text-sm text-gray-600">
+              <span className="font-medium text-gray-900">{confirmRun.runName}</span> leaves the
+              Test Runner list. Results already uploaded stay in TestRail, and entering run{' '}
+              {confirmRun.runId} again brings it back.
+            </p>
+
+            {confirmRun.dirtyCount > 0 && (
+              <p className="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800">
+                {confirmRun.dirtyCount} change{confirmRun.dirtyCount === 1 ? '' : 's'} on this run
+                {confirmRun.dirtyCount === 1 ? ' has' : ' have'} not been uploaded. Removing it
+                discards {confirmRun.dirtyCount === 1 ? 'that change' : 'them'}.
+              </p>
+            )}
+
+            {removeError && (
+              <p className="mt-3 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-800">
+                {removeError}
+              </p>
+            )}
+
+            <div className="mt-5 flex gap-3">
+              <button
+                type="button"
+                onClick={() => onRemoveRun(confirmRun)}
+                disabled={removing}
+                className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {removing && <Loader2 size={14} className="animate-spin" />}
+                Remove run
+              </button>
+              <button
+                type="button"
+                autoFocus
+                onClick={() => setConfirmRun(null)}
+                disabled={removing}
+                className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       )}

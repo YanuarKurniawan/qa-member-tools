@@ -342,5 +342,6 @@ module.exports = {
   saveDraft,
   uploadRun,
   getCaseDetail,
+  deleteRun: (runId) => store.deleteSnapshot(runId),
   listRecentRuns: () => store.listSnapshots(),
 };

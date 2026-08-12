@@ -46,6 +46,19 @@ router.get('/:runId', (req, res) => {
   }
 });
 
+router.delete('/:runId', (req, res) => {
+  const runId = resolveRunId(req, res);
+  if (!runId) return;
+  try {
+    if (!runner.deleteRun(runId)) {
+      return notSyncedResponse(res, runId);
+    }
+    res.json({ runId, runs: runner.listRecentRuns() });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 router.post('/:runId/sync', async (req, res) => {
   const runId = resolveRunId(req, res);
   if (!runId) return;

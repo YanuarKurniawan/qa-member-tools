@@ -307,6 +307,8 @@ Web UI page for executing a TestRail run from one keyboard-driven table — draf
 
 **Run list:** `/test-runner` lists every run that has been synced on this machine, newest first, with how far it has got in TestRail, when it was last synced, and how many unsaved drafts it is holding. Rows are links, so a run can be opened in a new tab. **All runs** at the top of a run returns here.
 
+**Done:** clears a finished run off the list by deleting `server/data/testRuns/<runId>.json`. It asks first, and warns when the run still holds drafts, because those are discarded with it. Nothing is sent to TestRail: results already uploaded stay there, and entering the run ID again re-syncs the run from scratch.
+
 **Credentials:** requires `TESTRAIL_USER` and `TESTRAIL_API_KEY` in `.env` (same as other TestRail tools).
 
 **Sync:** pulls the run's tests from TestRail and refreshes the **Latest TestRail** column while preserving local drafts. If TestRail changed a field you also edited, the row is flagged as a conflict with **Keep mine** / **Take theirs** per field.

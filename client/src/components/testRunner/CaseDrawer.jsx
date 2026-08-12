@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import DOMPurify from 'dompurify';
 import StatusCell from './StatusCell';
-
-const JIRA_BASE = 'https://borobudur.atlassian.net';
+import { parseKeys, jiraHref } from './jira';
 
 function CaseHtml({ html }) {
   if (!html) return null;
@@ -16,19 +15,24 @@ function CaseHtml({ html }) {
   );
 }
 
-function parseRefs(refs) {
-  if (!refs) return [];
-  return String(refs)
-    .split(',')
-    .map((r) => r.trim())
-    .filter(Boolean);
-}
-
-function jiraHref(key) {
-  if (/^[A-Za-z]+-\d+$/.test(key)) {
-    return `${JIRA_BASE}/browse/${key}`;
-  }
-  return null;
+function KeyLinks({ value }) {
+  const keys = parseKeys(value);
+  if (keys.length === 0) return null;
+  return keys.map((key, index) => {
+    const href = jiraHref(key);
+    return (
+      <span key={key}>
+        {index > 0 && ', '}
+        {href ? (
+          <a href={href} target="_blank" rel="noreferrer" className="text-blue-700 hover:underline">
+            {key}
+          </a>
+        ) : (
+          key
+        )}
+      </span>
+    );
+  });
 }
 
 function Section({ label, children }) {
@@ -53,13 +57,18 @@ export default function CaseDrawer({
 }) {
   const [commentLocal, setCommentLocal] = useState('');
   const [commentEditing, setCommentEditing] = useState(false);
+  const [defectsLocal, setDefectsLocal] = useState('');
+  const [defectsEditing, setDefectsEditing] = useState(false);
 
   useEffect(() => {
     setCommentLocal('');
     setCommentEditing(false);
+    setDefectsLocal('');
+    setDefectsEditing(false);
   }, [test.testId]);
 
   const commentValue = commentEditing ? commentLocal : test.comment || '';
+  const defectsValue = defectsEditing ? defectsLocal : test.defects || '';
 
   const commitComment = () => {
     const value = commentValue;
@@ -72,8 +81,18 @@ export default function CaseDrawer({
     onPatch(test.testId, { comment: value || null });
   };
 
+  const commitDefects = () => {
+    const value = defectsValue;
+    if (value === (test.defects || '')) {
+      setDefectsEditing(false);
+      setDefectsLocal('');
+      return;
+    }
+    onPatch(test.testId, { defects: value || null });
+  };
+
   const caseId = detail?.caseId ?? test.caseId;
-  const refKeys = parseRefs(detail?.refs);
+  const hasRefs = parseKeys(detail?.refs).length > 0;
 
   return (
     <aside className="w-[440px] shrink-0 overflow-y-auto rounded-xl border border-gray-200 bg-white">
@@ -96,29 +115,10 @@ export default function CaseDrawer({
           >
             C{caseId}
           </a>
-          {refKeys.length > 0 && (
+          {hasRefs && (
             <>
               {' · '}
-              {refKeys.map((key, index) => {
-                const href = jiraHref(key);
-                return (
-                  <span key={key}>
-                    {index > 0 && ', '}
-                    {href ? (
-                      <a
-                        href={href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-blue-700 hover:underline"
-                      >
-                        {key}
-                      </a>
-                    ) : (
-                      key
-                    )}
-                  </span>
-                );
-              })}
+              <KeyLinks value={detail?.refs} />
             </>
           )}
         </p>
@@ -185,6 +185,51 @@ export default function CaseDrawer({
                 placeholder="Add a comment…"
                 className="w-full resize-none rounded-md border border-gray-200 px-3 py-2 text-sm text-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500"
               />
+
+              <div>
+                <label
+                  htmlFor={`defects-${test.testId}`}
+                  className="text-xs font-semibold uppercase tracking-wide text-gray-500"
+                >
+                  Defects
+                </label>
+                <input
+                  id={`defects-${test.testId}`}
+                  type="text"
+                  value={defectsValue}
+                  disabled={disabled}
+                  onChange={(e) => {
+                    setDefectsEditing(true);
+                    setDefectsLocal(e.target.value);
+                  }}
+                  onBlur={commitDefects}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      e.target.blur();
+                    }
+                    if (e.key === 'Escape') {
+                      e.preventDefault();
+                      setDefectsLocal('');
+                      setDefectsEditing(false);
+                      e.target.blur();
+                    }
+                  }}
+                  placeholder="PLAT-1234, PLAT-5678"
+                  className="mt-1.5 w-full rounded-md border border-gray-200 px-3 py-2 text-sm text-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500"
+                />
+                {defectsValue ? (
+                  <p className="mt-1.5 text-xs text-gray-500">
+                    <KeyLinks value={defectsValue} />
+                  </p>
+                ) : (
+                  test.lastResultDefects && (
+                    <p className="mt-1.5 text-xs text-gray-500">
+                      Uploaded: <KeyLinks value={test.lastResultDefects} />
+                    </p>
+                  )
+                )}
+              </div>
             </div>
           </>
         )}

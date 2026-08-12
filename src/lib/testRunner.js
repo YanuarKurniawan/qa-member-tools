@@ -8,6 +8,7 @@ const CASE_EDIT_PAUSE_MS = 250;
 const RESULT_CHUNK = 250;
 const MAX_TITLE = 250;
 const MAX_COMMENT = 5000;
+const MAX_DEFECTS = 250;
 
 function parseRunId(input) {
   if (input == null) return null;
@@ -52,6 +53,7 @@ function normalizeTest(test, index) {
       steps: test.custom_steps || null,
       expected: test.custom_expected || null,
       lastResultComment: null,
+      lastResultDefects: null,
     },
   };
 }
@@ -106,6 +108,9 @@ function validatePatch(snapshot, patch) {
     } else if (field === 'comment') {
       if (typeof value !== 'string') throw new Error('Comment must be text');
       if (value.length > MAX_COMMENT) throw new Error(`Comment exceeds ${MAX_COMMENT} characters`);
+    } else if (field === 'defects') {
+      if (typeof value !== 'string') throw new Error('Defects must be text');
+      if (value.length > MAX_DEFECTS) throw new Error(`Defects exceed ${MAX_DEFECTS} characters`);
     } else {
       throw new Error(`Unknown field: ${field}`);
     }
@@ -196,6 +201,15 @@ async function uploadRun(runId) {
     if (!outcome.errors.includes(message)) outcome.errors.push(message);
   };
 
+  // A defect with nothing to attach it to never reaches TestRail, so it is counted as a
+  // failed result rather than reported as uploaded, and the row keeps its draft.
+  for (const item of delta.blockedDefects) {
+    const message = 'Set a status or comment on this row before uploading its defect.';
+    record(item.testId).uploadError = message;
+    outcome.resultsFailed += 1;
+    addError(message);
+  }
+
   if (delta.results.length > 0) {
     if (snapshot.isCompleted || snapshot.isArchived) {
       const message =
@@ -216,6 +230,7 @@ async function uploadRun(runId) {
           const entry = { case_id: result.caseId, ...resultDefaults };
           if ('statusId' in result) entry.status_id = result.statusId;
           if ('comment' in result) entry.comment = result.comment;
+          if ('defects' in result) entry.defects = result.defects;
           return entry;
         });
         try {
@@ -229,6 +244,10 @@ async function uploadRun(runId) {
             if ('comment' in result) {
               entry.remote.lastResultComment = result.comment;
               entry.cleared.push('comment');
+            }
+            if ('defects' in result) {
+              entry.remote.lastResultDefects = result.defects;
+              entry.cleared.push('defects');
             }
             outcome.pushed += 1;
           }

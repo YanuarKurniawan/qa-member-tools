@@ -14,6 +14,11 @@ function draftComment(test) {
   return typeof value === 'string' ? value.trim() : '';
 }
 
+function draftDefects(test) {
+  const value = (test.draft || {}).defects;
+  return typeof value === 'string' ? value.trim() : '';
+}
+
 function dirtyFields(test) {
   const draft = test.draft || {};
   const fields = [];
@@ -21,6 +26,7 @@ function dirtyFields(test) {
   if ('priorityId' in draft && draft.priorityId !== test.remote.priorityId) fields.push('priorityId');
   if ('title' in draft && draft.title !== baseTitle(test)) fields.push('title');
   if (draftComment(test)) fields.push('comment');
+  if (draftDefects(test)) fields.push('defects');
   return fields;
 }
 
@@ -58,6 +64,7 @@ function mergeSnapshot(existing, fresh, now = new Date().toISOString()) {
       remote: {
         ...incoming.remote,
         lastResultComment: (prev.remote && prev.remote.lastResultComment) || null,
+        lastResultDefects: (prev.remote && prev.remote.lastResultDefects) || null,
       },
       caseTitle: prev.caseTitle == null ? null : prev.caseTitle,
       draft,
@@ -99,11 +106,13 @@ function computeDelta(snapshot) {
   const results = [];
   const caseEdits = [];
   const skippedUntested = [];
+  const blockedDefects = [];
   const untested = untestedStatusId(snapshot);
 
   for (const test of Object.values(snapshot.tests)) {
     const draft = test.draft || {};
     const comment = draftComment(test);
+    const defects = draftDefects(test);
     let pushStatus = 'statusId' in draft && draft.statusId !== test.remote.statusId;
 
     if (pushStatus && draft.statusId === untested) {
@@ -111,11 +120,27 @@ function computeDelta(snapshot) {
       pushStatus = false;
     }
 
-    if (pushStatus || comment) {
+    if (pushStatus || comment || defects) {
       const entry = { testId: test.testId, caseId: test.caseId };
       if (pushStatus) entry.statusId = draft.statusId;
       if (comment) entry.comment = comment;
-      results.push(entry);
+      if (defects) entry.defects = defects;
+
+      // TestRail rejects a result carrying only defects: one of status, comment or assignee
+      // must be present. Restate the status the row already shows, which is what linking a
+      // defect in TestRail's own UI does. An Untested row has no status it can restate.
+      let blocked = false;
+      if (defects && !pushStatus && !comment) {
+        const current = 'statusId' in draft ? draft.statusId : test.remote.statusId;
+        if (current === untested) {
+          blockedDefects.push({ testId: test.testId, caseId: test.caseId, title: effectiveTitle(test) });
+          blocked = true;
+        } else {
+          entry.statusId = current;
+        }
+      }
+
+      if (!blocked) results.push(entry);
     }
 
     const fields = {};
@@ -128,7 +153,7 @@ function computeDelta(snapshot) {
     }
   }
 
-  return { results, caseEdits, skippedUntested };
+  return { results, caseEdits, skippedUntested, blockedDefects };
 }
 
 // A TestRail instance can mark result fields required instance-wide, and it rejects
@@ -176,12 +201,14 @@ function toView(snapshot) {
         remoteStatusId: test.remote.statusId,
         priorityId: 'priorityId' in draft ? draft.priorityId : test.remote.priorityId,
         comment: typeof draft.comment === 'string' ? draft.comment : '',
+        defects: typeof draft.defects === 'string' ? draft.defects : '',
         refs: test.remote.refs || null,
         dirtyFields: dirtyFields(test),
         conflicts: test.conflicts || [],
         uploadError: test.uploadError || null,
         titleDivergedFromRun: Boolean(test.caseTitle && test.caseTitle !== test.remote.title),
         lastResultComment: test.remote.lastResultComment || null,
+        lastResultDefects: test.remote.lastResultDefects || null,
       };
     });
 

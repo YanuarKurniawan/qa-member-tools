@@ -93,6 +93,14 @@ describe('dirtyFields', () => {
     expect(dirtyFields(storedTest({ draft: { comment: '   ' } }))).toEqual([]);
   });
 
+  it('treats any non-empty defect as dirty', () => {
+    expect(dirtyFields(storedTest({ draft: { defects: 'PLAT-1234' } }))).toEqual(['defects']);
+  });
+
+  it('ignores a whitespace-only defect', () => {
+    expect(dirtyFields(storedTest({ draft: { defects: '  ' } }))).toEqual([]);
+  });
+
   it('compares a title draft against caseTitle when one exists', () => {
     const test = storedTest({ caseTitle: 'success login via email', draft: { title: 'success login via email' } });
     expect(dirtyFields(test)).toEqual([]);
@@ -186,7 +194,12 @@ describe('mergeSnapshot', () => {
 
 describe('computeDelta', () => {
   it('returns nothing when no drafts exist', () => {
-    expect(computeDelta(snapshot())).toEqual({ results: [], caseEdits: [], skippedUntested: [] });
+    expect(computeDelta(snapshot())).toEqual({
+      results: [],
+      caseEdits: [],
+      skippedUntested: [],
+      blockedDefects: [],
+    });
   });
 
   it('pushes a changed status', () => {
@@ -245,6 +258,71 @@ describe('computeDelta', () => {
     expect(delta.results).toEqual([]);
   });
 
+  it('pushes a defect alongside the status that produced it', () => {
+    const delta = computeDelta(
+      snapshot([storedTest({ draft: { statusId: 5, defects: 'PLAT-1234, PLAT-5678' } })])
+    );
+    expect(delta.results).toEqual([
+      { testId: 1001, caseId: 2001, statusId: 5, defects: 'PLAT-1234, PLAT-5678' },
+    ]);
+  });
+
+  // TestRail rejects a result with nothing but defects on it, so a defect added on its own
+  // has to restate the status the row already carries.
+  it('restates the current status for a defect added on its own', () => {
+    const stored = storedTest({
+      remote: { ...storedTest().remote, statusId: 5 },
+      draft: { defects: ' PLAT-1234 ' },
+    });
+    const delta = computeDelta(snapshot([stored]));
+    expect(delta.results).toEqual([
+      { testId: 1001, caseId: 2001, defects: 'PLAT-1234', statusId: 5 },
+    ]);
+    expect(delta.blockedDefects).toEqual([]);
+  });
+
+  it('does not restate a status when the defect already travels with a comment', () => {
+    const stored = storedTest({
+      remote: { ...storedTest().remote, statusId: 5 },
+      draft: { defects: 'PLAT-1234', comment: 'log attached' },
+    });
+    const delta = computeDelta(snapshot([stored]));
+    expect(delta.results).toEqual([
+      { testId: 1001, caseId: 2001, comment: 'log attached', defects: 'PLAT-1234' },
+    ]);
+  });
+
+  it('blocks a defect on an Untested row, which has no status to restate', () => {
+    const delta = computeDelta(snapshot([storedTest({ draft: { defects: 'PLAT-1234' } })]));
+    expect(delta.results).toEqual([]);
+    expect(delta.blockedDefects).toEqual([{ testId: 1001, caseId: 2001, title: 'success login' }]);
+  });
+
+  it('still applies a case edit on a row whose defect is blocked', () => {
+    const delta = computeDelta(
+      snapshot([storedTest({ draft: { defects: 'PLAT-1234', priorityId: 4 } })])
+    );
+    expect(delta.blockedDefects).toHaveLength(1);
+    expect(delta.caseEdits).toEqual([{ testId: 1001, caseId: 2001, fields: { priority_id: 4 } }]);
+  });
+
+  it('leaves a whitespace-only defect out of the delta', () => {
+    const delta = computeDelta(snapshot([storedTest({ draft: { defects: '   ' } })]));
+    expect(delta.results).toEqual([]);
+    expect(delta.blockedDefects).toEqual([]);
+  });
+
+  it('blocks the defect when the drafted status was Untested and skipped', () => {
+    const stored = storedTest({
+      remote: { ...storedTest().remote, statusId: 5 },
+      draft: { statusId: 3, defects: 'PLAT-1234' },
+    });
+    const delta = computeDelta(snapshot([stored]));
+    expect(delta.skippedUntested).toHaveLength(1);
+    expect(delta.results).toEqual([]);
+    expect(delta.blockedDefects).toHaveLength(1);
+  });
+
   it('groups title and priority into one case edit', () => {
     const delta = computeDelta(
       snapshot([storedTest({ draft: { title: 'success login via email', priorityId: 4 } })])
@@ -271,6 +349,20 @@ describe('toView', () => {
     expect(view.tests[0].steps).toBeUndefined();
     expect(view.dirtyCount).toBe(1);
     expect(view.counts).toEqual({ 3: 2 });
+  });
+
+  it('exposes the drafted defect and the one last pushed', () => {
+    const view = toView(
+      snapshot([
+        storedTest({
+          remote: { ...storedTest().remote, lastResultDefects: 'PLAT-1' },
+          draft: { defects: 'PLAT-2' },
+        }),
+      ])
+    );
+    expect(view.tests[0].defects).toBe('PLAT-2');
+    expect(view.tests[0].lastResultDefects).toBe('PLAT-1');
+    expect(view.tests[0].dirtyFields).toEqual(['defects']);
   });
 
   it('marks a row whose case title diverged from the run copy', () => {

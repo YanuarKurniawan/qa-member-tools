@@ -65,9 +65,18 @@ Defects ride on the same result as status and comment, so the delta gains no new
 add_results_for_cases: { case_id, status_id?, comment?, defects?, ...requiredDefaults }
 ```
 
-A row where only the defect changed pushes a defect-only result, the way a comment-only change
-already does. On success the draft key clears and `remote.lastResultDefects` holds the pushed
-value, following the same journal-and-replay path that protects concurrent drafts.
+TestRail rejects a result carrying nothing but defects: `add_results_for_cases` answers
+`HTTP 400 ... one of Status ID, Assigned To or Comment is required` (measured against
+`tiket.testrail.com` on 2026-08-12). A comment-only result stays valid, so only the defect needs
+handling. When a defect would travel alone the delta restates the status the row already shows,
+which is what linking a defect in TestRail's own UI produces.
+
+An Untested row has no status it can restate, so its defect is reported rather than pushed: the row
+keeps its draft, gains an `uploadError` of "Set a status or comment on this row before uploading its
+defect.", and counts toward `resultsFailed` so the upload summary cannot come back green.
+
+On success the draft key clears and `remote.lastResultDefects` holds the pushed value, following the
+same journal-and-replay path that protects concurrent drafts.
 
 ## Sync
 
@@ -87,6 +96,7 @@ surfaces as that row's `uploadError`, like any other rejection.
 
 ## Testing
 
-- Unit: `defects` through `dirtyFields`, `computeDelta` (including defect-only results), and
-  `toView`; an upload test covering the push and the draft clearing.
+- Unit: `defects` through `dirtyFields`, `computeDelta` (restated status, blocked Untested row,
+  case edits still applying on a blocked row), and `toView`; upload tests covering the push, the
+  draft clearing, a rejection, and the blocked row.
 - Manual: draft, reload, sync, upload against run 17748, clearing drafts afterwards.

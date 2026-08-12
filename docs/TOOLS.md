@@ -319,6 +319,10 @@ Web UI page for executing a TestRail run from one keyboard-driven table — draf
 
 **Required result fields:** every uploaded result carries the instance's required result-field defaults (on `tiket.testrail.com`, currently **`reusable = No`** unless an admin changes the field default in TestRail).
 
+**Defects:** the case drawer has a Defects field under the comment box, taking one or more Jira keys (`PLAT-1234, PLAT-5678`). It is a result field, so it applies to this run only and never edits the shared case — unlike the case's own refs shown in the drawer header. Rows carrying a defect show a badge next to the status, and keys render as links to Jira. The defect uploads on the same result as the status and comment, so it costs no extra request.
+
+TestRail refuses a result that carries only defects (it requires a status, comment, or assignee), so a defect added on its own restates the status the row already shows — the same result TestRail's own UI produces when you link a defect. A defect on an **Untested** row has no status to restate: it is not uploaded, the row is flagged with "Set a status or comment on this row before uploading its defect.", and the draft is kept so nothing is lost.
+
 **Keyboard shortcuts:**
 
 | Keys | Action |

@@ -98,6 +98,78 @@ describe('uploadRun draft safety', () => {
     expect(stored.remote.lastResultComment).toBe('works');
   });
 
+  it('sends a drafted defect on the same result as the failure', async () => {
+    writeSnapshot([test(1, { draft: { statusId: 5, defects: 'PLAT-1234, PLAT-5678' } })]);
+
+    let sent;
+    testrail.addResultsForCases = async (runId, payload) => {
+      sent = payload;
+      return [];
+    };
+
+    await runner.uploadRun(RUN_ID);
+
+    expect(sent).toEqual([
+      { case_id: 1001, status_id: 5, defects: 'PLAT-1234, PLAT-5678' },
+    ]);
+    const stored = store.readSnapshot(RUN_ID).tests['1'];
+    expect(stored.draft).toEqual({});
+    expect(stored.remote.lastResultDefects).toBe('PLAT-1234, PLAT-5678');
+  });
+
+  it('reports a defect that has no status or comment to attach to', async () => {
+    // Remote status is Untested, so there is nothing for the defect to ride on.
+    writeSnapshot([test(1, { draft: { defects: 'PLAT-1234' } })]);
+
+    let called = false;
+    testrail.addResultsForCases = async () => {
+      called = true;
+      return [];
+    };
+
+    const outcome = await runner.uploadRun(RUN_ID);
+
+    expect(called).toBe(false);
+    expect(outcome.resultsFailed).toBe(1);
+    expect(outcome.errors[0]).toMatch(/Set a status or comment/);
+    const stored = store.readSnapshot(RUN_ID).tests['1'];
+    expect(stored.draft).toEqual({ defects: 'PLAT-1234' });
+    expect(stored.uploadError).toMatch(/Set a status or comment/);
+  });
+
+  it('restates the existing status so a defect on a failed row uploads', async () => {
+    writeSnapshot([
+      test(1, { remote: { ...test(1).remote, statusId: 5 }, draft: { defects: 'PLAT-1234' } }),
+    ]);
+
+    let sent;
+    testrail.addResultsForCases = async (runId, payload) => {
+      sent = payload;
+      return [];
+    };
+
+    const outcome = await runner.uploadRun(RUN_ID);
+
+    expect(sent).toEqual([{ case_id: 1001, status_id: 5, defects: 'PLAT-1234' }]);
+    expect(outcome.pushed).toBe(1);
+    expect(store.readSnapshot(RUN_ID).tests['1'].draft).toEqual({});
+  });
+
+  it('keeps a defect draft when TestRail rejects the result', async () => {
+    writeSnapshot([test(1, { draft: { statusId: 5, defects: 'NOPE-1' } })]);
+    testrail.addResultsForCases = async () => {
+      throw new Error('Field :defects is not a valid defect ID');
+    };
+
+    const outcome = await runner.uploadRun(RUN_ID);
+
+    expect(outcome.resultsFailed).toBe(1);
+    const stored = store.readSnapshot(RUN_ID).tests['1'];
+    expect(stored.draft).toEqual({ statusId: 5, defects: 'NOPE-1' });
+    expect(stored.remote.lastResultDefects).toBeFalsy();
+    expect(stored.uploadError).toMatch(/not a valid defect/);
+  });
+
   it('keeps a draft saved on another row while the upload was in flight', async () => {
     writeSnapshot([test(1, { draft: { statusId: 1 } }), test(2)]);
 

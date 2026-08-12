@@ -1,7 +1,26 @@
 import { useState, useEffect } from 'react';
-import { ChevronUp, ChevronDown, Info, Pencil, AlertCircle } from 'lucide-react';
+import { ChevronUp, ChevronDown, Info, Pencil, AlertCircle, Bug } from 'lucide-react';
 import { statusStyle, statusLabel, priorityLabel } from './statusVocab';
 import StatusCell from './StatusCell';
+import { parseKeys } from './jira';
+
+// Shows the defect on a row at a glance. The drawer is where they are read and edited, so
+// this stays a label: the first key, and how many more are hiding behind the tooltip.
+function DefectBadge({ test }) {
+  const keys = parseKeys(test.defects || test.lastResultDefects);
+  if (keys.length === 0) return null;
+  const extra = keys.length - 1;
+  return (
+    <span
+      title={keys.join(', ')}
+      className="mt-1 inline-flex max-w-[9rem] items-center gap-1 rounded-md border border-rose-200 bg-rose-50 px-1.5 py-0.5 text-[11px] font-medium text-rose-700"
+    >
+      <Bug size={11} className="shrink-0" />
+      <span className="truncate">{keys[0]}</span>
+      {extra > 0 && <span className="shrink-0 text-rose-500">+{extra}</span>}
+    </span>
+  );
+}
 
 export function Highlight({ text, needle }) {
   if (!needle || !text) return text || '';
@@ -344,6 +363,7 @@ export default function TestRunTable({
                     disabled={readOnlyResults}
                     onSetStatus={onSetStatus}
                   />
+                  <DefectBadge test={test} />
                   {conflictForField(test, 'statusId') && (
                     <ConflictLine
                       conflict={conflictForField(test, 'statusId')}

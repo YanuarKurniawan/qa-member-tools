@@ -39,13 +39,16 @@ function normalizeVocab(statuses, priorities) {
   };
 }
 
-function normalizeTest(test, index) {
+function normalizeTest(test, index, folders) {
+  const folder = folders.get(test.case_id) || null;
   return {
     testId: test.id,
     caseId: test.case_id,
     order: index,
     remote: {
       title: test.title,
+      folder: folder && folder.name,
+      folderPath: folder && folder.path,
       statusId: test.status_id,
       priorityId: test.priority_id,
       refs: test.refs || null,
@@ -63,12 +66,29 @@ function loadRun(runId) {
   return snapshot ? logic.toView(snapshot) : null;
 }
 
+// Folders cost two extra endpoints, and they are a convenience column rather than
+// something a run cannot be executed without. A failure here leaves the folder unknown
+// instead of failing the whole sync; mergeSnapshot then keeps the last known value.
+async function fetchFolders(projectId, suiteId) {
+  try {
+    const [sections, cases] = await Promise.all([
+      testrail.getSections(projectId, suiteId),
+      testrail.getCases(projectId, suiteId),
+    ]);
+    return logic.buildFolderIndex(sections, cases);
+  } catch (err) {
+    console.warn(`[testRunner] folder lookup failed for project ${projectId}: ${err.message}`);
+    return new Map();
+  }
+}
+
 async function syncRun(runId) {
   const run = await testrail.getRun(runId);
-  const [rawTests, statuses, priorities] = await Promise.all([
+  const [rawTests, statuses, priorities, folders] = await Promise.all([
     testrail.getTests(runId),
     testrail.getStatuses(),
     testrail.getPriorities(),
+    fetchFolders(run.project_id, run.suite_id),
   ]);
 
   const fresh = {
@@ -83,7 +103,7 @@ async function syncRun(runId) {
       isArchived: Boolean(run.is_archived),
     },
     vocab: normalizeVocab(statuses, priorities),
-    tests: rawTests.map(normalizeTest),
+    tests: rawTests.map((test, index) => normalizeTest(test, index, folders)),
   };
 
   const existing = store.readSnapshot(runId);

@@ -5,6 +5,7 @@ const {
   dirtyFields,
   isDirty,
   effectiveTitle,
+  buildFolderIndex,
   mergeSnapshot,
   computeDelta,
   requiredResultDefaults,
@@ -118,6 +119,44 @@ describe('effectiveTitle', () => {
   });
 });
 
+describe('buildFolderIndex', () => {
+  const SECTIONS = [
+    { id: 10, name: 'Campaign', parent_id: null },
+    { id: 11, name: 'Android', parent_id: 10 },
+    { id: 12, name: 'Login', parent_id: 11 },
+  ];
+
+  it('names a nested folder by its leaf and keeps the trail as the path', () => {
+    const index = buildFolderIndex(SECTIONS, [{ id: 1, section_id: 12 }]);
+    expect(index.get(1)).toEqual({ name: 'Login', path: 'Campaign / Android / Login' });
+  });
+
+  it('uses the section itself for a case sitting at the top of the suite', () => {
+    const index = buildFolderIndex(SECTIONS, [{ id: 2, section_id: 10 }]);
+    expect(index.get(2)).toEqual({ name: 'Campaign', path: 'Campaign' });
+  });
+
+  it('leaves out a case whose section is missing from the suite', () => {
+    const index = buildFolderIndex(SECTIONS, [{ id: 3, section_id: 999 }]);
+    expect(index.has(3)).toBe(false);
+  });
+
+  it('does not hang on a section chain that loops back on itself', () => {
+    const cyclic = [
+      { id: 20, name: 'A', parent_id: 21 },
+      { id: 21, name: 'B', parent_id: 20 },
+    ];
+    expect(buildFolderIndex(cyclic, [{ id: 4, section_id: 20 }]).get(4)).toEqual({
+      name: 'A',
+      path: 'B / A',
+    });
+  });
+
+  it('tolerates missing sections and cases', () => {
+    expect(buildFolderIndex(null, null).size).toBe(0);
+  });
+});
+
 describe('mergeSnapshot', () => {
   it('creates a snapshot from scratch when nothing is stored', () => {
     const { snapshot: merged, summary } = mergeSnapshot(null, fresh());
@@ -159,6 +198,26 @@ describe('mergeSnapshot', () => {
     const { snapshot: merged } = mergeSnapshot(existing, fresh());
     expect(merged.tests['1001'].caseTitle).toBe('renamed');
     expect(merged.tests['1001'].remote.lastResultComment).toBe('shipped');
+  });
+
+  it('keeps the known folder when a sync could not resolve one', () => {
+    const existing = snapshot([
+      storedTest({ remote: { ...storedTest().remote, folder: 'Android', folderPath: 'Campaign / Android' } }),
+    ]);
+    const { snapshot: merged } = mergeSnapshot(existing, fresh());
+    expect(merged.tests['1001'].remote.folder).toBe('Android');
+    expect(merged.tests['1001'].remote.folderPath).toBe('Campaign / Android');
+  });
+
+  it('takes the new folder when a case has been moved', () => {
+    const existing = snapshot([
+      storedTest({ remote: { ...storedTest().remote, folder: 'Android', folderPath: 'Campaign / Android' } }),
+    ]);
+    const incoming = fresh([
+      freshTest({ remote: { ...freshTest().remote, folder: 'iOS', folderPath: 'Campaign / iOS' } }),
+    ]);
+    const { snapshot: merged } = mergeSnapshot(existing, incoming);
+    expect(merged.tests['1001'].remote.folderPath).toBe('Campaign / iOS');
   });
 
   it('reports removed tests that still had drafts', () => {
@@ -363,6 +422,22 @@ describe('toView', () => {
     expect(view.tests[0].defects).toBe('PLAT-2');
     expect(view.tests[0].lastResultDefects).toBe('PLAT-1');
     expect(view.tests[0].dirtyFields).toEqual(['defects']);
+  });
+
+  it('exposes the folder name and its full path', () => {
+    const view = toView(
+      snapshot([
+        storedTest({ remote: { ...storedTest().remote, folder: 'Android', folderPath: 'Campaign / Android' } }),
+      ])
+    );
+    expect(view.tests[0].folder).toBe('Android');
+    expect(view.tests[0].folderPath).toBe('Campaign / Android');
+  });
+
+  it('reports an unresolved folder as null rather than omitting it', () => {
+    const view = toView(snapshot([storedTest()]));
+    expect(view.tests[0].folder).toBeNull();
+    expect(view.tests[0].folderPath).toBeNull();
   });
 
   it('marks a row whose case title diverged from the run copy', () => {

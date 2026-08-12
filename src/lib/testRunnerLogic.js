@@ -34,6 +34,40 @@ function isDirty(test) {
   return dirtyFields(test).length > 0;
 }
 
+// get_tests omits section_id, so a case's folder has to be reassembled from the suite's
+// sections and cases. Returns caseId -> { name, path }, where name is the folder the case
+// sits in and path is the trail from the top of the suite down to it.
+function buildFolderIndex(sections, cases) {
+  const byId = new Map();
+  for (const section of sections || []) byId.set(section.id, section);
+
+  const resolved = new Map();
+  const folderFor = (sectionId) => {
+    if (resolved.has(sectionId)) return resolved.get(sectionId);
+
+    const trail = [];
+    const visited = new Set();
+    let cursor = byId.get(sectionId);
+    // visited also guards against a malformed parent chain looping forever.
+    while (cursor && !visited.has(cursor.id)) {
+      visited.add(cursor.id);
+      trail.unshift(cursor.name);
+      cursor = cursor.parent_id == null ? null : byId.get(cursor.parent_id);
+    }
+
+    const folder = trail.length === 0 ? null : { name: trail[trail.length - 1], path: trail.join(' / ') };
+    resolved.set(sectionId, folder);
+    return folder;
+  };
+
+  const byCase = new Map();
+  for (const item of cases || []) {
+    const folder = folderFor(item.section_id);
+    if (folder) byCase.set(item.id, folder);
+  }
+  return byCase;
+}
+
 function mergeSnapshot(existing, fresh, now = new Date().toISOString()) {
   const prevTests = (existing && existing.tests) || {};
   const tests = {};
@@ -63,6 +97,10 @@ function mergeSnapshot(existing, fresh, now = new Date().toISOString()) {
       ...incoming,
       remote: {
         ...incoming.remote,
+        // A case always lives in a section, so an unknown folder means the lookup failed
+        // rather than the case moving to the root. Keep what the last sync established.
+        folder: incoming.remote.folder || (prev.remote && prev.remote.folder) || null,
+        folderPath: incoming.remote.folderPath || (prev.remote && prev.remote.folderPath) || null,
         lastResultComment: (prev.remote && prev.remote.lastResultComment) || null,
         lastResultDefects: (prev.remote && prev.remote.lastResultDefects) || null,
       },
@@ -197,6 +235,8 @@ function toView(snapshot) {
         testId: test.testId,
         caseId: test.caseId,
         title: effectiveTitle(test),
+        folder: test.remote.folder || null,
+        folderPath: test.remote.folderPath || null,
         statusId: 'statusId' in draft ? draft.statusId : test.remote.statusId,
         remoteStatusId: test.remote.statusId,
         priorityId: 'priorityId' in draft ? draft.priorityId : test.remote.priorityId,
@@ -242,6 +282,7 @@ module.exports = {
   dirtyFields,
   isDirty,
   effectiveTitle,
+  buildFolderIndex,
   mergeSnapshot,
   computeDelta,
   requiredResultDefaults,

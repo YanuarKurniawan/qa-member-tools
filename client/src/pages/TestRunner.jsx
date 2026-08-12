@@ -8,6 +8,9 @@ import { statusStyle, priorityLabel, SHORTCUT_TO_STATUS } from '../components/te
 
 const API = '/api/test-runs';
 
+// A select value has to be a string, so rows whose folder never resolved need a stand-in.
+const NO_FOLDER = '\u0000none';
+
 function isAbortError(err) {
   return err?.name === 'AbortError';
 }
@@ -54,6 +57,7 @@ export default function TestRunner() {
   const [query, setQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState(() => new Set());
   const [priorityFilter, setPriorityFilter] = useState(() => new Set());
+  const [folderFilter, setFolderFilter] = useState('');
   const [onlyChanged, setOnlyChanged] = useState(false);
   const [onlyConflicts, setOnlyConflicts] = useState(false);
   const searchRef = useRef(null);
@@ -177,6 +181,9 @@ export default function TestRunner() {
     setFocusedTestId(null);
     setShowShortcuts(false);
     setUploadOutcome(null);
+    // Folders belong to one suite, so carrying the choice into another run would filter
+    // against a path that run has never heard of.
+    setFolderFilter('');
   }, [runIdParam]);
 
   useEffect(() => {
@@ -253,8 +260,8 @@ export default function TestRunner() {
     const dir = sort.dir === 'asc' ? 1 : -1;
     return tests.sort((a, b) => {
       let cmp;
-      if (sort.key === 'title') {
-        cmp = a.title.localeCompare(b.title);
+      if (sort.key === 'title' || sort.key === 'folder') {
+        cmp = String(a[sort.key] ?? '').localeCompare(String(b[sort.key] ?? ''));
       } else {
         cmp = (a[sort.key] ?? 0) - (b[sort.key] ?? 0);
       }
@@ -262,16 +269,56 @@ export default function TestRunner() {
     });
   }, [state?.tests, sort]);
 
+  // Counted over the whole run, not the visible rows, so the numbers stay put while you
+  // type in the search box. Folders are keyed by path because two campaigns can each hold
+  // an "Android".
+  const folderOptions = useMemo(() => {
+    const byPath = new Map();
+    for (const test of state?.tests || []) {
+      const path = test.folderPath || NO_FOLDER;
+      const found = byPath.get(path);
+      if (found) found.count += 1;
+      else byPath.set(path, { path, label: test.folder || 'Unknown folder', count: 1 });
+    }
+
+    const options = [...byPath.values()];
+    const timesUsed = new Map();
+    for (const option of options) {
+      timesUsed.set(option.label, (timesUsed.get(option.label) || 0) + 1);
+    }
+    for (const option of options) {
+      if (timesUsed.get(option.label) > 1 && option.path !== NO_FOLDER) option.label = option.path;
+    }
+    return options.sort((a, b) => a.label.localeCompare(b.label));
+  }, [state?.tests]);
+
+  // A sync can move the last case out of the folder being filtered on, which would leave
+  // the table empty with no obvious way back.
+  useEffect(() => {
+    if (folderFilter && !folderOptions.some((option) => option.path === folderFilter)) {
+      setFolderFilter('');
+    }
+  }, [folderOptions, folderFilter]);
+
   const visibleTests = useMemo(() => {
     return sortedTests.filter((test) => {
       if (searchNeedle && !test.title.toLowerCase().includes(searchNeedle)) return false;
+      if (folderFilter && (test.folderPath || NO_FOLDER) !== folderFilter) return false;
       if (statusFilter.size > 0 && !statusFilter.has(test.statusId)) return false;
       if (priorityFilter.size > 0 && !priorityFilter.has(test.priorityId)) return false;
       if (onlyChanged && test.dirtyFields.length === 0) return false;
       if (onlyConflicts && test.conflicts.length === 0) return false;
       return true;
     });
-  }, [sortedTests, searchNeedle, statusFilter, priorityFilter, onlyChanged, onlyConflicts]);
+  }, [
+    sortedTests,
+    searchNeedle,
+    folderFilter,
+    statusFilter,
+    priorityFilter,
+    onlyChanged,
+    onlyConflicts,
+  ]);
 
   const activeTest = useMemo(() => {
     if (!activeTestId || !state?.tests) return null;
@@ -691,6 +738,26 @@ export default function TestRunner() {
                 </button>
               )}
             </div>
+
+            {folderOptions.length > 1 && (
+              <select
+                value={folderFilter}
+                onChange={(e) => setFolderFilter(e.target.value)}
+                aria-label="Filter by folder"
+                className={`max-w-[16rem] rounded-lg border py-2 pl-2.5 pr-8 text-sm shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 ${
+                  folderFilter
+                    ? 'border-blue-300 bg-blue-50 font-medium text-blue-800'
+                    : 'border-gray-300 bg-white text-gray-700'
+                }`}
+              >
+                <option value="">All folders ({state.tests.length})</option>
+                {folderOptions.map((option) => (
+                  <option key={option.path} value={option.path}>
+                    {option.label} ({option.count})
+                  </option>
+                ))}
+              </select>
+            )}
 
             {(state.vocab?.statuses || []).map((status) => {
               const selected = statusFilter.has(status.id);

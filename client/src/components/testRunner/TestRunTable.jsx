@@ -46,6 +46,7 @@ export function Highlight({ text, needle }) {
 
 const SORT_COLUMNS = [
   { key: 'caseId', label: 'Test ID' },
+  { key: 'folder', label: 'Folder' },
   { key: 'title', label: 'Test Name' },
   { key: 'priorityId', label: 'Priority' },
   { key: 'statusId', label: 'Status' },
@@ -243,7 +244,7 @@ export default function TestRunTable({
           <tbody className="divide-y divide-gray-100">
             {tests.length === 0 ? (
               <tr>
-                <td colSpan={6} className="px-4 py-10 text-center text-sm text-gray-500">
+                <td colSpan={7} className="px-4 py-10 text-center text-sm text-gray-500">
                   No tests match your filters.
                 </td>
               </tr>
@@ -274,6 +275,17 @@ export default function TestRunTable({
                       />
                     )}
                   </span>
+                </td>
+                <td className="whitespace-nowrap px-4 py-2.5 text-gray-600">
+                  {test.folder ? (
+                    // The leaf alone is what tells rows apart; the trail above it is one
+                    // long campaign name that would swamp the row, so it lives in the title.
+                    <span className="block max-w-[10rem] truncate" title={test.folderPath}>
+                      {test.folder}
+                    </span>
+                  ) : (
+                    <span className="text-gray-400">—</span>
+                  )}
                 </td>
                 <td className="w-full min-w-[20rem] break-words px-4 py-2.5 text-gray-800">
                   {editingId === test.testId ? (

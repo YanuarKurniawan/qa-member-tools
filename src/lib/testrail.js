@@ -95,10 +95,19 @@ async function getPaginated(endpoint, key) {
   }
 }
 
+// A single-suite project takes no suite_id and rejects the parameter outright.
+function suiteScope(projectId, suiteId) {
+  return `${projectId}${suiteId ? `&suite_id=${suiteId}` : ''}`;
+}
+
 module.exports = {
   TestRailError,
   getRun: (runId) => request('GET', `get_run/${runId}`),
   getTests: (runId) => getPaginated(`get_tests/${runId}`, 'tests'),
+  getSections: (projectId, suiteId) =>
+    getPaginated(`get_sections/${suiteScope(projectId, suiteId)}`, 'sections'),
+  getCases: (projectId, suiteId) =>
+    getPaginated(`get_cases/${suiteScope(projectId, suiteId)}`, 'cases'),
   getStatuses: () => request('GET', 'get_statuses'),
   getPriorities: () => request('GET', 'get_priorities'),
   getResultFields: () => request('GET', 'get_result_fields'),

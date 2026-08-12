@@ -1,9 +1,10 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { Search, X, CheckCircle2 } from 'lucide-react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { Search, X, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
 import RunToolbar from '../components/testRunner/RunToolbar';
 import TestRunTable from '../components/testRunner/TestRunTable';
 import CaseDrawer from '../components/testRunner/CaseDrawer';
+import relativeTime from '../components/testRunner/relativeTime';
 import { statusStyle, priorityLabel, SHORTCUT_TO_STATUS } from '../components/testRunner/statusVocab';
 
 const API = '/api/test-runs';
@@ -564,10 +565,23 @@ export default function TestRunner() {
 
   return (
     <div>
+      {/* The sidebar entry stays highlighted while a run is open, so it reads as "you are
+          here" rather than a way out. This is the way out. */}
+      {runIdParam && (
+        <Link
+          to="/test-runner"
+          className="-ml-1 mb-1 inline-flex items-center gap-1 rounded px-1 py-0.5 text-sm text-gray-500 transition-colors hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+        >
+          <ChevronLeft size={16} />
+          All runs
+        </Link>
+      )}
       <h1 className="text-2xl font-bold text-gray-900">Test Runner</h1>
-      <p className="mt-1 text-sm text-gray-500">
-        Execute a TestRail run without leaving one screen.
-      </p>
+      {!runIdParam && (
+        <p className="mt-1 text-sm text-gray-500">
+          Execute a TestRail run without leaving one screen.
+        </p>
+      )}
 
       {error && (
         <div className="mt-4 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-800">
@@ -582,47 +596,69 @@ export default function TestRunner() {
       )}
 
       {!runIdParam && (
-        <div className="mt-6 rounded-xl border border-gray-200 bg-white p-5">
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="run-input" className="block text-sm font-medium text-gray-700">
-              TestRail run
-            </label>
-            <div className="mt-2 flex flex-wrap items-center gap-3">
-              <input
-                id="run-input"
-                type="text"
-                value={runInput}
-                onChange={(e) => setRunInput(e.target.value)}
-                placeholder="17748 or https://tiket.testrail.com/index.php?/runs/view/17748"
-                className="min-w-0 flex-1 rounded-lg border border-gray-300 px-3 py-2.5 text-sm shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-              />
-              <button
-                type="submit"
-                disabled={parsedId == null || loading || syncing}
-                className="rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-300"
-              >
-                Open run
-              </button>
-            </div>
-          </form>
-
-          {recent.length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-2">
-              {recent.map((run) => (
+        <div className="mt-6 space-y-6">
+          <div className="rounded-xl border border-gray-200 bg-white p-5">
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="run-input" className="block text-sm font-medium text-gray-700">
+                TestRail run
+              </label>
+              <div className="mt-2 flex flex-wrap items-center gap-3">
+                <input
+                  id="run-input"
+                  type="text"
+                  value={runInput}
+                  onChange={(e) => setRunInput(e.target.value)}
+                  placeholder="17748 or https://tiket.testrail.com/index.php?/runs/view/17748"
+                  className="min-w-0 flex-1 rounded-lg border border-gray-300 px-3 py-2.5 text-sm shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                />
                 <button
-                  key={run.runId}
-                  type="button"
-                  onClick={() => navigate(`/test-runner/${run.runId}`)}
-                  className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs text-gray-700 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                  type="submit"
+                  disabled={parsedId == null || loading || syncing}
+                  className="rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 disabled:cursor-not-allowed disabled:bg-gray-300"
                 >
-                  {run.runId} · {run.runName}
-                  {run.dirtyCount > 0 && (
-                    <span className="text-blue-700"> · {run.dirtyCount} unsaved</span>
-                  )}
+                  Open run
                 </button>
-              ))}
-            </div>
-          )}
+              </div>
+            </form>
+          </div>
+
+          <section>
+            <h2 className="text-lg font-semibold text-gray-800">Recent runs</h2>
+            {recent.length === 0 ? (
+              <p className="mt-3 rounded-xl border border-dashed border-gray-300 bg-white px-5 py-8 text-center text-sm text-gray-500">
+                Runs you open appear here, with their drafts, so you can pick one back up.
+              </p>
+            ) : (
+              <ul className="mt-3 divide-y divide-gray-100 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+                {recent.map((run) => (
+                  <li key={run.runId}>
+                    {/* A real link, so a run can be opened in a new tab or bookmarked. */}
+                    <Link
+                      to={`/test-runner/${run.runId}`}
+                      className="flex items-center gap-4 px-5 py-3.5 transition-colors hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-500"
+                    >
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-medium text-gray-900">
+                          {run.runName}
+                        </p>
+                        <p className="mt-0.5 text-xs text-gray-500">
+                          Run {run.runId}
+                          {run.total > 0 && ` · ${run.executed} of ${run.total} executed`}
+                          {` · synced ${relativeTime(run.lastSyncedAt)}`}
+                        </p>
+                      </div>
+                      {run.dirtyCount > 0 && (
+                        <span className="shrink-0 rounded-full border border-blue-200 bg-blue-50 px-2.5 py-1 text-xs font-medium text-blue-800">
+                          {run.dirtyCount} unsaved
+                        </span>
+                      )}
+                      <ChevronRight size={16} className="shrink-0 text-gray-400" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
         </div>
       )}
 

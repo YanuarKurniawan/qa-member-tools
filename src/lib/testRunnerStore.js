@@ -23,6 +23,17 @@ function writeSnapshot(runId, snapshot) {
   fs.renameSync(tmp, file);
 }
 
+// Progress is read from what TestRail last reported, not from drafts, so the run list
+// separates "how far the run has got" from "what you have not uploaded yet".
+function runProgress(snapshot) {
+  const untested = logic.untestedStatusId(snapshot);
+  const tests = Object.values(snapshot.tests || {});
+  return {
+    total: tests.length,
+    executed: tests.filter((test) => test.remote && test.remote.statusId !== untested).length,
+  };
+}
+
 function listSnapshots(limit = 8) {
   if (!fs.existsSync(DATA_DIR)) return [];
   return fs
@@ -36,6 +47,7 @@ function listSnapshots(limit = 8) {
           runName: snapshot.runName,
           lastSyncedAt: snapshot.lastSyncedAt,
           dirtyCount: Object.values(snapshot.tests || {}).filter(logic.isDirty).length,
+          ...runProgress(snapshot),
         };
       } catch {
         return null;

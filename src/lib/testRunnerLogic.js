@@ -282,6 +282,7 @@ module.exports = {
   dirtyFields,
   isDirty,
   effectiveTitle,
+  untestedStatusId,
   buildFolderIndex,
   mergeSnapshot,
   computeDelta,

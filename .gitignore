@@ -49,3 +49,5 @@ Thumbs.db
 
 # ─── Superpowers scratch ──────────────────────
 .superpowers/
+
+.playwright-cli/

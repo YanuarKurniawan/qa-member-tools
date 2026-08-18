@@ -1,8 +1,10 @@
 {
-  "lastUpdated": "2026-07-28T03:21:52.727Z",
+  "lastUpdated": "2026-08-12T02:35:16.526Z",
   "generatedBy": "src/lib/automationWeb.js",
   "platform": "WEB (dWeb) — Eiffel",
   "refreshed": [
+    "googleSheet",
+    "testrail",
     "jira"
   ],
   "sources": {
@@ -206,8 +208,8 @@
           "shouldRun": "y",
           "run": true,
           "priority": "P0",
-          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-41239",
-          "jiraKey": "QAAUT-41239",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40277",
+          "jiraKey": "QAAUT-40277",
           "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1880644",
           "testrailId": "1880644"
         },
@@ -261,8 +263,8 @@
           "shouldRun": "y",
           "run": true,
           "priority": "P0",
-          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40441",
-          "jiraKey": "QAAUT-40441",
+          "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39708",
+          "jiraKey": "QAAUT-39708",
           "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862657",
           "testrailId": "1862657"
         },
@@ -646,7 +648,7 @@
         "tab": "Sheet1",
         "platform": "dweb"
       },
-      "fetchedAt": "2026-07-28T03:03:13.970Z"
+      "fetchedAt": "2026-08-12T02:35:16.526Z"
     },
     "testrail": {
       "label": "TestRail — Automation Yes + Done",
@@ -793,7 +795,12 @@
           "url": "https://tiket.testrail.com/index.php?/cases/view/1194394",
           "automationType": "Yes",
           "automationStatus": "Done",
-          "refs": [],
+          "refs": [
+            {
+              "key": "QAAUT-22692",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-22692"
+            }
+          ],
           "counted": true
         },
         {
@@ -873,7 +880,12 @@
           "url": "https://tiket.testrail.com/index.php?/cases/view/1880641",
           "automationType": "Yes",
           "automationStatus": "Done",
-          "refs": [],
+          "refs": [
+            {
+              "key": "QAAUT-40275",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-40275"
+            }
+          ],
           "counted": true
         },
         {
@@ -1098,7 +1110,12 @@
           "url": "https://tiket.testrail.com/index.php?/cases/view/1880644",
           "automationType": "Yes",
           "automationStatus": "Done",
-          "refs": [],
+          "refs": [
+            {
+              "key": "QAAUT-40277",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-40277"
+            }
+          ],
           "counted": true
         },
         {
@@ -1110,7 +1127,12 @@
           "url": "https://tiket.testrail.com/index.php?/cases/view/1881194",
           "automationType": "Yes",
           "automationStatus": "Done",
-          "refs": [],
+          "refs": [
+            {
+              "key": "QAAUT-40441",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-40441"
+            }
+          ],
           "counted": true
         },
         {
@@ -1122,7 +1144,12 @@
           "url": "https://tiket.testrail.com/index.php?/cases/view/1881507",
           "automationType": "Yes",
           "automationStatus": "Done",
-          "refs": [],
+          "refs": [
+            {
+              "key": "QAAUT-40276",
+              "url": "https://borobudur.atlassian.net/browse/QAAUT-40276"
+            }
+          ],
           "counted": true
         }
       ],
@@ -1130,7 +1157,7 @@
         "sectionName": "Platform-Eiffel",
         "sectionLabel": "P0"
       },
-      "fetchedAt": "2026-07-28T03:06:09.489Z"
+      "fetchedAt": "2026-08-12T02:35:16.526Z"
     },
     "jira": {
       "label": "Jira — Done",
@@ -1475,208 +1502,14 @@
         }
       ],
       "source": "jira-api",
-      "fetchedAt": "2026-07-28T03:21:52.727Z"
+      "fetchedAt": "2026-08-12T02:35:16.526Z"
     }
   },
   "connections": {
     "spine": "googleSheet",
-    "total": 26,
-    "synced": 18,
+    "total": 24,
+    "synced": 24,
     "rows": [
-      {
-        "id": "jira:QAAUT-39708",
-        "testName": "[Loyalty] Login - Verify mission stamps",
-        "jiraKey": "QAAUT-39708",
-        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39708",
-        "testrailId": "1862657",
-        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862657",
-        "sheet": {
-          "state": "missing",
-          "notes": [
-            "No ShouldRun = y sheet row points at QAAUT-39708"
-          ]
-        },
-        "jira": {
-          "state": "ok",
-          "notes": []
-        },
-        "testrail": {
-          "state": "warn",
-          "notes": [
-            "Case 1862657 references QAAUT-39708 but the sheet maps that case to QAAUT-40441"
-          ]
-        },
-        "synced": false
-      },
-      {
-        "id": "jira:QAAUT-40277",
-        "testName": "[Loyalty] Verify the IPC revoke",
-        "jiraKey": "QAAUT-40277",
-        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40277",
-        "testrailId": "",
-        "testrailUrl": null,
-        "sheet": {
-          "state": "missing",
-          "notes": [
-            "No ShouldRun = y sheet row points at QAAUT-40277"
-          ]
-        },
-        "jira": {
-          "state": "ok",
-          "notes": []
-        },
-        "testrail": {
-          "state": "missing",
-          "notes": [
-            "No TestRail case under Platform-Eiffel / P0 references QAAUT-40277"
-          ]
-        },
-        "synced": false
-      },
-      {
-        "id": "tr:1194394",
-        "testName": "testChangeIntoNewPNLoggedIn",
-        "jiraKey": "QAAUT-22692",
-        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22692",
-        "testrailId": "1194394",
-        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194394",
-        "sheet": {
-          "state": "ok",
-          "notes": []
-        },
-        "jira": {
-          "state": "ok",
-          "notes": []
-        },
-        "testrail": {
-          "state": "warn",
-          "notes": [
-            "Case 1194394 has no Jira reference"
-          ]
-        },
-        "synced": false
-      },
-      {
-        "id": "tr:1881507",
-        "testName": "testNoPendingEarningPointsWhenOrderFinishedWithPromoWeb",
-        "jiraKey": "QAAUT-40276",
-        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40276",
-        "testrailId": "1881507",
-        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1881507",
-        "sheet": {
-          "state": "ok",
-          "notes": []
-        },
-        "jira": {
-          "state": "ok",
-          "notes": []
-        },
-        "testrail": {
-          "state": "warn",
-          "notes": [
-            "Case 1881507 has no Jira reference"
-          ]
-        },
-        "synced": false
-      },
-      {
-        "id": "tr:1880644",
-        "testName": "testRefundHotelNegativePoints",
-        "jiraKey": "QAAUT-41239",
-        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-41239",
-        "testrailId": "1880644",
-        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1880644",
-        "sheet": {
-          "state": "ok",
-          "notes": []
-        },
-        "jira": {
-          "state": "warn",
-          "notes": [
-            "QAAUT-41239 exists but is outside the Jira filter — parent is QAAUT-42322, not QAAUT-30177"
-          ]
-        },
-        "testrail": {
-          "state": "warn",
-          "notes": [
-            "Case 1880644 has no Jira reference"
-          ]
-        },
-        "synced": false
-      },
-      {
-        "id": "tr:1880641",
-        "testName": "testVerifyUnverifiedEmailLoggedInWeb",
-        "jiraKey": "QAAUT-40275",
-        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40275",
-        "testrailId": "1880641",
-        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1880641",
-        "sheet": {
-          "state": "ok",
-          "notes": []
-        },
-        "jira": {
-          "state": "ok",
-          "notes": []
-        },
-        "testrail": {
-          "state": "warn",
-          "notes": [
-            "Case 1880641 has no Jira reference"
-          ]
-        },
-        "synced": false
-      },
-      {
-        "id": "tr:1862657",
-        "testName": "verifyMissionStampIncreaseForEligibleHotelWeb",
-        "jiraKey": "QAAUT-40441",
-        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40441",
-        "testrailId": "1862657",
-        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862657",
-        "sheet": {
-          "state": "ok",
-          "notes": []
-        },
-        "jira": {
-          "state": "warn",
-          "notes": [
-            "QAAUT-40441 is claimed by 2 sheet rows"
-          ]
-        },
-        "testrail": {
-          "state": "warn",
-          "notes": [
-            "Case 1862657 references QAAUT-39708 but the sheet says QAAUT-40441"
-          ]
-        },
-        "synced": false
-      },
-      {
-        "id": "tr:1881194",
-        "testName": "verifyNoMissionStampForPayAtHotelWeb",
-        "jiraKey": "QAAUT-40441",
-        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40441",
-        "testrailId": "1881194",
-        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1881194",
-        "sheet": {
-          "state": "ok",
-          "notes": []
-        },
-        "jira": {
-          "state": "warn",
-          "notes": [
-            "QAAUT-40441 is claimed by 2 sheet rows"
-          ]
-        },
-        "testrail": {
-          "state": "warn",
-          "notes": [
-            "Case 1881194 has no Jira reference"
-          ]
-        },
-        "synced": false
-      },
       {
         "id": "tr:1880629",
         "testName": "editMainProfileWeb",
@@ -1789,6 +1622,27 @@
         "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22696",
         "testrailId": "1194396",
         "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194396",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1194394",
+        "testName": "testChangeIntoNewPNLoggedIn",
+        "jiraKey": "QAAUT-22692",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-22692",
+        "testrailId": "1194394",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1194394",
         "sheet": {
           "state": "ok",
           "notes": []
@@ -1972,12 +1826,54 @@
         "synced": true
       },
       {
+        "id": "tr:1881507",
+        "testName": "testNoPendingEarningPointsWhenOrderFinishedWithPromoWeb",
+        "jiraKey": "QAAUT-40276",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40276",
+        "testrailId": "1881507",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1881507",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
         "id": "tr:1862661",
         "testName": "testPendingEarningPointsAfterTtdOrderWeb",
         "jiraKey": "QAAUT-39712",
         "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39712",
         "testrailId": "1862661",
         "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862661",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1880644",
+        "testName": "testRefundHotelNegativePoints",
+        "jiraKey": "QAAUT-40277",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40277",
+        "testrailId": "1880644",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1880644",
         "sheet": {
           "state": "ok",
           "notes": []
@@ -2035,12 +1931,75 @@
         "synced": true
       },
       {
+        "id": "tr:1880641",
+        "testName": "testVerifyUnverifiedEmailLoggedInWeb",
+        "jiraKey": "QAAUT-40275",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40275",
+        "testrailId": "1880641",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1880641",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
         "id": "tr:1862659",
         "testName": "verifyClaimMissionRewardsWeb",
         "jiraKey": "QAAUT-39710",
         "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39710",
         "testrailId": "1862659",
         "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862659",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1862657",
+        "testName": "verifyMissionStampIncreaseForEligibleHotelWeb",
+        "jiraKey": "QAAUT-39708",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-39708",
+        "testrailId": "1862657",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1862657",
+        "sheet": {
+          "state": "ok",
+          "notes": []
+        },
+        "jira": {
+          "state": "ok",
+          "notes": []
+        },
+        "testrail": {
+          "state": "ok",
+          "notes": []
+        },
+        "synced": true
+      },
+      {
+        "id": "tr:1881194",
+        "testName": "verifyNoMissionStampForPayAtHotelWeb",
+        "jiraKey": "QAAUT-40441",
+        "jiraUrl": "https://borobudur.atlassian.net/browse/QAAUT-40441",
+        "testrailId": "1881194",
+        "testrailUrl": "https://tiket.testrail.com/index.php?/cases/view/1881194",
         "sheet": {
           "state": "ok",
           "notes": []
